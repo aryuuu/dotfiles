@@ -1,3 +1,3 @@
-# Dotfiles for my arch machine
+# Dotfiles for my Arch 
 
 
