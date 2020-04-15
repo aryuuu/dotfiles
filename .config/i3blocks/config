@@ -1,68 +1,134 @@
+# powerline like arrow
+[edge_1]
+full_text=""
+background="#484639"
+color="#F5F5F5"
+separator=false
+separator_block_width=0
+
+
 
 # disk usage
 [root_usage]
-command=df -h | grep "/dev/sda3" | awk '{ print "   /  ", $5, $4 }'
+command=df -h | grep "/dev/sda3" | awk '{ print "     /  ", $5, $4, " " }'
 interval=30
-color="#d7d7d7"
+background="#F5F5F5"
+color="#484639"
 separator=false
+separator_block_width=0
 
 
 [home_usage]
-command=df -h | grep "/dev/sda4" | awk '{ print "/home  ", $5, $4, "    "}'
+command=df -h | grep "/dev/sda4" | awk '{ print " /home  ", $5, $4, " "}'
 interval=30
-color="#d7d7d7"
+background="#F5F5F5"
+color="#484639"
 separator=false
+separator_block_width=0
+
+[edge_2]
+full_text=""
+background="#F5F5F5"
+color="#e2f6be"
+separator=false
+separator_block_width=0
 
 # memory usage
 [mem_usage]
-command=free -hg | grep "Mem" | awk '{ print "  ", $7, "    "}'
+command=free -hg | grep "Mem" | awk '{ print "  ", $7, " "}'
 interval=10
-color="#1fc742"
+background="#e2f6be"
+color="#484639"
 separator=false
+separator_block_width=0
+
+[edge_3]
+full_text=""
+background="#e2f6be"
+color="#d3e7f2"
+separator=false
+separator_block_width=0
 
 # cpu usage
 [cpu_usage]
-command=mpstat | tail -1 | awk '{ print "  ",$4, "%    " }'
+command=mpstat | tail -1 | awk '{ print "   ",$4, "%  " }'
 interval=30
-color="#3cd2f9"
+background="#d3e7f2"
+color="#484639"
 separator=false
+separator_block_width=0
+
+[edge_4]
+full_text=""
+background="#d3e7f2"
+color="#ffcece"
+separator=false
+separator_block_width=0
 
 # cpu temp
 [cpu_temp]
-command=sensors | grep "Core 0" | awk '{ print "  " ,$3, "   " }'
+command=sensors | grep "Core 0" | awk '{ print "   " ,$3, " " }'
 interval=60
-color="#ee2d29"
+background="#ffcece"
+color="#484639"
 separator=false
+separator_block_width=0
 
+[edge_4]
+full_text=""
+background="#ffcece"
+color="#d3e7f2"
+separator=false
+separator_block_width=0
 # wireless
 [wifi]
-command=nmcli | awk '/^wlp3s0/ {print ""i, $4, "   "}'
+command=nmcli | awk '/^wlp3s0/ {print " ", $4, " "}'
 interval=1
-color="#1da1f2"
+background="#d3e7f2"
+color="#484639"
 separator=false
+separator_block_width=0
 
 # ethernet
 [ethernet]
-command=nmcli | awk '/enp2s0/ {print " ", $2, "   "}'
+command=nmcli | awk '/enp2s0/ {print "   ", $2, " "}'
 interval=1
-color="#1da1f2"
+background="#d3e7f2"
+color="#484639"
 separator=false
+separator_block_width=0
 
 # bandwidth
-[bandwidth]
-command=echo "   "
-interval=60
-separator=false
+#[bandwidth]
+#command=echo "⇅"
+#interval=60
+#separator=false
+#separator_block_width=0
 
+[edge_5]
+full_text=""
+background="#d3e7f2"
+color="#C7F464"
+separator=false
+separator_block_width=0
 # battery
 [battery]
 command=/home/fatt/.scripts/i3blocks/battery
 interval=5
+background="#C7F464"
+color="#484639"
 separator=false
-color="#7fe706"
+separator_block_width=0
 
+[edge_5]
+full_text=""
+background="#C7F464"
+color="#b7eee1"
+separator=false
+separator_block_width=0
 # time 
 [time]
-command=date +%c | awk '{ print $5, $1, $2, $3, $4 }'
+command=date +%c | awk '{ print " ", $5, $1, $2, $3, $4, " " }'
 interval=1
-color="#98dab4"
+background="#b7eee1"
+color="#484639"
