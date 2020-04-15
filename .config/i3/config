@@ -125,16 +125,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws10 "10" 
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:" 
 
 # set workspace to different monitor
 workspace $ws1 output eDP-1
@@ -219,6 +219,21 @@ assign [class="Thunderbird"] $ws5
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	colors {
+		background 				#484639
+		statusline 				#F5F5F5
+		#focused_background		#F5F5F5
+		#focused_statusline		#484639
+
+        active_workspace	    #333333 #5f676a #ffffff
+		focused_workspace  		#F5F5F5 #F5F5F5 #484639
+        inactive_workspace		#484639 #484639 #F5F5F5
+        urgent_workspace   		#2f343a #900000 #ffffff
+        binding_mode       		#2f343a #900000 #ffffff
+
+	}
+
 	position top
-        status_command i3blocks
+	strip_workspace_numbers yes
+    status_command i3blocks
 }
