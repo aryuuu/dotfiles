@@ -2,6 +2,7 @@
 
 
 ## Screenshots
+![Overall](img/overall.png?raw=true)
 
 ## Components
 * Window manager - [**i3-gaps**](https://github.com/Airblader/i3)
@@ -13,5 +14,6 @@
 * Greeter - [**Lightdm webkit2 greeter**](https://github.com/antergos/web-greeter)
 * Greeter theme - [**Litarvan**](https://github.com/Litarvan/lightdm-webkit-theme-litarvan)
 * File manager - [**ranger**](https://ranger.github.io/index.html)
+* Ranger colorscheme - [**zenburn**](http://dotshare.it/dots/706/)
 
 
