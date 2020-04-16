@@ -2,7 +2,7 @@
 
 
 ## Screenshots
-![Overall](img/overall.png?raw=true)
+![Overall](img/new_status_bar.png?raw=true)
 
 ## Components
 * Window manager - [**i3-gaps**](https://github.com/Airblader/i3)

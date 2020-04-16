@@ -35,7 +35,7 @@ separator_block_width=0
 
 # memory usage
 [mem_usage]
-command=free -hg | grep "Mem" | awk '{ print "  ", $7, " "}'
+command=free -hg | grep "Mem" | awk '{ print "  ", $7, " "}'
 interval=10
 background="#e2f6be"
 color="#484639"
@@ -132,3 +132,12 @@ command=date +%c | awk '{ print " ", $5, $1, $2, $3, $4, " " }'
 interval=1
 background="#b7eee1"
 color="#484639"
+separator=false
+separator_block_width=0
+
+[edge_6]
+full_text=""
+background="#b7eee1"
+color="#484639"
+separator=false
+separator_block_width=0
