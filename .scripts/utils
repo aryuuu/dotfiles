@@ -6,7 +6,11 @@ jump () {
 }
 
 brg () {
-	xrandr --output eDP-1 --output HDMI-1 --brightness $1
+	if [ $2 ]; then
+		xrandr --output eDP-1 --output HDMI-1 --brightness $1
+	else
+		xrandr --output HDMI-1 --brightness $1
+	fi
 }
 
 dualmon () {
