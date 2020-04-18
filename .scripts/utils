@@ -1,0 +1,26 @@
+#!/bin/bash
+
+jump () {
+	mkdir -p $1
+	cd $1
+}
+
+brg () {
+	xrandr --output eDP-1 --output HDMI-1 --brightness $1
+}
+
+dualmon () {
+	xrandr --output HDMI-1 --auto --above eDP-1
+}
+
+smon () {
+	xrandr --output eDP-1 --auto
+}
+
+wconn () {
+	nmcli d wifi connect $1 password $2
+}
+
+test-microphone() {
+    arecord -vvv -f dat /dev/null
+}
