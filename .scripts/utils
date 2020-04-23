@@ -26,5 +26,10 @@ wconn () {
 }
 
 test-microphone() {
-    arecord -vvv -f dat /dev/null
+	arecord -vvv -f dat /dev/null
+}
+
+mp3-dl () {
+	youtube-dl -x --audio-format mp3 "ytsearch:\"${@}\""
+
 }
