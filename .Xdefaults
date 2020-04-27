@@ -1,3 +1,6 @@
+! Max line saved
+URxvt.saveLines: 65535
+
 ! use perl extensions
 URxvt.perl-ext-common: default,matcher,clipboard,resize-font,url-select
 

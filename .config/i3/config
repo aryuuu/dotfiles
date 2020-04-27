@@ -35,12 +35,12 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # background
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"
 # exec "feh --bg-scale $bgimg; cp $bgimg /tmp/screen.png"
-exec feh --bg-scale /home/fatt/Pictures/mountainarch.png
+exec_always feh --bg-scale /home/fatt/Pictures/wallpaper/sadfry.jpg
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -b
+exec_always --no-startup-id compton -b
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -220,9 +220,10 @@ bindsym $mod+r mode "resize"
 # assign specific workspace
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws3
+assign [class="code-oss"] $ws4
 assign [class="Thunderbird"] $ws5
 assign [class="Rhythmbox"] $ws6
-assign [class="simplescreenrecorder"] $ws7
+assign [class="SimpleScreenRecorder"] $ws7
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
