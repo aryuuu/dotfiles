@@ -35,7 +35,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # background
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"
 # exec "feh --bg-scale $bgimg; cp $bgimg /tmp/screen.png"
-exec_always feh --bg-scale /home/fatt/Pictures/wallpaper/lagunabarco.jpg
+#exec_always feh --bg-scale /home/fatt/Pictures/wallpaper/mirai.png
+exec_always ~/.scripts/background/background
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -60,7 +61,8 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # lock screen
-bindsym $mod+q exec ~/.script/i3lock-blur/lock.sh
+# bindsym $mod+q exec ~/.script/i3lock-blur/lock.sh
+bindsym $mod+q exec i3lock-fancy-multimonitor -n
 
 # kill focused window
 bindsym $mod+Shift+q kill
