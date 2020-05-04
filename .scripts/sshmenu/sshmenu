@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+term_cmd=${TERM_CMD:-urxvt -e}
+ssh_cmd=${SSH_CMD:-ssh -t}
+ssh_config=${SSH_CONFIG_FILE:-$HOME/.ssh/config}
+remote_cmd=${REMOTE_CMD}
+
+ssh_hosts=( $(grep "^Host\s\+[^*]" $ssh_config | cut -d " " -f 2-) )
+ssh_host=$(printf '%s\n' "${ssh_hosts[@]}" | dmenu -i -fn "FontAwesome" -p  -l 5 -sb '#f5f5f5' -sf '#484639' -nb '#484639' -nf '#f5f5f5' "$@")
+
+if [ -n "$ssh_host" ]; then
+  ssh $ssh_host hash mosh-server 2> /dev/null
+  if [ $? -eq 0 ]; then
+    ssh_cmd="mosh"
+  fi
+  $term_cmd $ssh_cmd $ssh_host $remote_cmd
+fi
