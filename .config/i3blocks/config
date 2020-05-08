@@ -1,7 +1,42 @@
 # powerline like arrow
-[edge_1]
+[edge_m1]
 full_text=""
 background="#484639"
+color="#f2e7c9"
+separator=false
+separator_block_width=0
+
+# music
+[prev]
+full_text=" "
+command=rhythmbox-client --previous
+background="#f2e7c9"
+color="#484639"
+separator=false
+separator_block_width=0
+
+[play_pause]
+full_text="  "
+command=rhythmbox-client --play-pause
+background="#f2e7c9"
+color="#484639"
+separator=false
+separator_block_width=0
+
+[next]
+full_text=" "
+command=rhythmbox-client --next
+background="#f2e7c9"
+color="#484639"
+separator=false
+separator_block_width=0
+
+
+
+# powerline like arrow
+[edge_1]
+full_text=""
+background="#f2e7c9"
 color="#F5F5F5"
 separator=false
 separator_block_width=0
