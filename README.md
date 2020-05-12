@@ -2,7 +2,7 @@
 
 
 ## Screenshots
-![Overall](img/new_status_bar.png?raw=true)
+![Overall](img/music_on_statusbar.png?raw=true)
 
 ## Components
 * Window manager - [**i3-gaps**](https://github.com/Airblader/i3)
