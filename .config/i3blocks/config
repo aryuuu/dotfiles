@@ -16,7 +16,7 @@ separator=false
 separator_block_width=0
 
 [play_pause]
-full_text="  "
+full_text="  "
 command=rhythmbox-client --play-pause
 background="#f2e7c9"
 color="#484639"
