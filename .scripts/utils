@@ -33,3 +33,7 @@ mp3-dl () {
 	youtube-dl -x --audio-format mp3 "ytsearch:\"${@}\""
 
 }
+
+keycheck () {
+	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+}
