@@ -54,8 +54,12 @@ URxvt.url-select.underline: true
 ! changin font size on the fly
 URxvt.keysym.C-Down: resize-font:smaller
 URxvt.keysym.C-Up: resize-font:bigger
+
+! Enable key bindings
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
  
-*.background: #2D303B
+*.background: #2c303d
 *.foreground: #D2D2D2
 
 !black
