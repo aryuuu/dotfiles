@@ -27,7 +27,7 @@ gaps inner 2
 # they are included here as an example. Modify as you see fit.
 
 ## enable tap click on touchpad
-exec xinput set-prop 17 319 1
+exec xinput set-prop 17 318 1
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -41,7 +41,7 @@ exec_always ~/.scripts/background/background
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-exec_always --no-startup-id "killall compton; compton"
+exec_always --no-startup-id "killall picom; picom"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -190,7 +190,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# exit i3 without dialog
+bindsym $mod+Shift+e exit
 # normal screenshot
 bindsym Print exec "scrot -e 'mv $f ~/Pictures/screenshots/'"
 # snipping tool like screenshot
@@ -232,7 +234,7 @@ assign [class="Sublime_text"] $ws4
 assign [class="Thunderbird"] $ws5
 assign [class="Rhythmbox"] $ws6
 assign [class="SimpleScreenRecorder"] $ws7
-
+assign [class="Mattermost"] $ws9
 # color scheme
 # class                 border  backgr. text    indicator child_border
 client.focused          #4C7899 #285577 #ffffff #2E9EF4   #C23210
