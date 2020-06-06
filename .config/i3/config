@@ -54,6 +54,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/backlight/dec
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/backlight/inc
 
+# control brightness of second monitor with xrandr
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/backlight/exdec
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/backlight/exinc
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
