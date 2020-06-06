@@ -1,5 +1,6 @@
 # :wrench: dotfiles
 
+![intro](img/ricefield.jpg)
 
 ## Screenshots
 ![Overall](img/music_on_statusbar.png?raw=true)
