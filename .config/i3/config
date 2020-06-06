@@ -203,6 +203,7 @@ bindsym Shift+Print exec "sleep 0.2; scrot -s -e 'mv $f ~/Pictures/screenshots/'
 
 
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -227,7 +228,22 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# move floating window
+bindsym $mod+Shift+m focus floating; mode "move"
+
+mode "move" {
+	bindsym k move up 10px
+	bindsym j move down 10px
+	bindsym h move left 10px
+	bindsym l move right 10px
+	bindsym Up move up 10px
+	bindsym Down move down 10px
+	bindsym Left move left 10px
+	bindsym Right move right 10px
+	bindsym $mod+Shift+m mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
 
 # assign specific workspace
 assign [class="discord"] $ws9
