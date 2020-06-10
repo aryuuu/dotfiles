@@ -103,5 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliasrc
 source ~/.scripts/utils
+source ~/.scripts/dualmon
 
 # PATH
+PATH=~/.local/bin:$PATH
