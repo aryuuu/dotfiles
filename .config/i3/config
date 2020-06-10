@@ -270,6 +270,7 @@ bar {
 	position top
 	strip_workspace_numbers 	yes
 	#separator_symbol		""
+	tray_output			HDMI-1
 	status_command 			i3blocks
         #font                            pango:monospace 8, D2Coding 8, FontAwesome 8
 	colors {
