@@ -1,0 +1,7 @@
+[bar/fattbar]
+monitor = ${env:MONITOR:}
+modules-right = date
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d%
