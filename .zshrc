@@ -106,4 +106,7 @@ source ~/.scripts/utils
 source ~/.scripts/dualmon
 
 # PATH
-PATH=~/.local/bin:$PATH
+PATH=~/.local/bin:$HOME/go/bin:$PATH
+
+# move to current directory in new window
+export PROMPT_COMMAND="pwd > /tmp/whereami"
