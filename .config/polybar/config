@@ -1,7 +1,169 @@
-[bar/fattbar]
-monitor = ${env:MONITOR:}
-modules-right = date
+[bar/statusbar]
+	monitor = ${env:MONITOR:}
+	scroll-up = i3wm-wsnext
+	scroll-down = i3wm-wsprev
+
+	height = 20
+
+	background = "#484639"
+	foreground = "#F5F5F5"
+
+	font-0 = scientifica:style=Medium:size=8;2
+	font-1 = FontAwesome 5 Free:style=Solid:size=8;2
+	font-2 = FontAwesome 5 Brands:style=Regular:size=8;2
+	;font-3 = NikkyouSans:style=Sans:size=4;0
+
+	spacing = 0
+	padding-left = 2
+	padding-right = 2
+	module-margin-left = 2
+	line-size = 2
+
+	tray-position = right
+
+	modules-left = i3
+	;modules-center = dummy
+	modules-right = fs memory cpu temp wifi eth battery time date 
+
+
+[module/i3]
+	type = internal/i3
+	
+	pin-workspaces = true
+	strip-wsnumbers = true
+	format-spacing = 0
+	index-sort = true
+	
+	ws-icon-0 = 1:terminals;
+	ws-icon-1 = 2:browser;
+	ws-icon-2 = 3:telegram;
+	ws-icon-3 = 4:code;
+	ws-icon-4 = 5:mail;
+	ws-icon-5 = 6:music;
+	ws-icon-6 = 7:studio;
+	ws-icon-7 = 8:media;
+	ws-icon-8 = 9:discord;
+	ws-icon-9 = 10:monitor;
+	;ws-icon-default = A
+
+	format = <label-state> <label-mode>
+
+	label-mode = %mode%
+
+	label-focused = %name%
+	label-focused-padding = 2
+	label-focused-margin = 1
+	label-focused-font = 14
+	label-focused-foreground = "#484639"
+	label-focused-background = "#F5F5F5"
+
+	label-unfocused = %name%
+	label-unfocused-padding = 0
+	label-unfocused-margin = 1
+
+	label-visible = %name%
+	label-visible-foreground = #FFFFFF
+	label-visible-background = #555555
+	label-visible-padding = 1
+	label-visible-margin = 1
+
+	label-urgent = %name%
+	label-urgent-foreground = #484639
+	label-urgent-background = #FF0000
+	label-urgent-padding = 1
+
 
 [module/date]
-type = internal/date
-date = %Y-%m-%d%
+	type = internal/date
+	date = %a %b %d
+	time = %I:%M %p
+	format = <label>
+	label = " %date%"
+	label-underline = "#bcd064"
+	;label-background = "#010101"
+	label-foreground = "#f5f5f5"
+	label-padding = 1
+
+[module/time]
+	type = internal/date
+	time = %I:%M %p
+	label = " %time%"
+	format = <label>
+	label-underline = #8dbe54
+	label-foreground = #F5F5F5
+	label-padding = 1
+
+[module/battery]
+	type = internal/battery
+	full-at = 99
+	battery = BAT0
+	adapter = ADP0
+
+	poll-interval = 5
+
+	label-full = " %percentage%"
+	label-full-underline = #00A507
+
+[module/eth]
+	type = internal/network
+	interface = enp2s0
+	interval = 3
+
+	label-connected = " "
+	label-connected-underline = #d3e7f2
+	label-connected-padding = 1
+
+	label-unconnected = " "
+	label-unconnected-underline = #d3e7f2
+	label-unconnected-padding = 1
+
+
+[module/wifi]
+	type = internal/network
+	interface = wlp3s0
+	interval = 3
+	
+	label-connected = " %essid%"
+	label-connected-underline = #d3e7f2
+
+	label-unconnected = " "
+
+[module/temp]
+	type = internal/temperature
+	interval = 1
+
+	thermal-zone = 0
+	hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+	
+	label = " %temperature-c%"
+	;label-foreground = #ff6677 
+	label-underline = #ff6677
+	label-padding = 1
+
+[module/cpu]
+	type = internal/cpu
+	interval = 5
+
+	label = " %percentage%%"
+	label-underline = #d3e7f2
+
+[module/memory]
+	type = internal/memory
+	interval = 5
+
+	label = " %gb_free%"
+	label-underline = #e2f6be
+
+[module/fs]
+	type = internal/fs
+	interval = 60
+	
+	mount-0 = /
+	mount-1 = /home
+	;mount-2 = /home/fatt/abyss
+
+	label-mounted = "%mountpoint% %percentage_used%% %free%"
+	label-mounted-underline = #F5F5F5
+
+	label-unmounted = "%mountpoint% "
+	label-unmounted-underline = #F5F5F5
