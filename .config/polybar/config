@@ -14,7 +14,7 @@
 	;font-3 = NikkyouSans:style=Sans:size=4;0
 
 	spacing = 0
-	padding-left = 2
+	padding-left = 1
 	padding-right = 2
 	module-margin-left = 2
 	line-size = 2
@@ -39,7 +39,7 @@
 	ws-icon-2 = 3:telegram;
 	ws-icon-3 = 4:code;
 	ws-icon-4 = 5:mail;
-	ws-icon-5 = 6:music;
+	ws-icon-5 = 6:music;
 	ws-icon-6 = 7:studio;
 	ws-icon-7 = 8:media;
 	ws-icon-8 = 9:discord;
@@ -137,7 +137,7 @@
 	
 	label = " %temperature-c%"
 	;label-foreground = #ff6677 
-	label-underline = #ff6677
+	label-underline = #991f1a
 	label-padding = 1
 
 [module/cpu]
@@ -145,14 +145,16 @@
 	interval = 5
 
 	label = " %percentage%%"
-	label-underline = #d3e7f2
+	label-underline = #d46e09
+	label-padding = 1
 
 [module/memory]
 	type = internal/memory
 	interval = 5
 
 	label = " %gb_free%"
-	label-underline = #e2f6be
+	label-underline = #f5b585
+	label-padding = 1
 
 [module/fs]
 	type = internal/fs
@@ -164,6 +166,9 @@
 
 	label-mounted = "%mountpoint% %percentage_used%% %free%"
 	label-mounted-underline = #F5F5F5
+	label-mounted-padding = 1
+
 
 	label-unmounted = "%mountpoint% "
-	label-unmounted-underline = #F5F5F5
+	label-unmounted-underline = #738170
+	label-unmounted-padding = 1
