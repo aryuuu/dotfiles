@@ -5,7 +5,7 @@
 
 	height = 20
 
-	background = "#484639"
+	background = "#464f4a"
 	foreground = "#F5F5F5"
 
 	font-0 = scientifica:style=Medium:size=8;2
@@ -22,7 +22,7 @@
 	tray-position = right
 
 	modules-left = i3
-	;modules-center = dummy
+	;modules-center = time
 	modules-right = fs memory cpu temp wifi eth battery time date 
 
 
@@ -103,6 +103,7 @@
 
 	label-full = " %percentage%"
 	label-full-underline = #00A507
+	label-full-padding = 1
 
 [module/eth]
 	type = internal/network
@@ -110,11 +111,11 @@
 	interval = 3
 
 	label-connected = " "
-	label-connected-underline = #d3e7f2
+	label-connected-underline = #8f908b
 	label-connected-padding = 1
 
 	label-unconnected = " "
-	label-unconnected-underline = #d3e7f2
+	label-unconnected-underline = #8f908b
 	label-unconnected-padding = 1
 
 
@@ -124,9 +125,10 @@
 	interval = 3
 	
 	label-connected = " %essid%"
-	label-connected-underline = #d3e7f2
+	label-connected-underline = #8f908b
 
 	label-unconnected = " "
+	label-unconnected-underline = #8f908b
 
 [module/temp]
 	type = internal/temperature
@@ -145,7 +147,7 @@
 	interval = 5
 
 	label = " %percentage%%"
-	label-underline = #d46e09
+	label-underline = #716e2b
 	label-padding = 1
 
 [module/memory]
@@ -153,7 +155,7 @@
 	interval = 5
 
 	label = " %gb_free%"
-	label-underline = #f5b585
+	label-underline = #8d984c
 	label-padding = 1
 
 [module/fs]
@@ -165,7 +167,7 @@
 	;mount-2 = /home/fatt/abyss
 
 	label-mounted = "%mountpoint% %percentage_used%% %free%"
-	label-mounted-underline = #F5F5F5
+	label-mounted-underline = #6c88a0
 	label-mounted-padding = 1
 
 
