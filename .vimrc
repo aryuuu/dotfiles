@@ -17,3 +17,5 @@ filetype plugin indent on	" required
 
 
 syntax on
+" case-insensitive search
+set ignorecase
