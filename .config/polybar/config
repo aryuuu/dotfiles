@@ -182,12 +182,12 @@
 [module/dpms]
 	type = custom/script
 
-	exec = /home/fatt/.scripts/dpms
+	exec = /home/fatt/.scripts/dpms/status
 	format-prefix = " "
 	format-underline = #738170
 	format-padding = 1
 
 	label = %output%
 
-	click-left = /home/fatt/.scripts/dpms
+	click-left = /home/fatt/.scripts/dpms/toggle
 	
