@@ -22,7 +22,7 @@
 	tray-position = right
 
 	modules-left = i3
-	;modules-center = time
+	modules-center = dpms
 	modules-right = fs memory cpu temp wifi eth battery time date 
 
 
@@ -101,9 +101,13 @@
 
 	poll-interval = 5
 
-	label-full = " %percentage%"
+	label-full = " %percentage%%"
 	label-full-underline = #00A507
 	label-full-padding = 1
+
+	label-charging = " %percentage%%"
+	label-charging-underline = #00A507
+	label-charging-padding = 1
 
 [module/eth]
 	type = internal/network
@@ -165,8 +169,8 @@
 	mount-0 = /
 	mount-1 = /home
 	;mount-2 = /home/fatt/abyss
-
-	label-mounted = "%mountpoint% %percentage_used%% %free%"
+	; icon  
+	label-mounted = " %mountpoint% %percentage_used%% %free%"
 	label-mounted-underline = #6c88a0
 	label-mounted-padding = 1
 
@@ -174,3 +178,16 @@
 	label-unmounted = "%mountpoint% "
 	label-unmounted-underline = #738170
 	label-unmounted-padding = 1
+
+[module/dpms]
+	type = custom/script
+
+	exec = /home/fatt/.scripts/dpms
+	format-prefix = " "
+	format-underline = #738170
+	format-padding = 1
+
+	label = %output%
+
+	click-left = /home/fatt/.scripts/dpms
+	
