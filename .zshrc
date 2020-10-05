@@ -72,6 +72,7 @@ CASE_SENSITIVE="true"
 plugins=(
 	git
 	docker
+	zsh-better-npm-completion
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,10 +104,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliasrc
 source ~/.scripts/utils
-source ~/.scripts/dualmon
+
 
 # PATH
 PATH=~/.local/bin:$HOME/go/bin:$PATH
+GOPATH=/home/fatt/go
 
 # move to current directory in new window
 export PROMPT_COMMAND="pwd > /tmp/whereami"
+precmd() { eval "$PROMPT_COMMAND" } 
+cd "$(< /tmp/whereami)"
