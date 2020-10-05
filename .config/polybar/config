@@ -16,7 +16,8 @@
 	spacing = 0
 	padding-left = 1
 	padding-right = 2
-	module-margin-left = 2
+	module-margin-left = 1
+	;module-margin-right = 1
 	line-size = 2
 
 	tray-position = right
@@ -24,7 +25,7 @@
 	modules-left = i3
 	modules-center = dpms
 	modules-right = fs memory cpu temp wifi eth battery time date 
-
+	#bottom=true
 
 [module/i3]
 	type = internal/i3
@@ -35,7 +36,7 @@
 	index-sort = true
 	
 	ws-icon-0 = 1:terminals;
-	ws-icon-1 = 2:browser;
+	ws-icon-1 = 2:misc;
 	ws-icon-2 = 3:telegram;
 	ws-icon-3 = 4:code;
 	ws-icon-4 = 5:mail;
@@ -43,7 +44,7 @@
 	ws-icon-6 = 7:studio;
 	ws-icon-7 = 8:media;
 	ws-icon-8 = 9:discord;
-	ws-icon-9 = 10:monitor;
+	ws-icon-9 = 10:browser;
 	;ws-icon-default = A
 
 	format = <label-state> <label-mode>
@@ -105,9 +106,13 @@
 	label-full-underline = #00A507
 	label-full-padding = 1
 
-	label-charging = " %percentage%%"
+	label-charging = "  %percentage%%"
 	label-charging-underline = #00A507
 	label-charging-padding = 1
+
+	label-discharging = " %percentage%%"
+	label-discharging-underline = #00A507
+	label-discharging-padding = 1
 
 [module/eth]
 	type = internal/network
@@ -173,11 +178,22 @@
 	label-mounted = " %mountpoint% %percentage_used%% %free%"
 	label-mounted-underline = #6c88a0
 	label-mounted-padding = 1
-
+	label-mounted-margin-left = 1
 
 	label-unmounted = "%mountpoint% "
 	label-unmounted-underline = #738170
 	label-unmounted-padding = 1
+	label-unmounted-margin-left = 1
+
+[module/salat]
+	type = custom/script
+	
+	exec = echo coming soon
+	interval = 600
+	
+	format-prefix = " "
+	format-underline = #00A5A7
+	format-padding = 1
 
 [module/dpms]
 	type = custom/script
