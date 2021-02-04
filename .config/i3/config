@@ -216,7 +216,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+comma move container to workspace number $ws11
 bindsym $mod+Shift+period move container to workspace number $ws12
-bindsym $mod+Shift+slash move containter to workspace number $ws13
+bindsym $mod+Shift+slash move container to workspace number $ws13
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -290,6 +290,7 @@ assign [class="Slack"] $ws9
 #assign [class=""] $ws9
 # assign [class="firefox"] $ws10
 assign [class="DBeaver"] $ws11
+assign [class="jetbrains-idea"] $ws4
 
 # color scheme
 # class                 border  backgr. text    indicator child_border
