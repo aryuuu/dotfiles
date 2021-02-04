@@ -20,6 +20,14 @@ smon () {
 	xrandr --output HDMI-1 --off
 }
 
+vmon () {
+	xrandr --output HDMI-1 --auto --above eDP-1
+}
+
+hmon() {
+	xrandr --output HDMI-1 --auto --right-of eDP-1
+}
+
 wconn () {
 	nmcli d wifi connect $1 password $2
 }
@@ -36,3 +44,16 @@ mp3-dl () {
 keycheck () {
 	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
+
+std-eduka-sql () {
+	sed -i $1 -e 's/utf8mb4_0900_ai_ci/utf8mb4_unicode_ci/g'
+}
+
+eduka-mr () {
+	xclip -i ~/project/eduka/mr-template -selection clipboard
+}
+
+lsbloat () {
+	pacman -Qdtq |  awk '{ printf $1; system("pacman -Qi " $1 " | grep Size | cut -d\":\" -f 2") } '
+}
+
