@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+QT_QPA_PLATFORMTHEME=qt5ct
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/fatt/.oh-my-zsh"
@@ -105,12 +105,23 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliasrc
 source ~/.scripts/utils
 
+export JAVA_HOME=/usr/lib/jvm/default
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+#export HADOOP_CLASSPATH=$(hadoop classpath)
+
 
 # PATH
-PATH=~/.local/bin:$HOME/go/bin:$PATH
+PATH=$JAVA_HOME:~/.local/bin:$HOME/go/bin:$PATH
 GOPATH=/home/fatt/go
 
 # move to current directory in new window
 export PROMPT_COMMAND="pwd > /tmp/whereami"
 precmd() { eval "$PROMPT_COMMAND" } 
 cd "$(< /tmp/whereami)"
+
+source /usr/share/nvm/init-nvm.sh
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
+
