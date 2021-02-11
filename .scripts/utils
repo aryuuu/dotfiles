@@ -57,3 +57,10 @@ lsbloat () {
 	pacman -Qdtq |  awk '{ printf $1; system("pacman -Qi " $1 " | grep Size | cut -d\":\" -f 2") } '
 }
 
+toppac () {
+	expac "%n %m" -H M -l'\n' -Q $(pacman -Qqet) | sort -rhk 2 | less
+}
+
+sumpac () {
+	expac -H G '%m' | awk '{sum += $1}END {print sum, $2}'
+}
