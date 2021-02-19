@@ -111,7 +111,7 @@ export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 
 
 # PATH
-PATH=$JAVA_HOME:~/.local/bin:$HOME/go/bin:$PATH
+PATH=$JAVA_HOME:~/.local/bin:$HOME/go/bin:$PATH:$HOME/.scripts
 GOPATH=/home/fatt/go
 
 # move to current directory in new window
