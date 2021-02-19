@@ -171,8 +171,11 @@ set $ws10 "10:"
 set $ws11 "11:"
 set $ws12 "12:"
 set $ws13 "13:"
+set $ws14 "14:"
 #globe icon 
 #monitor icon 
+# file code icon 
+# file code solid icon  
 # set workspace to different monitor
 workspace $ws1 output eDP-1
 workspace $ws2 output eDP-1
@@ -187,6 +190,7 @@ workspace $ws10 output HDMI-1
 workspace $ws11 output HDMI-1
 workspace $ws12 output HDMI-1
 workspace $ws13 output HDMI-1
+workspace $ws14 output HDMI-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -202,6 +206,7 @@ bindsym $mod+0 workspace number $ws10
 bindsym $mod+comma workspace number $ws11
 bindsym $mod+period workspace number $ws12
 bindsym $mod+slash workspace number $ws13
+bindsym $mod+semicolon workspace number $ws14
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -217,6 +222,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+comma move container to workspace number $ws11
 bindsym $mod+Shift+period move container to workspace number $ws12
 bindsym $mod+Shift+slash move container to workspace number $ws13
+bindsym $mod+Shift+semicolon move container to workspace number $ws14
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -290,7 +296,7 @@ assign [class="Slack"] $ws9
 #assign [class=""] $ws9
 # assign [class="firefox"] $ws10
 assign [class="DBeaver"] $ws11
-assign [class="jetbrains-idea"] $ws4
+assign [class="jetbrains-idea"] $ws14
 
 # color scheme
 # class                 border  backgr. text    indicator child_border
