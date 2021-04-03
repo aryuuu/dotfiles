@@ -59,8 +59,6 @@ bindsym Shift+XF86AudioMute exec --no-startup-id rhythmbox-client --play-pause
 bindsym Shift+XF86AudioLowerVolume exec --no-startup-id rhythmbox-client --previous
 bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id rhythmbox-client --next
 
-
-
 # control brightness with backlight
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/backlight/dec
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/backlight/inc
@@ -70,6 +68,10 @@ bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/backlight/ex
 bindsym Shift+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/backlight/exinc
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# dunst notification control
+bindsym $mod+grave exec dunstctl history-pop
+bindsym $mod+Shift+grave exec dunstctl close-all
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -127,7 +129,6 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+z gaps inner current plus 2
 bindsym $mod+Shift+z gaps inner current minus 2
 
-
 # split in horizontal orientation
 bindsym $mod+bar split horizontal
 
@@ -171,9 +172,10 @@ set $ws10 "10:"
 set $ws11 "11:"
 set $ws12 "12:"
 set $ws13 "13:"
-set $ws14 "14:"
-#globe icon 
-#monitor icon 
+set $ws14 "14:"
+set $ws15 "15:"
+# globe icon 
+# monitor icon 
 # file code icon 
 # file code solid icon  
 # set workspace to different monitor
@@ -191,6 +193,7 @@ workspace $ws11 output HDMI-1
 workspace $ws12 output HDMI-1
 workspace $ws13 output HDMI-1
 workspace $ws14 output HDMI-1
+workspace $ws15 output HDMI-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -207,6 +210,7 @@ bindsym $mod+comma workspace number $ws11
 bindsym $mod+period workspace number $ws12
 bindsym $mod+slash workspace number $ws13
 bindsym $mod+semicolon workspace number $ws14
+bindsym $mod+bracketleft workspace number $ws15
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -223,6 +227,7 @@ bindsym $mod+Shift+comma move container to workspace number $ws11
 bindsym $mod+Shift+period move container to workspace number $ws12
 bindsym $mod+Shift+slash move container to workspace number $ws13
 bindsym $mod+Shift+semicolon move container to workspace number $ws14
+bindsym $mod+Shift+bracketleft move container to workspace number $ws15
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -285,7 +290,7 @@ mode "move" {
 # assign specific workspace
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws3
-assign [class="code-oss"] $ws4
+assign [class="code-oss"] $ws15
 #assign [class="Sublime_text"] $ws4
 assign [class="Thunderbird"] $ws5
 assign [class="Rhythmbox"] $ws6
