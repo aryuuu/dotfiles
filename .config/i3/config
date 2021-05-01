@@ -163,11 +163,11 @@ set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
-set $ws5 "5:"
+set $ws5 "5:"
 set $ws6 "6:"
 set $ws7 "7:"
-set $ws8 "8:"
-set $ws9 "9:"
+set $ws8 "8:"
+set $ws9 "9:"
 set $ws10 "10:" 
 set $ws11 "11:"
 set $ws12 "12:"
@@ -178,6 +178,7 @@ set $ws15 "15:"
 # monitor icon 
 # file code icon 
 # file code solid icon  
+
 # set workspace to different monitor
 workspace $ws1 output eDP-1
 workspace $ws2 output eDP-1
@@ -288,11 +289,12 @@ mode "move" {
 }
 
 # assign specific workspace
-assign [class="discord"] $ws9
+assign [class="discord"] $ws8
 assign [class="TelegramDesktop"] $ws3
 assign [class="code-oss"] $ws15
+# assign [class="code-oss"] $ws4
 #assign [class="Sublime_text"] $ws4
-assign [class="Thunderbird"] $ws5
+assign [class="Cherrytree"] $ws5
 assign [class="Rhythmbox"] $ws6
 assign [class="SimpleScreenRecorder"] $ws7
 assign [class="Postman"] $ws8
