@@ -24,7 +24,7 @@
 
 	modules-left = i3
 	modules-center = dpms
-	modules-right = battery time date 
+	modules-right = polypomo battery time date 
 	#modules-right = fs memory cpu temp wifi eth battery time date 
 	#bottom=true
 
@@ -249,3 +249,18 @@
 
 	click-left = /home/fatt/.scripts/dpms/toggle
 	
+[module/polypomo]
+	type = custom/script
+	
+	exec = /home/fatt/project/polypomo/launch
+	tail = true
+
+	label = %output%
+	click-left = /home/fatt/project/polypomo/polypomo toggle 
+	click-right = /home/fatt/project/polypomo/polypomo end
+	click-middle = /home/fatt/project/polypomo/polypomo lock
+	scroll-up = /home/fatt/project/polypomo/polypomo time +60
+	scroll-down = /home/fatt/project/polypomo/polypomo time -60
+
+	font-0 = fixed:pixelsize=10;1
+	font-1 = Noto Emoji:scale=15:antialias=false;0
