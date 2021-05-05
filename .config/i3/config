@@ -28,6 +28,9 @@ gaps inner 5
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
+# set default screen layout
+exec /home/fatt/.config/.screenlayout/midbottom.sh
+
 ## enable tap click on touchpad
 exec xinput set-prop 17 326 1
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
