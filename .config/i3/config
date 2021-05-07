@@ -94,6 +94,8 @@ bindsym $mod+d exec dmenu_run -i -F -fn "FontAwesome" -p  -l 5 -sb '#f5f5f5' 
 bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 # open networkmanager dmenu
 bindsym $mod+n exec /usr/bin/networkmanager_dmenu -fn "FontAwesome" -p  -l 5 -sb '#f5f5f5' -sf '#484639' -nb '#484639' -nf '#f5f5f5'
+# open dmenu dictionary
+bindsym $mod+o exec ~/project/dmenu-dict/dmenu-dict
 
 # open clipmenu
 bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#f5f5f5' -sf '#484639' -nb '#484639' -nf '#f5f5f5'
