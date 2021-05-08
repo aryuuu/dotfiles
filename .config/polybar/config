@@ -161,7 +161,7 @@
 	interface = enp2s0
 	interval = 1
 
-	label-connected = "  %upspeed% %downspeed%"
+	label-connected = " "
 	label-connected-underline = #8f908b
 	label-connected-padding = 1
 
@@ -175,7 +175,7 @@
 	interface = wlp3s0
 	interval = 1
 	
-	label-connected = " %essid% %upspeed% %downspeed%"
+	label-connected = " %essid%"
 	label-connected-underline = #8f908b
 
 	label-unconnected = " "
