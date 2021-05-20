@@ -22,9 +22,9 @@
 
 	tray-position = right
 
-	modules-left = i3
+	modules-left = i3 title
 	modules-center = dpms
-	modules-right = polypomo battery time date 
+	modules-right = polypomo pulseaudio battery time date 
 	#modules-right = fs memory cpu temp wifi eth battery time date 
 	#bottom=true
 
@@ -255,6 +255,9 @@
 	exec = /home/fatt/project/polypomo/launch
 	tail = true
 
+	format-underline = #738170
+	format-padding = 1
+
 	label = %output%
 	click-left = /home/fatt/project/polypomo/polypomo toggle 
 	click-right = /home/fatt/project/polypomo/polypomo end
@@ -264,3 +267,46 @@
 
 	font-0 = fixed:pixelsize=10;1
 	font-1 = Noto Emoji:scale=15:antialias=false;0
+
+[module/pulseaudio]
+	type = internal/pulseaudio
+	;sink
+	label-muted =  muted
+	label-volume = %percentage%%
+
+	; Only applies if <ramp-volume> is used
+	ramp-volume-0 = 
+	ramp-volume-1 = 
+	ramp-volume-2 = 
+
+	format-volume = <ramp-volume> <label-volume>
+	format-muted = <label-muted>
+
+	click-right = pavucontrol
+	format-underline = #738170
+	format-padding = 1
+
+[module/title]
+	type = internal/xwindow
+
+	; Available tags:
+	;   <label> (default)
+	format = <label>
+	;format-background = #f00
+	;format-foreground = #000
+	format-underline = "#F5F5F5"
+	format-padding = 4
+
+	format-margin = 10
+
+	; Available tokens:
+	;   %title%
+	; Default: %title%
+	label = %title%
+	label-maxlen = 30
+
+	; Used instead of label when there is no window title
+	; Available tokens:
+	;   None
+	label-empty = Empty
+	label-empty-foreground = #707880
