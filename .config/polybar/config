@@ -92,6 +92,9 @@
 	format = <label-state> <label-mode>
 
 	label-mode = %mode%
+	label-mode-foreground = #F5F5F5
+	label-mode-background = #FF0000
+	label-mode-padding = 1
 
 	label-focused = %name%
 	label-focused-padding = 2
