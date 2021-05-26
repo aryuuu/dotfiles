@@ -47,6 +47,7 @@ exec_always ~/.scripts/background/background
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
+exec --no-startup-id blueman-applet
 exec_always --no-startup-id "killall picom; picom"
 exec_always --no-startup-id "killall dunst; dunst"
 
@@ -291,6 +292,15 @@ mode "move" {
 	bindsym $mod+Shift+m mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
+}
+
+# page reading mode 
+bindsym $mod+b mode "reading"
+mode "reading" {
+        bindsym j exec "xdotool click 5"
+        bindsym k exec "xdotool click 4"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 
 # assign specific workspace
