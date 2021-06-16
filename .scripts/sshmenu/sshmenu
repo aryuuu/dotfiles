@@ -6,7 +6,7 @@ ssh_config=${SSH_CONFIG_FILE:-$HOME/.ssh/config}
 remote_cmd=${REMOTE_CMD}
 
 ssh_hosts=( $(grep "^Host\s\+[^*]" $ssh_config | cut -d " " -f 2-) )
-ssh_host=$(printf '%s\n' "${ssh_hosts[@]}" | dmenu -i -fn "FontAwesome" -p  -l 5 -sb '#f5f5f5' -sf '#484639' -nb '#484639' -nf '#f5f5f5' "$@")
+ssh_host=$(printf '%s\n' "${ssh_hosts[@]}" | dmenu -i -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' "$@")
 
 if [ -n "$ssh_host" ]; then
   ssh $ssh_host hash mosh-server 2> /dev/null
