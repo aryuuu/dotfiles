@@ -3,6 +3,6 @@ basedir="/sys/class/backlight/intel_backlight"
 max=$(cat "${basedir}/max_brightness")
 brightness=$(cat "${basedir}/brightness")
 
-if [ $(( $brightness + 5 )) -lt $max ]; then
-	echo $(( $brightness + 5 )) > "${basedir}/brightness"
+if [ $(( $brightness + 10 )) -lt $max ]; then
+	echo $(( $brightness + 10 )) > "${basedir}/brightness"
 fi
