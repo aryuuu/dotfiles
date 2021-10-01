@@ -16,6 +16,8 @@ set $mod Mod4
 #font pango:DejaVu Sans Mono 8, FontAwesome 5 Free, FontAwesome 5 Brands 8
 font pango:FontAwesome 5 Brands 8, FontAwesome 5 Free 8, DejaVu Sans Mono 8
 for_window [class=".*"] border pixel 3
+# set godot engine window to floating as default
+for_window [class="Godot_Engine"] floating enable
 
 # gaps
 gaps inner 5
@@ -98,6 +100,8 @@ bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 bindsym $mod+n exec /usr/bin/networkmanager_dmenu -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 # open dmenu dictionary
 bindsym $mod+o exec ~/project/dmenu-dict/dmenu-dict
+# open dmenu todo
+bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
 
 # open clipmenu
 bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
