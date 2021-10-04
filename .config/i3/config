@@ -102,9 +102,11 @@ bindsym $mod+n exec /usr/bin/networkmanager_dmenu -fn "FontAwesome" -p  -l 5 
 bindsym $mod+o exec ~/project/dmenu-dict/dmenu-dict
 # open dmenu todo
 bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
+# open passmenu
+bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 
 # open clipmenu
-bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
+bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 #bindsym $mod+d exec rofi
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -190,6 +192,7 @@ set $ws16 "16:"
 # monitor icon 
 # file code icon 
 # file code solid icon  
+# fingerprint icon 
 
 # set workspace to different monitor
 workspace $ws1 output eDP-1
