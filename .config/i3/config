@@ -53,6 +53,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id blueman-applet
 exec_always --no-startup-id "killall picom; picom"
 exec_always --no-startup-id "killall dunst; dunst"
+exec_always --no-startup-id "killall udiskie; udiskie"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -90,24 +91,24 @@ bindsym $mod+q exec i3lock-fancy-multimonitor -n
 # kill focused window
 bindsym $mod+Shift+q kill
 
+#########################
+## dmenu tools section ##
+#########################
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
-#bindsym $mod+d exec rofi
-
 # open ssh connection
 bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 # open networkmanager dmenu
 bindsym $mod+n exec /usr/bin/networkmanager_dmenu -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 # open dmenu dictionary
-bindsym $mod+o exec ~/project/dmenu-dict/dmenu-dict
+bindsym $mod+o exec "~/project/dmenu-dict/dmenu-dict"
 # open dmenu todo
 bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
 # open passmenu
 bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
-
 # open clipmenu
-bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
-#bindsym $mod+d exec rofi
+bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
+###############################################################
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -321,16 +322,12 @@ mode "reading" {
 assign [class="discord"] $ws8
 assign [class="TelegramDesktop"] $ws3
 assign [class="code-oss"] $ws15
-# assign [class="code-oss"] $ws4
-#assign [class="Sublime_text"] $ws4
 assign [class="Cherrytree"] $ws5
 assign [class="Rhythmbox"] $ws6
 assign [class="SimpleScreenRecorder"] $ws7
 assign [class="Postman"] $ws16
 assign [class="Mattermost"] $ws9
 assign [class="Slack"] $ws9
-#assign [class=""] $ws9
-# assign [class="firefox"] $ws10
 assign [class="DBeaver"] $ws11
 assign [class="jetbrains-idea"] $ws14
 
