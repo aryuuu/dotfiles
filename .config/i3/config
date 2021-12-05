@@ -51,9 +51,10 @@ exec_always ~/.scripts/background/background
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id blueman-applet
+exec --no-startup-id i3-battery-popup -n
 exec_always --no-startup-id "killall picom; picom"
 exec_always --no-startup-id "killall dunst; dunst"
-exec_always --no-startup-id "killall udiskie; udiskie"
+exec_always --no-startup-id "killall udiskie; udiskie -t"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -310,10 +311,12 @@ mode "move" {
 # page reading mode 
 bindsym $mod+b mode "reading"
 mode "reading" {
-        bindsym u exec "xdotool click 5"
-        bindsym i exec "xdotool click 4"
-        bindsym j exec "xdotool key Next"
-        bindsym k exec "xdotool key Prior"
+        bindsym j exec "xdotool click 5"
+        bindsym k exec "xdotool click 4"
+        # Next (Page Down) 117 0xff56
+        bindsym u exec "xdotool key Next" 
+        # Prior (Page Up)  112 0xff55
+        bindsym i exec "xdotool key Prior" 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -355,24 +358,24 @@ client.background       #F8F8F2
 # finds out, if available)
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-#bar {
-#	position top
-#	strip_workspace_numbers 	yes
-#	#separator_symbol		""
-#	tray_output			HDMI-1
-#	status_command 			i3blocks
+# bar {
+# 	position top
+# 	strip_workspace_numbers 	yes
+# 	#separator_symbol		""
+# 	tray_output			HDMI-1
+# 	status_command 			i3blocks
 #        #font                            pango:monospace 8, D2Coding 8, FontAwesome 8
-#	colors {
-#		background 			#484639
-#		statusline 			#F5F5F5
-#		#focused_background		#F5F5F5
-#		#focused_statusline		#484639
-#
+# 	colors {
+# 		background 			#484639
+# 		statusline 			#F5F5F5
+# 		#focused_background		#F5F5F5
+# 		#focused_statusline		#484639
+
 #                active_workspace	        #333333 #5f676a #ffffff
-#		focused_workspace  		#F5F5F5 #F5F5F5 #484639
+# 		focused_workspace  		#F5F5F5 #F5F5F5 #484639
 #                inactive_workspace		#484639 #484639 #F5F5F5
 #                urgent_workspace   		#2f343a #900000 #ffffff
 #                binding_mode       		#2f343a #900000 #ffffff
-#	}
-#
-#}
+# 	}
+
+# }
