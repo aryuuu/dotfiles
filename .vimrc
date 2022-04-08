@@ -20,3 +20,10 @@ filetype plugin indent on	" required
 syntax on
 " case-insensitive search
 set ignorecase
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
