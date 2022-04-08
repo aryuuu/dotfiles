@@ -8,13 +8,14 @@
 	;background = "#464f4a"
 	;foreground = "#F5F5F5"
 
-	background = "374a4b"
-	foreground = "#F5F5F5"
+	background = ${colors.background}
+	foreground = ${colors.foreground}
 
 	font-0 = scientifica:style=Medium:size=8;2
-	font-1 = FontAwesome 5 Free:style=Solid:size=8;2
-	font-2 = FontAwesome 5 Brands:style=Regular:size=8;2
-	;font-3 = NikkyouSans:style=Sans:size=4;0
+	font-1 = FontAwesome 6 Free:style=Solid:size=8;2
+	font-2 = FontAwesome 6 Brands:style=Regular:size=8;2
+	font-3 = NikkyouSans:style=Sans:size=4;0
+	font-4 = "Inconsolata for Powerline:pixelsize=10:antialias=true;3"
 
 	spacing = 0
 	padding-left = 1
@@ -25,11 +26,9 @@
 
 	tray-position = right
 
-	modules-left = i3 title
+	modules-left = i3 left1 left2 title
 	modules-center = dpms
-	modules-right = polypomo pulseaudio backlight battery time date 
-	#modules-right = fs memory cpu temp wifi eth battery time date 
-	#bottom=true
+	modules-right = polypomo pulseaudio backlight exbacklight battery time date dunst
 
 [bar/bottom]
 	monitor = ${env:MONITOR:eDP-1}
@@ -40,12 +39,12 @@
 	height = 20
 
 	;background = "#464f4a"
-	foreground = "#F5F5F5"
-	background = "192830"
+	background = ${colors.background}
+	foreground = ${colors.foreground}
 
 	font-0 = scientifica:style=Medium:size=8;2
-	font-1 = FontAwesome 5 Free:style=Solid:size=8;2
-	font-2 = FontAwesome 5 Brands:style=Regular:size=8;2
+	font-1 = FontAwesome 6 Free:style=Solid:size=8;2
+	font-2 = FontAwesome 6 Brands:style=Regular:size=8;2
 	;font-3 = NikkyouSans:style=Sans:size=4;0
 
 	spacing = 0
@@ -57,21 +56,13 @@
 
 	#tray-position = right
 
-	#modules-left = i3
-	#modules-center = dpms
 	modules-right = fs memory cpu temp wifi eth
 
 
-;[bar/yetanotherstatusbar]
-;	; inherit bar/statusbar
-;
-;	monitor = ${env:MONITOR:HDMI-1}
-;
-;	modules-left = i3
-;	modules-center = fs
-;	modules-right = fs memory cpu temp wifi eth battery time date
-;
-;	tray-position = left
+[settings]
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor.
+pseudo-transparency = true
 
 [module/i3]
 	type = internal/i3
@@ -104,8 +95,10 @@
 	label-focused-padding = 2
 	label-focused-margin = 1
 	label-focused-font = 14
-	label-focused-foreground = "#484639"
-	label-focused-background = "#F5F5F5"
+	; label-focused-foreground = "#484639"
+	; label-focused-background = "#F5F5F5"
+	label-focused-foreground = ${colors.background}
+	label-focused-background = ${colors.foreground}
 
 	label-unfocused = %name%
 	label-unfocused-padding = 0
@@ -131,7 +124,8 @@
 	label = " %date%"
 	label-underline = "#bcd064"
 	;label-background = "#010101"
-	label-foreground = "#f5f5f5"
+	;label-foreground = "#f5f5f5"
+	label-foreground = "#bcd064"
 	label-padding = 1
 
 [module/time]
@@ -141,6 +135,7 @@
 	format = <label>
 	label-underline = #8dbe54
 	label-foreground = #F5F5F5
+	; label-foreground = #8dbe54
 	label-padding = 1
 
 [module/battery]
@@ -154,6 +149,8 @@
 	label-full = " %percentage%%"
 	label-full-underline = #00A507
 	label-full-padding = 1
+
+	label-foreground = #00A507
 
 	label-charging = "  %percentage%%"
 	label-charging-underline = #00A507
@@ -244,6 +241,21 @@
 	format-underline = #00A5A7
 	format-padding = 1
 
+[module/dunst]
+	type = custom/script
+
+	; format-prefix = " "
+	; bell-slash=" "
+	interval = 1
+	exec = dunstctl is-paused | awk '{if ($1 ~ /false/) {print ""} else {print ""}}'
+	click-left = dunstctl set-paused toggle
+	label-underline = #991f1a
+	label-padding = 1
+	; label = " adfasd"
+	; format = <label>
+	; prefix-
+
+
 [module/dpms]
 	type = custom/script
 
@@ -262,6 +274,8 @@
 	exec = /home/fatt/project/polypomo/launch
 	tail = true
 
+	enable-scroll = true
+
 	format-underline = #738170
 	format-padding = 1
 
@@ -269,8 +283,10 @@
 	click-left = /home/fatt/project/polypomo/polypomo toggle 
 	click-right = /home/fatt/project/polypomo/polypomo end
 	click-middle = /home/fatt/project/polypomo/polypomo lock
-	scroll-up = /home/fatt/project/polypomo/polypomo time +60
-	scroll-down = /home/fatt/project/polypomo/polypomo time -60
+	; scroll-up = /home/fatt/project/polypomo/polypomo time +60
+	; scroll-down = /home/fatt/project/polypomo/polypomo time -60
+	scroll-up = /home/fatt/project/polypomo/polypomo increase
+	scroll-down = /home/fatt/project/polypomo/polypomo decrease
 
 	font-0 = fixed:pixelsize=10;1
 	font-1 = Noto Emoji:scale=15:antialias=false;0
@@ -344,6 +360,19 @@
 	label-underline = "#bcd064"
 	format-padding = 1
 
+[module/exbacklight]
+	type = custom/script
+
+	exec = /home/fatt/.scripts/backlight/exval
+	interval = .5
+	format-prefix = " "
+	label-underline = "#bcd064"
+
+	scroll-up = /home/fatt/.scripts/backlight/exinc
+	scroll-down = /home/fatt/.scripts/backlight/exdec
+
+	label = %output%%
+
 [module/title]
 	type = internal/xwindow
 
@@ -368,3 +397,11 @@
 	;   None
 	label-empty = Empty
 	label-empty-foreground = #707880
+
+[colors]
+background = ${xrdb:color0:#464f4a}
+foreground = ${xrdb:color7:#F5F5F5}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
