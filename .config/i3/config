@@ -23,6 +23,8 @@ for_window [class="Godot_Engine"] floating enable
 gaps inner 5
 #gaps outer 2
 floating_maximum_size 800 x 800
+# rounded corner
+# border_radius 4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -32,13 +34,15 @@ floating_maximum_size 800 x 800
 # they are included here as an example. Modify as you see fit.
 
 # set default screen layout
-exec /home/fatt/.config/.screenlayout/midbottom.sh
+exec /home/fatt/.scripts/midbottom.sh
 
 ## enable tap click on touchpad
 exec xinput set-prop 17 326 1
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# lock screen after x minutes of inactivity
+exec --no-startup-id xautolock -time 8 locker "i3lock-fancy-multimonitor -n" 
 
 # background
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"
@@ -51,7 +55,8 @@ exec_always ~/.scripts/background/background
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id blueman-applet
-exec --no-startup-id i3-battery-popup -n
+exec --no-startup-id i3-battery-popup -n -L 20
+
 exec_always --no-startup-id "killall picom; picom"
 exec_always --no-startup-id "killall dunst; dunst"
 exec_always --no-startup-id "killall udiskie; udiskie -t"
@@ -81,6 +86,7 @@ floating_modifier $mod
 # dunst notification control
 bindsym $mod+grave exec dunstctl history-pop
 bindsym $mod+Shift+grave exec dunstctl close-all
+bindsym $mod+XF86AudioMute exec dunstctl set-paused toggle
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -100,7 +106,7 @@ bindsym $mod+d exec dmenu_run -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' 
 # open ssh connection
 bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 # open networkmanager dmenu
-bindsym $mod+n exec /usr/bin/networkmanager_dmenu -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
+bindsym $mod+n exec /usr/bin/networkmanager_dmenu -i -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 # open dmenu dictionary
 bindsym $mod+o exec "~/project/dmenu-dict/dmenu-dict"
 # open dmenu todo
@@ -108,7 +114,7 @@ bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
 # open passmenu
 bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 # open clipmenu
-bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
+bindsym $mod+c exec clipmenu -i -F -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2'
 ###############################################################
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -190,6 +196,7 @@ set $ws13 "13:"
 set $ws14 "14:"
 set $ws15 "15:"
 set $ws16 "16:"
+set $ws17 "17:"
 # globe icon 
 # monitor icon 
 # file code icon 
@@ -213,6 +220,7 @@ workspace $ws13 output HDMI-1
 workspace $ws14 output HDMI-1
 workspace $ws15 output HDMI-1
 workspace $ws16 output HDMI-1
+workspace $ws17 output eDP-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -231,6 +239,7 @@ bindsym $mod+slash workspace number $ws13
 bindsym $mod+semicolon workspace number $ws14
 bindsym $mod+bracketleft workspace number $ws15
 bindsym $mod+bracketright workspace number $ws16
+bindsym $mod+g workspace number $ws17
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -249,6 +258,7 @@ bindsym $mod+Shift+slash move container to workspace number $ws13
 bindsym $mod+Shift+semicolon move container to workspace number $ws14
 bindsym $mod+Shift+bracketleft move container to workspace number $ws15
 bindsym $mod+Shift+bracketright move container to workspace number $ws16
+bindsym $mod+Shift+g move container to workspace number $ws17
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -263,7 +273,6 @@ bindsym Print exec "scrot -e 'mv $f ~/Pictures/screenshots/'"
 bindsym $mod+Print exec "flameshot gui"
 # snipping tool like screenshot
 bindsym Shift+Print exec "sleep 0.2; scrot -s -e 'mv $f ~/Pictures/screenshots/'"
-
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -329,9 +338,11 @@ assign [class="Cherrytree"] $ws5
 assign [class="Rhythmbox"] $ws6
 assign [class="SimpleScreenRecorder"] $ws7
 assign [class="Postman"] $ws16
+assign [class="Insomnia"] $ws16
 assign [class="Mattermost"] $ws9
 assign [class="Slack"] $ws9
 assign [class="DBeaver"] $ws11
+assign [class="robo3t"] $ws11
 assign [class="jetbrains-idea"] $ws14
 
 # color scheme
@@ -346,13 +357,22 @@ assign [class="jetbrains-idea"] $ws14
 
 # dracula theme i3 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-client.background       #F8F8F2
+# client.background       #F8F8F2
+
+# nord theme i3
+client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+client.unfocused        #2e3440 #2e3440 #888888 #2e3440
+client.focused_inactive #2e3440 #2e3440 #888888 #2e3440
+client.placeholder      #2e3440 #2e3440 #888888 #2e3440
+client.urgent           #900000 #900000 #ffffff #900000
+
+client.background       #242424
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
