@@ -57,7 +57,7 @@ eduka-mr () {
 
 # pacman
 lsbloat () {
-	pacman -Qdtq |  awk '{ printf $1; system("pacman -Qi " $1 " | grep Size | cut -d\":\" -f 2") } '
+	pacman -Qdtq |  awk '{ printf $1; system("pacman -Qi " $1 " | grep Size | cut -d\":\" -f 2") } ' | sort -k3r,3 -k2nr,2
 }
 
 toppac () {
@@ -73,6 +73,14 @@ expose () {
 		echo "Please input source port"	
 	else
 		ssh -NR receptor.aryuuu.com:4000:localhost:$1 linode-aryuuu
+	fi
+}
+
+exposetcp () {
+	if [[ -z $1 ]]; then
+		echo "Please input source port"
+	else 
+		ssh -NR tcp.receptor.aryuuu.com:4001:localhost:$1 linode-aryuuu
 	fi
 }
 
