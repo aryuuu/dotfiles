@@ -25,6 +25,7 @@ ln -f $REPO_SCRIPTS_DIR/backlight/dec $HOST_SCRIPTS_DIR/backlight/dec
 ln -f $REPO_SCRIPTS_DIR/backlight/inc $HOST_SCRIPTS_DIR/backlight/inc
 ln -f $REPO_SCRIPTS_DIR/backlight/exdec $HOST_SCRIPTS_DIR/backlight/exdec
 ln -f $REPO_SCRIPTS_DIR/backlight/exinc $HOST_SCRIPTS_DIR/backlight/exinc
+ln -f $REPO_SCRIPTS_DIR/backlight/exval $HOST_SCRIPTS_DIR/backlight/exval
 
 mkdir $HOST_SCRIPTS_DIR/dpms
 ln -f $REPO_SCRIPTS_DIR/dpms/status $HOST_SCRIPTS_DIR/dpms/status
