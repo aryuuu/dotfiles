@@ -2,7 +2,7 @@
 URxvt.saveLines: 65535
 
 ! use perl extensions
-URxvt.perl-ext-common: default,matcher,clipboard,resize-font,url-select
+URxvt.perl-ext-common: default,matcher,clipboard,resize-font,url-select,keyboard-select
 
 ! disable scrollbar
 URxvt.scrollBar: 	false
@@ -33,6 +33,10 @@ URxvt*scrollWithBuffer: true
 
 ! scroll back to the bottom on keypress
 URxvt*scrollTtyKeypress: true
+
+! keyboard-select 
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keyboard-select.clipboard: true
 
 
 ! cut and paste
