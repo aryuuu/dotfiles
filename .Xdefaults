@@ -13,9 +13,9 @@ URxvt.scrollBar: 	false
 !URxvt.cursorColor: 	Red
 
 ! transparent
-!URxvt.transparent:	 true
-!URxvt.shading:		 15
-!URxvt.depth:		 3
+URxvt*transparent:	 true
+URxvt*shading:		 30
+URxvt.depth:		 3
 
 ! fonts
 !URxvt.font:		xft:Fira Mono:size=9
