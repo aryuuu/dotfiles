@@ -119,6 +119,8 @@ bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
 bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D'
 # open clipmenu
 bindsym $mod+c exec clipmenu -i -f -fn "FontAwesome" -p  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D'
+# open pavucontrol menu
+bindsym $mod+i exec "~/.scripts/dmenu-pulse/sink.sh"  
 ###############################################################
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -176,6 +178,8 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+# placeholder for pavucontrol dmenu
+# bindsym $mod+a exec '~/.scripts/dmenu-pulse/sink.sh`'
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -206,6 +210,8 @@ set $ws17 "17:"
 # file code icon 
 # file code solid icon  
 # fingerprint icon 
+# brackets-curly icon 
+# java icon  
 
 # set workspace to different monitor
 workspace $ws1 output eDP-1
