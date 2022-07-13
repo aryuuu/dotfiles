@@ -11,10 +11,12 @@ if type "xrandr"; then
 	for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
 		MONITOR=$m polybar --reload top &
 		MONITOR=$m polybar --reload bottom &
+		# MONITOR=$m polybar --reload tray &
 	done
 else 
-	polybar top &
+	polybar top & 
 	polybar bottom &
+	# polybar tray & 
 fi
 
 echo "Polybar launched..."
