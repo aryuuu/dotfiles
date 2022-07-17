@@ -7,8 +7,11 @@ REPO_SCRIPTS_DIR=$(pwd)/.scripts
 
 REPO_ROOT_DIR=$(pwd)
 
-ln -f $REPO_CONFIG_DIR/i3/config $HOST_CONFIG_DIR/config
+ln -f $REPO_CONFIG_DIR/compton.conf $HOST_CONFIG_DIR/compton.conf
+ln -f $REPO_CONFIG_DIR/i3/config $HOST_CONFIG_DIR/i3/config
 ln -f $REPO_CONFIG_DIR/polybar/config $HOST_CONFIG_DIR/polybar/config
+ln -f $REPO_CONFIG_DIR/polybar/colors.ini $HOST_CONFIG_DIR/polybar/colors.ini
+ln -f $REPO_CONFIG_DIR/polybar/modules.ini $HOST_CONFIG_DIR/polybar/modules.ini
 ln -f $REPO_CONFIG_DIR/dunst/dunstrc $HOST_CONFIG_DIR/dunst/dunstrc
 ln -f $REPO_CONFIG_DIR/ranger/rc.conf $HOST_CONFIG_DIR/ranger/rc.conf
 ln -f $REPO_CONFIG_DIR/sway/config $HOST_CONFIG_DIR/sway/config
