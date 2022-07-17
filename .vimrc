@@ -1,20 +1,10 @@
 set nocompatible
 filetype off
 set number
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-" autocomplete
-Plugin 'ycm-core/YouCompleteMe'
-
-" add all plugins before the following line
-call vundle#end()		" required
-filetype plugin indent on	" required
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
 
 
 syntax on

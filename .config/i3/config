@@ -338,9 +338,9 @@ mode "reading" {
         bindsym j exec "xdotool click 5"
         bindsym k exec "xdotool click 4"
         # Next (Page Down) 117 0xff56
-        bindsym u exec "xdotool key Next" 
+        bindsym u exec "xdotool key Page_Down" 
         # Prior (Page Up)  112 0xff55
-        bindsym i exec "xdotool key Prior" 
+        bindsym i exec "xdotool key Page_Down" 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
