@@ -1,0 +1,132 @@
+# globals
+separator=false
+separator_block_width=0
+color="#484639"
+
+
+# powerline like arrow
+[edge_m1]
+full_text=""
+background="#484639"
+color="#f2e7c9"
+
+# music
+[prev]
+full_text=" "
+command=rhythmbox-client --previous
+background="#f2e7c9"
+
+[play_pause]
+full_text="  "
+command=rhythmbox-client --play-pause
+background="#f2e7c9"
+
+[next]
+full_text=" "
+command=rhythmbox-client --next
+background="#f2e7c9"
+
+# powerline like arrow
+[edge_1]
+full_text=""
+background="#f2e7c9"
+color="#F5F5F5"
+
+
+# disk usage
+[root_usage]
+command=df -h | grep "/dev/sda3" | awk '{ print "     /  ", $5, $4, " " }'
+interval=30
+background="#F5F5F5"
+
+[home_usage]
+command=df -h | grep "/dev/sda4" | awk '{ print " /home  ", $5, $4, " "}'
+interval=30
+background="#F5F5F5"
+
+[edge_2]
+full_text=""
+background="#F5F5F5"
+color="#e2f6be"
+
+# memory usage
+[mem_usage]
+command=free -hg | grep "Mem" | awk '{ print "  ", $7, " "}'
+interval=10
+background="#e2f6be"
+underline="double"
+underline_color="#ffffff"
+
+[edge_3]
+full_text=""
+background="#e2f6be"
+color="#d3e7f2"
+
+# cpu usage
+[cpu_usage]
+command=mpstat | tail -1 | awk '{ print "   ",$4, "%  " }'
+interval=30
+background="#d3e7f2"
+color="#484639"
+
+[edge_4]
+full_text=""
+background="#d3e7f2"
+color="#ffcece"
+
+# cpu temp
+[cpu_temp]
+command=sensors | grep "Core 0" | awk '{ print "   " ,$3, " " }'
+interval=60
+background="#ffcece"
+
+[edge_4]
+full_text=""
+background="#ffcece"
+color="#d3e7f2"
+
+# wireless
+[wifi]
+command=nmcli | awk '/^wlp3s0/ {print " ", $4, " "}'
+interval=1
+background="#d3e7f2"
+
+# ethernet
+[ethernet]
+command=nmcli | awk '/enp2s0/ {print "   ", $2, " "}'
+interval=1
+background="#d3e7f2"
+
+# bandwidth
+#[bandwidth]
+#command=echo "⇅"
+#interval=60
+#separator=false
+#separator_block_width=0
+
+[edge_5]
+full_text=""
+background="#d3e7f2"
+color="#C7F464"
+
+# battery
+[battery]
+command=/home/fatt/.scripts/i3blocks/battery
+interval=5
+background="#C7F464"
+
+[edge_5]
+full_text=""
+background="#C7F464"
+color="#b7eee1"
+
+# time 
+[time]
+command=date +%c | awk '{ print " ", $5, $1, $2, $3, $4, " " }'
+interval=1
+background="#b7eee1"
+
+#[edge_6]
+#full_text=""
+#background="#b7eee1"
+#color="#484639"
