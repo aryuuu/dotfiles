@@ -1,0 +1,3 @@
+#!/bin/bash
+status=$(xset q | awk '/abled/ { print $3 }')
+echo $status

@@ -1,0 +1,1 @@
+/home/fatt/.scripts/dmenu-todo/todo.sh
