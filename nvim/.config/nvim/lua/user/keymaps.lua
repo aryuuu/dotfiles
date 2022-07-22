@@ -44,9 +44,15 @@ keymap("n", "<C-_>", ":CommentToggle<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
--- keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
 -- Comment line
 keymap("i", "<C-_>", "<Esc>:CommentToggle<CR>i", opts)
+-- insert in new line, without going to NORMAL mode first
+keymap("i", "<M-o>", "<Esc>o", opts)
+-- A, without going to NORMAL mode first
+keymap("i", "<M-a>", "<Esc>A", opts)
+-- I, without going to NORMAL mode first
+keymap("i", "<M-i>", "<Esc>I", opts)
 
 -- Visual --
 -- Stay in indent mode

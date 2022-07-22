@@ -1,22 +1,26 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.cmp"
-require "user.lsp"
-require "user.rust-tools"
-require "user.telescope"
-require "user.treesitter"
--- require "user.nvim-navic"
-require "user.autopairs"
-require "user.comment"
-require "user.nvim-comment"
-require "user.gitsigns"
-require "user.gitlinker"
-require "user.nvim-tree"
-require "user.bufferline"
-require "user.lualine"
-require "user.toggleterm"
-require "user.project"
-require "user.whichkey"
-require "user.alpha"
+require("user.options")
+require("user.nvim-webdev-icons")
+require("user.keymaps")
+require("user.plugins")
+require("user.autocommands")
+require("user.colorscheme")
+require("user.cmp")
+require("user.nvim-navic")
+require("user.nvim-gps")
+require("user.lsp")
+require("user.rust-tools")
+require("user.telescope")
+require("user.treesitter")
+require("user.autopairs")
+require("user.comment")
+require("user.nvim-comment")
+require("user.gitsigns")
+require("user.gitlinker")
+require("user.nvim-tree")
+require("user.bufferline")
+require("user.lualine")
+require("user.toggleterm")
+require("user.project")
+require("user.whichkey")
+require("user.alpha")
+require("user.winbar")
