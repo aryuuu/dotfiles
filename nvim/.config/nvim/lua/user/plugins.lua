@@ -47,6 +47,7 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("ahmedkhalf/project.nvim") -- switch between projects
+	use("jvgrootveld/telescope-zoxide")
 	use("terrortylor/nvim-comment") -- comment stuff the good way
 	use("akinsho/toggleterm.nvim") -- toggleterminal from inside nvim
 	use("kyazdani42/nvim-web-devicons")
@@ -115,6 +116,17 @@ return packer.startup(function(use)
 	use({
 		"ruifm/gitlinker.nvim",
 		requires = "nvim-lua/plenary.nvim",
+	})
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+		-- config = function ()
+		--   require"octo".setup()
+		-- end
 	})
 
 	-- winbar

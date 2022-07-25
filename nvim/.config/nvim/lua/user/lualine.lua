@@ -7,10 +7,10 @@ local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
 
-local function hello_world()
-	print("Hello world!")
-	return "hello_world"
-end
+-- local function hello_world()
+-- 	print("Hello world!")
+-- 	return "hello_world"
+-- end
 
 local diagnostics = {
 	"diagnostics",
@@ -89,7 +89,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = { hello_world },
+		lualine_c = {},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
