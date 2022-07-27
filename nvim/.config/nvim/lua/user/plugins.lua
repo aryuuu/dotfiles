@@ -132,7 +132,22 @@ return packer.startup(function(use)
 	-- winbar
 	use({ "fgheng/winbar.nvim" })
 	-- Jest
-	-- use 'kubej/jest.nvim'
+	use({
+		"David-Kunz/jester",
+		ft = { "javascript", "typescript" },
+		-- config = {
+		-- 	function()
+		-- 		local jester_status_ok, jester = pcall(require, "jester")
+		-- 		if not jester_status_ok then
+		-- 			return
+		-- 		end
+		-- 		jester.setup({
+		-- 			path_to_jest_run = "./node_modules/jest", -- used to run tests
+		-- 			path_to_jest_debug = "./node_modules/jest", -- used for debugging
+		-- 		})
+		-- 	end,
+		-- },
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

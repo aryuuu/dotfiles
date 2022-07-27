@@ -149,6 +149,13 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  jester = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/opt/jester",
+    url = "https://github.com/David-Kunz/jester"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -178,6 +185,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
+  },
+  ["nvim-gps"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-gps",
+    url = "https://github.com/SmiteshP/nvim-gps"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -209,6 +221,16 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
     url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["octo.nvim"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/octo.nvim",
+    url = "https://github.com/pwntester/octo.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -234,6 +256,11 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
+  ["telescope-zoxide"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/telescope-zoxide",
+    url = "https://github.com/jvgrootveld/telescope-zoxide"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -258,10 +285,23 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["winbar.nvim"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/winbar.nvim",
+    url = "https://github.com/fgheng/winbar.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'jester'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'jester'}, { ft = "javascript" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)
