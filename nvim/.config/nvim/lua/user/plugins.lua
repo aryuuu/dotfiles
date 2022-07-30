@@ -64,6 +64,10 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("Mofiqul/dracula.nvim")
+	use("EdenEast/nightfox.nvim")
+	use("jacoborus/tender.vim")
+	use("rmehri01/onenord.nvim")
+	use("shaunsingh/nord.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -128,6 +132,7 @@ return packer.startup(function(use)
 		--   require"octo".setup()
 		-- end
 	})
+	use("tpope/vim-fugitive")
 
 	-- winbar
 	use({ "fgheng/winbar.nvim" })
@@ -156,7 +161,7 @@ return packer.startup(function(use)
 		module = { "dap" },
 		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
 		requires = {
-			"Pocco81/DAPInstall.nvim",
+			{ "Pocco81/DAPInstall.nvim", commit = "24923c3819a450a772bb8f675926d530e829665f" },
 			"theHamsta/nvim-dap-virtual-text",
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
@@ -168,6 +173,7 @@ return packer.startup(function(use)
 			require("user.dap").setup()
 		end,
 	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

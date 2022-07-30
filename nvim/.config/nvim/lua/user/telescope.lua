@@ -82,6 +82,11 @@ telescope.setup({
 		find_files = {
 			hidden = true,
 		},
+		live_grep = {
+			additional_args = function(opts)
+				return { "--hidden" }
+			end,
+		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,
@@ -97,8 +102,14 @@ telescope.setup({
 		-- }
 		-- please take a look at the readme of the extension you want to configure
 	},
-	vimgrep_arguments = {
-		"rg",
-		"--hidden",
-	},
+	-- vimgrep_arguments = {
+	-- 	"rg",
+	-- 	"--hidden",
+	-- 	"--color=never",
+	-- 	"--no-heading",
+	-- 	"--with-filename",
+	-- 	"--line-number",
+	-- 	"--column",
+	-- 	"--smart-case",
+	-- },
 })

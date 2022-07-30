@@ -1,10 +1,10 @@
 local M = {}
 
 local function configure()
-	-- local dap_install = require("dap-install")
-	-- dap_install.setup({
-	-- 	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
-	-- })
+	local dap_install = require("dap-install")
+	dap_install.setup({
+		installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+	})
 
 	local dap_breakpoint = {
 		error = {
@@ -55,6 +55,7 @@ local function configure_debuggers()
 	-- require("user.dap.python").setup()
 	-- require("user.dap.rust").setup()
 	require("user.dap.go").setup()
+	require("user.dap.node")
 end
 
 function M.setup()

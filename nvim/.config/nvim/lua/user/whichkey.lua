@@ -114,8 +114,10 @@ local mappings = {
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		P = { "<cmd>Git pull<cr>", "Pull" },
+		-- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+		r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		R = { "<cmd>lua require 'gitsigns'.refresh()<cr>", "Refresh buffers" },
 		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
 		u = {
 			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
@@ -155,7 +157,8 @@ local mappings = {
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+		-- R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+		R = { "<cmd>Telescope lsp_references<cr>", "References" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
@@ -200,6 +203,21 @@ local mappings = {
 		l = {
 			"<cmd>lua require('jester').run_last()<cr>",
 			"Run last test",
+		},
+		d = {
+			name = "Debug",
+			j = {
+				"<cmd>lua require('jester').debug()<cr>",
+				"Debug one",
+			},
+			f = {
+				"<cmd>lua require('jester').debug_file()<cr>",
+				"Debug file",
+			},
+			l = {
+				"<cmd>lua require('jester').debug_last()<cr>",
+				"Debug last test",
+			},
 		},
 	},
 
