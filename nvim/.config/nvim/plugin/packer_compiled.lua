@@ -98,6 +98,11 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -158,6 +163,11 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   jester = {
     loaded = false,
     needs_bufread = false,
@@ -206,7 +216,7 @@ _G.packer_plugins = {
     url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-dap"] = {
-    after = { "one-small-step-for-vimkind", "nvim-dap-go", "telescope-dap.nvim", "nvim-dap-python", "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui" },
+    after = { "telescope-dap.nvim", "nvim-dap-go", "one-small-step-for-vimkind", "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ruser.dap\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -346,6 +356,11 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/opt/telescope-dap.nvim",
     url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
   ["telescope-zoxide"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/telescope-zoxide",
@@ -428,8 +443,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'jester'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType javascript ++once lua require("packer.load")({'jester'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'jester'}, { ft = "typescript" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)

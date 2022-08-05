@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("ahmedkhalf/project.nvim") -- switch between projects
 	use("jvgrootveld/telescope-zoxide")
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("terrortylor/nvim-comment") -- comment stuff the good way
 	use("akinsho/toggleterm.nvim") -- toggleterminal from inside nvim
 	use("kyazdani42/nvim-web-devicons")
@@ -68,6 +69,7 @@ return packer.startup(function(use)
 	use("jacoborus/tender.vim")
 	use("rmehri01/onenord.nvim")
 	use("shaunsingh/nord.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -101,6 +103,7 @@ return packer.startup(function(use)
 	-- Telescope
 
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	use({ "ThePrimeagen/harpoon" })
 
 	-- Treesitter
 	-- use {

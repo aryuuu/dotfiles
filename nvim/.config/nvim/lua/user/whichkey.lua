@@ -193,6 +193,10 @@ local mappings = {
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 	},
 
+	A = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "mark file" },
+
+	m = { "<cmd>Telescope harpoon marks<CR>", "Marks" },
+
 	j = {
 		name = "Jester",
 		j = { "<cmd>lua require('jester').run()<cr>", "Run one" },
