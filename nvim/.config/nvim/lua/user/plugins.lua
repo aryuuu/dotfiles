@@ -86,6 +86,8 @@ return packer.startup(function(use)
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("MunifTanjim/eslint.nvim")
@@ -101,7 +103,6 @@ return packer.startup(function(use)
 
 	-- Comment
 	-- Telescope
-
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
 	use({ "ThePrimeagen/harpoon" })
 
@@ -176,6 +177,9 @@ return packer.startup(function(use)
 			require("user.dap").setup()
 		end,
 	})
+
+	-- taking notes
+	use("oberblastmeister/neuron.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

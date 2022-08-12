@@ -28,6 +28,18 @@ floating_maximum_size 800 x 800
 # rounded corner
 # border_radius 4
 
+## Icons
+set $GLOBE_ICON 
+set $GITHUB_ICON 
+set $MONITOR_ICON 
+set $FILE_CODE_ICON 
+set $FILE_CODE_SOLID icon  
+set $FINGERPRINT_ICON 
+set $BRACKETS_CURLY_ICON 
+set $JAVA_ICON  
+set $CURLY_BRACKET_ICON 
+
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -42,7 +54,7 @@ exec /home/fatt/.scripts/midbottom.sh
 exec xinput set-prop 17 326 1
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # lock screen after x minutes of inactivity
 exec --no-startup-id xautolock -time 8 locker "i3lock-fancy-multimonitor -n" 
 

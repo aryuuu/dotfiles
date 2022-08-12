@@ -225,6 +225,28 @@ local mappings = {
 		},
 	},
 
+	n = {
+		name = "Notes",
+		n = { "<cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>", "New" },
+
+		-- find your notes, click enter to create the note if there are not notes that match
+		z = { "<cmd>lua require'neuron/telescope'.find_zettels()<CR>", "Find zettels" },
+		-- insert the id of the note that is found
+		Z = { "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>", "Find zettels insert" },
+		--" find the backlinks of the current note all the note that link this note
+		b = { "<cmd>lua require'neuron/telescope'.find_backlinks()<CR>", "Backlinks" },
+		--" same as above but insert the found id
+		B = { "<cmd>lua require'neuron/telescope'.find_backlinks {insert = true}<CR>", "Backlinks insert" },
+		--" find all tags and insert
+		t = { "<cmd>lua require'neuron/telescope'.find_tags()<CR>", "Tags" },
+		--" start the neuron server and render markdown, auto reload on save
+		s = { "<cmd>lua require'neuron'.rib {address = '127.0.0.1:8200', verbose = true}<CR>", "Start server" },
+		--" go to next [[my_link]] or [[[my_link]]]
+		j = { "<cmd>lua require'neuron'.goto_next_extmark()<CR>", "Next link" },
+		--" go to previous
+		k = { "<cmd>lua require'neuron'.goto_prev_extmark()<CR>]]", "Previous link" },
+	},
+
 	d = {
 		name = "Debug",
 		R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },

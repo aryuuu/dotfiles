@@ -28,6 +28,18 @@ floating_maximum_size 800 x 800
 # rounded corner
 # border_radius 4
 
+## Icons
+set $GLOBE_ICON 
+set $GITHUB_ICON 
+set $MONITOR_ICON 
+set $FILE_CODE_ICON 
+set $FILE_CODE_SOLID icon  
+set $FINGERPRINT_ICON 
+set $BRACKETS_CURLY_ICON 
+set $JAVA_ICON  
+set $CURLY_BRACKET_ICON 
+
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -208,6 +220,7 @@ set $ws15 "15:"
 set $ws16 "16:"
 set $ws17 "17:"
 # globe icon 
+# github icon 
 # monitor icon 
 # file code icon 
 # file code solid icon  
