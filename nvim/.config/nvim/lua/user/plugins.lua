@@ -100,7 +100,7 @@ return packer.startup(function(use)
         requires = "nvim-treesitter/nvim-treesitter",
     })
     use("simrat39/rust-tools.nvim")
-
+    use("nanotee/sqls.nvim")
     -- Comment
     -- Telescope
     use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
