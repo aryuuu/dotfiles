@@ -172,14 +172,14 @@ local mappings = {
     s = {
         name = "Search",
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-        c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+        C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
         M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
         r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
         R = { "<cmd>Telescope registers<cr>", "Registers" },
         s = { "<cmd>Telescope grep_string<cr>", "Find all occurrences" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-        C = { "<cmd>Telescope commands<cr>", "Commands" },
+        c = { "<cmd>Telescope commands<cr>", "Commands" },
     },
 
     t = {
@@ -231,6 +231,9 @@ local mappings = {
         I = { "<cmd>VimwikiDiaryIndex 1<cr>", "Go to diary index" },
         t = { "<cmd>VimwikiTabIndex 1<cr>", "Go to index" },
         T = { "<cmd>VimwikiTabIndex 1<cr>", "Go to index" },
+        d = { "<cmd>VimwikiMakeDiaryNote 1<cr>", "Make today's diary note" },
+        f = { "<cmd>Telescope vimwiki<cr>", "Find wiki" },
+        F = { "<cmd>Telescope vimwiki live_grep<cr>", "Search text in wiki" },
         -- n = { "<cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>", "New" },
 
         -- -- find your notes, click enter to create the note if there are not notes that match
