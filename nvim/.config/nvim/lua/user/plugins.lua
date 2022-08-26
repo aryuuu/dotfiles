@@ -194,6 +194,14 @@ return packer.startup(function(use)
     })
     use("ElPiloto/telescope-vimwiki.nvim")
     use("mg979/vim-visual-multi")
+
+    -- cheatsheet
+    use("RishabhRD/popfix")
+    use("RishabhRD/nvim-cheat.sh")
+
+    use("tami5/sqlite.lua")
+    use("nvim-telescope/telescope-cheat.nvim")
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
