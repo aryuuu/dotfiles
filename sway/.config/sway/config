@@ -50,7 +50,7 @@ set $DMENU_NHF "#FA485D"
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF | xargs swaymsg exec --
 
-exec --no-startup-id "XDG_CURRENT_DESKTOP=Sway; flameshot"
+exec --no-startup-id "XDG_CURRENT_DESKTOP=Sway flameshot"
 exec --no-startup-id nm-applet
 # exec_always --no-startup-id "killall dunst; killall fnott; fnott"
 
