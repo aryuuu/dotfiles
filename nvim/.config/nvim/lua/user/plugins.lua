@@ -70,8 +70,11 @@ return packer.startup(function(use)
     use("jacoborus/tender.vim")
     use("rmehri01/onenord.nvim")
     use("shaunsingh/nord.nvim")
-    use({ "catppuccin/nvim", as = "catppuccin" })
-
+    use({
+        "catppuccin/nvim",
+        as = "catppuccin",
+        tag = "v0.2",
+    })
     -- cmp plugins
     use("hrsh7th/nvim-cmp") -- The completion plugin
     use("hrsh7th/cmp-buffer") -- buffer completions
@@ -205,6 +208,7 @@ return packer.startup(function(use)
     use("tami5/sqlite.lua")
     use("nvim-telescope/telescope-cheat.nvim")
 
+    use("jbyuki/venn.nvim")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

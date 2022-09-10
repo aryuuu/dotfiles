@@ -12,6 +12,15 @@ end
 -- 	return "hello_world"
 -- end
 
+local function is_venn_enabled()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+        return "x"
+    end
+
+    return "v"
+end
+
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
@@ -81,14 +90,14 @@ lualine.setup({
     options = {
         icons_enabled = true,
         theme = "auto",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
         always_divide_middle = true,
     },
     sections = {
         lualine_a = { branch, diagnostics },
-        lualine_b = { mode },
+        lualine_b = { mode, is_venn_enabled },
         lualine_c = { "lsp_progress" },
         -- lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_x = { diff, spaces, "encoding", filetype },

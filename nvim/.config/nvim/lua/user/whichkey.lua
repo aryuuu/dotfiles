@@ -79,7 +79,10 @@ local opts = {
 }
 
 local mappings = {
-	["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+	["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "goto file 1" },
+	["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "goto file 2" },
+	["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "goto file 3" },
+	["A"] = { "<cmd>Alpha<cr>", "Alpha" },
 	["b"] = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Buffers",
@@ -89,6 +92,20 @@ local mappings = {
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+	["H"] = {
+		name = "Harpoon",
+		m = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file" },
+		u = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle quick menu" },
+		["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "goto file 1" },
+		["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "goto file 2" },
+		["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "goto file 3" },
+		t = {
+			name = "tmux",
+			["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "goto tmux win 1" },
+			["2"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", "goto tmux win 2" },
+			["3"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", "goto tmux win 3" },
+		},
+	},
 	["f"] = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Find files",
@@ -198,9 +215,12 @@ local mappings = {
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+		["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "goto tmux session 1" },
+		["2"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", "goto tmux session 2" },
+		["3"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", "goto tmux session 3" },
 	},
 
-	A = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "mark file" },
+	a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "mark file" },
 
 	m = { "<cmd>Telescope harpoon marks<CR>", "Marks" },
 
