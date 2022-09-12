@@ -53,7 +53,7 @@ local opts = {
 				'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
 				opts
 			)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 			vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 			-- Hover actions
 			vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })

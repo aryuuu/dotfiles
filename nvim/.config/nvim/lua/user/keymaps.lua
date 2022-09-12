@@ -43,7 +43,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<C-_>", ":CommentToggle<CR>", opts)
 
 -- Insert --
--- Press jk fast to enter
+-- Press jk fast to enter normal mode
 keymap("i", "jk", "<ESC>", opts)
 -- Comment line
 keymap("i", "<C-_>", "<Esc>:CommentToggle<CR>i", opts)
