@@ -106,7 +106,7 @@ include-file = $HOME/.config/polybar/modules.ini
 	#tray-position = right
 
     modules-left = wip useless-facts
-	modules-right = fs memory cpu temp wifi eth
+	modules-right = time-utc fs memory cpu temp wifi eth 
 
 
 [settings]
