@@ -129,6 +129,8 @@ bindsym $mod+Shift+q kill
 #########################
 # start dmenu (a program launcher) -p  -p ""
 bindsym $mod+d exec dmenu_run -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
+# start dmenu (a program launcher) -p  -p ""
+bindsym $mod+space exec dmenu_run -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
 # open ssh connection
 bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 # open networkmanager dmenu
@@ -198,7 +200,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
