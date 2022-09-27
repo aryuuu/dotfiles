@@ -115,9 +115,9 @@ PATH=$JAVA_HOME:~/.local/bin:$HOME/go/bin:$PATH:$HOME/.scripts
 GOPATH=/home/fatt/go
 
 # move to current directory in new window
-export PROMPT_COMMAND="pwd > /tmp/whereami"
-precmd() { eval "$PROMPT_COMMAND" } 
-cd "$(< /tmp/whereami)"
+# export PROMPT_COMMAND="pwd > /tmp/whereami"
+# precmd() { eval "$PROMPT_COMMAND" } 
+# cd "$(< /tmp/whereami)"
 
 source /usr/share/nvm/init-nvm.sh
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"

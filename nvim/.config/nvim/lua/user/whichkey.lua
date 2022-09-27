@@ -78,6 +78,15 @@ local opts = {
 	nowait = true, -- use `nowait` when creating keymaps
 }
 
+local opts_vis = {
+	mode = "v", -- VISUAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
 local mappings = {
 	["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "goto file 1" },
 	["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "goto file 2" },
@@ -101,7 +110,8 @@ local mappings = {
 		["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "goto file 3" },
 		t = {
 			name = "tmux",
-			["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "goto tmux win 1" },
+			["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal('1')<CR>", "goto tmux win 1" },
+			-- ["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "goto tmux win 1" },
 			["2"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", "goto tmux win 2" },
 			["3"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", "goto tmux win 3" },
 		},
@@ -304,6 +314,10 @@ local mappings = {
 		x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
 		u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
 	},
+}
+
+local visual_mapping = {
+	["F"] = { '"zy<cmd>Telescope live_grep theme=ivy<cr>', "Find Text" },
 }
 
 which_key.setup(setup)
