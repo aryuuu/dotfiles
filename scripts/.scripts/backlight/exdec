@@ -1,1 +1,2 @@
-xrandr --verbose | awk '/Brightness/ {print $2 - .05}' | tail -1 | xargs xrandr --output HDMI-1 --brightness
+OUTPUT=DP-1
+xrandr --verbose | awk '/Brightness/ {print $2 - .05}' | tail -1 | xargs xrandr --output $OUTPUT --brightness
