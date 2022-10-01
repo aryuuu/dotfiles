@@ -58,7 +58,7 @@ set $DMENU_NHF "#FA485D"
 # they are included here as an example. Modify as you see fit.
 
 # set default screen layout
-exec /home/fatt/.scripts/midbottom.sh
+exec /home/fatt/.scripts/hzndp1.sh
 
 ## enable tap click on touchpad
 exec xinput set-prop 17 326 1
@@ -232,6 +232,8 @@ set $ws15 "15:"
 set $ws16 "16:"
 set $ws17 "17:"
 
+set $MON1 "eDP-1"
+set $MON2 "DP-1"
 # globe icon 
 # monitor icon 
 # file code icon 
@@ -242,23 +244,23 @@ set $ws17 "17:"
 # curly bracket icon 
 
 # set workspace to different monitor
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
-workspace $ws6 output HDMI-1
-workspace $ws7 output HDMI-1
-workspace $ws8 output HDMI-1
-workspace $ws9 output HDMI-1
-workspace $ws10 output HDMI-1
-workspace $ws11 output HDMI-1
-workspace $ws12 output HDMI-1
-workspace $ws13 output HDMI-1
-workspace $ws14 output HDMI-1
-workspace $ws15 output HDMI-1
-workspace $ws16 output HDMI-1
-workspace $ws17 output eDP-1
+workspace $ws1 output $MON1
+workspace $ws2 output $MON1
+workspace $ws3 output $MON1
+workspace $ws4 output $MON1
+workspace $ws5 output $MON1
+workspace $ws6 output $MON2
+workspace $ws7 output $MON2
+workspace $ws8 output $MON2
+workspace $ws9 output $MON2
+workspace $ws10 output $MON2
+workspace $ws11 output $MON2
+workspace $ws12 output $MON2
+workspace $ws13 output $MON2
+workspace $ws14 output $MON2
+workspace $ws15 output $MON2
+workspace $ws16 output $MON2
+workspace $ws17 output $MON1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
