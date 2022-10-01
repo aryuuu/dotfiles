@@ -146,7 +146,7 @@ bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb $DMEN
 # open clipmenu
 bindsym $mod+c exec clipmenu -i -f -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open pavucontrol menu
-bindsym $mod+i exec "~/.scripts/dmenu-pulse/sink.sh"  
+bindsym $mod+i exec "~/.scripts/sink.sh"  
 ###############################################################
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
