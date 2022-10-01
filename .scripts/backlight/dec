@@ -1,8 +1,0 @@
-#!/bin/bash
-basedir="/sys/class/backlight/intel_backlight"
-brightness=$(cat "${basedir}/brightness")
-
-if [ $(( $brightness - 10 )) -gt 0 ]; then
-	echo $(( $brightness - 10 )) > "${basedir}/brightness"
-fi
-

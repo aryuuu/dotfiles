@@ -1,2 +1,0 @@
-#!/bin/bash
-xrandr --verbose | awk '/Brightness/ {print $2 * 100}' | tail -1 
