@@ -84,6 +84,7 @@ exec --no-startup-id i3-battery-popup -n -L 20
 exec_always --no-startup-id "killall picom; picom"
 exec_always --no-startup-id "killall dunst; dunst"
 exec_always --no-startup-id "killall udiskie; udiskie -t"
+exec_always --no-startup-id "killall clipmenud; clipmenud"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
