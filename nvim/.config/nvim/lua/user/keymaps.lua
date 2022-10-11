@@ -42,6 +42,13 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Comment
 keymap("n", "<C-_>", ":CommentToggle<CR>", opts)
 
+-- tmux-sessionizer
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+
+-- non-disorienting half page jump
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
 -- Insert --
 -- Press jk fast to enter normal mode
 keymap("i", "jk", "<ESC>", opts)

@@ -9,12 +9,21 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		bufnr = bufnr,
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+	})
+end
+
 null_ls.setup({
 	autostart = true,
 	debug = false,
 	sources = {
 		formatting.prettier.with({
-			extra_args = { "--single-quote", "--jsx-single-quote", "--indent-type", "Spaces", "--tab-width", "2" },
+			extra_args = { "--single-quote", "--jsx-single-quote", "--indent-type", "Spaces" },
 		}),
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
@@ -31,13 +40,8 @@ null_ls.setup({
 				buffer = bufnr,
 				callback = function()
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-					-- vim.lsp.buf.format({})
-					vim.lsp.buf.format({
-						bufnr = bufnr,
-						filter = function(client)
-							return client.name == "null-ls"
-						end,
-					})
+					-- vim.lsp.buf.format()
+					lsp_formatting(bufnr)
 				end,
 			})
 		end
