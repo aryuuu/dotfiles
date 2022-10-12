@@ -105,6 +105,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliasrc
 source ~/.scripts/utils
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 export JAVA_HOME=/usr/lib/jvm/default
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 #export HADOOP_CLASSPATH=$(hadoop classpath)
