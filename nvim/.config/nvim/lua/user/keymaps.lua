@@ -44,6 +44,7 @@ keymap("n", "<C-_>", ":CommentToggle<CR>", opts)
 
 -- tmux-sessionizer
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+keymap("n", "<M-g>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
 -- non-disorienting half page jump
 keymap("n", "<C-d>", "<C-d>zz", opts)

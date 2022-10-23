@@ -120,7 +120,7 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Find files",
 	},
-	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+	["F"] = { "<cmd>Telescope grep_string search= theme=ivy<cr>", "Find Text" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 	["P"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
 	["R"] = { "<cmd>luafile ~/.config/nvim/init.lua<cr>", "Reload Config" },
@@ -232,7 +232,8 @@ local mappings = {
 
 	a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "mark file" },
 
-	m = { "<cmd>Telescope harpoon marks<CR>", "Marks" },
+	m = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle quick menu" },
+	-- m = { "<cmd>Telescope harpoon marks<CR>", "Marks" },
 
 	j = {
 		name = "Jester",
