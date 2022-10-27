@@ -122,7 +122,7 @@ local mappings = {
 	},
 	["F"] = { "<cmd>Telescope grep_string search= theme=ivy<cr>", "Find Text" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	["P"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
+	-- ["P"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
 	["R"] = { "<cmd>luafile ~/.config/nvim/init.lua<cr>", "Reload Config" },
 	["c"] = {
 		name = "Cheat",
@@ -181,11 +181,11 @@ local mappings = {
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		j = {
-			"<cmd>lua vim.diagnostic.goto_next()<CR>",
+			"<cmd>lua vim.diagnostic.goto_next()<CR>zz",
 			"Next Diagnostic",
 		},
 		k = {
-			"<cmd>lua vim.diagnostic.goto_prev()<cr>",
+			"<cmd>lua vim.diagnostic.goto_prev()<cr>zz",
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
@@ -212,6 +212,10 @@ local mappings = {
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		s = { "<cmd>Telescope grep_string<cr>", "Find all occurrences" },
+		f = {
+			"<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
+			"Find files",
+		},
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		c = { "<cmd>Telescope commands<cr>", "Commands" },
 	},

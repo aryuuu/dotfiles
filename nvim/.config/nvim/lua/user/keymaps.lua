@@ -44,11 +44,18 @@ keymap("n", "<C-_>", ":CommentToggle<CR>", opts)
 
 -- tmux-sessionizer
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-keymap("n", "<M-g>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+keymap("n", "<M-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
 -- non-disorienting half page jump
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
+
+-- better search navigation
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
+
+-- easy text substituon
+keymap("n", "<leader>sx", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 
 -- Insert --
 -- Press jk fast to enter normal mode
@@ -81,6 +88,10 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+-- json formatting
+keymap("x", "<leader>jp", ":'<,'>!jq<CR>", opts)
+keymap("x", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation
