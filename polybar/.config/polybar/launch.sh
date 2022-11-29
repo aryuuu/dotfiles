@@ -8,11 +8,20 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # launch polybar, using default config location ~/.config/polybar/config
 if type "xrandr"; then
+
 	for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-		MONITOR=$m polybar --reload top &
+		# MONITOR=$m polybar --reload top &
 		MONITOR=$m polybar --reload bottom &
 		# MONITOR=$m polybar --reload tray &
 	done
+
+    BUILT_IN=$(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1)
+    EXTERNAL=$(xrandr --query | grep " connected" | grep -v "primary" | cut -d" " -f1)
+
+    MONITOR=$EXTERNAL polybar --reload top &
+    sleep 1
+    MONITOR=$BUILT_IN polybar --reload top &
+
 else 
 	polybar top & 
 	polybar bottom &
