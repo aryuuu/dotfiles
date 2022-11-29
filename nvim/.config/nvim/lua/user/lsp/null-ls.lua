@@ -23,7 +23,18 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettier.with({
-			extra_args = { "--single-quote", "--jsx-single-quote", "--indent-type", "Spaces" },
+			extra_args = {
+				"--single-quote",
+				"--jsx-single-quote",
+				"--indent-type",
+				"Spaces",
+				"--tab-width",
+				"4",
+				"--print-width",
+				"120",
+				-- "--trailing-comma",
+				-- "none",
+			},
 		}),
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
@@ -41,7 +52,8 @@ null_ls.setup({
 				callback = function()
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 					-- vim.lsp.buf.format()
-					lsp_formatting(bufnr)
+					-- uncomment this line to format on save
+					-- lsp_formatting(bufnr)
 				end,
 			})
 		end

@@ -106,6 +106,7 @@ return packer.startup(function(use)
 	})
 	use("simrat39/rust-tools.nvim")
 	use("nanotee/sqls.nvim")
+    use("b0o/schemastore.nvim")
 	-- use("nvim-lua/lsp-status.nvim")
 	-- Comment
 	-- Telescope
@@ -124,6 +125,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/nvim-treesitter-context")
+	use("nvim-treesitter/playground")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- Git
@@ -210,6 +212,9 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope-cheat.nvim")
 
 	use("jbyuki/venn.nvim")
+
+	use("ThePrimeagen/vim-be-good")
+	use("tpope/vim-surround")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
