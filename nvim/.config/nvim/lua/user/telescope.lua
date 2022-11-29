@@ -12,6 +12,10 @@ telescope.setup({
 		selection_caret = " ",
 		path_display = { "smart" },
 		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class" },
+		cache_picker = {
+			num_pickers = 3,
+			limit_entries = 5,
+		},
 
 		mappings = {
 			i = {
@@ -109,14 +113,14 @@ telescope.setup({
 		-- }
 		-- please take a look at the readme of the extension you want to configure
 	},
-	-- vimgrep_arguments = {
-	-- 	"rg",
-	-- 	"--hidden",
-	-- 	"--color=never",
-	-- 	"--no-heading",
-	-- 	"--with-filename",
-	-- 	"--line-number",
-	-- 	"--column",
-	-- 	"--smart-case",
-	-- },
+	vimgrep_arguments = {
+		"rg",
+		"--hidden",
+		"--color=never",
+		"--no-heading",
+		"--with-filename",
+		"--line-number",
+		"--column",
+		"--smart-case",
+	},
 })

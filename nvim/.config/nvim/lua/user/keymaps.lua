@@ -81,6 +81,9 @@ keymap("v", "p", '"_dP', opts)
 
 -- Comment
 keymap("v", "<C-_>", ":'<,'>CommentToggle<CR>", opts)
+-- keymap("v", "<leader>S", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opts)
+keymap("v", "<leader>S", "\"fy/\\V<C-R>f<CR>", opts)
+-- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR> -- TODO: add this for easy search
 
 -- Visual Block --
 -- Move text up and down

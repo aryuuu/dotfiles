@@ -58,7 +58,7 @@ local opts = {
 			-- Hover actions
 			vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
 			-- Code action groups
-			vim.keymap.set("n", "<Leader>a", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+			vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
 		end,
 		settings = {
 			["rust-analyzer"] = {
