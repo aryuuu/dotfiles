@@ -169,6 +169,31 @@ if <err_same> != nil {
   ),
 })
 
+ls.add_snippets("rust", {
+  s(
+    "testmod",
+    fmta(
+      [[
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        assert_eq!(<actual>, <expected>);
+    }
+}
+<finish>
+]],
+      {
+        actual = i(1),
+        expected = i(2),
+        finish = i(0),
+      }
+    )
+  ),
+})
+
 -- ls.add_snippets(
 --   "go",
 --   make {
