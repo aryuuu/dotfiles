@@ -13,12 +13,53 @@ local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
 local fmt = require("luasnip.extras.fmt").fmt
+local types = require("luasnip.util.types")
 
 local ts_locals = require "nvim-treesitter.locals"
 local ts_utils = require "nvim-treesitter.ts_utils"
 
 local get_node_text = vim.treesitter.get_node_text
 
+---#Config
+ls.config.set_config({
+    -- Remember the last snippet I was in
+    history = true,
+
+    -- Update snippet text in _real time_
+    updateevents = "TextChanged,TextChangedI",
+
+    -- Show virtual text hints for node types
+    ext_opts = {
+        [types.insertNode] = {
+            active = {
+                virt_text = { { "●", "Operator" } },
+            },
+        },
+        [types.choiceNode] = {
+            active = {
+                virt_text = { { "●", "Constant" } },
+            },
+        },
+    },
+})
+
+---#Mappings
+-- Previous snippet region
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+    if ls.jumpable(-1) then ls.jump(-1) end
+end, { silent = true })
+
+-- Next snippet region
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+    if ls.jumpable(1) then ls.jump(1) end
+end, { silent = true })
+
+-- Cycle "choices" for current snippet region
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
+    if ls.choice_active() then ls.change_choice(1) end
+end)
+
+-- treesitter transformer, thanks TJ
 local transforms = {
   int = function(_, _)
     return t "0"
