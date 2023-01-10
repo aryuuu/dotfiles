@@ -25,7 +25,7 @@ local filename = {
 	"filename",
 	file_status = true, -- Displays file status (readonly status, modified status)
 	newfile_status = false, -- Display new file status (new file means no write after created)
-	path = 0, -- 0: Just the filename
+	path = 1, -- 0: Just the filename
 	-- 1: Relative path
 	-- 2: Absolute path
 	-- 3: Absolute path, with tilde as the home directory
@@ -65,7 +65,7 @@ local diff = {
 local mode = {
 	"mode",
 	fmt = function(str)
-		return "-- " .. str .. " --"
+		return "- " .. str .. " -"
 	end,
 }
 
@@ -115,7 +115,7 @@ lualine.setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
+		lualine_a = { branch },
 		lualine_b = { mode, is_venn_enabled },
 		lualine_c = { "lsp_progress", filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
