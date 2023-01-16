@@ -32,6 +32,7 @@ local o = {
     -- Draw ellipsis at start/end denoting ommited entries
     ellipsis = false
 }
+
 (require "mp.options").read_options(o)
 local utils = require("mp.utils")
 o.log_path = utils.join_path(mp.find_config_file("."), o.log_path)
