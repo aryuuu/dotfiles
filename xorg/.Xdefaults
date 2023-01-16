@@ -63,6 +63,9 @@ URxvt.keysym.M-Up: resize-font:bigger
 ! Enable key bindings
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
+
+! fix color issue with tmux
+! URxvt.intensityStyles: false
  
 ! *.background: #2c303d
 ! *.foreground: #ededed
@@ -119,4 +122,24 @@ URxvt.keysym.Control-Right: \033[1;5C
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
-
+! Hack the box palette
+! *.background:  #1a2332
+! *.foreground:  #a4b1cd
+! *.cursorColor: #313f55
+! 
+! *.color0:  #000000
+! *.color8:  #666666
+! *.color1:  #ff3e3e
+! *.color9:  #ff8484
+! *.color2:  #9fef00
+! *.color10: #c5f467
+! *.color3:  #ffaf00
+! *.color11: #ffcc5c
+! *.color4:  #004cff
+! *.color12: #5cb2ff
+! *.color5:  #9f00ff
+! *.color13: #c16cfa
+! *.color6:  #2ee7b6
+! *.color14: #5cecc6
+! *.color7:  #ffffff
+! *.color15: #ffffff
