@@ -75,11 +75,6 @@ local filetype = {
 	icon = nil,
 }
 
--- local filename = {
--- 	"filename",
--- 	path = 1,
--- }
-
 local branch = {
 	"branch",
 	icons_enabled = true,
