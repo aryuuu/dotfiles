@@ -66,6 +66,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("Mofiqul/dracula.nvim")
+    use ("rebelot/kanagawa.nvim")
 	use("EdenEast/nightfox.nvim")
 	use("jacoborus/tender.vim")
 	use("rmehri01/onenord.nvim")
@@ -217,6 +218,8 @@ return packer.startup(function(use)
 	use("ThePrimeagen/vim-be-good")
 	use("tpope/vim-surround")
 	use("mbbill/undotree")
+    use {"ellisonleao/glow.nvim"}
+    use {"mzlogin/vim-markdown-toc"}
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
