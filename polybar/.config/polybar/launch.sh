@@ -18,8 +18,11 @@ if type "xrandr"; then
     BUILT_IN=$(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1)
     EXTERNAL=$(xrandr --query | grep " connected" | grep -v "primary" | cut -d" " -f1)
 
-    MONITOR=$EXTERNAL polybar --reload top &
-    sleep 1
+    if [[ ! -z "$EXTERNAL" ]]; then
+        MONITOR=$EXTERNAL polybar --reload top &
+        sleep 1
+    fi
+
     MONITOR=$BUILT_IN polybar --reload top &
 
 else 
