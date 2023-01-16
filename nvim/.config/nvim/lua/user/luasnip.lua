@@ -27,20 +27,6 @@ ls.config.set_config({
 
     -- Update snippet text in _real time_
     updateevents = "TextChanged,TextChangedI",
-
-    -- Show virtual text hints for node types
-    ext_opts = {
-        [types.insertNode] = {
-            active = {
-                virt_text = { { "●", "Operator" } },
-            },
-        },
-        [types.choiceNode] = {
-            active = {
-                virt_text = { { "●", "Constant" } },
-            },
-        },
-    },
 })
 
 ---#Mappings
