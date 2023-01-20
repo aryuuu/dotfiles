@@ -129,6 +129,13 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+    use({
+        'ckolkey/ts-node-action',
+         requires = { 'nvim-treesitter' },
+         config = function()
+             require("ts-node-action").setup({})
+         end
+    })
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")

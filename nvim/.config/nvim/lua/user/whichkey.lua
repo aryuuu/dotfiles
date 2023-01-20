@@ -212,6 +212,10 @@ local mappings = {
 			"<cmd>lua vim.diagnostic.open_float()<CR>",
 			"Diagnostic Open Float",
 		},
+        N = {
+            "<cmd>lua require('ts-node-action').node_action()<CR>",
+            "TS Node Action"
+        }
 	},
 	s = {
 		name = "Search",
