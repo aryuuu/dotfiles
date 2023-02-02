@@ -92,6 +92,7 @@ local mappings = {
 	["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "goto file 2" },
 	["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "goto file 3" },
 	["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", "goto file 4" },
+	["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", "goto file 5" },
 	["A"] = { "<cmd>Alpha<cr>", "Alpha" },
 	["b"] = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -124,7 +125,8 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Find files",
 	},
-	["F"] = { "<cmd>Telescope grep_string search= theme=ivy<cr>", "Find Text" },
+	["F"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true<cr>", "Find Text" },
+	-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 	-- ["P"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
 	-- ["R"] = { "<cmd>luafile ~/.config/nvim/init.lua<cr>", "Reload Config" },
@@ -153,7 +155,8 @@ local mappings = {
 
 	g = {
 		name = "Git",
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		-- g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		g = { "<cmd>Git<CR>", "Fugitive" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
