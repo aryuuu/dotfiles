@@ -85,11 +85,15 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			hidden = true,
+            -- no_ignore = true,
 		},
 		live_grep = {
 			additional_args = function(opts)
 				return { "--hidden" }
 			end,
+		},
+		grep_string = {
+            only_sort_text = true
 		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
