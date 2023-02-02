@@ -114,9 +114,10 @@ set $ws17 "17:"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/fatt/Pictures/wallpaper/linuxterminal.png fill
+output * bg /home/fatt/pictures/wallpaper/linuxterminal.png fill
 output HDMI-A-1 pos 0 0 res 1920x1080
-output eDP-1 pos 277 1080 res 1366 768
+output eDP-1 pos 0 800 res 1920 1080
+output DP-1 pos 1920 0 res 1920 1080 
 
 # Example configuration:
 #
@@ -168,6 +169,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -214,17 +216,17 @@ workspace $ws2 output eDP-1
 workspace $ws3 output eDP-1
 workspace $ws4 output eDP-1
 workspace $ws5 output eDP-1
-workspace $ws6 output HDMI-A-1
-workspace $ws7 output HDMI-A-1
-workspace $ws8 output HDMI-A-1
-workspace $ws9 output HDMI-A-1
-workspace $ws10 output HDMI-A-1
-workspace $ws11 output HDMI-A-1
-workspace $ws12 output HDMI-A-1
-workspace $ws13 output HDMI-A-1
-workspace $ws14 output HDMI-A-1
-workspace $ws15 output HDMI-A-1
-workspace $ws16 output HDMI-A-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-1
+workspace $ws8 output DP-1
+workspace $ws9 output DP-1
+workspace $ws10 output DP-1
+workspace $ws11 output DP-1
+workspace $ws12 output DP-1
+workspace $ws13 output DP-1
+workspace $ws14 output DP-1
+workspace $ws15 output DP-1
+workspace $ws16 output DP-1
 workspace $ws17 output eDP-1
 
 # switch to workspace
@@ -306,7 +308,7 @@ assign [class="robo3t"] $ws11
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
