@@ -74,11 +74,11 @@ nvim_tree.setup({
 	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		timeout = 500,
 	},
 	view = {
-		width = 30,
+		width = 50,
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
