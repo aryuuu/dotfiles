@@ -151,6 +151,9 @@ bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb $DMEN
 bindsym $mod+c exec clipmenu -i -f -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open pavucontrol menu
 bindsym $mod+i exec "~/.scripts/sink.sh"  
+# open books selection
+bindsym $mod+b exec "~/.scripts/books.sh"  
+
 ###############################################################
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -264,7 +267,7 @@ workspace $ws13 output $MON2
 workspace $ws14 output $MON2
 workspace $ws15 output $MON2
 workspace $ws16 output $MON2
-workspace $ws17 output $MON1
+workspace $ws17 output $MON2
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
