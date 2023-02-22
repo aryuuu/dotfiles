@@ -75,7 +75,8 @@ exec_always --no-startup-id xautolock -time 8 locker "i3lock-fancy-multimonitor 
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"
 # exec "feh --bg-scale $bgimg; cp $bgimg /tmp/screen.png"
 #exec_always feh --bg-scale /home/fatt/Pictures/wallpaper/mirai.png
-exec_always ~/.scripts/background/background
+# exec_always ~/.scripts/background/background
+exec wal -R 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -153,6 +154,8 @@ bindsym $mod+c exec clipmenu -i -f -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -
 bindsym $mod+i exec "~/.scripts/sink.sh"  
 # open books selection
 bindsym $mod+b exec "~/.scripts/books.sh"  
+# open wallpaper selection
+bindsym $mod+Shift+w exec "~/.scripts/walt.sh"  
 
 ###############################################################
 
@@ -160,6 +163,9 @@ bindsym $mod+b exec "~/.scripts/books.sh"
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop 
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # change focus
 bindsym $mod+h focus left
