@@ -110,7 +110,7 @@ docatt() {
 docstop() {
     # local cid
     # cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
-    docker ps | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $1}' | xargs -r docker stop
+    docker ps | sed 1d | fzf -q "$1" -m --tac | awk '{print $1}' | xargs -r docker stop
     
     # [ -n "$cid" ] && docker stop "$cid"
 }
