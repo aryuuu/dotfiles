@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliasrc
-source ~/.scripts/utils
+source ~/.scripts/utils.sh
 
 bindkey -s ^f "tmux-sessionizer\n"
 

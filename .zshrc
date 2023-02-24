@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliasrc
-source ~/.scripts/utils
+source ~/.scripts/utils.sh
 
 export JAVA_HOME=/usr/lib/jvm/default
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
