@@ -95,3 +95,37 @@ togif() {
 xpn() {
     openvpn ~/project/xendit/vpn/client.ovpn
 }
+
+## docker fzf functions
+
+# select a docker container to start and attach to
+docatt() {
+    local cid 
+    cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+
+    [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+}
+
+# select a running container to stop
+docstop() {
+    # local cid
+    # cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
+    docker ps | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $1}' | xargs -r docker stop
+    
+    # [ -n "$cid" ] && docker stop "$cid"
+}
+
+# select one or more running container to remove
+docrem() {
+    local cid
+    docker ps | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $1}' | xargs -r docker rm
+    
+    [ -n "$cid" ] && docker rm "$cid"
+}
+
+# select docker image or images to remove
+docremi() {
+    local cid
+    docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $3}' | xargs -r docker rmi
+    
+}
