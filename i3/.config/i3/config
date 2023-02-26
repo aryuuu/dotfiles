@@ -156,6 +156,8 @@ bindsym $mod+i exec "~/.scripts/sink.sh"
 bindsym $mod+b exec "~/.scripts/books.sh"  
 # open wallpaper selection
 bindsym $mod+Shift+w exec "~/.scripts/walt.sh"  
+# open emoji selector
+bindsym $mod+u exec "~/project/dmenu-emoji/dmenu-emoji.sh "  
 
 ###############################################################
 
