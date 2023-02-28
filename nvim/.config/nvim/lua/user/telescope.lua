@@ -11,7 +11,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "bin/", "target/"},
+		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "target/"},
 		cache_picker = {
 			num_pickers = 3,
 			limit_entries = 5,
@@ -54,6 +54,7 @@ telescope.setup({
 				["<CR>"] = actions.select_default,
 				["<C-x>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
+				["V"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
