@@ -20,10 +20,10 @@ font:
     family: D2Coding
     style: Regular
   bold:
-    family: FiraCode Nerd Font
+    family: D2Coding
     style: Medium
   italic:
-    family: FiraCode Nerd Font
+    family: D2Coding
     style: Italic
   offset:
     x: 0

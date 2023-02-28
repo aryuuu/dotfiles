@@ -20,6 +20,7 @@ local servers = {
 	"yamlls",
 	"sqls",
 	"terraformls",
+	"jdtls",
 }
 
 lsp_installer.setup({
