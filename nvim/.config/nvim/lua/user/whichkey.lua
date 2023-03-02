@@ -126,7 +126,8 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Find files",
 	},
-	["F"] = { "<cmd>Telescope grep_string sarch= theme=ivy only_sort_text=true<cr>", "Find Text" },
+	["F"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true<cr>", "Find Text" },
+	["/"] = { "<cmd>Telescope live_grep search= theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
 	-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 	-- ["P"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
@@ -233,7 +234,7 @@ local mappings = {
 		s = { "<cmd>Telescope grep_string<cr>", "Find all occurrences" },
 	-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
 		f = {
-			"<cmd>Telescope live_grep  search= theme=ivy<cr>",
+			"<cmd>Telescope live_grep search= theme=ivy<cr>",
 			"Live grep",
 		},
 		-- f = {
