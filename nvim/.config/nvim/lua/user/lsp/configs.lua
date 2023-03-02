@@ -13,6 +13,7 @@ local servers = {
 	"rust_analyzer",
 	"cmake",
 	"sumneko_lua",
+	-- "lua_ls",
 	"tsserver",
 	"jsonls",
 	"gopls",

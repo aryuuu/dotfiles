@@ -228,6 +228,7 @@ return packer.startup(function(use)
     use {"ellisonleao/glow.nvim"}
     use {"mzlogin/vim-markdown-toc"}
     use {"Darazaki/indent-o-matic"}
+	use { 'smithbm2316/centerpad.nvim' }
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
