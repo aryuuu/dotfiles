@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/project/xendit ~/project ~/ ~/sandbox/go ~/sandbox/js ~/sandbox ~/.scripts/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/project/xendit ~/project ~/ ~/sandbox/go ~/sandbox/js ~/sandbox ~/.scripts/ -mindepth 1 -maxdepth 1 -type d | fzf --bind 'alt-j:down' --bind 'alt-k:up' ) 
 fi
 
 if [[ -z $selected ]]; then
