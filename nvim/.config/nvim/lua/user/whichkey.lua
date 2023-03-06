@@ -164,6 +164,7 @@ local mappings = {
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		P = { "<cmd>Git pull<cr>", "Pull" },
+		H = { "<cmd>Git push origin HEAD<cr>", "Push HEAD" },
 		-- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		R = { "<cmd>lua require 'gitsigns'.refresh()<cr>", "Refresh buffers" },
