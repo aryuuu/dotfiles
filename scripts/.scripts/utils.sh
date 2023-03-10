@@ -110,7 +110,7 @@ docatt() {
 docstop() {
     # local cid
     # cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
-    docker ps | sed 1d | fzf -q "$1" -m --tac --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $1}' | xargs -r docker stop
+    docker ps | sed 1d | fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $1}' | xargs -r docker stop
     
     # [ -n "$cid" ] && docker stop "$cid"
 }
@@ -118,7 +118,7 @@ docstop() {
 # select one or more running container to remove
 docrem() {
     local cid
-    docker ps | sed 1d | fzf -q "$1" --no-sort -m --tac --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $1}' | xargs -r docker rm
+    docker ps | sed 1d | fzf -q "$1" --no-sort -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $1}' | xargs -r docker rm
     
     [ -n "$cid" ] && docker rm "$cid"
 }
@@ -126,6 +126,6 @@ docrem() {
 # select docker image or images to remove
 docremi() {
     local cid
-    docker images | sed 1d | fzf -q "$1" --no-sort -m --tac --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}' | xargs -r docker rmi
+    docker images | sed 1d | fzf -q "$1" --no-sort -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}' | xargs -r docker rmi
     
 }
