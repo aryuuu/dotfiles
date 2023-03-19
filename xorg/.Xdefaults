@@ -20,7 +20,7 @@ URxvt.depth:		 3
 ! fonts
 !URxvt.font:		xft:Fira Mono:size=9
 !URxvt.font:		xft:D2Coding:size=12,xft:SauceCodePro Nerd Font
-URxvt.font:         xft:D2Coding:size=8,xft:MesloLGS NF:size=8
+URxvt.font:         xft:D2Coding:size=10,xft:MesloLGS NF:size=10
 !URxvt.font:		xft:DejaVu Serif:size=9
 !URxvt.font:		xft:terminus:size=9:xft:FontAwesome:size=8
 !URxvt.font:		xft:FontAwesome:size=9
