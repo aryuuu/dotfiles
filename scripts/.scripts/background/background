@@ -1,6 +1,7 @@
 #!/bin/bash
 
-bg="/home/fatt/pictures/wallpaper/linuxterminal.png"
+# bg="/home/fatt/pictures/wallpaper/linuxterminal.png"
+read bg < ~/.scripts/background/bgpath
 cp $bg /tmp/screen.png
 feh --bg-scale $bg 
 

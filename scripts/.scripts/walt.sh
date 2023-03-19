@@ -24,6 +24,8 @@ then
     exit 1
 fi
 
-echo "~/pictures/wallpaper/$selection"
+echo "~/pictures/wallpaper/$selection" > ~/.scripts/background/bgpath
+
 wal -s -t -i ~/pictures/wallpaper/$selection
+
 

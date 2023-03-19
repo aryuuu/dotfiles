@@ -64,6 +64,8 @@ key_bindings:
   - { key: Right,  mods: Alt,          chars: "\x1b\x66"        } # move a word forward
   - { key: Left,   mods: Control|Alt,  chars: "\x17"            } # delete a word backward
   - { key: Right,  mods: Control|Alt,  chars: "\x1b\x44"        } # delete a word forward
+  - { key: C,  mods: Alt,  action: Copy } # delete a word forward
+  - { key: V,  mods: Alt,  action: Paste } # delete a word forward
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
