@@ -26,6 +26,7 @@ fi
 
 echo "~/pictures/wallpaper/$selection" > ~/.scripts/background/bgpath
 
-wal -s -t -i ~/pictures/wallpaper/$selection
+# i3-msg restart
+wal -s -e -t -i ~/pictures/wallpaper/$selection
 
 
