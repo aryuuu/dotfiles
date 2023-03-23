@@ -1,4 +1,4 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_ok then
 	return
 end
@@ -6,14 +6,26 @@ end
 local lspconfig = require("lspconfig")
 
 local servers = {
+    -- "bash-language-server",
+    -- "clangd",
+    -- "docker-compose-language-service",
+    -- "dockerfile-language-server",
+    -- "eslint-lsp",
+    -- "gopls",
+    -- "lua-language-server",
+    -- "python-lsp-server",
+    -- "rust-analyzer",
+    -- "sqls",
+    -- "typescript-language-server",
+
 	"bashls",
 	"clangd",
 	"dockerls",
 	"pyright",
 	"rust_analyzer",
 	"cmake",
-	"sumneko_lua",
-	-- "lua_ls",
+	-- "sumneko_lua",
+	"lua_ls",
 	"tsserver",
 	"jsonls",
 	"gopls",
@@ -24,9 +36,9 @@ local servers = {
 	"jdtls",
 }
 
-lsp_installer.setup({
-	ensure_installed = servers,
-})
+-- mason_lspconfig.setup({
+-- 	ensure_installed = servers,
+-- })
 
 local function dump(o)
 	if type(o) == "table" then

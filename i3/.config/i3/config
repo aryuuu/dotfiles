@@ -77,6 +77,7 @@ exec_always --no-startup-id xautolock -time 8 locker "i3lock-fancy-multimonitor 
 #exec_always feh --bg-scale /home/fatt/Pictures/wallpaper/mirai.png
 # exec_always ~/.scripts/background/background
 exec wal -R 
+# exekc
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
