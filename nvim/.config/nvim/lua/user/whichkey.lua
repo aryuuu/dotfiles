@@ -196,7 +196,6 @@ local mappings = {
 		},
 		f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
-		-- I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		I = { "<cmd>Mason<cr>", "Installer Info" },
 		j = {
 			"<cmd>lua vim.diagnostic.goto_next()<CR>zz",
@@ -265,7 +264,6 @@ local mappings = {
 	a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "mark file" },
 
 	m = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle quick menu" },
-	-- m = { "<cmd>Telescope harpoon marks<CR>", "Marks" },
 
 	j = {
 		name = "Jester",
