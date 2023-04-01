@@ -57,8 +57,8 @@ keymap("n", "N", "Nzz", opts)
 -- easy text substituon
 keymap("n", "<leader>sx", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 
-keymap("n", "gh", "<CMD>diffget //2<CR>")
-keymap("n", "gl", "<CMD>diffget //3<CR>")
+keymap("n", "gh", "<CMD>diffget //2<CR>", opts)
+keymap("n", "gl", "<CMD>diffget //3<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter normal mode

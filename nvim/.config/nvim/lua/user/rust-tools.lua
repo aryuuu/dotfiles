@@ -39,13 +39,13 @@ local opts = {
 				'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
 				opts
 			)
-			vim.api.nvim_buf_set_keymap(
-				bufnr,
-				"n",
-				"gl",
-				'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
-				opts
-			)
+			-- vim.api.nvim_buf_set_keymap(
+			-- 	bufnr,
+			-- 	"n",
+			-- 	"gl",
+			-- 	'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
+			-- 	opts
+			-- )
 			vim.api.nvim_buf_set_keymap(
 				bufnr,
 				"n",
