@@ -160,7 +160,7 @@ bindsym $mod+Shift+w exec "~/.scripts/walt.sh"
 # open emoji selector
 bindsym $mod+u exec "~/project/dmenu-emoji/dmenu-emoji.sh "  
 # open reaction meme selector
-bindsym $mod+Shift+u exec "~/project/dmenu-emoji/dmenu-emoji.sh "  
+bindsym $mod+Shift+u exec "~/.scripts/dmemes.sh"  
 
 ###############################################################
 
