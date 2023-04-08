@@ -1,5 +1,5 @@
-{
-    "layer": "bottom",
+[{
+    "layer": "top",
     "position": "top",
     "height": 30,
     "modules-left": [
@@ -152,4 +152,161 @@
         "icon-size": 15,
         "spacing": 5
     }
+},
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "height": 30,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/window"
+    ],
+    "modules-right": [
+        "backlight",
+        "disk#root",
+        "disk#home",
+        "memory",
+        "cpu",
+        "pulseaudio",
+        "network",
+        "idle_inhibitor",
+        "battery",
+        "clock#time",
+        "clock#date",
+        "tray"
+    ],
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true
+    },
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50,
+        "tooltip": false,
+        "rewrite": {
+            "(.*) - Mozilla Firefox": " $1",
+            "(.*) - vim": " $1",
+            "(.*) - zsh": " [$1]",
+            "Telegram": " Telegram"
+        }
+    },
+    "memory": {
+        "interval": 5,
+        "format": " {avail:.3}GB"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": " {usage:1}%"
+    },
+    "clock#time": {
+        "format": " {:%H:%M}",
+        "tooltip": false
+    },
+    "clock#date": {
+        "format": " {:%a %d %b}",
+        "tooltip": false
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format-charging": "{capacity}% ",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": {
+            "wifi": [
+                "",
+                "",
+                ""
+            ],
+            "ethernet": [
+                ""
+            ],
+            "disconnected": [
+                ""
+            ]
+        },
+        "on-click": "alacritty -e nmtui",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{volume} {icon}",
+        "format-alt": "{volume} {icon}",
+        "format-alt-click": "click-right",
+        "format-muted": "",
+        "format-icons": {
+            "phone": [
+                " ",
+                " ",
+                " ",
+                " "
+            ],
+            "default": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 10,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "disk#root": {
+        "format": "{percentage_used}% {free} / ",
+        "format-alt": "{percentage}% ",
+        "format-alt-right": "click-right",
+        "path": "/"
+        // "max-length": 
+    },
+    "disk#home": {
+        "format": "{percentage_used}% {free} /home ",
+        "format-alt": "{percentage}% ",
+        "format-alt-right": "click-right",
+        "path": "/home"
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": [
+            "",
+            ""
+        ],
+        "on-scroll-down": "light -A 1",
+        "on-scroll-up": "light -U 1"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 5
+    }
 }
+]
+
