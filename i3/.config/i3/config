@@ -134,13 +134,13 @@ bindsym $mod+Shift+q kill
 ## dmenu tools section ##
 #########################
 # start dmenu (a program launcher) -p  -p ""
-bindsym $mod+d exec dmenu_run -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
+bindsym $mod+d exec dmenu_run -c -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
 # start dmenu (a program launcher) -p  -p ""
-bindsym $mod+space exec dmenu_run -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
+bindsym $mod+space exec dmenu_run -c -i -f -fn "FontAwesome" -p "" -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
 # open ssh connection
 bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 # open networkmanager dmenu
-bindsym $mod+n exec /usr/bin/networkmanager_dmenu -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+bindsym $mod+n exec /usr/bin/networkmanager_dmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open dmenu dictionary
 bindsym $mod+o exec "~/project/dmenu-dict/dmenu-dict"
 # launch word-lookup
@@ -148,9 +148,9 @@ bindsym $mod+Shift+o exec word-lookup
 # open dmenu todo
 bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
 # open passmenu
-bindsym $mod+p exec /usr/bin/passmenu -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+bindsym $mod+p exec /usr/bin/passmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open clipmenu
-bindsym $mod+c exec clipmenu -i -f -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+bindsym $mod+c exec clipmenu -c -i -f -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open pavucontrol menu
 bindsym $mod+i exec "~/.scripts/sink.sh"  
 # open books selection
