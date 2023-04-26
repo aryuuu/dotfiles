@@ -24,9 +24,9 @@ then
     exit 1
 fi
 
-echo "~/pictures/wallpaper/$selection" > ~/.scripts/background/bgpath
+echo ~/pictures/wallpaper/$selection > ~/.scripts/background/bgpath
 
-# i3-msg restart
-wal -s -e -t -i ~/pictures/wallpaper/$selection
+i3-msg restart
+# wal -s -e -t -i ~/pictures/wallpaper/$selection
 
 
