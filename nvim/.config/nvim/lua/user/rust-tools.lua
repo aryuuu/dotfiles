@@ -73,6 +73,9 @@ local opts = {
 					-- default: `cargo check`
 					command = "clippy",
 				},
+				procMacro = {
+					enable = true
+				},
 			},
 			inlayHints = {
 				lifetimeElisionHints = {
