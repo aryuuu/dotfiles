@@ -96,6 +96,10 @@ telescope.setup({
 		grep_string = {
             only_sort_text = true
 		},
+		buffers = {
+			sort_lastused = true,
+			sort_mru = true,
+		}
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,

@@ -111,6 +111,7 @@ return packer.startup(function(use)
 	-- Comment
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	use { "LinArcX/telescope-env.nvim" }
 	use({ "ThePrimeagen/harpoon" })
 
 	-- Treesitter
