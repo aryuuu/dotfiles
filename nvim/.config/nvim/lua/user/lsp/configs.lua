@@ -31,7 +31,8 @@ local servers = {
 	"gopls",
 	"eslint",
 	"yamlls",
-	"sqls",
+	-- "sqls",
+	"sqlls",
 	"terraformls",
 	"jdtls",
 }
