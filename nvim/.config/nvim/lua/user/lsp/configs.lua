@@ -35,6 +35,7 @@ local servers = {
 	"sqlls",
 	"terraformls",
 	"jdtls",
+	"zls",
 }
 
 -- mason_lspconfig.setup({
