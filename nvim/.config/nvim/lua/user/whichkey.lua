@@ -105,6 +105,7 @@ local mappings = {
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+	["X"] = { [[<cmd>%bdelete|edit #|normal `"<CR>]], "Close other buffers" },
 	["z"] = { "<cmd>Centerpad 60<CR>", "Center a lone buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["H"] = {
