@@ -26,6 +26,25 @@ autocmd("TextYankPost", {
 	end,
 })
 
+-- colorscheme_group
+-- local colorscheme_group = augroup("Colorscheme", {})
+
+-- autocmd("BufEnter", {
+-- 	group = colorscheme_group,
+-- 	pattern = "*.go",
+-- 	callback = function()
+-- 		vim.cmd("colorscheme catppuccin")
+-- 	end,
+-- })
+
+-- autocmd("BufEnter", {
+-- 	group = colorscheme_group,
+-- 	pattern = "*.lua",
+-- 	callback = function()
+-- 		vim.cmd("colorscheme catppuccin")
+-- 	end,
+-- })
+
 -- autocmd('ColorScheme', {
 --   callback = function()
 --     local highlights = {
