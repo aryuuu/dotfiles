@@ -24,7 +24,6 @@ configs.setup({
 		move = {
 			enable = true,
 			set_jumps = true,
-
 			goto_next_start = {
 				["]a"] = "@parameter.inner",
 				["]m"] = "@function.outer",
@@ -42,6 +41,21 @@ configs.setup({
 			goto_previous_end = {
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
+			},
+			goto_next = {
+				["]b"] = "@conditional.outer",
+			},
+			goto_previous = {
+				["[b"] = "@conditional.outer",
+			},
+		},
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>."] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>,"] = "@parameter.inner",
 			},
 		},
 	},
