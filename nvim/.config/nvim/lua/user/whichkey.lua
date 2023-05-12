@@ -118,7 +118,6 @@ local mappings = {
 		t = {
 			name = "tmux",
 			["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal('1')<CR>", "goto tmux win 1" },
-			-- ["1"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "goto tmux win 1" },
 			["2"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", "goto tmux win 2" },
 			["3"] = { "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", "goto tmux win 3" },
 		},
@@ -167,7 +166,7 @@ local mappings = {
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		P = { "<cmd>Git pull<cr>", "Pull" },
-		H = { "<cmd>Git push origin HEAD<cr>", "Push HEAD" },
+		H = { "<cmd>Git push -u origin HEAD<cr>", "Push HEAD" },
 		-- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		R = { "<cmd>lua require 'gitsigns'.refresh()<cr>", "Refresh buffers" },
@@ -222,7 +221,7 @@ local mappings = {
 			"Diagnostic Open Float",
 		},
         n = {
-            "<cmd>lua require('ts-node-action').node_action()<CR>",
+            [[<cmd>lua require('ts-node-action').node_action()<CR>]],
             "TS Node Action"
         }
 	},
