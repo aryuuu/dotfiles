@@ -155,6 +155,7 @@ return packer.startup(function(use)
 		-- end
 	})
 	use("tpope/vim-fugitive")
+	use("ThePrimeagen/git-worktree.nvim")
 
 	-- winbar
 	use({ "fgheng/winbar.nvim" })
