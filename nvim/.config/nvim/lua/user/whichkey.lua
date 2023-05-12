@@ -184,7 +184,7 @@ local mappings = {
 		},
 		w = {
 			name = "Worktree",
-			s = { "<cmd>Telescope git_worktree git_worktrees<cr>", "List worktrees" },
+			s = { "<cmd>Telescope git_worktree git_worktrees theme=dropdown<cr>", "List worktrees" },
 			c = { "<cmd>Telescope git_worktree create_git_worktree<cr>", "Create worktree" },
 			-- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		}
