@@ -182,6 +182,12 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
+		w = {
+			name = "Worktree",
+			s = { "<cmd>Telescope git_worktree git_worktrees<cr>", "List worktrees" },
+			c = { "<cmd>Telescope git_worktree create_git_worktree<cr>", "Create worktree" },
+			-- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		}
 	},
 
 	l = {
