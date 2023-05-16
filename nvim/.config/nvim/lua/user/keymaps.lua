@@ -50,6 +50,10 @@ keymap("n", "<M-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
+-- xml tag jump
+keymap("n", "[t", "vato<Esc>", opts)
+keymap("n", "]t", "vat<Esc>", opts)
+
 -- better search navigation
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
