@@ -136,6 +136,7 @@ return packer.startup(function(use)
              require("ts-node-action").setup({})
          end
     })
+	use("windwp/nvim-ts-autotag")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
