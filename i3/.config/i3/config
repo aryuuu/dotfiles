@@ -69,7 +69,7 @@ exec xinput set-prop 17 326 1
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # lock screen after x minutes of inactivity
-exec_always --no-startup-id xautolock -time 8 locker "i3lock-fancy-multimonitor -n"
+exec_always --no-startup-id xautolock -time 8 locker "i3lock-fancy-multimonitor -n -b=5x3"
 
 # background
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"
@@ -122,10 +122,11 @@ bindsym $mod+XF86AudioMute exec dunstctl set-paused toggle
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec alacritty
 #bindsym $mod+Return exec xterm
 # lock screen
 # bindsym $mod+q exec ~/.script/i3lock-blur/lock.sh
-bindsym $mod+q exec i3lock-fancy-multimonitor -n
+bindsym $mod+q exec i3lock-fancy-multimonitor -n -b=5x3
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -141,6 +142,8 @@ bindsym $mod+space exec dmenu_run -c -i -f -fn "FontAwesome" -p "" -l 5 -sb $
 bindsym $mod+m exec ~/.scripts/sshmenu/sshmenu
 # open networkmanager dmenu
 bindsym $mod+n exec /usr/bin/networkmanager_dmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+# open bluetooth dmenu
+bindsym $mod+Shift+n exec /usr/bin/dmenu-bluetooth -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open dmenu dictionary
 bindsym $mod+o exec "~/project/dmenu-dict/dmenu-dict"
 # launch word-lookup
