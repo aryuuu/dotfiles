@@ -33,6 +33,10 @@ wconn () {
 	nmcli d wifi connect $1 password $2
 }
 
+wconnu () {
+	nmcli d wifi connect $1 username $2 password $3
+}
+
 test-microphone() {
 	arecord -vvv -f dat /dev/null
 }
@@ -44,6 +48,12 @@ mp3-dl () {
 
 keycheck () {
 	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+}
+
+colors () {
+	for i in {0..255}; do
+		printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
+	done
 }
 
 # eduka
@@ -129,3 +139,8 @@ docremi() {
     docker images | sed 1d | fzf -q "$1" --no-sort -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}' | xargs -r docker rmi
     
 }
+
+chfreq() {
+	git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -20
+}
+
