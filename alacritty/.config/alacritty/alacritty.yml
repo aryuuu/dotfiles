@@ -1,3 +1,5 @@
+env:
+  TERM: xterm-256color
 window:
   dimensions:
     columns: 125
@@ -16,6 +18,7 @@ cursor:
 
 font:
   size: 10
+  # similar look to urxvt
   normal:
     family: D2Coding
     style: Regular
@@ -25,6 +28,16 @@ font:
   italic:
     family: D2Coding
     style: Italic
+
+  # normal:
+  #     family: SauceCodePro Nerd Font
+  #     style: Regular
+  # bold:
+  #     family: SauceCodePro Nerd Font
+  #     style: Bold
+  # italic:
+  #     family: SauceCodePro Nerd Font
+  #     style: Italic
   offset:
     x: 0
     y: 0

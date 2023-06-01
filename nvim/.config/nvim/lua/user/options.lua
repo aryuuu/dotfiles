@@ -57,3 +57,4 @@ vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 vim.cmd([[let g:cheat_default_window_layout = 'split']])
 -- vim.cmd([[let g:vimwiki_key_mappings = {'all_maps': 0, 'global': 0}]])
 vim.cmd([[let g:vimwiki_map_prefix = '<leader>V']])
+-- vim.o.termguicolors = true

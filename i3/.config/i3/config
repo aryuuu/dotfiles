@@ -268,7 +268,7 @@ set $MON2 "DP-1"
 # set workspace to different monitor
 workspace $ws1 output $MON1
 workspace $ws2 output $MON1
-workspace $ws3 output $MON1
+workspace $ws3 output $MON2
 workspace $ws4 output $MON1
 workspace $ws5 output $MON1
 workspace $ws6 output $MON2
