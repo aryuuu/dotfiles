@@ -66,7 +66,6 @@ for _, server in pairs(servers) do
 	}
 	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
 	if has_custom_opts then
-		print("custom config " .. server)
 		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
 		-- dump(print("opts: ", dump(opts)))
 	end
