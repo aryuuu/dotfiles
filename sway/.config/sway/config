@@ -7,7 +7,7 @@ default_border pixel 2
 gaps inner 5
 
 # for_window [class="code-oss"] opacity 0.8
-# for_window [class="URxvt"] opacity 0.8
+for_window [class="URxvt"] opacity 0.8
 # for_window [app_id="telegramdesktop"] opacity 0.85
 # for_window [app_id="Slack"] opacity 0.80
 for_window [app_id="Alacritty"] opacity 0.8
@@ -296,6 +296,11 @@ assign [class="robo3t"] $ws11
     bindsym $mod+bar splith
     bindsym $mod+minus splitv
 
+    # grow and shrink gaps
+    bindsym $mod+z gaps inner current plus 2
+    bindsym $mod+Shift+z gaps inner current minus 2
+
+
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
@@ -332,10 +337,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 5px
-    bindsym $down resize grow height 5px
-    bindsym $up resize shrink height 5px
-    bindsym $right resize grow width 5px
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -357,14 +362,23 @@ bindsym $mod+r mode "resize"
 # client.urgent           #2f343a #900000 #ffffff #900000   #900000
 # client.placeholder      #F1202B #0c0c0c #ffffff #000000   #0c0c0c
 
-# nord theme
-client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
-client.unfocused        #2e3440 #2e3440 #888888 #2e3440
-client.focused_inactive #2e3440 #2e3440 #888888 #2e3440
-client.placeholder      #2e3440 #2e3440 #888888 #2e3440
-client.urgent           #900000 #900000 #ffffff #900000
+# dracula theme i3 
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 
-client.background       #242424
+
+# # nord theme
+# client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+# client.unfocused        #2e3440 #2e3440 #888888 #2e3440
+# client.focused_inactive #2e3440 #2e3440 #888888 #2e3440
+# client.placeholder      #2e3440 #2e3440 #888888 #2e3440
+# client.urgent           #900000 #900000 #ffffff #900000
+# client.background       #242424
 
 
 #

@@ -240,9 +240,10 @@ bindsym $mod+a focus parent
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4:"
 set $ws5 "5:"
-set $ws6 "6:"
+set $ws4 "4:"
+# set $ws6 "6:"
+set $ws6 "6:"
 set $ws7 "7:"
 set $ws8 "8:"
 set $ws9 "9:"
@@ -402,7 +403,8 @@ assign [class="code-oss"] $ws15
 assign [class="Cherrytree"] $ws5
 assign [class="Rhythmbox"] $ws6
 assign [class="SimpleScreenRecorder"] $ws7
-assign [class="Postman"] $ws16
+# assign [class="Postman"] $ws16
+assign [class="Postman"] $ws6
 assign [class="Insomnia"] $ws16
 assign [class="Mattermost"] $ws9
 assign [class="Slack"] $ws9
