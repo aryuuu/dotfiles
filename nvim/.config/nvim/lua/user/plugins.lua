@@ -233,6 +233,7 @@ return packer.startup(function(use)
     use {"Darazaki/indent-o-matic"}
 	use { 'smithbm2316/centerpad.nvim' }
 	use { 'xiyaowong/transparent.nvim' }
+	use {'eandrju/cellular-automaton.nvim'}
 
 
 	-- Automatically set up your configuration after cloning packer.nvim

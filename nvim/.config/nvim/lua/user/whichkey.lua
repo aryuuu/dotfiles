@@ -251,7 +251,7 @@ local mappings = {
 		-- 	"Find files",
 		-- },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-		c = { "<cmd>Telescope commands<cr>", "Commands" },
+		c = { "<cmd>Telescope commands theme=dropdown show_buf_command=false<cr>", "Commands" },
 		e = { "<cmd>Telescope env<cr>", "Envs" },
 	},
 
