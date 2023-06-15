@@ -1,5 +1,9 @@
 import:
-  - ~/.config/alacritty/dracula.yaml
+  # - ~/.config/alacritty/dracula.yaml
+  - ~/.config/alacritty/catppuccin-mocha.yaml
+  # - ~/.config/alacritty/catppuccin-latte.yaml # cursed theme, plz don't use
+  # - ~/.config/alacritty/catppuccin-frappe.yaml
+  # - ~/.config/alacritty/catppuccin-macchiato.yaml
 env:
   TERM: xterm-256color
 window:
@@ -88,6 +92,7 @@ key_bindings:
   - { key: PageDown, action: ScrollHalfPageDown }
   - { key: PageUp, mods: Alt,  action: ScrollPageUp }
   - { key: PageDown, mods: Alt, action: ScrollPageDown }
+  - { key: Escape, mods: Alt, action: ToggleViMode }
 
 hints:
   enabled:
