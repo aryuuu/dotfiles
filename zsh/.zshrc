@@ -110,7 +110,10 @@ bindkey -s ^f "tmux-sessionizer\n"
 export JAVA_HOME=/usr/lib/jvm/default
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 #export HADOOP_CLASSPATH=$(hadoop classpath)
-
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 # PATH
 PATH=$JAVA_HOME:~/.local/bin:$HOME/go/bin:$PATH:$HOME/.scripts
