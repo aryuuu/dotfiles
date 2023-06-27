@@ -71,7 +71,7 @@ exec xinput set-prop "SYNA32A0:00 06CB:CE14 Touchpad" "libinput Tapping Enabled 
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # lock screen after x minutes of inactivity
-exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy-multimonitor -n -b=5x3"
+# exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy-multimonitor -n -b=5x3"
 
 # background
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"

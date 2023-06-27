@@ -40,6 +40,7 @@ local kind_icons = {
 	Constant = "",
 	Struct = "",
 	Event = "",
+	Copilot = "",
 	Operator = "",
 	TypeParameter = "",
 }
@@ -105,12 +106,14 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				copilot = "[Copilot]",
 			})[entry.source.name]
 			return vim_item
 		end,
 	},
 	sources = {
 		{ name = "nvim_lsp" },
+		{ name = "copilot" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },

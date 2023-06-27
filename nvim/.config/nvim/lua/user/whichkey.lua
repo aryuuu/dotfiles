@@ -229,7 +229,14 @@ local mappings = {
         n = {
             [[<cmd>lua require('ts-node-action').node_action()<CR>]],
             "TS Node Action"
-        }
+        },
+		c = {
+			name = "Copilot",
+			c = {
+				"<cmd>lua require('copilot').toggle_auto_trigger()<CR>",
+				"Toggle auto trigger",
+			},
+		}
 	},
 	s = {
 		name = "Search",

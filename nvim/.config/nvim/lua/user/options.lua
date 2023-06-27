@@ -58,3 +58,9 @@ vim.cmd([[let g:cheat_default_window_layout = 'split']])
 -- vim.cmd([[let g:vimwiki_key_mappings = {'all_maps': 0, 'global': 0}]])
 vim.cmd([[let g:vimwiki_map_prefix = '<leader>V']])
 -- vim.o.termguicolors = true
+
+-- copilot remapping related options
+-- vim.cmd([[let g:copilot_no_tab_map = v:true]])
+-- vim.cmd([[let g:copilot_assume_mapped = v:true]])
+vim.g['copilot_no_tab_map'] = false
+vim.g['copilot_assume_mapped'] = false

@@ -42,7 +42,7 @@ packer.init({
 return packer.startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+	use("nvim-lua/popup.nvim")  -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
@@ -66,7 +66,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("Mofiqul/dracula.nvim")
-    use ("rebelot/kanagawa.nvim")
+	use("rebelot/kanagawa.nvim")
 	use("EdenEast/nightfox.nvim")
 	use("jacoborus/tender.vim")
 	use("rmehri01/onenord.nvim")
@@ -77,17 +77,17 @@ return packer.startup(function(use)
 		tag = "v0.2",
 	})
 	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
+	use("hrsh7th/nvim-cmp")                 -- The completion plugin
+	use("hrsh7th/cmp-buffer")               -- buffer completions
+	use("hrsh7th/cmp-path")                 -- path completions
+	use("hrsh7th/cmp-cmdline")              -- cmdline completions
 	use("hrsh7th/cmp-nvim-lsp-signature-help") -- signature help completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("saadparwaiz1/cmp_luasnip")         -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
-	use('folke/neodev.nvim')
+	use("folke/neodev.nvim")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
+	use("L3MON4D3/LuaSnip")          --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
@@ -97,7 +97,8 @@ return packer.startup(function(use)
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("MunifTanjim/eslint.nvim")
-	use({ -- breadcrumbs
+	use({
+		-- breadcrumbs
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
 	}) -- Lua
@@ -107,14 +108,21 @@ return packer.startup(function(use)
 	})
 	use("simrat39/rust-tools.nvim")
 	use("nanotee/sqls.nvim")
-    use("b0o/schemastore.nvim")
+	use("b0o/schemastore.nvim")
 	-- use("nvim-lua/lsp-status.nvim")
 	-- Comment
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
-	use { "LinArcX/telescope-env.nvim" }
+	use({ "LinArcX/telescope-env.nvim" })
 	use({ "ThePrimeagen/harpoon" })
-
+	use({ "zbirenbaum/copilot.lua" })
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	})
 	-- Treesitter
 	-- use {
 	--     "nvim-treesitter/nvim-treesitter",
@@ -128,15 +136,15 @@ return packer.startup(function(use)
 	})
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
-    use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-    use({
-        'ckolkey/ts-node-action',
-         requires = { 'nvim-treesitter' },
-         config = function()
-             require("ts-node-action").setup({})
-         end
-    })
+	use({
+		"ckolkey/ts-node-action",
+		requires = { "nvim-treesitter" },
+		config = function()
+			require("ts-node-action").setup({})
+		end,
+	})
 	use("windwp/nvim-ts-autotag")
 
 	-- Git
@@ -186,12 +194,12 @@ return packer.startup(function(use)
 		module = { "dap" },
 		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
 		requires = {
-			{ "Pocco81/DAPInstall.nvim", commit = "24923c3819a450a772bb8f675926d530e829665f" },
+			{ "Pocco81/DAPInstall.nvim",           commit = "24923c3819a450a772bb8f675926d530e829665f" },
 			"theHamsta/nvim-dap-virtual-text",
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
 			"nvim-telescope/telescope-dap.nvim",
-			{ "leoluz/nvim-dap-go", module = "dap-go" },
+			{ "leoluz/nvim-dap-go",                module = "dap-go" },
 			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
 		},
 		config = function()
@@ -228,13 +236,12 @@ return packer.startup(function(use)
 	use("ThePrimeagen/vim-be-good")
 	use("tpope/vim-surround")
 	use("mbbill/undotree")
-    use {"ellisonleao/glow.nvim"}
-    use {"mzlogin/vim-markdown-toc"}
-    use {"Darazaki/indent-o-matic"}
-	use { 'smithbm2316/centerpad.nvim' }
-	use { 'xiyaowong/transparent.nvim' }
-	use {'eandrju/cellular-automaton.nvim'}
-
+	use({ "ellisonleao/glow.nvim" })
+	use({ "mzlogin/vim-markdown-toc" })
+	use({ "Darazaki/indent-o-matic" })
+	use({ "smithbm2316/centerpad.nvim" })
+	use({ "xiyaowong/transparent.nvim" })
+	use({ "eandrju/cellular-automaton.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -148,6 +148,19 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot-cmp"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16copilot_cmp\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/opt/copilot-cmp",
+    url = "https://github.com/zbirenbaum/copilot-cmp"
+  },
+  ["copilot.lua"] = {
+    loaded = true,
+    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
@@ -286,7 +299,7 @@ _G.packer_plugins = {
     url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-dap"] = {
-    after = { "one-small-step-for-vimkind", "nvim-dap-go", "telescope-dap.nvim", "DAPInstall.nvim", "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
+    after = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-python", "one-small-step-for-vimkind", "telescope-dap.nvim", "nvim-dap-ui", "nvim-dap-go" },
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ruser.dap\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -614,6 +627,15 @@ time([[Config for vimwiki]], false)
 time([[Config for ts-node-action]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19ts-node-action\frequire\0", "config", "ts-node-action")
 time([[Config for ts-node-action]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd copilot.lua ]]
+vim.cmd [[ packadd copilot-cmp ]]
+
+-- Config for: copilot-cmp
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16copilot_cmp\frequire\0", "config", "copilot-cmp")
+
+time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
