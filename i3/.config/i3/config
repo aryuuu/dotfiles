@@ -166,6 +166,8 @@ bindsym $mod+Shift+w exec "~/.scripts/walt.sh"
 bindsym $mod+u exec "~/project/dmenu-emoji/dmenu-emoji.sh "  
 # open reaction meme selector
 bindsym $mod+Shift+u exec "~/.scripts/dmemes.sh"  
+# github repo search
+bindsym $mod+g exec "~/.scripts/dmenu-github.sh"  
 
 ###############################################################
 
@@ -303,7 +305,7 @@ bindsym $mod+slash workspace number $ws13
 bindsym $mod+semicolon workspace number $ws14
 bindsym $mod+bracketleft workspace number $ws15
 bindsym $mod+bracketright workspace number $ws16
-bindsym $mod+g workspace number $ws17
+# bindsym $mod+g workspace number $ws17
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
