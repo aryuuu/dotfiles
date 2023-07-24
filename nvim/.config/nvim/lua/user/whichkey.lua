@@ -236,6 +236,10 @@ local mappings = {
 				"<cmd>lua require('copilot').toggle_auto_trigger()<CR>",
 				"Toggle auto trigger",
 			},
+			r = {
+				"<cmd>lua require('copilot.panel').refresh()<CR>",
+				"Refresh panel",
+			},
 		}
 	},
 	s = {

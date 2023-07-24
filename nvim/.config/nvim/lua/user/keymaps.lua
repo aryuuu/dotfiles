@@ -76,6 +76,12 @@ keymap("i", "<M-a>", "<Esc>A", opts)
 -- I, without going to NORMAL mode first
 keymap("i", "<M-i>", "<Esc>I", opts)
 
+-- Copilot related mappings
+-- keymap('i', '<C-J>', [[<ESC>:call copilot#Accept()<CR>i]], opts)
+-- keymap('i', '<M-p>', [[<ESC>:call copilot#Accept()<CR>i]], opts)
+keymap('i', '<C-/>', 'copilot#Accept(“<CR>”)', {expr=true, silent=true})
+keymap('i', '<C-CR>', 'copilot#Accept(“<CR>”)', {expr=true, silent=true})
+
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -103,6 +109,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<leader>jp", ":'<,'>!jq<CR>", opts)
 keymap("x", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
 
+-- markdown check
+keymap("x", "<leader>tc", ":'<,'>s/\\[\\]\\|\\[ \\]/[x]<CR>", opts)
+
 -- Terminal --
 -- Better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
@@ -112,3 +121,4 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Nvimtree
 -- keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+

@@ -10,7 +10,7 @@ local opts = {
 					"**/.deployment/helm/**/*.yaml",
 					"**/.deployment/helm/**/*.yml",
 				},
-				["/home/fatt/project/xendit/xendit-json-schema/schemas/buddyworks.json"] = { "**/.buddy/*.yaml" },
+				-- ["/home/fatt/project/xendit/xendit-json-schema/schema/buddyworks.json"] = { "**/.buddy/*.yaml" },
 				-- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
 			},
 		},

@@ -38,6 +38,7 @@ local servers = {
 	"terraformls",
 	"jdtls",
 	"zls",
+	"svelte",
 }
 
 -- mason_lspconfig.setup({
