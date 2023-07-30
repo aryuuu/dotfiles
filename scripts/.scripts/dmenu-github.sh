@@ -5,7 +5,16 @@
 
 GITHUB_TOKEN=$(<~/.config/gh/dmenu_github_token)
 
-query=$(cat ~/.cache/dmenu-github | dmenu -c -fn "FontAwesome" -p " "  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D' | tr ' ' '+' )
+if command -v rofi &> /dev/null 
+then
+    LAUNCHER="rofi -dmenu -p "
+else
+    LAUNCHER="dmenu -c -fn 'FontAwesome' -p ' '  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D'"
+fi
+
+
+query=$(cat ~/.cache/dmenu-github | $LAUNCHER | tr ' ' '+' )
+# query=$(cat ~/.cache/dmenu-github | dmenu -c -fn 'FontAwesome' -p ' '  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D'  | tr ' ' '+' )
 
 if [[ -z $query ]];
 then
@@ -24,7 +33,10 @@ else
       https://api.github.com/search/repositories\?q\=$query \
       | jq '.items[] | .full_name' \
       | tr -d '"' \
-      | dmenu -c -fn "FontAwesome" -p " "  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D')
+      | $LAUNCHER " ")
+
+      # | dmenu -c -fn "FontAwesome" -p " "  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D')
+
 
     if [[ -z $selected_repo ]];
     then

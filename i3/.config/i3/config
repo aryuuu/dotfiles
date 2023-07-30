@@ -154,7 +154,10 @@ bindsym $mod+space exec rofi -show run
 bindsym $mod+m exec rofi -show ssh
 
 # open networkmanager dmenu
-bindsym $mod+n exec /usr/bin/networkmanager_dmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+# bindsym $mod+n exec /usr/bin/networkmanager_dmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+# rofi version
+bindsym $mod+n exec ~/.scripts/rofi-nmcli.sh
+
 # open bluetooth dmenu
 bindsym $mod+Shift+n exec /usr/bin/dmenu-bluetooth -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open dmenu dictionary
