@@ -27,3 +27,4 @@ stow --target=$HOME */
 - Greeter theme - [**Litarvan**](https://github.com/Litarvan/lightdm-webkit-theme-litarvan)
 - File manager - [**ranger**](https://ranger.github.io/index.html)
 - Ranger colorscheme - [**zenburn**](http://dotshare.it/dots/706/)
+- Text editor - [**neovim**](https://neovim.io/)
