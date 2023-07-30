@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # terminate alreadt running bar instances
 killall -q polybar

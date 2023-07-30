@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # script for wallpaper and theme
 # select one picture from ~/pictures/wallpaper/
