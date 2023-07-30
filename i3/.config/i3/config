@@ -155,7 +155,7 @@ bindsym $mod+t exec "~/.scripts/dmenu-todo/todo.sh dmenu"
 # open passmenu
 bindsym $mod+p exec /usr/bin/passmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open clipmenu
-bindsym $mod+c exec clipmenu -c -i -f -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
+bindsym $mod+c exec clipmenu -c -i -f -fn "FontAwesome" -p  -l 10 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF 
 # open pavucontrol menu
 bindsym $mod+i exec "~/.scripts/sink.sh"  
 # open books selection
