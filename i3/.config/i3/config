@@ -18,6 +18,7 @@ font pango:FontAwesome 5 Brands 8, FontAwesome 5 Free 8, DejaVu Sans Mono 8
 for_window [class=".*"] border pixel 3
 # set godot engine window to floating as default
 for_window [class="Godot_Engine"] floating enable
+for_window [class="Authy Desktop"] floating disable
 
 # gaps
 smart_gaps on
@@ -244,7 +245,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
