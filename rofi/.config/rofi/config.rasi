@@ -8,6 +8,7 @@ configuration{
     disable-history: false;
     matching: "fuzzy";
     hide-scrollbar: true;
+    sorting-method: "fzf";
     display-drun: "   Apps ";
     display-run: "   Run ";
     display-window: " 﩯  Window";

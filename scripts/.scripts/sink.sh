@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # choose pulseaudio sink via rofi or dmenu
 # changes default sink and moves all streams to that sink
 
@@ -16,7 +16,7 @@ DMENU_NHF="#FA485D"
 
 if command -v rofi &> /dev/null
 then
-	LAUNCHER="rofi -dmenu -i -p "
+	LAUNCHER="rofi -dmenu -i -p  "
 else
 	LAUNCHER="dmenu -c -fn 'FontAwesome' -p  -i -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF"
 fi

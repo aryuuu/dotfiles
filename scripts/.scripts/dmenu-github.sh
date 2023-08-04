@@ -7,7 +7,7 @@ GITHUB_TOKEN=$(<~/.config/gh/dmenu_github_token)
 
 if command -v rofi &> /dev/null 
 then
-    LAUNCHER="rofi -dmenu -i -p "
+    LAUNCHER="rofi -dmenu -i -p  "
 else
     LAUNCHER="dmenu -c -fn 'FontAwesome' -p ' '  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D'"
 fi

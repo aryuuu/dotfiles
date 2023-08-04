@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # list files in a dir pipe into dmenu
 # take selection from user

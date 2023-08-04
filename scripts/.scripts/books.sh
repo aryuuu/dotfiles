@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # list all files in ~/books/
 # pipe into dmenu
