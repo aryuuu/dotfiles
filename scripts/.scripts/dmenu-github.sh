@@ -35,9 +35,6 @@ else
       | tr -d '"' \
       | $LAUNCHER " ")
 
-      # | dmenu -c -fn "FontAwesome" -p " "  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D')
-
-
     if [[ -z $selected_repo ]];
     then
         notify-send "dmenu github" "Please select a repo"
