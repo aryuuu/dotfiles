@@ -191,6 +191,8 @@ bindsym $mod+u exec "~/project/dmenu-emoji/dmenu-emoji.sh "
 bindsym $mod+Shift+u exec "~/.scripts/dmemes.sh"  
 # github repo search
 bindsym $mod+g exec "~/.scripts/dmenu-github.sh"  
+# snippet menu
+bindsym $mod+Shift+s exec "~/.scripts/dsnippet.sh"  
 
 ###############################################################
 
