@@ -108,6 +108,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- json formatting
 keymap("x", "<leader>jp", ":'<,'>!jq<CR>", opts)
 keymap("x", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
+keymap("n", "<leader>jp", ":'<,'>!jq<CR>", opts)
+-- TODO: fix this
+keymap("n", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
 
 -- markdown check
 keymap("x", "<leader>tc", ":'<,'>s/\\[\\]\\|\\[ \\]/[x]<CR>", opts)

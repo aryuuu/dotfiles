@@ -46,8 +46,8 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
-	use("ahmedkhalf/project.nvim") -- switch between projects
-	use("jvgrootveld/telescope-zoxide")
+	-- use("ahmedkhalf/project.nvim") -- switch between projects
+	-- use("jvgrootveld/telescope-zoxide")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("terrortylor/nvim-comment") -- comment stuff the good way
 	use("akinsho/toggleterm.nvim") -- toggleterminal from inside nvim
@@ -62,7 +62,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	use("lunarvim/darkplus.nvim")
+	-- use("lunarvim/darkplus.nvim")
 	use("folke/tokyonight.nvim")
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("Mofiqul/dracula.nvim")
@@ -109,11 +109,13 @@ return packer.startup(function(use)
 	use("simrat39/rust-tools.nvim")
 	use("nanotee/sqls.nvim")
 	use("b0o/schemastore.nvim")
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua")
 	-- use("nvim-lua/lsp-status.nvim")
 	-- Comment
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
-	use({ "LinArcX/telescope-env.nvim" })
+	-- use({ "LinArcX/telescope-env.nvim" })
 	use({ "ThePrimeagen/harpoon" })
 	use({ "zbirenbaum/copilot.lua" })
 	use({
@@ -152,17 +154,6 @@ return packer.startup(function(use)
 	use({
 		"ruifm/gitlinker.nvim",
 		requires = "nvim-lua/plenary.nvim",
-	})
-	use({
-		"pwntester/octo.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"kyazdani42/nvim-web-devicons",
-		},
-		-- config = function ()
-		--   require"octo".setup()
-		-- end
 	})
 	use("tpope/vim-fugitive")
 	use("ThePrimeagen/git-worktree.nvim")
@@ -236,10 +227,8 @@ return packer.startup(function(use)
 	use("ThePrimeagen/vim-be-good")
 	use("tpope/vim-surround")
 	use("mbbill/undotree")
-	use({ "ellisonleao/glow.nvim" })
 	use({ "mzlogin/vim-markdown-toc" })
 	use({ "Darazaki/indent-o-matic" })
-	use({ "smithbm2316/centerpad.nvim" })
 	use({ "xiyaowong/transparent.nvim" })
 	use({ "eandrju/cellular-automaton.nvim" })
 

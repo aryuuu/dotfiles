@@ -3,7 +3,8 @@ if not status_ok then
 	return
 end
 
-require("neodev").setup()
+-- disable this when not developing plugins, takes a lot of resources
+-- require("neodev").setup()
 
 local lspconfig = require("lspconfig")
 
@@ -39,6 +40,7 @@ local servers = {
 	"jdtls",
 	"zls",
 	"svelte",
+	"ocamllsp",
 }
 
 -- mason_lspconfig.setup({
