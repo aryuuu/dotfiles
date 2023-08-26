@@ -38,8 +38,9 @@ include-file = $HOME/.config/polybar/modules.ini
 	
 	tray-position = right
 
-	modules-left = i3 title
+	modules-left = i3
 	;modules-center = dpms
+	modules-center = title
 	modules-right = polypomo pulseaudio pulseaudio-control-input backlight exbacklight battery time date
 
 [bar/tray] 
