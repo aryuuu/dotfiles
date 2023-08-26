@@ -1,18 +1,14 @@
 [{
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 20,
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/window"
+        "wlr/workspaces",
+        "wlr/mode",
+        "wlr/window"
     ],
     "modules-right": [
         "backlight",
-        "disk#root",
-        "disk#home",
-        "memory",
-        "cpu",
         "pulseaudio",
         "network",
         "idle_inhibitor",
@@ -156,25 +152,16 @@
 {
     "layer": "bottom",
     "position": "bottom",
-    "height": 30,
+    "height": 20,
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/window"
     ],
     "modules-right": [
-        "backlight",
         "disk#root",
         "disk#home",
         "memory",
         "cpu",
-        "pulseaudio",
         "network",
         "idle_inhibitor",
-        "battery",
-        "clock#time",
-        "clock#date",
-        "tray"
     ],
     "sway/mode": {
         "format": " {}"
@@ -302,10 +289,6 @@
             "deactivated": ""
         },
         "tooltip": false
-    },
-    "tray": {
-        "icon-size": 15,
-        "spacing": 5
     }
 }
 ]
