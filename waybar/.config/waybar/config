@@ -17,14 +17,14 @@
         "clock#date",
         "tray"
     ],
-    "sway/mode": {
+    "wlr/mode": {
         "format": " {}"
     },
-    "sway/workspaces": {
+    "wlr/workspaces": {
         "format": "{name}",
         "disable-scroll": true
     },
-    "sway/window": {
+    "wlr/window": {
         "format": "{}",
         "max-length": 50,
         "tooltip": false,
@@ -163,14 +163,14 @@
         "network",
         "idle_inhibitor",
     ],
-    "sway/mode": {
+    "wlr/mode": {
         "format": " {}"
     },
-    "sway/workspaces": {
+    "wlr/workspaces": {
         "format": "{name}",
         "disable-scroll": true
     },
-    "sway/window": {
+    "wlr/window": {
         "format": "{}",
         "max-length": 50,
         "tooltip": false,
