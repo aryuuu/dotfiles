@@ -11,8 +11,9 @@ if [[ $1 == "--type" ]]; then
 fi
 
 if [[ -n $WAYLAND_DISPLAY ]]; then
-	dmenu=dmenu-wl
-	xdotool="ydotool type --file -"
+	dmenu="rofi -dmenu"
+	# xdotool="ydotool type --file -"
+	xdotool="xdotool type --clearmodifiers --file -"
 elif [[ -n $DISPLAY ]]; then
 	dmenu="rofi -dmenu"
 	xdotool="xdotool type --clearmodifiers --file -"
