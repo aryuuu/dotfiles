@@ -7,10 +7,12 @@
         "wlr/mode",
         "wlr/window"
     ],
+    "modules-center": [
+        "wlr/window"
+    ],
     "modules-right": [
         "backlight",
         "pulseaudio",
-        "network",
         "idle_inhibitor",
         "battery",
         "clock#time",
@@ -25,7 +27,7 @@
         "disable-scroll": true
     },
     "wlr/window": {
-        "format": "{}",
+        "format": "{name}",
         "max-length": 50,
         "tooltip": false,
         "rewrite": {
@@ -34,14 +36,6 @@
             "(.*) - zsh": " [$1]",
             "Telegram": " Telegram"
         }
-    },
-    "memory": {
-        "interval": 5,
-        "format": " {avail:.3}GB"
-    },
-    "cpu": {
-        "interval": 5,
-        "format": " {usage:1}%"
     },
     "clock#time": {
         "format": " {:%H:%M}",
@@ -52,8 +46,8 @@
         "tooltip": false
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-alt": "{time} {icon}",
+        "format": "{icon}  {capacity}% ",
+        "format-alt": "{icon} {time}",
         "format-icons": [
             "",
             "",
@@ -69,28 +63,8 @@
         },
         "tooltip": false
     },
-    "network": {
-        "format": "{icon}",
-        "format-alt": "{ipaddr}/{cidr} {icon}",
-        "format-alt-click": "click-right",
-        "format-icons": {
-            "wifi": [
-                "",
-                "",
-                ""
-            ],
-            "ethernet": [
-                ""
-            ],
-            "disconnected": [
-                ""
-            ]
-        },
-        "on-click": "alacritty -e nmtui",
-        "tooltip": false
-    },
     "pulseaudio": {
-        "format": "{volume} {icon}",
+        "format": "{icon} {volume}",
         "format-alt": "{volume} {icon}",
         "format-alt-click": "click-right",
         "format-muted": "",
@@ -112,21 +86,8 @@
         "on-click": "pavucontrol",
         "tooltip": false
     },
-    "disk#root": {
-        "format": "{percentage_used}% {free} / ",
-        "format-alt": "{percentage}% ",
-        "format-alt-right": "click-right",
-        "path": "/"
-        // "max-length": 
-    },
-    "disk#home": {
-        "format": "{percentage_used}% {free} /home ",
-        "format-alt": "{percentage}% ",
-        "format-alt-right": "click-right",
-        "path": "/home"
-    },
     "backlight": {
-        "format": "{percent}% {icon}",
+        "format": "{icon} {percent}%",
         "format-alt": "{percent}% {icon}",
         "format-alt-click": "click-right",
         "format-icons": [
@@ -161,26 +122,7 @@
         "memory",
         "cpu",
         "network",
-        "idle_inhibitor",
     ],
-    "wlr/mode": {
-        "format": " {}"
-    },
-    "wlr/workspaces": {
-        "format": "{name}",
-        "disable-scroll": true
-    },
-    "wlr/window": {
-        "format": "{}",
-        "max-length": 50,
-        "tooltip": false,
-        "rewrite": {
-            "(.*) - Mozilla Firefox": " $1",
-            "(.*) - vim": " $1",
-            "(.*) - zsh": " [$1]",
-            "Telegram": " Telegram"
-        }
-    },
     "memory": {
         "interval": 5,
         "format": " {avail:.3}GB"
@@ -189,34 +131,8 @@
         "interval": 5,
         "format": " {usage:1}%"
     },
-    "clock#time": {
-        "format": " {:%H:%M}",
-        "tooltip": false
-    },
-    "clock#date": {
-        "format": " {:%a %d %b}",
-        "tooltip": false
-    },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "format-charging": "{capacity}% ",
-        "interval": 30,
-        "states": {
-            "warning": 25,
-            "critical": 10
-        },
-        "tooltip": false
-    },
     "network": {
-        "format": "{icon}",
+        "format": "{icon} {essid}",
         "format-alt": "{ipaddr}/{cidr} {icon}",
         "format-alt-click": "click-right",
         "format-icons": {
@@ -235,60 +151,18 @@
         "on-click": "alacritty -e nmtui",
         "tooltip": false
     },
-    "pulseaudio": {
-        "format": "{volume} {icon}",
-        "format-alt": "{volume} {icon}",
-        "format-alt-click": "click-right",
-        "format-muted": "",
-        "format-icons": {
-            "phone": [
-                " ",
-                " ",
-                " ",
-                " "
-            ],
-            "default": [
-                "",
-                "",
-                "",
-                ""
-            ]
-        },
-        "scroll-step": 10,
-        "on-click": "pavucontrol",
-        "tooltip": false
-    },
     "disk#root": {
-        "format": "{percentage_used}% {free} / ",
+        "format": " {percentage_used}% {free} /",
         "format-alt": "{percentage}% ",
         "format-alt-right": "click-right",
         "path": "/"
         // "max-length": 
     },
     "disk#home": {
-        "format": "{percentage_used}% {free} /home ",
+        "format": " {percentage_used}% {free} /home",
         "format-alt": "{percentage}% ",
         "format-alt-right": "click-right",
         "path": "/home"
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-alt": "{percent}% {icon}",
-        "format-alt-click": "click-right",
-        "format-icons": [
-            "",
-            ""
-        ],
-        "on-scroll-down": "light -A 1",
-        "on-scroll-up": "light -U 1"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": false
     }
 }
 ]
