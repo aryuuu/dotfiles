@@ -64,6 +64,8 @@ keymap("n", "<leader>sx", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>"
 keymap("n", "gh", "<CMD>diffget //2<CR>", opts)
 keymap("n", "gl", "<CMD>diffget //3<CR>", opts)
 
+keymap("n", "J", "mzJ`z", opts)
+
 -- Insert --
 -- Press jk fast to enter normal mode
 keymap("i", "jk", "<ESC>", opts)
@@ -111,6 +113,9 @@ keymap("x", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
 keymap("n", "<leader>jp", ":'<,'>!jq<CR>", opts)
 -- TODO: fix this
 keymap("n", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
+
+-- Replace \n with actual newlines
+keymap("x", "<leader>N", ":'<,'>s/\\\\n/\\r/g<CR>", opts)
 
 -- markdown check
 keymap("x", "<leader>tc", ":'<,'>s/\\[\\]\\|\\[ \\]/[x]<CR>", opts)
