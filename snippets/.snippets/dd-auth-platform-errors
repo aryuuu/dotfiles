@@ -1,0 +1,1 @@
+service:xendit-auth-platform env:production-live operation_name:http.request @http.status_code:500
