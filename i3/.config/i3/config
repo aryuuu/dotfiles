@@ -39,6 +39,8 @@ set $FINGERPRINT_ICON 
 set $BRACKETS_CURLY_ICON 
 set $JAVA_ICON  
 set $CURLY_BRACKET_ICON 
+set $VIM_ICON 
+# 
 
 ## Colorschemes
 set $DMENU_SB "#6272A4"
@@ -115,6 +117,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/backlight/inc
 # control brightness of second monitor with xrandr
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/backlight/exdec
 bindsym Shift+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/backlight/exinc
+
+bindsym $mod+Prior exec --no-startup-id ~/.scripts/backlight/exdec
+bindsym $mod+Next exec --no-startup-id ~/.scripts/backlight/exinc
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -192,7 +198,7 @@ bindsym $mod+Shift+u exec "~/.scripts/dmemes.sh"
 # github repo search
 bindsym $mod+g exec "~/.scripts/dmenu-github.sh"  
 # snippet menu
-bindsym $mod+Shift+s exec "~/.scripts/dsnippet.sh"  
+bindsym $mod+s exec "~/.scripts/dsnippet.sh"  
 
 ###############################################################
 
@@ -283,6 +289,7 @@ set $ws15 "15:"
 set $ws16 "16:"
 set $ws17 "17:"
 
+
 set $MON1 "eDP-1"
 set $MON2 "DP-1"
 # globe icon 
@@ -351,7 +358,7 @@ bindsym $mod+Shift+bracketleft move container to workspace number $ws15
 bindsym $mod+Shift+bracketright move container to workspace number $ws16
 bindsym $mod+Shift+g move container to workspace number $ws17
 
-bindsym $mod+s move workspace to output next
+bindsym $mod+Shift+s move workspace to output next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
