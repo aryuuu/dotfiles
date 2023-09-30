@@ -105,24 +105,26 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		-- for powerline look
-		-- component_separators = { left = "", right = "" },
-		-- section_separators = { left = "", right = "" },
 
-		-- for bubble look
-		component_separators = "|",
-		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
-		always_divide_middle = true,
+		-- for powerline look
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+
+		-- -- for bubble look
+		-- component_separators = "|",
+		-- section_separators = { left = "", right = "" },
+		-- disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+		-- always_divide_middle = true,
+
 	},
 	sections = {
 		-- powerline look
-		-- lualine_a = { branch },
+		lualine_a = { branch },
 
 		-- bubbly look
-		lualine_a = {
-			{ "branch", separator = { left = "", right = "" }, right_padding = 0 },
-		},
+		-- lualine_a = {
+		-- 	{ "branch", separator = { left = "", right = "" }, right_padding = 0 },
+		-- },
 		lualine_b = { mode, is_venn_enabled },
 		lualine_c = { "lsp_progress", filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
@@ -130,12 +132,12 @@ lualine.setup({
 		lualine_x = { spaces, "encoding", filetype },
 		lualine_y = { location },
 		-- powerline look
-		-- lualine_z = { progress }
+		lualine_z = { progress }
 
 		-- bubbly look
-		lualine_z = {
-			{ "progress", fmt = progress, separator = { left = "", right = "" }, left_padding = 0 },
-		},
+		-- lualine_z = {
+		-- 	{ "progress", fmt = progress, separator = { left = "", right = "" }, left_padding = 0 },
+		-- },
 	},
 	inactive_sections = {
 		lualine_a = {},

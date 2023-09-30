@@ -1,9 +1,10 @@
 import:
   # - ~/.config/alacritty/dracula.yaml
-  - ~/.config/alacritty/catppuccin-mocha.yaml
+  # - ~/.config/alacritty/catppuccin-mocha.yaml
   # - ~/.config/alacritty/catppuccin-latte.yaml # cursed theme, plz don't use
   # - ~/.config/alacritty/catppuccin-frappe.yaml
   # - ~/.config/alacritty/catppuccin-macchiato.yaml
+  - ~/.config/alacritty/nord.yaml
 env:
   TERM: xterm-256color
 window:
@@ -14,7 +15,7 @@ window:
     x: 4
     y: 4
   dynamic_title: true
-  opacity: 0.9
+  opacity: 0.8
 
 scrolling:
   history: 100000
@@ -23,7 +24,7 @@ cursor:
   style: Block
 
 font:
-  size: 10
+  size: 9
   # similar look to urxvt
   normal:
     family: D2Coding
@@ -79,6 +80,7 @@ schemes:
 mouse_bindings:
   - { mouse: Middle, action: Copy }
 key_bindings:
+  # - { key: S,   mods: Alt,          action: Search } # move a word backward
   - { key: Left,   mods: Alt,          chars: "\x1b\x62"        } # move a word backward
   - { key: Right,  mods: Alt,          chars: "\x1b\x66"        } # move a word forward
   - { key: Left,   mods: Control|Alt,  chars: "\x17"            } # delete a word backward
@@ -86,6 +88,8 @@ key_bindings:
   - { key: C,  mods: Alt,  action: Copy }
   - { key: V,  mods: Alt,  action: Paste }
   - { key: Up,  mods: Alt,  action: IncreaseFontSize }
+  - { key: Key9,  mods: Alt,  action: DecreaseFontSize }
+  - { key: Key0,  mods: Alt,  action: IncreaseFontSize }
   - { key: Down,  mods: Alt,  action: DecreaseFontSize }
   # - { key: U,  mods: Alt,  action: select } # select link
   - { key: PageUp,  action: ScrollHalfPageUp }

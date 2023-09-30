@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	use("terrortylor/nvim-comment") -- comment stuff the good way
 	use("akinsho/toggleterm.nvim") -- toggleterminal from inside nvim
 	use("kyazdani42/nvim-web-devicons")
-	use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" })
+	use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243", })
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
@@ -84,6 +84,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp-signature-help") -- signature help completions
 	use("saadparwaiz1/cmp_luasnip")         -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
+
 	use("folke/neodev.nvim")
 
 	-- snippets
@@ -199,7 +200,6 @@ return packer.startup(function(use)
 	})
 
 	-- taking notes
-	use("oberblastmeister/neuron.nvim")
 	use({
 		"vimwiki/vimwiki",
 		config = function()
@@ -214,13 +214,6 @@ return packer.startup(function(use)
 	})
 	use("ElPiloto/telescope-vimwiki.nvim")
 	use("mg979/vim-visual-multi")
-
-	-- cheatsheet
-	use("RishabhRD/popfix")
-	use("RishabhRD/nvim-cheat.sh")
-
-	use("tami5/sqlite.lua")
-	use("nvim-telescope/telescope-cheat.nvim")
 
 	use("jbyuki/venn.nvim")
 

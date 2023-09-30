@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/fatt/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/fatt/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/fatt/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?/init.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/fatt/.cache/nvim/packer_hererocks/2.1.1694285958/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -248,11 +248,6 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
-  ["neuron.nvim"] = {
-    loaded = true,
-    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/neuron.nvim",
-    url = "https://github.com/oberblastmeister/neuron.nvim"
-  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -278,11 +273,6 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
-  ["nvim-cheat.sh"] = {
-    loaded = true,
-    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-cheat.sh",
-    url = "https://github.com/RishabhRD/nvim-cheat.sh"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -294,7 +284,7 @@ _G.packer_plugins = {
     url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-dap"] = {
-    after = { "DAPInstall.nvim", "nvim-dap-ui", "one-small-step-for-vimkind", "telescope-dap.nvim", "nvim-dap-go", "nvim-dap-virtual-text", "nvim-dap-python" },
+    after = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "nvim-dap-go", "telescope-dap.nvim", "one-small-step-for-vimkind", "DAPInstall.nvim" },
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ruser.dap\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -420,11 +410,6 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  popfix = {
-    loaded = true,
-    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/popfix",
-    url = "https://github.com/RishabhRD/popfix"
-  },
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/popup.nvim",
@@ -440,20 +425,10 @@ _G.packer_plugins = {
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
     url = "https://github.com/b0o/schemastore.nvim"
   },
-  ["sqlite.lua"] = {
-    loaded = true,
-    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/sqlite.lua",
-    url = "https://github.com/tami5/sqlite.lua"
-  },
   ["sqls.nvim"] = {
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/sqls.nvim",
     url = "https://github.com/nanotee/sqls.nvim"
-  },
-  ["telescope-cheat.nvim"] = {
-    loaded = true,
-    path = "/home/fatt/.local/share/nvim/site/pack/packer/start/telescope-cheat.nvim",
-    url = "https://github.com/nvim-telescope/telescope-cheat.nvim"
   },
   ["telescope-dap.nvim"] = {
     load_after = {
@@ -546,7 +521,7 @@ _G.packer_plugins = {
     url = "https://github.com/mg979/vim-visual-multi"
   },
   vimwiki = {
-    config = { "\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\vsyntax\rmarkdown\tpath\16~/.vimwiki/\bext\b.md\17vimwiki_list\6g\bvim\0" },
+    config = { "\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\bext\b.md\tpath\16~/.vimwiki/\vsyntax\rmarkdown\17vimwiki_list\6g\bvim\0" },
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
@@ -600,7 +575,7 @@ try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B
 time([[Config for ts-node-action]], false)
 -- Config for: vimwiki
 time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\vsyntax\rmarkdown\tpath\16~/.vimwiki/\bext\b.md\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+try_loadstring("\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\bext\b.md\tpath\16~/.vimwiki/\vsyntax\rmarkdown\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
 time([[Config for vimwiki]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)

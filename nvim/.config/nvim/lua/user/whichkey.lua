@@ -123,7 +123,9 @@ local mappings = {
 		},
 	},
 	["f"] = {
-		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		-- "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		-- "<cmd>lua require('telescope.builtin').find_files()<cr>",
+		"<cmd>Telescope find_files<cr>",
 		"Find files",
 	},
 	["F"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true<cr>", "Find Text" },
@@ -241,6 +243,10 @@ local mappings = {
 				"<cmd>lua require('copilot.panel').refresh()<CR>",
 				"Refresh panel",
 			},
+		},
+		o = {
+			"<CMD>lua vim.lsp.buf.outgoing_calls()<CR>",
+			"Show outgoing calls",
 		}
 	},
 	s = {

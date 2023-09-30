@@ -117,6 +117,7 @@
     "modules-left": [
     ],
     "modules-right": [
+        "custom/utc",
         "disk#root",
         "disk#home",
         "memory",
@@ -163,6 +164,12 @@
         "format-alt": "{percentage}% ",
         "format-alt-right": "click-right",
         "path": "/home"
+    },
+    "custom/utc": {
+        "format": " {}",
+        "format-alt": "",
+        "exec": "date --utc +'UTC: %Y-%m-%d %H:%M:%S'",
+        "interval": ".5"
     }
 }
 ]
