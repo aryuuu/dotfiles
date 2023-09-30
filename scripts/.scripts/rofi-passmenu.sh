@@ -36,5 +36,3 @@ if [[ $typeit -eq 0 ]]; then
 else
 	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $xdotool
 fi
-
-

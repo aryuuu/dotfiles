@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+# TODO: update this import
   imports = [ <nixpkgs/nixos/modules/installer/virtualbox-demo.nix> ];
 
   # Let demo build as a trusted user.
