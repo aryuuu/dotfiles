@@ -147,7 +147,7 @@ local mappings = {
 	-- 	c = { "<cmd>Cheat<CR>", "Quick Search" },
 	-- 	l = { "<cmd>CheatList<CR>", "Cheatlist" },
 	-- },
-    ["c"] = { "<CMD>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "harpoon cmd"},
+	["c"] = { "<CMD>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "harpoon cmd" },
 
 	p = {
 		name = "Packer",
@@ -190,11 +190,11 @@ local mappings = {
 			s = { "<cmd>Telescope git_worktree git_worktrees theme=dropdown<cr>", "List worktrees" },
 			c = { "<cmd>Telescope git_worktree create_git_worktree<cr>", "Create worktree" },
 			-- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-		}
+		},
 	},
 
 	l = {
-        name = "LSP",
+		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		d = {
 			"<cmd>Telescope diagnostics bufnr=0<cr>",
@@ -204,7 +204,8 @@ local mappings = {
 			"<cmd>Telescope diagnostics<cr>",
 			"Workspace Diagnostics",
 		},
-		f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
+		-- f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
+		f = { "<cmd>lua require('conform').format()<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>Mason<cr>", "Installer Info" },
 		j = {
@@ -229,10 +230,10 @@ local mappings = {
 			"<cmd>lua vim.diagnostic.open_float()<CR>",
 			"Diagnostic Open Float",
 		},
-        n = {
-            [[<cmd>lua require('ts-node-action').node_action()<CR>]],
-            "TS Node Action"
-        },
+		n = {
+			[[<cmd>lua require('ts-node-action').node_action()<CR>]],
+			"TS Node Action",
+		},
 		c = {
 			name = "Copilot",
 			c = {
@@ -247,7 +248,7 @@ local mappings = {
 		o = {
 			"<CMD>lua vim.lsp.buf.outgoing_calls()<CR>",
 			"Show outgoing calls",
-		}
+		},
 	},
 	s = {
 		name = "Search",
@@ -259,7 +260,7 @@ local mappings = {
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		s = { "<cmd>Telescope grep_string<cr>", "Find all occurrences" },
-	-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
+		-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
 		f = {
 			"<cmd>Telescope live_grep search= theme=ivy<cr>",
 			"Live grep",

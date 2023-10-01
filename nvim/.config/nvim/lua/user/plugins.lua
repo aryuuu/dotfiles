@@ -42,7 +42,7 @@ packer.init({
 return packer.startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim")  -- An implementation of the Popup API from vim in Neovim
+	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	use("terrortylor/nvim-comment") -- comment stuff the good way
 	use("akinsho/toggleterm.nvim") -- toggleterminal from inside nvim
 	use("kyazdani42/nvim-web-devicons")
-	use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243", })
+	use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" })
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
@@ -77,18 +77,18 @@ return packer.startup(function(use)
 		tag = "v0.2",
 	})
 	-- cmp plugins
-	use("hrsh7th/nvim-cmp")                 -- The completion plugin
-	use("hrsh7th/cmp-buffer")               -- buffer completions
-	use("hrsh7th/cmp-path")                 -- path completions
-	use("hrsh7th/cmp-cmdline")              -- cmdline completions
+	use("hrsh7th/nvim-cmp") -- The completion plugin
+	use("hrsh7th/cmp-buffer") -- buffer completions
+	use("hrsh7th/cmp-path") -- path completions
+	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("hrsh7th/cmp-nvim-lsp-signature-help") -- signature help completions
-	use("saadparwaiz1/cmp_luasnip")         -- snippet completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 
 	use("folke/neodev.nvim")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip")          --snippet engine
+	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
@@ -96,7 +96,15 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	-- use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use({
+		"stevearc/conform.nvim",
+		-- event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local formatting_config = require("user.formatting")
+			require("conform").setup(formatting_config)
+		end,
+	})
 	use("MunifTanjim/eslint.nvim")
 	use({
 		-- breadcrumbs
@@ -186,12 +194,12 @@ return packer.startup(function(use)
 		module = { "dap" },
 		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
 		requires = {
-			{ "Pocco81/DAPInstall.nvim",           commit = "24923c3819a450a772bb8f675926d530e829665f" },
+			{ "Pocco81/DAPInstall.nvim", commit = "24923c3819a450a772bb8f675926d530e829665f" },
 			"theHamsta/nvim-dap-virtual-text",
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
 			"nvim-telescope/telescope-dap.nvim",
-			{ "leoluz/nvim-dap-go",                module = "dap-go" },
+			{ "leoluz/nvim-dap-go", module = "dap-go" },
 			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
 		},
 		config = function()
