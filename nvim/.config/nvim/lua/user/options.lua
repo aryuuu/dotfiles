@@ -8,6 +8,7 @@ local options = {
 	hlsearch = true, -- highlight all matches on previous search pattern
 	-- nohlsearch = true, --
 	ignorecase = true, -- ignore case in search patterns
+	autoread = true, -- reload files changed outside neovim
 	mouse = "a", -- allow the mouse to be used in neovim
 	--  pumheight = 10,                          -- pop up menu height
 	--  showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
@@ -17,7 +18,7 @@ local options = {
 	splitbelow = true, -- force all horizontal splits to go below current window
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
-	termguicolors = true,                    -- set term gui colors (most terminals support this)
+	termguicolors = true, -- set term gui colors (most terminals support this)
 	timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 100, -- faster completion (4000ms default)
@@ -36,7 +37,7 @@ local options = {
 	sidescrolloff = 8,
 	--  guifont = "monospace:h17",               -- the font used in graphical neovim applications
 	spell = true,
-    foldmethod = "syntax",
+	foldmethod = "syntax",
 }
 
 vim.opt.shortmess:append("c")
@@ -64,5 +65,5 @@ vim.cmd([[let g:undotree_SplitWidth = 50]])
 -- copilot remapping related options
 -- vim.cmd([[let g:copilot_no_tab_map = v:true]])
 -- vim.cmd([[let g:copilot_assume_mapped = v:true]])
-vim.g['copilot_no_tab_map'] = false
-vim.g['copilot_assume_mapped'] = false
+vim.g["copilot_no_tab_map"] = false
+vim.g["copilot_assume_mapped"] = false
