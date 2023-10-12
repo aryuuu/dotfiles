@@ -456,22 +456,22 @@ assign [class="jetbrains-idea"] $ws14
 # 
 # client.background       #FFFFFF
 
-# dracula theme i3 
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background       #F8F8F2
+# # dracula theme i3 
+# # class                 border  bground text    indicator child_border
+# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# client.background       #F8F8F2
 
-# ## nord theme i3
-# client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
-# client.unfocused        #2e3440 #2e3440 #888888 #2e3440
-# client.focused_inactive #2e3440 #2e3440 #888888 #2e3440
-# client.placeholder      #2e3440 #2e3440 #888888 #2e3440
-# client.urgent           #900000 #900000 #ffffff #900000
-# client.background       #242424
+## nord theme i3
+client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+client.unfocused        #2e3440 #2e3440 #888888 #2e3440
+client.focused_inactive #2e3440 #2e3440 #888888 #2e3440
+client.placeholder      #2e3440 #2e3440 #888888 #2e3440
+client.urgent           #900000 #900000 #ffffff #900000
+client.background       #242424
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

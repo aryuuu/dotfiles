@@ -76,6 +76,7 @@ return packer.startup(function(use)
 		as = "catppuccin",
 		tag = "v0.2",
 	})
+	use({ "rose-pine/neovim", as = "rose-pine" })
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -165,6 +166,7 @@ return packer.startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 	})
 	use("tpope/vim-fugitive")
+	use("tpope/vim-rhubarb")
 	use("ThePrimeagen/git-worktree.nvim")
 
 	-- winbar

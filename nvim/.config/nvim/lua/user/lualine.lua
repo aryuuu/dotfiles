@@ -12,14 +12,14 @@ end
 -- 	return "hello_world"
 -- end
 
-local function is_venn_enabled()
-	local venn_enabled = vim.inspect(vim.b.venn_enabled)
-	if venn_enabled == "nil" then
-		return "x"
-	end
+-- local function is_venn_enabled()
+-- 	local venn_enabled = vim.inspect(vim.b.venn_enabled)
+-- 	if venn_enabled == "nil" then
+-- 		return "x"
+-- 	end
 
-	return "v"
-end
+-- 	return "v"
+-- end
 
 local filename = {
 	"filename",
@@ -115,7 +115,6 @@ lualine.setup({
 		-- section_separators = { left = "", right = "" },
 		-- disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
 		-- always_divide_middle = true,
-
 	},
 	sections = {
 		-- powerline look
@@ -125,14 +124,14 @@ lualine.setup({
 		-- lualine_a = {
 		-- 	{ "branch", separator = { left = "", right = "" }, right_padding = 0 },
 		-- },
-		lualine_b = { mode, is_venn_enabled },
+		lualine_b = { mode },
 		lualine_c = { "lsp_progress", filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		-- lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_x = { spaces, "encoding", filetype },
 		lualine_y = { location },
 		-- powerline look
-		lualine_z = { progress }
+		lualine_z = { progress },
 
 		-- bubbly look
 		-- lualine_z = {

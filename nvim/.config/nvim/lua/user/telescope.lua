@@ -11,7 +11,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "target/"},
+		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "target/" },
 		cache_picker = {
 			num_pickers = 3,
 			limit_entries = 5,
@@ -86,7 +86,7 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			hidden = true,
-            no_ignore = true,
+			no_ignore = true,
 		},
 		live_grep = {
 			additional_args = function(opts)
@@ -94,12 +94,12 @@ telescope.setup({
 			end,
 		},
 		grep_string = {
-            only_sort_text = true
+			only_sort_text = true,
 		},
 		buffers = {
 			sort_lastused = true,
 			sort_mru = true,
-		}
+		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
 		--   picker_config_key = value,

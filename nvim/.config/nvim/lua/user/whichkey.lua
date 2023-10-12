@@ -123,15 +123,15 @@ local mappings = {
 		},
 	},
 	["f"] = {
-		-- "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		-- "<cmd>lua require('telescope.builtin').find_files()<cr>",
-		"<cmd>Telescope find_files<cr>",
+		-- "<cmd>Telescope find_files<cr>",
 		"Find files",
 	},
 	["F"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true<cr>", "Find Text" },
 	-- TODO: make this fuzzy
 	["/"] = { "<cmd>Telescope live_grep search= theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
-	-- ["/"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
+	["?"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
 	["T"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
 	-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
@@ -179,7 +179,11 @@ local mappings = {
 			"Undo Stage Hunk",
 		},
 		o = { "<cmd>Telescope git_status<cr>", "Status" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		-- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		b = {
+			"<cmd>lua require('telescope.builtin').git_branches(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+			"Git branch",
+		},
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
