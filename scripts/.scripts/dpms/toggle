@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 xset s off
 prev_status=$(xset q | awk '/abled/ { print $3 }')
 # echo "prev status" $prev_status

@@ -3,12 +3,11 @@
     "position": "top",
     "height": 20,
     "modules-left": [
-        "wlr/workspaces",
-        "wlr/mode",
-        "wlr/window"
+        "hyprland/workspaces",
+        "hyprland/submap"
     ],
     "modules-center": [
-        "wlr/window"
+        "hyprland/window"
     ],
     "modules-right": [
         "backlight",
@@ -19,14 +18,14 @@
         "clock#date",
         "tray"
     ],
-    "wlr/mode": {
+    "hyprland/submap": {
         "format": " {}"
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{name}",
         "disable-scroll": true
     },
-    "wlr/window": {
+    "hyprland/window": {
         "format": "{name}",
         "max-length": 50,
         "tooltip": false,

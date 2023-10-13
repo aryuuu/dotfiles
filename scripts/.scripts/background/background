@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # bg="/home/fatt/pictures/wallpaper/linuxterminal.png"
 read bg < ~/.scripts/background/bgpath

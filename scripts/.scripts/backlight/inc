@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 basedir="/sys/class/backlight/amdgpu_bl1"
 max=$(cat "${basedir}/max_brightness")
 brightness=$(cat "${basedir}/brightness")

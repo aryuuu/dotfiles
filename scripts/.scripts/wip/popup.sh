@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 todofile="/home/fatt/.todo"
 doingfile="/home/fatt/.doing"

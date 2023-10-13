@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Beautiful powerline-style prompt written in pure bash, simple and very fast.
 #
