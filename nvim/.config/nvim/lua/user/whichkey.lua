@@ -254,6 +254,7 @@ local mappings = {
 			"Show outgoing calls",
 		},
 	},
+	S = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "Substitute word" },
 	s = {
 		name = "Search",
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -275,7 +276,6 @@ local mappings = {
 		-- },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		c = { "<cmd>Telescope commands theme=dropdown show_buf_command=false<cr>", "Commands" },
-		e = { "<cmd>Telescope env<cr>", "Envs" },
 	},
 
 	t = {
@@ -384,3 +384,4 @@ local visual_mapping = {
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(visual_mapping, opts_vis)

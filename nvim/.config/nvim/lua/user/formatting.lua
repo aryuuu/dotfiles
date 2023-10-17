@@ -15,10 +15,10 @@ return {
 		go = { "gofmt", "goimports" },
 		rust = { "rustfmt" },
 	},
-	-- format_on_save = {
-	-- 	false,
-	-- 	lsp_fallback = true,
-	-- 	async = false,
-	-- 	timeout_ms = 500,
-	-- },
+	format_on_save = {
+		false,
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 500,
+	},
 }

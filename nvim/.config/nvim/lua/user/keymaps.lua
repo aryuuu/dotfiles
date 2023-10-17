@@ -81,8 +81,8 @@ keymap("i", "<M-i>", "<Esc>I", opts)
 -- Copilot related mappings
 -- keymap('i', '<C-J>', [[<ESC>:call copilot#Accept()<CR>i]], opts)
 -- keymap('i', '<M-p>', [[<ESC>:call copilot#Accept()<CR>i]], opts)
-keymap('i', '<C-/>', 'copilot#Accept(“<CR>”)', {expr=true, silent=true})
-keymap('i', '<C-CR>', 'copilot#Accept(“<CR>”)', {expr=true, silent=true})
+keymap("i", "<C-/>", "copilot#Accept(“<CR>”)", { expr = true, silent = true })
+keymap("i", "<C-CR>", "copilot#Accept(“<CR>”)", { expr = true, silent = true })
 
 -- Visual --
 -- Stay in indent mode
@@ -94,10 +94,18 @@ keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
+-- subs
+keymap(
+	"n",
+	"<leader>y",
+	[[:lua vim.cmd('let @" = escape(vim.fn.getreg("\""), "\\/.*$^~[]")') | %s/\V<c-r>//new_text/g<CR>]],
+	{ noremap = true, silent = true }
+)
+
 -- Comment
 keymap("v", "<C-_>", ":'<,'>CommentToggle<CR>", opts)
 -- keymap("v", "<leader>S", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opts)
-keymap("v", "<leader>S", "\"fy/\\V<C-R>f<CR>", opts)
+keymap("v", "<leader>S", '"fy/\\V<C-R>f<CR>', opts)
 -- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR> -- TODO: add this for easy search
 
 -- Visual Block --
@@ -129,4 +137,3 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Nvimtree
 -- keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-

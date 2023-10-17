@@ -371,6 +371,8 @@ bindsym $mod+Shift+Escape exit
 # normal screenshot
 bindsym Print exec "scrot -e 'mv $f ~/Pictures/screenshots/'"
 bindsym $mod+Print exec "flameshot gui"
+# use mod+middleclick to screenshot
+bindsym --release $mod+Button2 exec "flameshot gui"
 # snipping tool like screenshot
 bindsym Shift+Print exec "sleep 0.2; scrot -s -e 'mv $f ~/Pictures/screenshots/'"
 
