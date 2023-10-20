@@ -46,7 +46,7 @@ nvim_tree.setup({
 	open_on_tab = false,
 	hijack_cursor = false,
 	-- update_cwd = true,
-	sync_root_with_cwd = false,
+	-- sync_root_with_cwd = false,
 	update_cwd = false,
 	update_to_buf_dir = {
 		enable = true,
@@ -63,9 +63,9 @@ nvim_tree.setup({
 	},
 	update_focused_file = {
 		-- prevent moving root dir to another dir when opening files frim another dir, like vimwiki
-		enable = false,
+		enable = true,
 		update_cwd = false,
-		update_root = false,
+		-- update_root = false,
 		ignore_list = {},
 	},
 	system_open = {
