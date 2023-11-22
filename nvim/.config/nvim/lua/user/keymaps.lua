@@ -66,6 +66,12 @@ keymap("n", "gl", "<CMD>diffget //3<CR>", opts)
 
 keymap("n", "J", "mzJ`z", opts)
 
+-- Define key mappings
+keymap('n', '<left>', ':lua require("jvim").to_parent()<CR>', opts)
+keymap('n', '<right>', ':lua require("jvim").descend()<CR>', opts)
+keymap('n', '<up>', ':lua require("jvim").prev_sibling()<CR>', opts)
+keymap('n', '<down>', ':lua require("jvim").next_sibling()<CR>', opts)
+
 -- Insert --
 -- Press jk fast to enter normal mode
 keymap("i", "jk", "<ESC>", opts)

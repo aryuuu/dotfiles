@@ -9,17 +9,17 @@ end
 local lspconfig = require("lspconfig")
 
 local servers = {
-    -- "bash-language-server",
-    -- "clangd",
-    -- "docker-compose-language-service",
-    -- "dockerfile-language-server",
-    -- "eslint-lsp",
-    -- "gopls",
-    -- "lua-language-server",
-    -- "python-lsp-server",
-    -- "rust-analyzer",
-    -- "sqls",
-    -- "typescript-language-server",
+	-- "bash-language-server",
+	-- "clangd",
+	-- "docker-compose-language-service",
+	-- "dockerfile-language-server",
+	-- "eslint-lsp",
+	-- "gopls",
+	-- "lua-language-server",
+	-- "python-lsp-server",
+	-- "rust-analyzer",
+	-- "sqls",
+	-- "typescript-language-server",
 
 	"bashls",
 	"clangd",
@@ -27,7 +27,6 @@ local servers = {
 	"pyright",
 	"rust_analyzer",
 	"cmake",
-	-- "sumneko_lua",
 	"lua_ls",
 	"tsserver",
 	"jsonls",
@@ -41,6 +40,7 @@ local servers = {
 	"zls",
 	"svelte",
 	"ocamllsp",
+	"nil_ls",
 }
 
 -- mason_lspconfig.setup({

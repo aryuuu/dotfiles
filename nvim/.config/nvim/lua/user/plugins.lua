@@ -158,6 +158,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use("windwp/nvim-ts-autotag")
+	use("theprimeagen/jvim.nvim")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")

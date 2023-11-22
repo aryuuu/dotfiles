@@ -90,11 +90,14 @@ telescope.setup({
 		},
 		live_grep = {
 			additional_args = function(opts)
-				return { "--hidden" }
+				return { "--hidden", "--no-ignore-vcs", "--column" }
 			end,
 		},
 		grep_string = {
 			only_sort_text = true,
+			additional_args = function (opts)
+				return { "--hidden", "--no-ignore-vcs", "--column" }
+			end,
 		},
 		buffers = {
 			sort_lastused = true,
