@@ -61,7 +61,8 @@ set $DMENU_NHF "#FA485D"
 # they are included here as an example. Modify as you see fit.
 
 # set default screen layout
-exec /home/fatt/.scripts/hzndp1.sh
+# exec /home/fatt/.scripts/hzndp1.sh
+exec /home/fatt/.scripts/vmon.sh
 
 ## enable tap click on touchpad
 exec xinput set-prop 17 326 1
