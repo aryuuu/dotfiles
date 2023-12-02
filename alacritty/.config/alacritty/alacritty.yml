@@ -24,7 +24,8 @@ cursor:
   style: Block
 
 font:
-  size: 9
+  size: 11
+
   # similar look to urxvt
   normal:
     family: D2Coding
@@ -35,6 +36,17 @@ font:
   italic:
     family: D2Coding
     style: Italic
+
+  # # monocraft font
+  # normal:
+  #   family: Monocraft
+  #   style: Regular
+  # bold:
+  #   family: Monocraft
+  #   style: Medium
+  # italic:
+  #   family: Monocraft
+  #   style: Italic
 
   # normal:
   #     family: SauceCodePro Nerd Font
