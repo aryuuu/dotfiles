@@ -5,6 +5,7 @@ end
 
 harpoon.setup({
     enter_on_sendcmd = true,
+    -- mark_branch = true,
 })
 
 local tele_status_ok, telescope = pcall(require, "telescope")

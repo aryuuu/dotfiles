@@ -41,6 +41,7 @@ local servers = {
 	"svelte",
 	"ocamllsp",
 	"nil_ls",
+	"templ",
 }
 
 -- mason_lspconfig.setup({

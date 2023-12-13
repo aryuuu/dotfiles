@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/fatt/.cache/nvim/packer_hererocks/2.1.1696795921/share/lua/5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1696795921/share/lua/5.1/?/init.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1696795921/lib/luarocks/rocks-5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1696795921/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/fatt/.cache/nvim/packer_hererocks/2.1.1696795921/lib/lua/5.1/?.so"
+local package_path_str = "/home/fatt/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?/init.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?.lua;/home/fatt/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/fatt/.cache/nvim/packer_hererocks/2.1.1700008891/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -218,7 +218,7 @@ _G.packer_plugins = {
     url = "https://github.com/Darazaki/indent-o-matic"
   },
   jester = {
-    config = { "\27LJ\2\n§\1\0\0\5\0\5\0\v6\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1€K\0\1\0009\2\3\0015\4\4\0B\2\2\1K\0\1\0\1\0\2\23path_to_jest_debug\29./node_modules/.bin/jest\21path_to_jest_run\29./node_modules/.bin/jest\nsetup\vjester\frequire\npcall\0" },
+    config = { "\27LJ\2\n§\1\0\0\5\0\5\0\v6\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1€K\0\1\0009\2\3\0015\4\4\0B\2\2\1K\0\1\0\1\0\2\21path_to_jest_run\29./node_modules/.bin/jest\23path_to_jest_debug\29./node_modules/.bin/jest\nsetup\vjester\frequire\npcall\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -291,7 +291,7 @@ _G.packer_plugins = {
     url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-dap"] = {
-    after = { "nvim-dap-go", "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "telescope-dap.nvim", "one-small-step-for-vimkind" },
+    after = { "nvim-dap-ui", "nvim-dap-go", "telescope-dap.nvim", "nvim-dap-python", "nvim-dap-virtual-text", "one-small-step-for-vimkind", "DAPInstall.nvim" },
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ruser.dap\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -538,7 +538,7 @@ _G.packer_plugins = {
     url = "https://github.com/mg979/vim-visual-multi"
   },
   vimwiki = {
-    config = { "\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\vsyntax\rmarkdown\tpath\16~/.vimwiki/\bext\b.md\17vimwiki_list\6g\bvim\0" },
+    config = { "\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\vsyntax\rmarkdown\bext\b.md\tpath\16~/.vimwiki/\17vimwiki_list\6g\bvim\0" },
     loaded = true,
     path = "/home/fatt/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
@@ -586,17 +586,17 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: ts-node-action
-time([[Config for ts-node-action]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19ts-node-action\frequire\0", "config", "ts-node-action")
-time([[Config for ts-node-action]], false)
 -- Config for: conform.nvim
 time([[Config for conform.nvim]], true)
 try_loadstring("\27LJ\2\nU\0\0\4\0\4\0\n6\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\fconform\20user.formatting\frequire\0", "config", "conform.nvim")
 time([[Config for conform.nvim]], false)
+-- Config for: ts-node-action
+time([[Config for ts-node-action]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19ts-node-action\frequire\0", "config", "ts-node-action")
+time([[Config for ts-node-action]], false)
 -- Config for: vimwiki
 time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\vsyntax\rmarkdown\tpath\16~/.vimwiki/\bext\b.md\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+try_loadstring("\27LJ\2\nb\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\vsyntax\rmarkdown\bext\b.md\tpath\16~/.vimwiki/\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
 time([[Config for vimwiki]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)

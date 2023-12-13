@@ -24,7 +24,7 @@ cursor:
   style: Block
 
 font:
-  size: 11
+  size: 12
 
   # similar look to urxvt
   normal:

@@ -115,6 +115,15 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+# # CTRL-/ to toggle small preview window to see the full command
+# # CTRL-Y to copy the command into clipboard using pbcopy
+# export FZF_CTRL_R_OPTS="
+#   --preview 'echo {}' --preview-window up:3:hidden:wrap
+#   --bind 'ctrl-/:toggle-preview'
+#   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+#   --color header:italic
+#   --header 'Press CTRL-Y to copy command into clipboard'"
+
 # PATH
 PATH=$JAVA_HOME:~/.local/bin:$HOME/go/bin:$PATH:$HOME/.scripts
 GOPATH=/home/fatt/go
@@ -129,4 +138,6 @@ source /usr/share/nvm/init-nvm.sh
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 

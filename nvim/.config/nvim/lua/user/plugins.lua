@@ -124,7 +124,8 @@ return packer.startup(function(use)
 	-- use("nvim-lua/lsp-status.nvim")
 	-- Comment
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	-- use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	use({ "nvim-telescope/telescope.nvim", tag = "0.1.4" })
 	-- use({ "LinArcX/telescope-env.nvim" })
 	use({ "ThePrimeagen/harpoon" })
 	use({ "zbirenbaum/copilot.lua" })
