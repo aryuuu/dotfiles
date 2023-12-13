@@ -102,9 +102,9 @@ togif() {
 	fi
 }
 
-xpn() {
-    openvpn ~/project/xendit/vpn/client.ovpn
-}
+# xpn() {
+#     openvpn ~/project/xendit/vpn/client.ovpn
+# }
 
 ## docker fzf functions
 
@@ -114,6 +114,13 @@ docatt() {
     cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $1}')
 
     [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+}
+
+docex() {
+    local cid 
+    cid=$(docker ps | sed 1d | fzf -1 -q "$1" --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $1}')
+
+    [ -n "$cid" ] && docker exec -it $cid /bin/sh
 }
 
 # select a running container to stop
