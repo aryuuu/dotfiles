@@ -116,33 +116,33 @@ mods = "Alt"
 action = "Copy"
 mouse = "Middle"
 
-[schemes.relaxed.bright]
-black = "0x636363"
-blue = "0x7eaac7"
-cyan = "0xacbbd0"
-green = "0x909d63"
-magenta = "0xb06698"
-red = "0xbc5653"
-white = "0xf7f7f7"
-yellow = "0xebc17a"
+# [schemes.relaxed.bright]
+# black = "0x636363"
+# blue = "0x7eaac7"
+# cyan = "0xacbbd0"
+# green = "0x909d63"
+# magenta = "0xb06698"
+# red = "0xbc5653"
+# white = "0xf7f7f7"
+# yellow = "0xebc17a"
 
-[schemes.relaxed.cursor]
-cursor = "0xd9d9d9"
-text = "0x000000"
+# [schemes.relaxed.cursor]
+# cursor = "0xd9d9d9"
+# text = "0x000000"
 
-[schemes.relaxed.normal]
-black = "0x151515"
-blue = "0x6a8799"
-cyan = "0xc9dfff"
-green = "0x909d63"
-magenta = "0xb06698"
-red = "0xbc5653"
-white = "0xd9d9d9"
-yellow = "0xebc17a"
+# [schemes.relaxed.normal]
+# black = "0x151515"
+# blue = "0x6a8799"
+# cyan = "0xc9dfff"
+# green = "0x909d63"
+# magenta = "0xb06698"
+# red = "0xbc5653"
+# white = "0xd9d9d9"
+# yellow = "0xebc17a"
 
-[schemes.relaxed.primary]
-background = "0x353a44"
-foreground = "0xd9d9d9"
+# [schemes.relaxed.primary]
+# background = "0x353a44"
+# foreground = "0xd9d9d9"
 
 [scrolling]
 history = 100000
