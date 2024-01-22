@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
+openvpn3 session-manage --config fatt-ovpn3 --cleanup
 openvpn3 session-manage --config fatt-ovpn3 --disconnect
 

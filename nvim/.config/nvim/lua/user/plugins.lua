@@ -59,6 +59,7 @@ return packer.startup(function(use)
 	use("arkav/lualine-lsp-progress")
 	use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
 	use("folke/which-key.nvim")
+	use({ "folke/trouble.nvim" })
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -237,6 +238,7 @@ return packer.startup(function(use)
 	use({ "xiyaowong/transparent.nvim" })
 	use({ "eandrju/cellular-automaton.nvim" })
 	use({ "laytan/cloak.nvim" })
+	use({ "jellydn/hurl.nvim", requires = { "MunifTanjim/nui.nvim" } })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
