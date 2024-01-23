@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
 openvpn3 session-manage --config fatt-ovpn3 --cleanup
-openvpn3 session-manage --config fatt-ovpn3 --disconnect
+openvpn3 sessions-list \
+| grep Path \
+| awk '{ print $2 }' \
+| while read line; do 
+    openvpn3 session-manage --session-path $line --disconnect; 
+done\
+| notify-send "ovpn3" "connections closed"
 
