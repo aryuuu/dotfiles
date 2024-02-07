@@ -72,6 +72,15 @@ keymap('n', '<right>', ':lua require("jvim").descend()<CR>', opts)
 keymap('n', '<up>', ':lua require("jvim").prev_sibling()<CR>', opts)
 keymap('n', '<down>', ':lua require("jvim").next_sibling()<CR>', opts)
 
+-- debugger mappings
+keymap('n', "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap('n', "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap('n', "<F3>", "<cmd>lua require'dap'.step_into()<cr>", opts)
+keymap('n', "<F4>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+keymap('n', "<F2>", "<cmd>lua require'dap'.step_back()<cr>", opts)
+keymap('n', "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opts)
+keymap('n', "<F7>", "<cmd>lua print('test')<CR>", opts)
+
 -- Insert --
 -- Press jk fast to enter normal mode
 keymap("i", "jk", "<ESC>", opts)
