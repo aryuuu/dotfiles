@@ -138,7 +138,8 @@ keymap("n", "<leader>jp", ":'<,'>!jq<CR>", opts)
 keymap("n", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
 
 -- Replace \n with actual newlines
-keymap("x", "<leader>N", ":'<,'>s/\\\\n/\\r/g<CR>", opts)
+keymap("x", "<leader>N", ":s/\\\\n/\\r/g<CR>", opts)
+keymap("n", "<leader>N", "V:s/\\\\n/\\r/g<CR>", opts)
 
 -- markdown check
 keymap("x", "<leader>tc", ":'<,'>s/\\[\\]\\|\\[ \\]/[x]<CR>", opts)
