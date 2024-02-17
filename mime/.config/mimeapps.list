@@ -1,0 +1,15 @@
+[Default Applications]
+x-scheme-handler/tg=org.telegram.desktop.desktop
+text/html=brave-browser.desktop
+text/plain=nvim
+x-scheme-handler/http=brave-browser.desktop
+x-scheme-handler/https=brave-browser.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-WBYFT1.desktop;org.telegram.desktop.desktop;

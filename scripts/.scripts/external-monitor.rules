@@ -1,0 +1,1 @@
+KERNEL=="card1", SUBSYSTEM=="drm", ACTION=="change", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/fatt/.Xauthority", RUN+="/bin/bash /home/fatt/.scripts/monitor-event.sh

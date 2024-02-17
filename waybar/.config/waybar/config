@@ -1,7 +1,7 @@
 [{
     "layer": "top",
     "position": "top",
-    "height": 20,
+    "height": 15,
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/submap"
@@ -112,7 +112,7 @@
 {
     "layer": "bottom",
     "position": "bottom",
-    "height": 20,
+    "height": 15,
     "modules-left": [
     ],
     "modules-right": [

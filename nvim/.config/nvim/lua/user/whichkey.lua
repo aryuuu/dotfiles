@@ -100,6 +100,7 @@ local mappings = {
 	},
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["u"] = { "<cmd>UndotreeToggle<cr><CMD>UndotreeFocus<CR>", "Undotree" },
+	-- ["u"] = { "<cmd>lua require('undotree').toggle()<CR>", "Undotree" },
 	["r"] = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume last picker" },
 	["R"] = { "<cmd>lua require('telescope.builtin').pickers()<cr>", "Pickers" },
 	["w"] = { "<cmd>w!<CR>", "Save" },

@@ -1,9 +1,12 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "SauceCodePro Nerd Font", "DejaVu Sans Condensed",
-    "FontAwesome 5 Free Solid";
-  font-size: 12px;
+  /* font-family: "SauceCodePro Nerd Font", "DejaVu Sans Condensed", */
+  /*   "FontAwesome 5 Free Solid"; */
+  font-family: "Tamsyn:pixelsize=9;2", "FontAwesome 6 Free:style=Solid:size=8;2", 
+    "FontAwesome 6 Brands:style=Regular:size=8;2", "NikkyouSans:style=Sans:size=4;0",
+    "Inconsolata for Powerline:pixelsize=10:antialias=true;3";
+  font-size: 11px;
   box-shadow: none;
   text-shadow: none;
   transition-duration: 0s;

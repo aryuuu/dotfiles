@@ -15,8 +15,8 @@ configuration{
     display-Network: " 󰤨  Network";
     display-ssh: "   ";
     sidebar-mode: true;
-    kb-row-up: "Alt+k";
-    kb-row-down: "Alt+j";
+    kb-row-up: "Up,Control+P,Alt+k";
+    kb-row-down: "Down,Control+D,Alt+j";
 }
 
 @theme "catppuccin-mocha"

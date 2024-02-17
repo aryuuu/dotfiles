@@ -11,7 +11,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "target/" },
+		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "target/", "dist/" },
 		cache_picker = {
 			num_pickers = 3,
 			limit_entries = 5,

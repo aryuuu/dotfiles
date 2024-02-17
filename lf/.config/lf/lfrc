@@ -20,6 +20,9 @@ set ifs "\n"
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
+# icons
+set icons
+
 # use enter for shell commands
 map <enter> shell
 
@@ -35,7 +38,7 @@ map O $mimeopen --ask $f
 map gr cd /run/media/fatt
 map gh cd ~
 map gw cd ~/.wine
-map gd cd ~/Downloads
+map gd "cd ~/Downloads"
 map gm cd ~/Music
 map gv cd ~/Videos
 map gc cd ~/ctf
@@ -112,3 +115,6 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
+backups
+pokemon-replays
+cmd yank_name

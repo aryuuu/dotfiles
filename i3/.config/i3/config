@@ -76,6 +76,7 @@ exec xinput set-prop "SYNA32A0:00 06CB:CE14 Touchpad" "libinput Tapping Enabled 
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # lock screen after x minutes of inactivity
 # exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy-multimonitor -n -b=5x3"
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor -n -b=5x3
 
 # background
 # set $bgimg "/home/fatt/Pictures/mountainarch.png"
@@ -96,6 +97,18 @@ exec_always --no-startup-id "killall picom; picom"
 exec_always --no-startup-id "killall dunst; dunst"
 exec_always --no-startup-id "killall udiskie; udiskie -t"
 exec_always --no-startup-id "killall clipmenud; clipmenud"
+
+# for_window [instance="dropdown"] floating enable
+# for_window [instance="dropdown"] resize set 800 400
+# for_window [instance="dropdown"] move scratchpad
+# exec_always --no-startup-id "alacritty -T dropdown"
+# bindsym $mod+o [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+
+# for_window [instance="math"] floating enable
+# for_window [instance="math"] resize set 800 400
+# for_window [instance="math"] move scratchpad
+# exec_always --no-startup-id "alacritty -T math -e bc -l"
+# bindsym $mod+a [instance="math"] scratchpad show; [instance="math"] move position center
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -261,13 +274,15 @@ bindsym $mod+Shift+f floating toggle
 # bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 # placeholder for pavucontrol dmenu
 # bindsym $mod+a exec '~/.scripts/dmenu-pulse/sink.sh`'
 
 # focus the child container
 #bindsym $mod+d focus child
 
+# scratchpad thingy
+# bindsym $mod+
 
 
 # Define names for default workspaces for which we configure key bindings later on.
