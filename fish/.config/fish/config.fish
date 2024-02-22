@@ -28,3 +28,4 @@ alias cds='cd ~/sandbox'
 alias cdc='cd ~/.config'
 alias xpn='openvpn ~/project/xendit/vpn/client.ovpn'
 
+source $HOME/.config/fish/utils.fish
