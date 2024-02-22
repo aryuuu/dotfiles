@@ -44,8 +44,8 @@ local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
-	symbols = { error = "E ", warn = "W " },
-	colored = false,
+	symbols = { error = " ", warn = "! " },
+	colored = true,
 	update_in_insert = false,
 	always_visible = true,
 }
@@ -128,7 +128,7 @@ lualine.setup({
 		lualine_c = { "lsp_progress", filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		-- lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_x = { spaces, "encoding", filetype },
+		lualine_x = { diagnostics, spaces, "encoding", filetype },
 		lualine_y = { location },
 		-- powerline look
 		lualine_z = { progress },
