@@ -5,6 +5,8 @@ end
 bind \ef "tmux-sessionizer"
 bind \cf "tmux-sessionizer"
 
+set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.scripts
+
 # aliases
 alias ls='ls --color=auto'
 alias l='ls -lah'
