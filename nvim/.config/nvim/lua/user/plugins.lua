@@ -200,6 +200,7 @@ local plugins = {
 		event = { "InsertEnter" },
 	},
 	"theprimeagen/jvim.nvim",
+	{ dir = "~/project/yvim.nvim" },
 
 	-- Git
 	"lewis6991/gitsigns.nvim",
