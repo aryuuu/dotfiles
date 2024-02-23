@@ -5,7 +5,7 @@ end
 bind \ef "tmux-sessionizer"
 bind \cf "tmux-sessionizer"
 
-set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.scripts
+set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
 
 # aliases
 alias ls='ls --color=auto'
