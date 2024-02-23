@@ -13,51 +13,104 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
-	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
-	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-	"numToStr/Comment.nvim", -- Easily comment stuff
+	{
+		"nvim-lua/plenary.nvim",
+		lazy = true,
+	}, -- Useful lua functions used ny lots of plugins
+	{
+		"windwp/nvim-autopairs",
+		event = { "InsertEnter" },
+	}, -- Autopairs, integrates with both cmp and treesitter
+	{
+		"numToStr/Comment.nvim",
+		event = "InsertEnter",
+	}, -- Easily comment stuff
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	"terrortylor/nvim-comment", -- comment stuff the good way
+	{
+		"terrortylor/nvim-comment",
+		event = "InsertEnter",
+	}, -- comment stuff the good way
 	"akinsho/toggleterm.nvim", -- toggleterminal from inside nvim
-	"kyazdani42/nvim-web-devicons",
-	{ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" },
+	{
+		"kyazdani42/nvim-web-devicons",
+		lazy = true,
+	},
+	{
+		"kyazdani42/nvim-tree.lua",
+		commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
+		keys = "<leader>e",
+	},
 	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
-	"nvim-lualine/lualine.nvim",
+	{
+		"nvim-lualine/lualine.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+	},
 	"arkav/lualine-lsp-progress",
-	{ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" },
 	"folke/which-key.nvim",
 	{ "folke/trouble.nvim" },
 
 	-- Colorschemes
 	"folke/tokyonight.nvim",
-	{ "ellisonleao/gruvbox.nvim" },
-	"Mofiqul/dracula.nvim",
-	"rebelot/kanagawa.nvim",
-	"EdenEast/nightfox.nvim",
-	"jacoborus/tender.vim",
+	{ "ellisonleao/gruvbox.nvim", lazy = true },
+	{ "Mofiqul/dracula.nvim", lazy = true },
+	{ "rebelot/kanagawa.nvim", lazy = true },
+	{ "EdenEast/nightfox.nvim", lazy = true },
+	{ "jacoborus/tender.vim", lazy = true },
 	"rmehri01/onenord.nvim",
-	"shaunsingh/nord.nvim",
+	{ "shaunsingh/nord.nvim", lazy = true },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		version = "v0.2",
+		lazy = true,
 	},
-	{ "rose-pine/neovim", name = "rose-pine" },
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = true,
+	},
 	-- cmp plugins
-	"hrsh7th/nvim-cmp", -- The completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
-	"hrsh7th/cmp-nvim-lsp-signature-help", -- signature help completions
-	"saadparwaiz1/cmp_luasnip", -- snippet completions
-	"hrsh7th/cmp-nvim-lsp",
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	}, -- The completion plugin
+	{
+		"hrsh7th/cmp-buffer",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	}, -- buffer completions
+	{
+		"hrsh7th/cmp-path",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	}, -- path completions
+	{
+		"hrsh7th/cmp-cmdline",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	}, -- cmdline completions
+	{
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	}, -- signature help completions
+	{
+		"saadparwaiz1/cmp_luasnip",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	}, -- snippet completions
+	{
+		"hrsh7th/cmp-nvim-lsp",
+		event = "InsertEnter", -- load cmp on InsertEnter
+	},
 
 	"folke/neodev.nvim",
 
 	-- snippets
-	"L3MON4D3/LuaSnip", --snippet engine
-	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
+	{
+		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
+	}, --snippet engine
+	{
+		"rafamadriz/friendly-snippets",
+		event = "InsertEnter",
+	}, -- a bunch of snippets to use
 
 	-- LSP
 	"neovim/nvim-lspconfig", -- enable LSP
@@ -81,12 +134,34 @@ local plugins = {
 	{
 		"SmiteshP/nvim-gps",
 		dependencies = "nvim-treesitter/nvim-treesitter",
+		event = "BufRead",
 	},
 	"simrat39/rust-tools.nvim",
 	"nanotee/sqls.nvim",
 	"b0o/schemastore.nvim",
 	"ray-x/go.nvim",
 	"ray-x/guihua.lua",
+	-- {
+	-- 	"nvim-java/nvim-java",
+	-- 	dependencies = {
+	-- 		"nvim-java/lua-async-await",
+	-- 		"nvim-java/nvim-java-core",
+	-- 		"nvim-java/nvim-java-test",
+	-- 		"nvim-java/nvim-java-dap",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"mfussenegger/nvim-dap",
+	-- 		{
+	-- 			"williamboman/mason.nvim",
+	-- 			opts = {
+	-- 				registries = {
+	-- 					"github:nvim-java/mason-registry",
+	-- 					"github:mason-org/mason-registry",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	-- Telescope
 	-- use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
 	{ "nvim-telescope/telescope.nvim", version = "0.1.4" },
@@ -120,7 +195,10 @@ local plugins = {
 			require("ts-node-action").setup({})
 		end,
 	},
-	"windwp/nvim-ts-autotag",
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "InsertEnter" },
+	},
 	"theprimeagen/jvim.nvim",
 
 	-- Git
@@ -196,10 +274,13 @@ local plugins = {
 	{ "mzlogin/vim-markdown-toc" },
 	{ "Darazaki/indent-o-matic" },
 	{ "xiyaowong/transparent.nvim" },
-	{ "eandrju/cellular-automaton.nvim" },
+	{ "eandrju/cellular-automaton.nvim", lazy = true },
 	{ "laytan/cloak.nvim" },
 	{ "jellydn/hurl.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
 }
 
-local opts = {}
+local opts = {
+	defaults = {},
+}
+
 require("lazy").setup(plugins, opts)
