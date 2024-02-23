@@ -42,6 +42,7 @@ local servers = {
 	"ocamllsp",
 	"nil_ls",
 	"templ",
+	"tailwindcss"
 }
 
 -- mason_lspconfig.setup({
