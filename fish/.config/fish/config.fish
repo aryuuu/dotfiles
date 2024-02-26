@@ -27,5 +27,11 @@ alias cdx='cd ~/project/xendit'
 alias cds='cd ~/sandbox'
 alias cdc='cd ~/.config'
 alias xpn='openvpn ~/project/xendit/vpn/client.ovpn'
+alias gst='git status'
+alias glgg='git log --graph'
+alias gds='git diff --staged'
+alias gd='git diff'
+alias glo='git log --oneline --decorate'
+alias glog='git log --oneline --decorate --graph'
 
 source $HOME/.config/fish/utils.fish
