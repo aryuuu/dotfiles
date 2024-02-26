@@ -92,9 +92,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id blueman-applet
 exec --no-startup-id i3-battery-popup -n -L 20
+exec --no-startup-id "killall dunst; dunst"
 
 exec_always --no-startup-id "killall picom; picom"
-exec_always --no-startup-id "killall dunst; dunst"
 exec_always --no-startup-id "killall udiskie; udiskie -t"
 exec_always --no-startup-id "killall clipmenud; clipmenud"
 
@@ -392,6 +392,8 @@ bindsym $mod+Print exec "flameshot gui"
 bindsym --release $mod+Button2 exec "flameshot gui"
 # snipping tool like screenshot
 bindsym Shift+Print exec "sleep 0.2; scrot -s -e 'mv $f ~/Pictures/screenshots/'"
+
+bindsym $mod+o exec "~/.scripts/ocr.sh"
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
