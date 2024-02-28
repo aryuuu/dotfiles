@@ -1,3 +1,18 @@
+function envsource --description 'Source environment file'
+  set -f envfile "$argv"
+  if not test -f "$envfile"
+    echo "Unable to load $envfile"
+    return 1
+  end
+  while read line
+    if not string match -qr '^#|^$' "$line"
+      set item (string split -m 1 '=' $line)
+      set -gx $item[1] $item[2]
+      echo "Exported key $item[1]"
+    end
+  end < "$envfile"
+end
+
 function lsbloat --description 'List all bloat package'
 	pacman -Qdtq |  awk '{ printf $1; system("pacman -Qi " $1 " | grep Size | cut -d\":\" -f 2") } ' | sort -k3r,3 -k2nr,2
 end

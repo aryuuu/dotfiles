@@ -151,7 +151,7 @@ local function go_result_type(info)
 		return t("")
 	end
 
-	local query = vim.treesitter.parse_query(
+	local query = vim.treesitter.query.parse(
 		"go",
 		[[
       [
@@ -222,6 +222,38 @@ mod tests {
 			{
 				actual = i(1),
 				expected = i(2),
+				finish = i(0),
+			}
+		)
+	),
+})
+
+ls.add_snippets("javascript", {
+	s(
+		"clg",
+		fmta(
+			[[
+console.log({<val>});
+<finish>
+]],
+			{
+				val = i(1),
+				finish = i(0),
+			}
+		)
+	),
+})
+
+ls.add_snippets("typescript", {
+	s(
+		"clg",
+		fmta(
+			[[
+console.log({<val>});
+<finish>
+]],
+			{
+				val = i(1),
 				finish = i(0),
 			}
 		)
