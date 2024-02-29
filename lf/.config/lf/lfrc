@@ -23,6 +23,9 @@ set scrolloff 10
 # icons
 set icons
 
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+
 # use enter for shell commands
 map <enter> shell
 
@@ -35,18 +38,18 @@ map o &mimeopen $f
 map O $mimeopen --ask $f
 
 # Quick cd
-map gr cd /run/media/fatt
-map gh cd ~
-map gw cd ~/.wine
-map gd "cd ~/Downloads"
-map gm cd ~/Music
-map gv cd ~/Videos
-map gc cd ~/ctf
-map gG cd ~/games
-map gk cd ~/kuliah
-map gp cd ~/project
-map gf cd ~/project/dotfiles
-map gs cd ~/sandbox
+map cdr cd /run/media/fatt
+map cdh cd ~
+map cdw cd ~/.wine
+map cdd "cd ~/Downloads"
+map cdm cd ~/Music
+map cdv cd ~/Videos
+map cdc cd ~/ctf
+map cdG cd ~/games
+map cdk cd ~/kuliah
+map cdp cd ~/project
+map cdf cd ~/project/dotfiles
+map cds cd ~/sandbox
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
