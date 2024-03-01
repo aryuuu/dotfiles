@@ -142,6 +142,27 @@ local plugins = {
 	"ray-x/go.nvim",
 	"ray-x/guihua.lua",
 	-- {
+	-- 	"NTBBloodbath/zig-tools.nvim",
+	-- 	-- Load zig-tools.nvim only in Zig buffers
+	-- 	ft = "zig",
+	-- 	config = function()
+	-- 		-- Initialize with default config
+	-- 		require("zig-tools").setup()
+	-- 	end,
+	-- 	dependencies = {
+	-- 		{
+	-- 			"akinsho/toggleterm.nvim",
+	-- 			config = function()
+	-- 				require("toggleterm").setup()
+	-- 			end,
+	-- 		},
+	-- 		{
+	-- 			"nvim-lua/plenary.nvim",
+	-- 			module_pattern = "plenary.*",
+	-- 		},
+	-- 	},
+	-- },
+	-- {
 	-- 	"nvim-java/nvim-java",
 	-- 	dependencies = {
 	-- 		"nvim-java/lua-async-await",
@@ -278,6 +299,7 @@ local plugins = {
 	{ "eandrju/cellular-automaton.nvim", lazy = true },
 	{ "laytan/cloak.nvim" },
 	{ "jellydn/hurl.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
+	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 }
 
 local opts = {

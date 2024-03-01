@@ -287,3 +287,5 @@ console.log({<val>});
 -- ls.add_snippets("go", {
 --   s("f", fmt("func {}({}) {} {{\n\t{}\n}}", { i(1, "name"), i(2), i(3), i(0) })),
 -- })
+
+print("luasnip config loaded")
