@@ -395,6 +395,9 @@ bindsym Shift+Print exec "sleep 0.2; scrot -s -e 'mv $f ~/Pictures/screenshots/'
 
 bindsym $mod+o exec "~/.scripts/ocr.sh"
 
+bindsym $mod+v exec --no-startup-id ssrt
+bindsym $mod+Shift+v exec --no-startup-id ssrt --pause
+
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -465,7 +468,7 @@ assign [class="Mattermost"] $ws9
 assign [class="Slack"] $ws9
 assign [class="DBeaver"] $ws11
 assign [class="robo3t"] $ws11
-assign [class="jetbrains-idea"] $ws14
+# assign [class="jetbrains-idea"] $ws14
 
 # color scheme
 # class                 border  backgr. text    indicator child_border
