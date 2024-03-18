@@ -16,5 +16,5 @@ else
 	ueberzug layer -s <"$FIFO_UEBERZUG" -p json &
 	exec 3>"$FIFO_UEBERZUG"
 	trap cleanup EXIT
-	lf "$@" 3>&-
+	lf -last-dir-path=/tmp/.lf-dir "$@" 3>&-
 fi

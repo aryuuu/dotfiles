@@ -55,10 +55,10 @@ local plugins = {
 	{ "ellisonleao/gruvbox.nvim", lazy = true },
 	{ "Mofiqul/dracula.nvim", lazy = true },
 	{ "rebelot/kanagawa.nvim", lazy = true },
-	{ "EdenEast/nightfox.nvim", lazy = true },
+	{ "EdenEast/nightfox.nvim" },
 	{ "jacoborus/tender.vim", lazy = true },
 	"rmehri01/onenord.nvim",
-	{ "shaunsingh/nord.nvim", lazy = true },
+	{ "shaunsingh/nord.nvim" },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -131,11 +131,11 @@ local plugins = {
 		"SmiteshP/nvim-navic",
 		dependencies = "neovim/nvim-lspconfig",
 	}, -- Lua
-	{
-		"SmiteshP/nvim-gps",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		event = "BufRead",
-	},
+	-- {
+	-- 	"SmiteshP/nvim-gps",
+	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
+	-- 	event = "BufRead",
+	-- },
 	"simrat39/rust-tools.nvim",
 	"nanotee/sqls.nvim",
 	"b0o/schemastore.nvim",
@@ -201,6 +201,7 @@ local plugins = {
 	-- }
 	{
 		"nvim-treesitter/nvim-treesitter",
+		version = "v0.9.2",
 		build = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,

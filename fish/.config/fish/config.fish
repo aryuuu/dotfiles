@@ -2,6 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# disable fish greeting
+set fish_greeting
+
 bind \ef "tmux-sessionizer"
 bind \cf "tmux-sessionizer"
 
@@ -20,6 +23,7 @@ alias webcam="mpv av://v4l2:/dev/video0"
 alias printcolor="~/sandbox/python/colorprint.py"
 alias transid="trans en:id"
 alias pacgraph='pacgraph -b "#212326" -l "#FFF9C6" -t "#F5A069" -d "#C35C4D" -f "/home/fatt/Pictures/wallpaper/pacgraph"'
+alias argoon='argoonboard'
 
 # navigations
 alias cdf='cd ~/project/dotfiles'
@@ -28,6 +32,8 @@ alias cdx='cd ~/project/xendit'
 alias cds='cd ~/sandbox'
 alias cdc='cd ~/.config'
 alias xpn='openvpn ~/project/xendit/vpn/client.ovpn'
+
+# git
 alias gst='git status'
 alias glgg='git log --graph'
 alias gds='git diff --staged'

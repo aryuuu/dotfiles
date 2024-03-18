@@ -33,29 +33,71 @@ map <enter> shell
 map x $$f
 map X !$f
 
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
+# # dedicated keys for file opener actions
+# map o &mimeopen $f
+# map O $mimeopen --ask $f
 
 # Quick cd
-map cdr cd /run/media/fatt
-map cdh cd ~
-map cdw cd ~/.wine
-map cdd "cd ~/Downloads"
-map cdm cd ~/Music
-map cdv cd ~/Videos
-map cdc cd ~/ctf
-map cdG cd ~/games
-map cdk cd ~/kuliah
-map cdp cd ~/project
-map cdf cd ~/project/dotfiles
-map cds cd ~/sandbox
+map gr cd /run/media/fatt
+map gh cd ~
+map gw cd ~/.wine
+map gd "cd ~/Downloads"
+map gm cd ~/Music
+map gv cd ~/Videos
+map gc cd ~/ctf
+map gG cd ~/games
+map gk cd ~/kuliah
+map gp cd ~/project
+map gf cd ~/project/dotfiles
+map gs cd ~/sandbox
+
+map y
+map yy copy
+map yp yank_path
+map yn yank_name
+map yd yank_dir
+
+map n no
+
+cmd yank_path ${{
+    set -f
+    readlink -f $f | xclip -selection clipboard
+}}
+
+cmd yank_name ${{
+    set -f
+    # basename -a $(readlink -f "$fx") | xclip -selection clipboard
+    basename -a $fx | xclip -selection clipboard
+}}
+
+cmd yank_dir ${{
+    set -f
+    pwd -f $f | xclip -selection clipboard
+}}
+
+cmd lfecho ${{
+    echo $fx
+}}
+
+cmd no ${{
+    set -f
+    name=$(basename $f)
+    mv $name no-$name
+}}
+
+cmd unno ${{
+    set -f
+    name=$(basename $f)
+    mv "$name" "${name#no-}"
+}}
+
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
 cmd open ${{
+    echo $f
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
@@ -118,6 +160,9 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
-backups
-pokemon-replays
-cmd yank_name
+
+cmd batch ${{
+  /bin/sh -c "vimv $(echo -e "$fx" | xargs -i echo "\\'{}\\'" | xargs echo)"
+}}
+
+map rb batch
