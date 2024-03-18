@@ -119,6 +119,19 @@ telescope.setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+        fzf_writer = {
+            minimum_grep_characters = 2,
+            minimum_files_characters = 2,
+
+            -- Disabled by default.
+            -- Will probably slow down some aspects of the sorter, but can make color highlights.
+            -- I will work on this more later.
+            use_highlighter = true,
+        }
+        -- fzy_native = {
+        --     override_generic_sorter = false,
+        --     override_file_sorter = true,
+        -- },
 		-- Your extension configuration goes here:
 		-- extension_name = {
 		--   extension_config_key = value,

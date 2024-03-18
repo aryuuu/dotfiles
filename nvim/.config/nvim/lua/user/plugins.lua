@@ -26,6 +26,7 @@ local plugins = {
 		event = "InsertEnter",
 	}, -- Easily comment stuff
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope-fzf-writer.nvim" },
 	{
 		"terrortylor/nvim-comment",
 		event = "InsertEnter",

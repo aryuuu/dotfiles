@@ -132,8 +132,8 @@ local mappings = {
 	},
 	["F"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true<cr>", "Find Text" },
 	-- TODO: make this fuzzy
-	["/"] = { "<cmd>Telescope live_grep search= theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
-	["?"] = { "<cmd>Telescope grep_string search= theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
+	["/"] = { "<cmd>Telescope live_grep search='' theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
+	["?"] = { "<cmd>Telescope grep_string search='' theme=ivy only_sort_text=true search_dirs={'%:p'}<cr>", "Find Text" },
 	["T"] = { "<cmd>TransparentToggle<cr>", "Toggle Transparency" },
 	-- ["F"] = { "<cmd>Telescope live_grep search= theme=ivy<cr>", "Find Text" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
