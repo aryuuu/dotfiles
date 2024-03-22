@@ -302,6 +302,7 @@ local plugins = {
 	{ "laytan/cloak.nvim" },
 	{ "jellydn/hurl.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
+	{ "aznhe21/actions-preview.nvim" },
 }
 
 local opts = {

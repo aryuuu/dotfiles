@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "DAPInstall.nvim": { "branch": "main", "commit": "24923c3819a450a772bb8f675926d530e829665f" },
   "LuaSnip": { "branch": "master", "commit": "f3b3d3446bcbfa62d638b1903ff00a78b2b730a1" },
+  "actions-preview.nvim": { "branch": "master", "commit": "5072b1b1065a6b22bdd46b5c21780a91d6a08071" },
   "bufferline.nvim": { "branch": "main", "commit": "b15c6daf5a64426c69732b31a951f4e438cb6590" },
   "catppuccin": { "branch": "main", "commit": "e1fc2c3ade0d8872665d7570c493bbd5e11919c7" },
   "cellular-automaton.nvim": { "branch": "main", "commit": "b7d056dab963b5d3f2c560d92937cb51db61cb5b" },
