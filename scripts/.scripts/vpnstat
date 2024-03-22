@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+stat=$(openvpn3 sessions-list | grep connected)
+
+if [ -z "$stat" ]; then
+    echo "VPN: X"
+else
+    echo "VPN: "
+fi
+```
+
