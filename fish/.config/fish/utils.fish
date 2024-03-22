@@ -81,3 +81,7 @@ end
 function docremi -d 'Remove a docker image'
 	docker images | sed 1d | fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}' | xargs -r docker rmi
 end
+
+function docstart -d 'Start a docker container from selected image'
+	docker images | sed 1d | fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}' | xargs -r docker run
+end
