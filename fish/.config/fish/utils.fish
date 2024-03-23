@@ -85,3 +85,11 @@ end
 function docstart -d 'Start a docker container from selected image'
 	docker images | sed 1d | fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}' | xargs -r docker run
 end
+
+function docshi -d 'Start a shell from selected image'
+	set image_id (docker images | sed 1d | fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | awk '{print $3}')
+
+  if test -n "$image_id"
+    docker run -it $image_id /bin/sh
+  end
+end
