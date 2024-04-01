@@ -16,31 +16,10 @@
 
 @import "themes/mocha.css";
 
-/* window { */
-/*   color: rgba(217, 216, 216, 1); */
-/*   background: rgba(35, 31, 32, 0.5); */
-/* } */
-
 window#waybar {
   background: transparent;
   /* background: rgba(35, 31, 32, 0.1); */
 }
-
-/* window#waybar.bottom { */
-/*     padding-top: 3px; */
-/*     padding-bottom: 3px; */
-/* } */
-
-/* window#waybar.empty { */
-/*   color: rgba(217, 216, 216, 0.1); */
-/*   background: rgba(35, 31, 32, 0.1); */ 
-/*   background: transparent; */
-/* } */
-
-/* window#waybar.solo { */
-/*   color: rgba(217, 216, 216, 0); */
-/*   background: rgba(35, 31, 32, 0.1); */
-/* } */
 
 tooltip {
     background: @main-bg;
@@ -65,7 +44,7 @@ tooltip {
     padding-right: 2px;
     margin-right: 0px;
     color: @main-fg;
-    animation: ws_normal 5s ease-in-out 1;
+    animation: ws_normal 5s ease-in-out .1;
 }
 
 #workspaces button.active {
@@ -75,31 +54,16 @@ tooltip {
     padding-left: 12px;
     padding-right: 12px;
     margin-right: 3px;
-    animation: ws_active 5s ease-in-out 1;
+    animation: ws_active 5s ease-in-out .1;
     transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button:hover {
     background: @wb-hvr-bg;
     color: @wb-hvr-fg;
-    animation: ws_hover 20s ease-in-out 1;
+    animation: ws_hover 20s ease-in-out .1;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
-
-/* #workspaces button { */
-/*   padding: 0 3px; */
-/*   color: rgba(217, 216, 216, 0.4); */
-/* } */
-
-/* #workspaces button.visible { */
-/*   color: rgba(217, 216, 216, 1); */
-/* } */
-
-/* #workspaces button.active { */
-/*   border-top: 3px solid rgba(217, 216, 216, 1); */
-/*   border-bottom: 3px solid rgba(217, 216, 216, 0); */
-/*   color: rgba(217, 216, 216, 1); */
-/* } */
 
 #workspaces button.urgent {
   color: rgba(238, 46, 36, 1);
@@ -119,24 +83,6 @@ tooltip {
     color: @wb-color;
     animation: tb_normal 20s ease-in-out 1;
 }
-
-/* #mode, */
-/* #battery, */
-/* #cpu, */
-/* #memory, */
-/* #network, */
-/* #pulseaudio, */
-/* #idle_inhibitor, */
-/* #backlight, */
-/* #custom-storage, */
-/* #custom-spotify, */
-/* #custom-weather, */
-/* #custom-mail, */
-/* #disk { */
-/*   margin: 0px 6px 0px 10px; */
-/*   padding: 0px 3px; */ 
-/*   min-width: 15px; */
-/* } */
 
 #backlight,
 #battery,
@@ -180,11 +126,6 @@ tooltip {
     padding-right: 4px;
     /* border-radius: 9px; */
 }
-
-/* #clock { */
-/*   margin: 0px 10px 0px 5px; */
-/*   min-width:  120px; */
-/* } */
 
 #tray {
   /* margin-right: 12px; */
