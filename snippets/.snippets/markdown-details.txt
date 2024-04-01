@@ -2,11 +2,11 @@
 <summary>Click to expand</summary>
 
 Req
-```console
+```sh
 ```
 
 Res
-```console
+```json
 ```
 
 </details>

@@ -1,38 +1,22 @@
 [{
     "layer": "top",
     "position": "top",
-    "height": 10,
+    "height": 15,
     "modules-left": [
-        "custom/padd",
-        "custom/l_end",
         "hyprland/workspaces",
-        "hyprland/submap",
-        "custom/r_end",
-        "custom/padd"
+        "hyprland/submap"
     ],
     "modules-center": [
-        "custom/padd",
-        "custom/l_end",
-        "hyprland/window",
-        "custom/r_end",
-        "custom/padd"
+        "hyprland/window"
     ],
     "modules-right": [
-        "custom/padd",
-        "custom/l_end",
         "backlight",
         "pulseaudio",
         "idle_inhibitor",
         "battery",
-        "custom/r_end",
-        "custom/l_end",
         "clock#time",
         "clock#date",
-        "custom/r_end",
-        "custom/l_end",
-        "tray",
-        "custom/r_end",
-        "custom/padd"
+        "tray"
     ],
     "hyprland/submap": {
         "format": " {}"
@@ -42,7 +26,7 @@
         "disable-scroll": true
     },
     "hyprland/window": {
-        "format": "{title}",
+        "format": "{name}",
         "max-length": 50,
         "tooltip": false,
         "rewrite": {
@@ -123,83 +107,21 @@
     "tray": {
         "icon-size": 15,
         "spacing": 5
-    },
-   "custom/l_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/r_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-   "custom/l_end_rev": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/r_end_rev": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/sl_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/sr_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/rl_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/rr_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/padd": {
-        "format": "  ",
-        "interval" : "once",
-        "tooltip": false
     }
 },
 {
     "layer": "bottom",
     "position": "bottom",
-    "height": 10,
+    "height": 15,
     "modules-left": [
     ],
     "modules-right": [
-        "custom/padd",
-        "custom/l_end",
-        "custom/vpn",
         "custom/utc",
-        "custom/r_end",
-        "custom/l_end",
         "disk#root",
         "disk#home",
-        "custom/r_end",
-        "custom/l_end",
         "memory",
         "cpu",
         "network",
-        "custom/r_end",
-        "custom/padd"
     ],
     "memory": {
         "interval": 5,
@@ -247,54 +169,8 @@
         "format-alt": "",
         "exec": "date --utc +'UTC: %Y-%m-%d %H:%M:%S'",
         "interval": ".5"
-    },
-    "custom/vpn": {
-        "format": "VPN: {}",
-        "format-alt": "",
-        "exec": "/home/fatt/.scripts/vpnstat",
-        "interval": ".5"
-    },
-   "custom/l_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/r_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/sl_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/sr_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/rl_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/rr_end": {
-        "format": " ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/padd": {
-        "format": "  ",
-        "interval" : "once",
-        "tooltip": false
     }
 }
 ]
+
 

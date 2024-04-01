@@ -172,6 +172,7 @@ local mappings = {
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		P = { "<cmd>Git pull<cr>", "Pull" },
 		H = { "<cmd>Git push -u origin HEAD<cr>", "Push HEAD" },
+		e = { "<cmd>Git commit --allow-empty -m 'empty commit'<cr>", "Push HEAD" },
 		-- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		R = { "<cmd>lua require 'gitsigns'.refresh()<cr>", "Refresh buffers" },
