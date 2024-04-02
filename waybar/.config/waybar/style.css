@@ -44,7 +44,7 @@ tooltip {
     padding-right: 2px;
     margin-right: 0px;
     color: @main-fg;
-    animation: ws_normal 5s ease-in-out .1;
+    /* animation: ws_normal 5s ease-in-out .1; */
 }
 
 #workspaces button.active {
@@ -54,15 +54,15 @@ tooltip {
     padding-left: 12px;
     padding-right: 12px;
     margin-right: 3px;
-    animation: ws_active 5s ease-in-out .1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+    /* animation: ws_active 5s ease-in-out .1; */
+    /* transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #workspaces button:hover {
     background: @wb-hvr-bg;
     color: @wb-hvr-fg;
-    animation: ws_hover 20s ease-in-out .1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    /* animation: ws_hover 20s ease-in-out .1; */
+    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #workspaces button.urgent {
@@ -81,7 +81,7 @@ tooltip {
     padding-right: 3px;
     margin-right: 0px;
     color: @wb-color;
-    animation: tb_normal 20s ease-in-out 1;
+    /* animation: tb_normal 20s ease-in-out 1; */
 }
 
 #backlight,
