@@ -7,5 +7,4 @@ if [ -z "$stat" ]; then
 else
     echo "VPN: "
 fi
-```
 

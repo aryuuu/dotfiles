@@ -269,7 +269,7 @@
         "interval": ".5"
     },
     "custom/vpn": {
-        "format": "VPN: {}",
+        "format": "{}",
         "format-alt": "",
         "exec": "/home/fatt/.scripts/vpnstat",
         "interval": ".5"

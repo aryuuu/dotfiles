@@ -5,6 +5,7 @@
   /*   "FontAwesome 5 Free Solid"; */
 
   font-family: "JetBrainsMono Nerd Font";
+  /* font-family: "D2Coding"; */
   /* font-family: "Tamsyn:pixelsize=9;2", "FontAwesome 6 Free:style=Solid:size=8;2",  */
   /*   "FontAwesome 6 Brands:style=Regular:size=8;2", "NikkyouSans:style=Sans:size=4;0", */
   /*   "Inconsolata for Powerline:pixelsize=10:antialias=true;3"; */
@@ -94,6 +95,7 @@ tooltip {
 #custom-gpuinfo,
 #disk,
 #custom-utc,
+#custom-vpn,
 #idle_inhibitor,
 #custom-keybindhint,
 #language,
