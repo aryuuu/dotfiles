@@ -275,13 +275,13 @@
         "format": " {}",
         "format-alt": "",
         "exec": "date --utc +'UTC: %Y-%m-%d %H:%M:%S'",
-        "interval": 0.5
+        "interval": 1
     },
     "custom/vpn": {
         "format": "{}",
         "format-alt": "",
         "exec": "/home/fatt/.scripts/vpnstat",
-        "interval": 0.5
+        "interval": 1
     },
    "custom/l_end": {
         "format": " ",
