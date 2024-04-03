@@ -12,6 +12,8 @@ set $DMENU_NHF "#FA485D"
 
 SNIPPETS_DIR=~/.snippets
 
+WL_FLAG=$1
+
 if command -v rofi &> /dev/null
 then
     selection=$(ls $SNIPPETS_DIR | rofi -dmenu -i -p "")
@@ -29,7 +31,12 @@ then
     exit 1
 fi
 
+if [[ -z $WL_FLAG ]];
+then
+    xclip -selection clipboard -i $selection_full_path  && notify-send "dsnippet" "$selection copied to clipboard" && exit 0
+fi
 
-xclip -selection clipboard -i $selection_full_path  && notify-send "dsnippet" "$selection copied to clipboard" && exit 0
+wl-copy < $selection_full_path && notify-send "dsnippet" "$selection copied to clipboard" && exit 0
 
 notify-send "dsnippet" "failed to copy snippet"
+
