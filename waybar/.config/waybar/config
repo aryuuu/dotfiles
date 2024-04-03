@@ -96,7 +96,8 @@
             "warning": 25,
             "critical": 10
         },
-        "tooltip": false
+        "tooltip": true,
+        "tooltip-format": "{timeTo}"
     },
     "pulseaudio": {
         "format": "{icon} {volume}",
@@ -274,13 +275,13 @@
         "format": " {}",
         "format-alt": "",
         "exec": "date --utc +'UTC: %Y-%m-%d %H:%M:%S'",
-        "interval": ".5"
+        "interval": 0.5
     },
     "custom/vpn": {
         "format": "{}",
         "format-alt": "",
         "exec": "/home/fatt/.scripts/vpnstat",
-        "interval": ".5"
+        "interval": 0.5
     },
    "custom/l_end": {
         "format": " ",
