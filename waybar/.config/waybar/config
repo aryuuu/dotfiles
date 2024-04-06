@@ -20,6 +20,7 @@
     "modules-right": [
         "custom/padd",
         "custom/l_end",
+        "custom/recording",
         "backlight",
         "pulseaudio",
         "idle_inhibitor",
@@ -140,6 +141,12 @@
             "deactivated": ""
         },
         "tooltip": false
+    },
+    "custom/recording": {
+        "format": "{}",
+        "format-alt": "",
+        "exec": "pgrep wf-recorder > /dev/null && echo ' ' || echo ''",
+        "interval": 1
     },
     "tray": {
         "icon-size": 15,

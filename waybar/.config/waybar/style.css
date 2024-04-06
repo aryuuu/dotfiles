@@ -23,10 +23,10 @@ window#waybar {
 }
 
 tooltip {
-    background: @main-bg;
-    color: @main-fg;
-    border-radius: 7px;
-    border-width: 0px;
+  background: @main-bg;
+  color: @main-fg;
+  border-radius: 7px;
+  border-width: 0px;
 }
 
 #workspaces {
@@ -34,36 +34,36 @@ tooltip {
 }
 
 #workspaces button {
-    box-shadow: none;
-	text-shadow: none;
-    padding: 0px;
-    border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 2px;
-    padding-right: 2px;
-    margin-right: 0px;
-    color: @main-fg;
-    /* animation: ws_normal 5s ease-in-out .1; */
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-right: 0px;
+  color: @main-fg;
+  /* animation: ws_normal 5s ease-in-out .1; */
 }
 
 #workspaces button.active {
-    background: @wb-act-bg;
-    color: @wb-act-fg;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
-    /* animation: ws_active 5s ease-in-out .1; */
-    /* transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682); */
+  background: @wb-act-bg;
+  color: @wb-act-fg;
+  margin-left: 3px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-right: 3px;
+  /* animation: ws_active 5s ease-in-out .1; */
+  /* transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #workspaces button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-fg;
-    /* animation: ws_hover 20s ease-in-out .1; */
-    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
+  background: @wb-hvr-bg;
+  color: @wb-hvr-fg;
+  /* animation: ws_hover 20s ease-in-out .1; */
+  /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #workspaces button.urgent {
@@ -71,18 +71,18 @@ tooltip {
 }
 
 #taskbar button {
-    box-shadow: none;
-	text-shadow: none;
-    padding: 0px;
-    border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
-    color: @wb-color;
-    /* animation: tb_normal 20s ease-in-out 1; */
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-right: 0px;
+  color: @wb-color;
+  /* animation: tb_normal 20s ease-in-out 1; */
 }
 
 #backlight,
@@ -96,6 +96,7 @@ tooltip {
 #disk,
 #custom-utc,
 #custom-vpn,
+#custom-recording,
 #temperature,
 #idle_inhibitor,
 #custom-keybindhint,
@@ -121,13 +122,13 @@ tooltip {
 #custom-sr_end,
 #custom-rl_end,
 #custom-rr_end {
-    color: @main-fg;
-    background: @main-bg;
-    opacity: 1;
-    margin: 3px 0px 3px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
-    /* border-radius: 9px; */
+  color: @main-fg;
+  background: @main-bg;
+  opacity: 1;
+  margin: 3px 0px 3px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+  /* border-radius: 9px; */
 }
 
 #tray {
@@ -144,6 +145,10 @@ tooltip {
 
 #battery.charging {
   color: rgba(217, 216, 216, 1);
+}
+
+#custom-recording {
+  color: @wb-hvr-bg;
 }
 
 #custom-storage.warning {
@@ -199,66 +204,65 @@ tooltip {
 #cpu,
 #disk,
 #custom-utc {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 /* paddings */
 #custom-r_end {
-    border-radius: 0px 21px 21px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+  border-radius: 0px 21px 21px 0px;
+  margin-right: 9px;
+  padding-right: 3px;
 }
 
 #custom-l_end {
-    border-radius: 21px 0px 0px 21px;
-    margin-left: 9px;
-    padding-left: 3px;
+  border-radius: 21px 0px 0px 21px;
+  margin-left: 9px;
+  padding-left: 3px;
 }
 
 #custom-r_end_rev {
-    border-radius: 0px 21px 21px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+  border-radius: 0px 21px 21px 0px;
+  margin-right: 9px;
+  padding-right: 3px;
 
-    background: @main-fg;
-    color: @main-bg;
+  background: @main-fg;
+  color: @main-bg;
 }
 
 #custom-l_end_rev {
-    border-radius: 21px 0px 0px 21px;
-    margin-left: 9px;
-    padding-left: 3px;
+  border-radius: 21px 0px 0px 21px;
+  margin-left: 9px;
+  padding-left: 3px;
 
-    background: @main-fg;
-    color: @main-bg;
+  background: @main-fg;
+  color: @main-bg;
 }
 
 #custom-sr_end {
-    border-radius: 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+  border-radius: 0px;
+  margin-right: 9px;
+  padding-right: 3px;
 }
 
 #custom-sl_end {
-    border-radius: 0px;
-    margin-left: 9px;
-    padding-left: 3px;
+  border-radius: 0px;
+  margin-left: 9px;
+  padding-left: 3px;
 }
 
 #custom-rr_end {
-    border-radius: 0px 7px 7px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 9px;
+  padding-right: 3px;
 }
 
 #custom-rl_end {
-    border-radius: 7px 0px 0px 7px;
-    margin-left: 9px;
-    padding-left: 3px;
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 9px;
+  padding-left: 3px;
 }
 
 window#waybar.empty #window {
-	background: rgba(12, 12, 12, 0.0);
+  background: rgba(12, 12, 12, 0);
 }
-
