@@ -3,7 +3,7 @@
 stat=$(openvpn3 sessions-list | grep connected)
 
 if [ -z "$stat" ]; then
-    echo "VPN: X"
+    ~/.scripts/vpnconn
 else
-    echo "VPN: "
+    ~/.scripts/vpndc
 fi
