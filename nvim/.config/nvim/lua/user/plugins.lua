@@ -237,6 +237,18 @@ local plugins = {
 
 	-- winbar
 	{ "fgheng/winbar.nvim" },
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			-- runners
+			"nvim-neotest/neotest-go",
+			"nvim-neotest/neotest-jest",
+		},
+	},
 	-- Jest
 	-- {
 	-- 	"David-Kunz/jester",

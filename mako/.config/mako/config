@@ -5,5 +5,9 @@ text-color=#cdd6f4
 border-color=#89b4fa
 progress-color=over #313244
 
+border-radius=5
+
 [urgency=high]
 border-color=#fab387
+
+format=<b>%a</b>\n\n<b>%s</b>\n%b

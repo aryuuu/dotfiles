@@ -17,7 +17,7 @@ alias l='ls -lah'
 alias c='xclip -selection clipboard'
 alias lsw='nmcli d wifi list'
 alias grep='grep --color=auto'
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR $(cat $HOME/.rangerdir); cd "$LASTDIR"'
 alias lf='~/.config/lf/lfrun'
 alias webcam="mpv av://v4l2:/dev/video0"
 alias printcolor="~/sandbox/python/colorprint.py"

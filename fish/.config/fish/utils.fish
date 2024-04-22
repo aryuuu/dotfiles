@@ -93,3 +93,7 @@ function docshi -d 'Start a shell from selected image'
     docker run -it $image_id /bin/sh
   end
 end
+
+function uwuctx -d 'simpler version of kubectx'
+  kubectl config get-contexts | awk '{ print $1 }'| fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | kubectx config use-context
+end

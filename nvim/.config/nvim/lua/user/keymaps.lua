@@ -29,6 +29,10 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- quicklist navigation
+keymap("n", "]q", ":cnext<CR>", opts)
+keymap("n", "[q", ":cprev<CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-S-+>", ":resize -2<CR>", opts)
 keymap("n", "<C-S-->", ":resize +2<CR>", opts)

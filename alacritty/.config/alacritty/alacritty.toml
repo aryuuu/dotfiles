@@ -7,7 +7,7 @@ style = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 11
+size = 12
 
 [font.bold]
 family = "D2Coding"
@@ -67,9 +67,19 @@ key = "C"
 mods = "Alt"
 
 [[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
 action = "Paste"
 key = "V"
 mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "IncreaseFontSize"

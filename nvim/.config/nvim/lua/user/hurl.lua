@@ -6,7 +6,7 @@ require("hurl").setup({
 	mode = "split",
 
 	-- Split settings
-	split_position = "bottom",
+	split_position = "right",
 	split_size = "50%",
 
 	-- Popup settings
