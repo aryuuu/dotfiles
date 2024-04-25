@@ -6,7 +6,7 @@ end
 set fish_greeting
 
 bind \ef "tmux-sessionizer"
-bind \cf "tmux-sessionizer"
+# bind \cf "tmux-sessionizer"
 
 set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
 
@@ -15,6 +15,7 @@ alias ls='ls --color=auto'
 alias l='ls -lah'
 
 alias c='xclip -selection clipboard'
+alias y='wl-copy'
 alias lsw='nmcli d wifi list'
 alias grep='grep --color=auto'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR $(cat $HOME/.rangerdir); cd "$LASTDIR"'
