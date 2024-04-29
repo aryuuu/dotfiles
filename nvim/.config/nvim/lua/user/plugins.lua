@@ -53,23 +53,43 @@ local plugins = {
 
 	-- Colorschemes
 	"folke/tokyonight.nvim",
-	{ "ellisonleao/gruvbox.nvim", lazy = true },
-	{ "Mofiqul/dracula.nvim", lazy = true },
-	{ "rebelot/kanagawa.nvim", lazy = true },
-	{ "EdenEast/nightfox.nvim" },
-	{ "jacoborus/tender.vim", lazy = true },
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		keys = { "<leader>sC" },
+	},
+	{
+		"Mofiqul/dracula.nvim",
+		lazy = false,
+		keys = { "<leader>sC" },
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		keys = { "<leader>sC" },
+	},
+	{
+		"EdenEast/nightfox.nvim",
+	},
+	{
+		"jacoborus/tender.vim",
+		lazy = false,
+		keys = { "<leader>sC" },
+	},
 	"rmehri01/onenord.nvim",
 	{ "shaunsingh/nord.nvim" },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		version = "v0.2",
-		lazy = true,
+		lazy = false,
+		keys = { "<leader>sC" },
 	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		lazy = true,
+		lazy = false,
+		keys = { "<leader>sC" },
 	},
 	-- cmp plugins
 	{
