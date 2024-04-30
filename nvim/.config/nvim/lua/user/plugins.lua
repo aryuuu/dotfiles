@@ -160,7 +160,7 @@ local plugins = {
 	"simrat39/rust-tools.nvim",
 	"nanotee/sqls.nvim",
 	"b0o/schemastore.nvim",
-	"ray-x/go.nvim",
+	-- "ray-x/go.nvim",
 	"ray-x/guihua.lua",
 	-- {
 	-- 	"NTBBloodbath/zig-tools.nvim",
@@ -322,7 +322,7 @@ local plugins = {
 	"ElPiloto/telescope-vimwiki.nvim",
 	"mg979/vim-visual-multi",
 
-	"jbyuki/venn.nvim",
+	-- "jbyuki/venn.nvim",
 
 	"ThePrimeagen/vim-be-good",
 	"tpope/vim-surround",

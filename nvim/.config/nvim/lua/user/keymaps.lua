@@ -95,11 +95,11 @@ keymap("i", "jk", "<ESC>", opts)
 -- Comment line
 keymap("i", "<C-_>", "<Esc>:CommentToggle<CR>i", opts)
 -- insert in new line, without going to NORMAL mode first
-keymap("i", "<M-o>", "<Esc>o", opts)
--- A, without going to NORMAL mode first
-keymap("i", "<M-a>", "<Esc>A", opts)
--- I, without going to NORMAL mode first
-keymap("i", "<M-i>", "<Esc>I", opts)
+-- keymap("i", "<M-o>", "<Esc>o", opts)
+-- -- A, without going to NORMAL mode first
+-- keymap("i", "<M-a>", "<Esc>A", opts)
+-- -- I, without going to NORMAL mode first
+-- keymap("i", "<M-i>", "<Esc>I", opts)
 
 -- Copilot related mappings
 -- keymap('i', '<C-J>', [[<ESC>:call copilot#Accept()<CR>i]], opts)
