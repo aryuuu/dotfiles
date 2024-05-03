@@ -11,6 +11,7 @@ set smartcase
 set noswapfile
 set nobackup
 set scrolloff=8
+set showmode
 
 syntax on
 " case-insensitive search

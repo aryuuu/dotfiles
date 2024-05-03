@@ -12,15 +12,6 @@ end
 -- 	return "hello_world"
 -- end
 
--- local function is_venn_enabled()
--- 	local venn_enabled = vim.inspect(vim.b.venn_enabled)
--- 	if venn_enabled == "nil" then
--- 		return "x"
--- 	end
-
--- 	return "v"
--- end
-
 local filename = {
 	"filename",
 	file_status = true, -- Displays file status (readonly status, modified status)
