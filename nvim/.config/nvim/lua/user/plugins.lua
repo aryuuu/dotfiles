@@ -152,15 +152,9 @@ local plugins = {
 		"SmiteshP/nvim-navic",
 		dependencies = "neovim/nvim-lspconfig",
 	}, -- Lua
-	-- {
-	-- 	"SmiteshP/nvim-gps",
-	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
-	-- 	event = "BufRead",
-	-- },
 	"simrat39/rust-tools.nvim",
 	"nanotee/sqls.nvim",
 	"b0o/schemastore.nvim",
-	-- "ray-x/go.nvim",
 	"ray-x/guihua.lua",
 	-- {
 	-- 	"NTBBloodbath/zig-tools.nvim",
@@ -205,7 +199,6 @@ local plugins = {
 	-- 	},
 	-- },
 	-- Telescope
-	-- use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
 	{ "nvim-telescope/telescope.nvim", version = "0.1.4" },
 	{ "ThePrimeagen/harpoon", branch = "master" },
 	{ "zbirenbaum/copilot.lua", dependencies = "zbirenbaum/copilot-cmp" },
@@ -216,10 +209,6 @@ local plugins = {
 		end,
 	},
 	-- Treesitter
-	-- use {
-	--     "nvim-treesitter/nvim-treesitter",
-	--     run = ":TSUpdate",
-	-- }
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = "v0.9.2",
@@ -269,23 +258,6 @@ local plugins = {
 			"nvim-neotest/neotest-jest",
 		},
 	},
-	-- Jest
-	-- {
-	-- 	"David-Kunz/jester",
-	-- 	ft = { "javascript", "typescript" },
-	-- 	config = {
-	-- 		function()
-	-- 			local jester_status_ok, jester = pcall(require, "jester")
-	-- 			if not jester_status_ok then
-	-- 				return
-	-- 			end
-	-- 			jester.setup({
-	-- 				path_to_jest_run = "./node_modules/.bin/jest", -- used to run tests
-	-- 				path_to_jest_debug = "./node_modules/.bin/jest", -- used for debugging
-	-- 			})
-	-- 		end,
-	-- 	},
-	-- },
 	-- Debugging
 	{
 		"mfussenegger/nvim-dap",
@@ -322,9 +294,6 @@ local plugins = {
 	"ElPiloto/telescope-vimwiki.nvim",
 	"mg979/vim-visual-multi",
 
-	-- "jbyuki/venn.nvim",
-
-	"ThePrimeagen/vim-be-good",
 	"tpope/vim-surround",
 	"mbbill/undotree",
 	{ "mzlogin/vim-markdown-toc" },
