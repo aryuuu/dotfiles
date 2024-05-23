@@ -1,0 +1,24 @@
+views:
+  v1/pods:
+    columns:
+      - AGE
+      - NAMESPACE
+      - NAME
+      - IP
+      - NODE
+      - STATUS
+      - READY
+      - RESTARTS
+  # v1/services:
+  #   columns:
+  #     - AGE
+  #     - NAMESPACE
+  #     - NAME
+  #     - TYPE
+  #     - CLUSTER-IP
+  v1/deployments:
+    columns:
+      - AGE
+      - NAME
+      - TYPE
+      - CLUSTER-IP

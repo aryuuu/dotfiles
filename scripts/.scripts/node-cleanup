@@ -1,0 +1,39 @@
+# #!/bin/bash
+
+#!/bin/bash
+
+# Function to find and list all node_modules directories one level deep
+# that have not been modified in the last 3 months
+dry_run() {
+    echo "Dry run: Listing all node_modules directories one level deep not modified in the last 3 months."
+    find . -mindepth 2 -maxdepth 2 -type d -name "node_modules" -prune -execdir bash -c '
+        for dir in "$@"; do
+            if [ "$(find "$PWD" -type f -mtime -90 | wc -l)" -eq 0 ]; then
+                echo $PWD/node_modules
+            fi
+        done
+    ' bash {} +
+}
+
+# Function to delete all node_modules directories one level deep
+# that have not been modified in the last 3 months
+delete() {
+    echo "Deleting all node_modules directories one level deep not modified in the last 3 months."
+    find . -mindepth 2 -maxdepth 2 -type d -name "node_modules" -prune -execdir bash -c '
+        for dir in "$@"; do
+            if [ "$(find "$PWD" -type f -mtime -90 | wc -l)" -eq 0 ]; then
+                echo "Deleting $PWD/node_modules"
+                rm -rf "$PWD/node_modules"
+            fi
+        done
+    ' bash {} +
+}
+
+# Check the arguments to the script
+if [ "$1" == "dry-run" ]; then
+    dry_run
+elif [ "$1" == "delete" ]; then
+    delete
+else
+    echo "Usage: $0 {dry-run|delete}"
+fi
