@@ -176,7 +176,8 @@ local mappings = {
 		-- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		R = { "<cmd>lua require 'gitsigns'.refresh()<cr>", "Refresh buffers" },
-		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		-- s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		s = { "<cmd>Telescope git_stash<cr>", "Git stashes" },
 		u = {
 			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 			"Undo Stage Hunk",

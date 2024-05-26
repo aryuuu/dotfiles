@@ -23,7 +23,6 @@
         "custom/recording",
         "backlight",
         "pulseaudio",
-        "idle_inhibitor",
         "battery",
         "custom/r_end",
         "custom/l_end",

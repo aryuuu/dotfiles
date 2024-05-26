@@ -304,6 +304,15 @@ local plugins = {
 	{ "jellydn/hurl.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "aznhe21/actions-preview.nvim" },
+	{
+		'salkin-mada/openscad.nvim',
+		config = function ()
+			require('openscad')
+			-- load snippets, note requires
+			vim.g.openscad_load_snippets = true
+		end,
+		dependencies = 'L3MON4D3/LuaSnip'
+	}
 }
 
 local opts = {

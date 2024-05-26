@@ -8,4 +8,3 @@ openvpn3 sessions-list \
     openvpn3 session-manage --session-path $line --disconnect; 
 done\
 | notify-send "ovpn3" "connections closed"
-

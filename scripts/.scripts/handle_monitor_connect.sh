@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 handle() {
   case $1 in monitoradded*)
