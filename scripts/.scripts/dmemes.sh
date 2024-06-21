@@ -47,7 +47,9 @@ case "$file_type_raw" in
     ;;
 esac
 
-xclip -selection clipboard -t "$file_type" -i "$selection_full_path" && notify-send "dmemes" "$selection copied to clipboard" && exit 0
+# xclip -selection clipboard -t "$file_type" -i "$selection_full_path" && notify-send "dmemes" "$selection copied to clipboard" && exit 0
+# wl-copy -selection clipboard -t "$file_type" -i "$selection_full_path" && notify-send "dmemes" "$selection copied to clipboard" && exit 0
+wl-copy -t "$file_type" < "$selection_full_path" && notify-send "dmemes" "$selection copied to clipboard" && exit 0
 
 notify-send "dmemes" "failed to copy image"
 
