@@ -1,0 +1,27 @@
+(defwindow calendar
+           :monitor 0
+           :geometry (geometry :x "0.5%"
+                               :y "0%"
+                               :width "25%"
+                               :height "85%"
+                               :anchor "right center")
+           :stacking "fg"
+           :focusable false
+  (my-calendar))
+
+
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+         :halign "center"
+      text
+      (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+        "Greet"))
+)
+
+(defwidget my-calendar []
+  (box :orientation "vertical"
+       :halign "center"
+      (label :text "Calendar" :halign "center")
+      (calendar :halign "center")
+  )
+)
