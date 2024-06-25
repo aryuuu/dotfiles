@@ -1,4 +1,4 @@
-local ls = require "luasnip"
+local ls = require("luasnip")
 local s = ls.snippet
 -- local t = ls.text_node
 
@@ -23,21 +23,25 @@ local p = require("luasnip.extras").partial
 -- local conds = require "luasnip.extras.expand_conditions"
 
 local function bash(_, snip)
-  local file = io.popen(snip.trigger, "r")
-  local res = {}
-  for line in file:lines() do
-    table.insert(res, line)
-  end
-  return res
+	local file = io.popen(snip.trigger, "r")
+	local res = {}
+	for line in file:lines() do
+		table.insert(res, line)
+	end
+	return res
 end
 
 local snippets = {
-  s({ trig = "ymd", name = "Current date", dscr = "Insert the current date" }, {
-    p(os.date, "%Y-%m-%d"),
-  }),
+	s({ trig = "ymd", name = "Current date", dscr = "Insert the current date" }, {
+		p(os.date, "%Y-%m-%d"),
+	}),
 
-  s({ trig = "pwd" }, { f(bash, {}) }),
+	-- s({ trig = "uuidgen", name = "Random UUID", dscr = "Generate random UUID" }, {
+	--   p(os.execute("uuidgen")),
+	-- }),
+
+	s({ trig = "pwd" }, { f(bash, {}) }),
+	s({ trig = "uuidgen" }, { f(bash, {}, { user_args = { "uuidgen" } }) }),
 }
 
 return snippets
-
