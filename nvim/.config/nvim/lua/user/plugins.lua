@@ -199,7 +199,7 @@ local plugins = {
 	-- 	},
 	-- },
 	-- Telescope
-	{ "nvim-telescope/telescope.nvim", version = "0.1.4" },
+	{ "nvim-telescope/telescope.nvim", version = "0.1.8" },
 	{ "ThePrimeagen/harpoon", branch = "master" },
 	{ "zbirenbaum/copilot.lua", dependencies = "zbirenbaum/copilot-cmp" },
 	{
