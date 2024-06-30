@@ -210,6 +210,11 @@
     "position": "bottom",
     "height": 10,
     "modules-left": [
+        "custom/padd",
+        "custom/l_end",
+        "custom/currenttask",
+        "custom/r_end",
+        "custom/padd"
     ],
     "modules-right": [
         "custom/padd",
@@ -287,6 +292,13 @@
         "format": "{}",
         "format-alt": "",
         "exec": "/home/fatt/.scripts/vpnstat",
+        "interval": 1,
+    },
+
+    "custom/currenttask": {
+        "format": "task: {}",
+        "format-alt": "",
+        "exec": "/home/fatt/.scripts/get-current-task.sh",
         "interval": 1,
     },
    "custom/l_end": {
