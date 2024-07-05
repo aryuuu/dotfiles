@@ -9,6 +9,7 @@ local i = ls.insert_node
 local t = ls.text_node
 local d = ls.dynamic_node
 local c = ls.choice_node
+local f = ls.function_node
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
@@ -51,6 +52,15 @@ vim.keymap.set({ "i", "s" }, "<C-l>", function()
 		ls.change_choice(1)
 	end
 end)
+
+local function bash(_, snip)
+	local file = io.popen(snip.trigger, "r")
+	local res = {}
+	for line in file:lines() do
+		table.insert(res, line)
+	end
+	return res
+end
 
 -- treesitter transformer, thanks TJ
 local transforms = {
@@ -257,6 +267,20 @@ console.log({<val>});
 				finish = i(0),
 			}
 		)
+	),
+})
+
+ls.add_snippets("all", {
+	s(
+		"pwd",
+		f(bash, {}, { user_args = { "pwd" } })
+	),
+})
+
+ls.add_snippets("all", {
+	s(
+		"uuidgen",
+		f(bash, {}, { user_args = { "uuidgen" } })
 	),
 })
 

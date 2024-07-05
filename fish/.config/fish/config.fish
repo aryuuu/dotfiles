@@ -11,6 +11,7 @@ bind \ef "tmux-sessionizer"
 set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
 
 # aliases
+alias nv='nvim'
 alias ls='ls --color=auto'
 alias l='ls -lah'
 
