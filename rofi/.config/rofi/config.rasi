@@ -17,6 +17,7 @@ configuration{
     sidebar-mode: true;
     kb-row-up: "Up,Control+P,Alt+k";
     kb-row-down: "Down,Control+D,Alt+j";
+    kb-mode-next: "Shift+Right,Control+Tab";
 }
 
 @theme "catppuccin-mocha"

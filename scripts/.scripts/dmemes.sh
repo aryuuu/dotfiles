@@ -52,6 +52,3 @@ esac
 wl-copy -t "$file_type" < "$selection_full_path" && notify-send "dmemes" "$selection copied to clipboard" && exit 0
 
 notify-send "dmemes" "failed to copy image"
-
-
-

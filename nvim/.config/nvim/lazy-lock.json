@@ -30,7 +30,7 @@
   "indent-o-matic": { "branch": "master", "commit": "4d11e98f523d3c4500b1dc33f0d1a248a4f69719" },
   "jvim.nvim": { "branch": "master", "commit": "9fb5c4bea3c765ec4321f8ab837d55e126a2efac" },
   "kanagawa.nvim": { "branch": "master", "commit": "b4110528b4a12c295efd3ae222882469b2b44d4a" },
-  "lazy.nvim": { "branch": "main", "commit": "a9d7ade203b3f3ee3058c082c62afdf8e4bcb416" },
+  "lazy.nvim": { "branch": "main", "commit": "6ca23c15f64e88e3ba26be9795343c4c7f2ee851" },
   "lualine-lsp-progress": { "branch": "master", "commit": "56842d097245a08d77912edf5f2a69ba29f275d7" },
   "lualine.nvim": { "branch": "master", "commit": "0a5a66803c7407767b799067986b4dc3036e1983" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "37a336b653f8594df75c827ed589f1c91d91ff6c" },

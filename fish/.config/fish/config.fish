@@ -9,6 +9,7 @@ bind \ef "tmux-sessionizer"
 # bind \cf "tmux-sessionizer"
 
 set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
+set EDITOR nvim
 
 # aliases
 alias nv='nvim'
