@@ -198,8 +198,20 @@ local plugins = {
 	-- 		},
 	-- 	},
 	-- },
+
 	-- Telescope
-	{ "nvim-telescope/telescope.nvim", version = "0.1.8" },
+	{
+		"nvim-telescope/telescope.nvim",
+		version = "0.1.8",
+		dependencies = {
+			{
+				"nvim-telescope/telescope-live-grep-args.nvim",
+				-- This will not install any breaking changes.
+				-- For major updates, this must be adjusted manually.
+				version = "^1.0.0",
+			},
+		},
+	},
 	{ "ThePrimeagen/harpoon", branch = "master" },
 	{ "zbirenbaum/copilot.lua", dependencies = "zbirenbaum/copilot-cmp" },
 	{
@@ -211,7 +223,8 @@ local plugins = {
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		version = "v0.9.2",
+		-- version = "v0.9.2",
+		commit = "0758155d4dfacfa959ad82ffa3879cb69c82e719",
 		build = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,
@@ -305,14 +318,14 @@ local plugins = {
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "aznhe21/actions-preview.nvim" },
 	{
-		'salkin-mada/openscad.nvim',
-		config = function ()
-			require('openscad')
+		"salkin-mada/openscad.nvim",
+		config = function()
+			require("openscad")
 			-- load snippets, note requires
 			vim.g.openscad_load_snippets = true
 		end,
-		dependencies = 'L3MON4D3/LuaSnip'
-	}
+		dependencies = "L3MON4D3/LuaSnip",
+	},
 }
 
 local opts = {

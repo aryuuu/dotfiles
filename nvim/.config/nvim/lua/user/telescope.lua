@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+local lga_actions = require("telescope-live-grep-args.actions")
+
 local function filenameFirst(_, path)
   local tail = vim.fs.basename(path)
   local parent = vim.fs.dirname(path)
@@ -39,8 +41,8 @@ telescope.setup({
 				["<C-n>"] = actions.cycle_history_next,
 				["<C-p>"] = actions.cycle_history_prev,
 
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
+				-- ["<C-j>"] = actions.move_selection_next,
+				-- ["<C-k>"] = actions.move_selection_previous,
 
 				["<C-c>"] = actions.close,
 
@@ -169,4 +171,20 @@ telescope.setup({
 		"--smart-case",
 		-- "--no-ignore",
 	},
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+          -- freeze the current list and start a fuzzy search in the frozen list
+          ["<C-f>"] = actions.to_fuzzy_refine,
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
+    },
 })
