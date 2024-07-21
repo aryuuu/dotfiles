@@ -67,6 +67,10 @@ vim.cmd([[ let g:vimwiki_list = [{'path': '~/.vimwiki/', 'syntax': 'markdown', '
 -- vim.cmd([[let g:copilot_assume_mapped = v:true]])
 vim.g["copilot_no_tab_map"] = false
 vim.g["copilot_assume_mapped"] = false
+vim.g.zig_fmt_autosave = 0
+
+
+
 
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },

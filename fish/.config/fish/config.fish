@@ -2,14 +2,25 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set -x EDITOR vim
+
 # disable fish greeting
 set fish_greeting
 
-bind \ef "tmux-sessionizer"
-# bind \cf "tmux-sessionizer"
-
 set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
 set EDITOR nvim
+
+function edit_command_buffer --description 'Edit the current command buffer in $EDITOR'
+    set -l tmpfile (mktemp -t fish_command.XXXXXX)
+    commandline > $tmpfile
+    vim $tmpfile
+    commandline -r (cat $tmpfile)
+    rm $tmpfile
+end
+
+bind \ef "tmux-sessionizer"
+bind \ce edit_command_buffer
+# bind \cf "tmux-sessionizer"
 
 # aliases
 alias nv='nvim'

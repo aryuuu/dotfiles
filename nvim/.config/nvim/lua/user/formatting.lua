@@ -14,6 +14,7 @@ return {
 		python = { "isort", "black" },
 		go = { "gofmt", "goimports" },
 		rust = { "rustfmt" },
+		zig = { "zls" }
 	},
 	-- format_on_save = {
 	-- 	false,

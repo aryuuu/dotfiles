@@ -39,7 +39,7 @@ local plugins = {
 	{
 		"kyazdani42/nvim-tree.lua",
 		commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
-		keys = "<leader>e",
+		-- keys = "<leader>e",
 	},
 	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
@@ -48,7 +48,6 @@ local plugins = {
 		event = { "BufReadPre", "BufNewFile" },
 	},
 	"arkav/lualine-lsp-progress",
-	"folke/which-key.nvim",
 	{ "folke/trouble.nvim" },
 
 	-- Colorschemes
@@ -156,27 +155,27 @@ local plugins = {
 	"nanotee/sqls.nvim",
 	"b0o/schemastore.nvim",
 	"ray-x/guihua.lua",
-	-- {
-	-- 	"NTBBloodbath/zig-tools.nvim",
-	-- 	-- Load zig-tools.nvim only in Zig buffers
-	-- 	ft = "zig",
-	-- 	config = function()
-	-- 		-- Initialize with default config
-	-- 		require("zig-tools").setup()
-	-- 	end,
-	-- 	dependencies = {
-	-- 		{
-	-- 			"akinsho/toggleterm.nvim",
-	-- 			config = function()
-	-- 				require("toggleterm").setup()
-	-- 			end,
-	-- 		},
-	-- 		{
-	-- 			"nvim-lua/plenary.nvim",
-	-- 			module_pattern = "plenary.*",
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"NTBBloodbath/zig-tools.nvim",
+		-- Load zig-tools.nvim only in Zig buffers
+		ft = "zig",
+		config = function()
+			-- Initialize with default config
+			require("zig-tools").setup()
+		end,
+		dependencies = {
+			{
+				"akinsho/toggleterm.nvim",
+				config = function()
+					require("toggleterm").setup()
+				end,
+			},
+			{
+				"nvim-lua/plenary.nvim",
+				module_pattern = "plenary.*",
+			},
+		},
+	},
 	-- {
 	-- 	"nvim-java/nvim-java",
 	-- 	dependencies = {
