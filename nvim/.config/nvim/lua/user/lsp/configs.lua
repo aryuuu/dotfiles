@@ -25,7 +25,7 @@ local servers = {
 	"clangd",
 	"dockerls",
 	"pyright",
-	"rust_analyzer",
+	-- "rust_analyzer",
 	"cmake",
 	"lua_ls",
 	"tsserver",

@@ -1,4 +1,5 @@
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true, nowait = false }
+local opts_quick = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
 
@@ -164,13 +165,14 @@ keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers(require(
 keymap("n", "<leader>r", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
 keymap("n", "<leader>r", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
 keymap("n", "<leader>R", "<cmd>lua require('telescope.builtin').pickers()<cr>", opts)
-keymap("n", "<leader>sc", "<cmd>Telescope commands theme=dropdown<cr>", opts)
-keymap("n", "<leader>sC", "<cmd>Telescope colorscheme<cr>", opts)
+keymap("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
+keymap("n", "<leader>so", "<cmd>Telescope colorscheme<cr>", opts)
 keymap("n", "<leader>sh", "<cmd>Telescope help_tags<cr>", opts)
 keymap("n", "<leader>sM", "<cmd>Telescope man_pages<cr>", opts)
-keymap("n", "<leader>sm", "<cmd>Telescope harpoon marks<cr>", opts)
-keymap("n", "<leader>sm", "<cmd>Telescope harpoon marks<cr>", opts)
+-- keymap("n", "<leader>sm", "<cmd>Telescope harpoon marks<cr>", opts)
+keymap("n", "<leader>sm", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>ss", "<cmd>Telescope grep_string<cr>", opts)
+keymap("n", "<leader>sy", "<cmd>Telescope grep_string search= only_sort_text=true<cr>", opts)
 -- keymap("n", "<leader>ss", "<cmd>Telescope live_string search= theme=ivy<cr>", opts)
 keymap("n", "<leader>sf", "<cmd>Telescope live_grep search= theme=ivy<cr>", opts)
 keymap("n", "<leader>sd", "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
@@ -181,7 +183,7 @@ keymap("n", "<leader>sk", "<CMD>Telescope keymaps<CR>", opts)
 -----------
 
 -- Press jk fast to enter normal mode
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts_quick)
 
 -- harpoon mark
 keymap('n', "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
@@ -235,10 +237,10 @@ keymap("n", "<leader>c", "<CMD>lua require('harpoon.cmd-ui').toggle_quick_menu()
 
 keymap("n", "<leader>G", "<cmd>Git<CR>", opts)
 keymap("n", "<leader>gg", "<cmd>Git<CR>", opts)
+keymap("n", "<leader>gm", "<cmd>Git<CR>", opts)
 keymap("n", "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", opts)
 keymap("n", "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", opts)
 keymap("n", "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", opts)
-keymap("n", "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", opts)
 keymap("n", "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", opts)
 keymap("n", "<leader>gP", "<cmd>Git pull<cr>", opts)
 keymap("n", "<leader>gH", "<cmd>Git push -u origin HEAD<cr>", opts)
@@ -286,3 +288,33 @@ keymap("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", opts)
 keymap("n", "<leader>t1", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", opts)
 keymap("n", "<leader>t2", "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", opts)
 keymap("n", "<leader>t3", "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", opts)
+
+----------
+-- VENN --
+----------
+
+-- venn.nvim: enable or disable keymappings
+function _G.Toggle_venn()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+        vim.b.venn_enabled = true
+        vim.cmd[[setlocal ve=all]]
+        -- draw a line on HJKL keystokes
+        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
+        -- draw a box by pressing "f" with visual selection
+        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
+    else
+        vim.cmd[[setlocal ve=]]
+        vim.api.nvim_buf_del_keymap(0, "n", "J")
+        vim.api.nvim_buf_del_keymap(0, "n", "K")
+        vim.api.nvim_buf_del_keymap(0, "n", "L")
+        vim.api.nvim_buf_del_keymap(0, "n", "H")
+        vim.api.nvim_buf_del_keymap(0, "v", "f")
+        vim.b.venn_enabled = nil
+    end
+end
+-- toggle keymappings for venn using <leader>v
+vim.api.nvim_set_keymap('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = true})

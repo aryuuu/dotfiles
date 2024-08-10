@@ -41,6 +41,7 @@ local kind_icons = {
 	Struct = "",
 	Event = "",
 	Copilot = "",
+	Supermaven = "",
 	Operator = "",
 	TypeParameter = "",
 }
@@ -107,6 +108,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				copilot = "[Copilot]",
+				supermaven = "[Supermaven]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -114,6 +116,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "copilot" },
+		{ name = "supermaven" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },

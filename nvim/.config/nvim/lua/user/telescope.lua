@@ -6,20 +6,22 @@ end
 local lga_actions = require("telescope-live-grep-args.actions")
 
 local function filenameFirst(_, path)
-  local tail = vim.fs.basename(path)
-  local parent = vim.fs.dirname(path)
-  if parent == "." then return tail end
-  return string.format("%s\t\t%s", tail, parent)
+	local tail = vim.fs.basename(path)
+	local parent = vim.fs.dirname(path)
+	if parent == "." then
+		return tail
+	end
+	return string.format("%s\t\t%s", tail, parent)
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "TelescopeResults",
-  callback = function(ctx)
-    vim.api.nvim_buf_call(ctx.buf, function()
-      vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-      vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-    end)
-  end,
+	pattern = "TelescopeResults",
+	callback = function(ctx)
+		vim.api.nvim_buf_call(ctx.buf, function()
+			vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+			vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+		end)
+	end,
 })
 
 local actions = require("telescope.actions")
@@ -30,7 +32,17 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules/", ".cache", "%.o", "%.a", "%.out", "%.class", "target/", "dist/" },
+		file_ignore_patterns = {
+			".git/",
+			"node_modules/",
+			".cache",
+			"%.o",
+			"%.a",
+			"%.out",
+			"%.class",
+			"target/",
+			"dist/",
+		},
 		cache_picker = {
 			num_pickers = 3,
 			limit_entries = 5,
@@ -116,14 +128,39 @@ telescope.setup({
 		},
 		grep_string = {
 			only_sort_text = true,
-			additional_args = function (opts)
+			additional_args = function(opts)
 				return { "--hidden", "--no-ignore-vcs", "--column" }
 			end,
 			path_display = filenameFirst,
+			layout_config = {
+				preview_cutoff = 0, -- Ensure preview is always shown
+				horizontal = {
+					preview_width = 0.6,
+				},
+			},
 		},
 		buffers = {
 			sort_lastused = true,
 			sort_mru = true,
+		},
+		commands = {
+			theme = "dropdown",
+		},
+		help_tags = {
+			layout_config = {
+				preview_cutoff = 0, -- Ensure preview is always shown
+				horizontal = {
+					preview_width = 0.6,
+				},
+			},
+		},
+		git_bcommits = {
+			layout_config = {
+				preview_cutoff = 0, -- Ensure preview is always shown
+				horizontal = {
+					preview_width = 0.6,
+				},
+			},
 		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
@@ -141,19 +178,19 @@ telescope.setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
-        fzf_writer = {
-            minimum_grep_characters = 2,
-            minimum_files_characters = 2,
+		fzf_writer = {
+			minimum_grep_characters = 2,
+			minimum_files_characters = 2,
 
-            -- Disabled by default.
-            -- Will probably slow down some aspects of the sorter, but can make color highlights.
-            -- I will work on this more later.
-            use_highlighter = true,
-        }
-        -- fzy_native = {
-        --     override_generic_sorter = false,
-        --     override_file_sorter = true,
-        -- },
+			-- Disabled by default.
+			-- Will probably slow down some aspects of the sorter, but can make color highlights.
+			-- I will work on this more later.
+			use_highlighter = true,
+		},
+		-- fzy_native = {
+		--     override_generic_sorter = false,
+		--     override_file_sorter = true,
+		-- },
 		-- Your extension configuration goes here:
 		-- extension_name = {
 		--   extension_config_key = value,
@@ -171,20 +208,20 @@ telescope.setup({
 		"--smart-case",
 		-- "--no-ignore",
 	},
-    live_grep_args = {
-      auto_quoting = true, -- enable/disable auto-quoting
-      -- define mappings, e.g.
-      mappings = { -- extend mappings
-        i = {
-          ["<C-k>"] = lga_actions.quote_prompt(),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-          -- freeze the current list and start a fuzzy search in the frozen list
-          ["<C-f>"] = actions.to_fuzzy_refine,
-        },
-      },
-      -- ... also accepts theme settings, for example:
-      -- theme = "dropdown", -- use dropdown theme
-      -- theme = { }, -- use own theme spec
-      -- layout_config = { mirror=true }, -- mirror preview pane
-    },
+	live_grep_args = {
+		auto_quoting = true, -- enable/disable auto-quoting
+		-- define mappings, e.g.
+		mappings = { -- extend mappings
+			i = {
+				["<C-k>"] = lga_actions.quote_prompt(),
+				["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+				-- freeze the current list and start a fuzzy search in the frozen list
+				["<C-f>"] = actions.to_fuzzy_refine,
+			},
+		},
+		-- ... also accepts theme settings, for example:
+		-- theme = "dropdown", -- use dropdown theme
+		-- theme = { }, -- use own theme spec
+		-- layout_config = { mirror=true }, -- mirror preview pane
+	},
 })

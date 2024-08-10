@@ -53,6 +53,15 @@ local diff = {
 	cond = hide_in_width,
 }
 
+local function is_venn_enabled()
+	local venn_enabled = vim.inspect(vim.b.venn_enabled)
+	if venn_enabled == "nil" then
+		return "x"
+	end
+
+	return "v"
+end
+
 local mode = {
 	"mode",
 	fmt = function(str)
@@ -115,7 +124,7 @@ lualine.setup({
 		-- lualine_a = {
 		-- 	{ "branch", separator = { left = "", right = "" }, right_padding = 0 },
 		-- },
-		lualine_b = { mode },
+		lualine_b = { mode, is_venn_enabled },
 		lualine_c = { "lsp_progress", filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		-- lualine_x = { diff, spaces, "encoding", filetype },

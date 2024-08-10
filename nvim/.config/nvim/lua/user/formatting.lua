@@ -14,7 +14,15 @@ return {
 		python = { "isort", "black" },
 		go = { "gofmt", "goimports" },
 		rust = { "rustfmt" },
-		zig = { "zls" }
+		zig = { "zigfmt" }
+	},
+	-- @type table
+	formatters = {
+		zigfmt = {
+			cmd = "zig",
+			args = { "fmt", "--stdin", "$FILENAME" },
+			stdin = true,
+		},
 	},
 	-- format_on_save = {
 	-- 	false,

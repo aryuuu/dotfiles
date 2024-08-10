@@ -97,3 +97,7 @@ end
 function uwuctx -d 'simpler version of kubectx'
   kubectl config get-contexts | awk '{ print $1 }'| fzf -q "$1" -m --bind 'alt-j:down' --bind 'alt-k:up' | kubectx config use-context
 end
+
+function xensearch -d 'search string in xendit dir'
+
+end
