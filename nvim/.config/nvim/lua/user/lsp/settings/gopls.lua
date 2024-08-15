@@ -1,5 +1,5 @@
 return {
-	cmd = { "gopls", "serve" },
+	-- cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
 			hints = {

@@ -125,6 +125,12 @@ telescope.setup({
 				return { "--hidden", "--no-ignore-vcs", "--column" }
 			end,
 			path_display = filenameFirst,
+			layout_config = {
+				preview_cutoff = 0, -- Ensure preview is always shown
+				horizontal = {
+					preview_width = 0.6,
+				},
+			},
 		},
 		grep_string = {
 			only_sort_text = true,
@@ -155,6 +161,14 @@ telescope.setup({
 			},
 		},
 		git_bcommits = {
+			layout_config = {
+				preview_cutoff = 0, -- Ensure preview is always shown
+				horizontal = {
+					preview_width = 0.6,
+				},
+			},
+		},
+		git_status = {
 			layout_config = {
 				preview_cutoff = 0, -- Ensure preview is always shown
 				horizontal = {

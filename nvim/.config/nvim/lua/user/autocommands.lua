@@ -26,6 +26,17 @@ autocmd("TextYankPost", {
 	end,
 })
 
+local wr_group = augroup('WinResize', { clear = true })
+autocmd(
+    'VimResized',
+    {
+        group = wr_group,
+        pattern = '*',
+        command = 'wincmd =',
+        desc = 'Automatically resize windows when the host window size changes.'
+    }
+)
+
 -- colorscheme_group
 -- local colorscheme_group = augroup("Colorscheme", {})
 
