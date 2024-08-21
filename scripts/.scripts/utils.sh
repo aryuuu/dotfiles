@@ -150,4 +150,3 @@ docremi() {
 chfreq() {
 	git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -20
 }
-
