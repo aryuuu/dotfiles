@@ -57,7 +57,7 @@ keymap("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
 keymap("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", opts)
 
 -- tmux-sessionizer
-keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+-- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 keymap("n", "<M-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
 -- non-disorienting half page jump
