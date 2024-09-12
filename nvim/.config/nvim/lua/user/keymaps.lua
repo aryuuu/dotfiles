@@ -84,7 +84,7 @@ keymap('n', '<down>', ':lua require("yvim").next_sibling()<CR>', opts)
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 ------------------------
 -- TEXT MANIPULATIONS --
@@ -287,6 +287,7 @@ keymap("n", "<leader>ln", "<cmd>lua require('ts-node-action').node_action()<CR>"
 
 keymap("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", opts)
 keymap("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", opts)
+keymap("n", "<leader>tp", "<cmd>ToggleTerm direction=vertical<cr>", opts)
 keymap("n", "<leader>t1", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", opts)
 keymap("n", "<leader>t2", "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", opts)
 keymap("n", "<leader>t3", "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", opts)

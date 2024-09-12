@@ -63,32 +63,96 @@
 # --preview-window='+{2}-/2' \
 # --preview="[[ -n {1} ]] && $preview"
 
+# #!/usr/bin/env bash
+
+# # Minimum number of characters required to trigger search
+# MIN_CHARS=3
+
+# # Define preview and command directly since you have 'bat' and 'rg'
+# preview='bat --color=always --style=header,numbers -H {2} {1}'
+# command='rg -n --color=always'
+
+# # Function to check query length and execute command if valid
+# reload_command() {
+#   if [[ ${#1} -ge $MIN_CHARS ]]; then
+#     $command "$1"
+#   else
+#     echo "Query too short..."
+#   fi
+# }
+
+# # Use fzf with external command for checking query length
+# fzf -d: \
+# --ansi \
+# --query="$1" \
+# --phony \
+# --bind="change:reload:$reload_command {q}" \
+# --bind="start:reload:$reload_command {q}" \
+# --bind='enter:execute:$EDITOR {1} +{2}' \
+# --preview-window='+{2}-/2' \
+# --preview="[[ -n {1} ]] && $preview"
+
+
+# #!/usr/bin/env bash
+
+# # Minimum number of characters required to trigger search
+# MIN_CHARS=3
+
+# # Define preview and command directly since you have 'bat' and 'rg'
+# preview='bat --color=always --style=header,numbers -H {2} {1}'
+# command='rg -n --color=always'
+
+# # Function to check query length and execute command if valid
+# reload_command() {
+#   if [[ ${#1} -ge $MIN_CHARS ]]; then
+#     $command "$1"
+#   else
+#     echo "Query too short..."
+#   fi
+# }
+
+# # Use fzf with external command for checking query length
+# fzf -d: \
+# --ansi \
+# --query="$1" \
+# --phony \
+# --bind="change:reload(echo {q} | xargs -I {} bash -c 'reload_command {}')" \
+# --bind="start:reload(echo {q} | xargs -I {} bash -c 'reload_command {}')" \
+# --bind='enter:execute:$EDITOR {1} +{2}' \
+# --preview-window='+{2}-/2' \
+# --preview="[[ -n {1} ]] && $preview"
+
+# #!/usr/bin/env bash
+
+# # Minimum number of characters required to trigger search
+# MIN_CHARS=3
+
+# # Define preview and command directly since you have 'bat' and 'rg'
+# preview='bat --color=always --style=header,numbers -H {2} {1}'
+# command='rg -n --color=always'
+
+# # Use fzf with external command for checking query length
+# fzf -d: \
+# --ansi \
+# --query="$1" \
+# --phony \
+# --bind="change:reload(([[ \${#q} -ge $MIN_CHARS ]] && $command {q}) || echo 'Query too short...')" \
+# --bind="start:reload(([[ \${#q} -ge $MIN_CHARS ]] && $command {q}) || echo 'Query too short...')" \
+# --bind='enter:execute:$EDITOR {1} +{2}' \
+# --preview-window='+{2}-/2' \
+# --preview="[[ -n {1} ]] && $preview"
+
 #!/usr/bin/env bash
 
-# Minimum number of characters required to trigger search
-MIN_CHARS=3
-
-# Define preview and command directly since you have 'bat' and 'rg'
 preview='bat --color=always --style=header,numbers -H {2} {1}'
-command='rg -n --color=always'
+command='rg -n --color=always --hidden'
 
-# Function to check query length and execute command if valid
-reload_command() {
-  if [[ ${#1} -ge $MIN_CHARS ]]; then
-    $command "$1"
-  else
-    echo "Query too short..."
-  fi
-}
-
-# Use fzf with external command for checking query length
 fzf -d: \
 --ansi \
 --query="$1" \
 --phony \
---bind="change:reload:$reload_command {q}" \
---bind="start:reload:$reload_command {q}" \
---bind='enter:execute:$EDITOR {1} +{2}' \
+--bind="change:reload:$command {q}" \
+--bind="start:reload:$command {q}" \
+--bind='enter:execute:$EDITOR {1}' \
 --preview-window='+{2}-/2' \
 --preview="[[ -n {1} ]] && $preview"
-

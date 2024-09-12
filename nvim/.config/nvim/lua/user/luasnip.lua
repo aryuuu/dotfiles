@@ -284,6 +284,13 @@ ls.add_snippets("all", {
 	),
 })
 
+ls.add_snippets("all", {
+	s(
+		"date",
+		f(bash, {}, { user_args = { "date +%x" } })
+	),
+})
+
 -- ls.add_snippets(
 --   "go",
 --   make {
