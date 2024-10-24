@@ -262,6 +262,7 @@ local plugins = {
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	"ThePrimeagen/git-worktree.nvim",
+	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 
 	-- winbar
 	{ "fgheng/winbar.nvim" },

@@ -18,8 +18,9 @@ function edit_command_buffer --description 'Edit the current command buffer in $
     rm $tmpfile
 end
 
+bind \et "tmux attach"
 bind \ef "tmux-sessionizer"
-bind \ce edit_command_buffer
+# bind \ce edit_command_buffer
 # bind \cf "tmux-sessionizer"
 
 # aliases

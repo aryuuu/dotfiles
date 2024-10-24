@@ -23,6 +23,7 @@
         "custom/recording",
         "backlight",
         "pulseaudio",
+        "pulseaudio-input",
         "battery",
         "custom/r_end",
         "custom/l_end",
@@ -146,6 +147,13 @@
         "format-alt": "",
         "exec": "pgrep wf-recorder > /dev/null && echo ' ' || echo ''",
         "interval": 1
+    },
+    "pulseaudio-input": {
+        "format": "{}",
+        "exec": "pulseaudio-control  --node-type input --icons-volume '' --icon-muted '' --format '$VOL_ICON ${VOL_LEVEL}%' listen",
+        "on-click": "pulseaudio-control --node-type input togmute",
+        "on-scroll-down": "pulseaudio-control --node-type input --volume-max 130 down",
+        "on-scroll-up": "pulseaudio-control --node-type input --volume-max 130 up"
     },
     "tray": {
         "icon-size": 15,

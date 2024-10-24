@@ -139,10 +139,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- json formatting
 keymap("x", "<leader>jp", ":'<,'>!jq<CR>", opts)
-keymap("x", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
+keymap("x", "<leader>js", ":'<,'>!jq -c<CR>", opts)
 keymap("n", "<leader>jp", ":'<,'>!jq<CR>", opts)
 -- TODO: fix this
-keymap("n", "<leader>jP", ":'<,'>!jq -c<CR>", opts)
+keymap("n", "<leader>js", ":'<,'>!jq -c<CR>", opts)
 
 -- Replace \n with actual newlines
 keymap("x", "<leader>N", ":s/\\\\n/\\r/g<CR>", opts)
@@ -291,6 +291,8 @@ keymap("n", "<leader>tp", "<cmd>ToggleTerm direction=vertical<cr>", opts)
 keymap("n", "<leader>t1", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", opts)
 keymap("n", "<leader>t2", "<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", opts)
 keymap("n", "<leader>t3", "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", opts)
+-- execute selected text
+keymap("n", "<leader>te", "<cmd>lua require('harpoon.tmux').gotoTerminal(3)<CR>", opts)
 
 ----------
 -- VENN --
