@@ -207,6 +207,9 @@ keymap("i", "<C-CR>", "copilot#Accept(“<CR>”)", { expr = true, silent = true
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr><CMD>UndotreeFocus<CR>", opts)
 
+-- oil
+keymap("n", "<leader>o", "<cmd>Oil<cr>", opts)
+
 -- notes
 keymap("n", "<leader>ni", "<cmd>VimwikiIndex 1<cr>", opts)
 keymap("n", "<leader>nI", "<cmd>VimwikiDiaryIndex 1<cr>", opts)
@@ -226,7 +229,7 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 keymap("n", "<leader>H", "<cmd>CloakToggle<CR>", opts)
 keymap("n", "<leader>T", "<cmd>TransparentToggle<CR>", opts)
 
-keymap("n", "<leader>c", "<CMD>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
+-- keymap("n", "<leader>c", "<CMD>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
 
 --------------------------------
 -- PACKAGE AND LSP MANAGEMENT --

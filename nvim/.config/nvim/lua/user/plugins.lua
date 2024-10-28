@@ -41,6 +41,15 @@ local plugins = {
 		commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
 		-- keys = "<leader>e",
 	},
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	},
 	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
 	{
