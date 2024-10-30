@@ -70,9 +70,16 @@ vim.g["copilot_assume_mapped"] = false
 vim.g.zig_fmt_autosave = 0
 vim.g.zig_parse_errors = 0
 
-
-
-
 vim.filetype.add({
-  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+	extension = {
+		gotmpl = "gotmpl",
+		tmpl = "gotmpl",
+	},
+	pattern = {
+		[".*/hypr/.*%.conf"] = "hyprlang",
+		[".*/templates/.*%.tpl"] = "helm",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+		[".*/partials-raw/.*%.tmpl"] = "gotmpl",
+	},
 })
