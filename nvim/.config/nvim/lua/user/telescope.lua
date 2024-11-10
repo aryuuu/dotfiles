@@ -43,10 +43,10 @@ telescope.setup({
 			"target/",
 			"dist/",
 		},
-		cache_picker = {
-			num_pickers = 3,
-			limit_entries = 5,
-		},
+		-- cache_picker = {
+		-- 	num_pickers = 3,
+		-- 	limit_entries = 5,
+		-- },
 
 		mappings = {
 			i = {

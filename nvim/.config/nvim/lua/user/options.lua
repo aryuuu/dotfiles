@@ -48,6 +48,7 @@ end
 vim.cmd("set foldnestmax=10")
 vim.cmd("set nofoldenable")
 vim.cmd("set foldlevel=99")
+vim.cmd("set nofixeol")
 -- vim.cmd("set foldmethod=syntax")
 -- vim.cmd("set foldlevel=99")
 vim.cmd("set whichwrap+=<,>,[,],h,l")

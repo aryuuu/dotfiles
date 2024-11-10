@@ -12,6 +12,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			styles = {},
+			bigfile = { enabled = true },
+			notifier = { enabled = false },
+			quickfile = { enabled = true },
+			statuscolumn = { enabled = false },
+			words = { enabled = false },
+		},
+	},
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	{
 		"nvim-lua/plenary.nvim",
