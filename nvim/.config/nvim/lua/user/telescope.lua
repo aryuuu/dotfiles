@@ -44,6 +44,7 @@ telescope.setup({
 			"target/",
 			"dist/",
 		},
+		treesitteer = false,
 		-- cache_picker = {
 		-- 	num_pickers = 3,
 		-- 	limit_entries = 5,
