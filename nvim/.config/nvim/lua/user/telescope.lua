@@ -34,6 +34,7 @@ telescope.setup({
 		path_display = { "smart" },
 		file_ignore_patterns = {
 			".git/",
+			".jj/",
 			"node_modules/",
 			".cache",
 			"%.o",

@@ -1,0 +1,29 @@
+[
+  {
+    "bindings": {
+      "alt-down": ["workspace::SendKeystrokes", "down down down down"],
+      "cmd-alt-c": [
+        "workspace::SendKeystrokes",
+        "cmd-shift-p copy relative path enter"
+      ],
+      "cmd-alt-r": ["workspace::SendKeystrokes", "cmd-p README enter"],
+      "ctrl-right": "editor::SelectLargerSyntaxNode",
+      "ctrl-left": "editor::SelectSmallerSyntaxNode",
+      "ctrl->": "editor::Indent"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space f": "file_finder::Toggle",
+      "space w": "workspace::Save",
+      "space q": ["workspace::SendKeystrokes", ": q enter"]
+    }
+  }
+]
