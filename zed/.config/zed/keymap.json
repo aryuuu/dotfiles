@@ -9,7 +9,8 @@
       "cmd-alt-r": ["workspace::SendKeystrokes", "cmd-p README enter"],
       "ctrl-right": "editor::SelectLargerSyntaxNode",
       "ctrl-left": "editor::SelectSmallerSyntaxNode",
-      "ctrl->": "editor::Indent"
+      "ctrl->": "editor::Indent",
+      "ctrl-k ctrl-o": "projects::OpenRecent"
     }
   },
   {
@@ -22,8 +23,27 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space f": "file_finder::Toggle",
+      "space e": "workspace::ToggleLeftDock",
       "space w": "workspace::Save",
-      "space q": ["workspace::SendKeystrokes", ": q enter"]
+      "space x": "pane::CloseActiveItem",
+      "space q": ["workspace::SendKeystrokes", ": q enter"],
+      "space l j": "editor::GoToDiagnostic",
+      "space l k": "editor::GoToPrevDiagnostic",
+      "space g j": "editor::GoToHunk",
+      "space g k": "editor::GoToPrevHunk",
+      "space t p": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-k": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Project",
+    "bindings": {
+      "space e": "workspace::CloseAllDocks"
     }
   }
 ]
