@@ -21,6 +21,8 @@ end
 
 bind \et "tmux attach"
 bind \ef "tmux-sessionizer"
+bind -k f9 "sed -i 's/size = [0-9.]\\+/size = 9.5/' ~/.config/alacritty/alacritty.toml"
+bind -k f10 "sed -i 's/size = [0-9.]\\+/size = 20/' ~/.config/alacritty/alacritty.toml"
 # bind \ce edit_command_buffer
 # bind \cf "tmux-sessionizer"
 
@@ -40,6 +42,7 @@ alias printcolor="~/sandbox/python/colorprint.py"
 alias transid="trans en:id"
 alias pacgraph='pacgraph -b "#212326" -l "#FFF9C6" -t "#F5A069" -d "#C35C4D" -f "/home/fatt/Pictures/wallpaper/pacgraph"'
 alias argoon='argoonboard'
+alias unset 'set --erase'
 
 # navigations
 alias cdf='cd ~/project/dotfiles'

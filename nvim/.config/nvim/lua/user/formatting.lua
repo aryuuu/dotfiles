@@ -21,8 +21,9 @@ return {
 	formatters = {
 		zigfmt = {
 			cmd = "zig",
-			args = { "fmt", "--stdin", "$FILENAME" },
+			args = { "fmt", "--stdin" },
 			stdin = true,
+			require_cwd = false,
 		},
 	},
 	-- format_on_save = {

@@ -43,6 +43,7 @@ telescope.setup({
 			"%.class",
 			"target/",
 			"dist/",
+			"coverage/",
 		},
 		treesitteer = false,
 		-- cache_picker = {

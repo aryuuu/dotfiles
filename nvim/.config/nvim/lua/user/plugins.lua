@@ -178,49 +178,6 @@ local plugins = {
 	"nanotee/sqls.nvim",
 	"b0o/schemastore.nvim",
 	"ray-x/guihua.lua",
-	-- {
-	-- 	"NTBBloodbath/zig-tools.nvim",
-	-- 	-- Load zig-tools.nvim only in Zig buffers
-	-- 	ft = "zig",
-	-- 	config = function()
-	-- 		-- Initialize with default config
-	-- 		require("zig-tools").setup()
-	-- 	end,
-	-- 	dependencies = {
-	-- 		{
-	-- 			"akinsho/toggleterm.nvim",
-	-- 			config = function()
-	-- 				require("toggleterm").setup()
-	-- 			end,
-	-- 		},
-	-- 		{
-	-- 			"nvim-lua/plenary.nvim",
-	-- 			module_pattern = "plenary.*",
-	-- 		},
-	-- 	},
-	-- },
-	-- {
-	-- 	"nvim-java/nvim-java",
-	-- 	dependencies = {
-	-- 		"nvim-java/lua-async-await",
-	-- 		"nvim-java/nvim-java-core",
-	-- 		"nvim-java/nvim-java-test",
-	-- 		"nvim-java/nvim-java-dap",
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"neovim/nvim-lspconfig",
-	-- 		"mfussenegger/nvim-dap",
-	-- 		{
-	-- 			"williamboman/mason.nvim",
-	-- 			opts = {
-	-- 				registries = {
-	-- 					"github:nvim-java/mason-registry",
-	-- 					"github:mason-org/mason-registry",
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
-
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -337,6 +294,7 @@ local plugins = {
 	"mg979/vim-visual-multi",
 
 	"tpope/vim-surround",
+	"tpope/vim-abolish",
 	"mbbill/undotree",
 	{ "mzlogin/vim-markdown-toc" },
 	{ "Darazaki/indent-o-matic" },

@@ -36,6 +36,16 @@ autocmd(
         desc = 'Automatically resize windows when the host window size changes.'
     }
 )
+-- Add this temporarily to measure parsing time
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.zig",
+  callback = function()
+    local start = vim.loop.hrtime()
+    vim.cmd("TSBufEnable highlight")
+    local end_time = vim.loop.hrtime()
+    print(string.format("Treesitter parsing took: %.2f ms", (end_time - start) / 1000000))
+  end,
+})
 
 -- colorscheme_group
 -- local colorscheme_group = augroup("Colorscheme", {})
