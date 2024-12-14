@@ -178,7 +178,8 @@ keymap("n", "<leader>sy", "<cmd>Telescope grep_string search= only_sort_text=tru
 keymap("n", "<leader>sf", "<cmd>Telescope live_grep search= <cr>", opts)
 keymap("n", "<leader>sd", "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 keymap("n", "<leader>sk", "<CMD>Telescope keymaps<CR>", opts)
-keymap("n", "<leader>sp", "<CMD>TelescopeLiveGrepWithGlob<CR>", opts)
+-- keymap("n", "<leader>sp", "<CMD>TelescopeLiveGrepWithGlob<CR>", opts)
+
 
 -----------
 -- MISCS --

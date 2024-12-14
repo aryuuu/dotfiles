@@ -242,3 +242,5 @@ telescope.setup({
 		-- layout_config = { mirror=true }, -- mirror preview pane
 	},
 })
+
+require("user.multigrep").setup()

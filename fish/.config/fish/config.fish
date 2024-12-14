@@ -61,4 +61,7 @@ alias gd='git diff'
 alias glo='git log --oneline --decorate'
 alias glog='git log --oneline --decorate --graph'
 
+# nix
+alias nixos-gens='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
+
 source $HOME/.config/fish/utils.fish

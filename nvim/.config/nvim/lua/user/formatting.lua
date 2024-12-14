@@ -13,9 +13,10 @@ return {
 		rust = { "rustfmt" },
 		svelte = { "prettier" },
 		typescript = { "prettier" },
+		terraform = { "terrafmt" },
 		typescriptreact = { "prettier" },
 		yaml = { "prettier" },
-		zig = { "zigfmt" }
+		zig = { "zigfmt" },
 	},
 	-- @type table
 	formatters = {
@@ -23,6 +24,12 @@ return {
 			cmd = "zig",
 			args = { "fmt", "--stdin" },
 			stdin = true,
+			require_cwd = false,
+		},
+		terrafmt = {
+			cmd = "terraform",
+			args = { "fmt", "-" },
+			stdin = false,
 			require_cwd = false,
 		},
 	},

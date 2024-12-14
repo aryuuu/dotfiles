@@ -232,6 +232,7 @@
         "custom/r_end",
         "custom/l_end",
         "disk#root",
+        "disk#nix",
         "disk#home",
         "custom/r_end",
         "custom/l_end",
@@ -278,14 +279,21 @@
         "tooltip": false
     },
     "disk#root": {
-        "format": " {percentage_used}% {free} /",
+        // "format": " {percentage_used}% {free} /",
+        "format": "/ {percentage_used}% {free}",
         "format-alt": "{percentage}% ",
         "format-alt-right": "click-right",
         "path": "/"
         // "max-length": 
     },
+    "disk#nix": {
+        "format": "/nix {percentage_used}% {free}",
+        "format-alt": "{percentage}% ",
+        "format-alt-right": "click-right",
+        "path": "/nix"
+    },
     "disk#home": {
-        "format": " {percentage_used}% {free} /home",
+        "format": "/home {percentage_used}% {free}",
         "format-alt": "{percentage}% ",
         "format-alt-right": "click-right",
         "path": "/home"
