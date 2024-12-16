@@ -101,3 +101,26 @@ end
 function xensearch -d 'search string in xendit dir'
 
 end
+
+# function nixos-gens
+#     set -l current (readlink /var/run/current-system)
+    
+#     # List all NixOS generations with highlighting and additional details
+#     nix-env -p /nix/var/nix/profiles/system --list-generations | while read -l generation path
+#         set -l is_current (string match -q "$current" "$path" && echo "* " || echo "  ")
+        
+#         # Get generation creation date
+#         set -l gen_info (stat -c "%y" "$path/activate" 2>/dev/null)
+        
+#         # Colorize output
+#         if string match -q "$current" "$path"
+#             set_color green
+#         else
+#             set_color normal
+#         end
+        
+#         printf "%s%s: %s\n" "$is_current" "$generation" "$gen_info"
+        
+#         set_color normal
+#     end
+# end
