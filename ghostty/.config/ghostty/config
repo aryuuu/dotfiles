@@ -1,0 +1,15 @@
+theme = nord
+shell-integration = fish
+cursor-style = block
+cursor-style-blink = false
+font-size = 12
+# this doesn't work inside tmux, need a workaround
+cursor-click-to-move = true
+
+# setting it to below 1 doesn't work as expected (i want to see my wallpaper but the background just lighter)
+# background-opacity = 1
+# background-blur-radius = 20
+window-decoration = false
+
+# keybindings
+keybind = ctrl+backspace=text:\x1b\x7f
