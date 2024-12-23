@@ -8,18 +8,18 @@ style = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 12.5
+size = 10
 
 [font.bold]
-family = "D2Coding"
+family = "Jetbrains Mono"
 style = "Medium"
 
 [font.italic]
-family = "D2Coding"
+family = "Jetbrains Mono"
 style = "Italic"
 
 [font.normal]
-family = "D2Coding"
+family = "Jetbrains Mono"
 style = "Regular"
 
 [font.offset]
@@ -27,11 +27,9 @@ x = 0
 y = 0
 
 [[hints.enabled]]
-# TODO: check xdg-open for text file
 command = "xdg-open"
 hyperlinks = true
 post_processing = true
-# TODO: add regex for normal file path with errorformat
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
 
 [hints.enabled.binding]
@@ -134,7 +132,7 @@ history = 100000
 
 [window]
 dynamic_title = true
-opacity = 0.8
+opacity = 1
 option_as_alt = "Both"
 
 [window.dimensions]

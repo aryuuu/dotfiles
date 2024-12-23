@@ -219,13 +219,7 @@
     "layer": "bottom",
     "position": "bottom",
     "height": 10,
-    "modules-left": [
-        "custom/padd",
-        "custom/l_end",
-        "custom/currenttask",
-        "custom/r_end",
-        "custom/padd"
-    ],
+    "modules-left": [],
     "modules-right": [
         "custom/padd",
         "custom/l_end",
