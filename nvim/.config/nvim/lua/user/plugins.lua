@@ -181,7 +181,8 @@ local plugins = {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		version = "0.1.8",
+		-- version = "0.1.8",
+		commit = "2eca9ba22002184ac05eddbe47a7fe2d5a384dfc",
 		dependencies = {
 			{
 				"nvim-telescope/telescope-live-grep-args.nvim",

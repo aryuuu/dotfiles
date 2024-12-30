@@ -285,6 +285,7 @@ keymap("n", "<leader>lR", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", opts)
 keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
 keymap("n", "<leader>ln", "<cmd>lua require('ts-node-action').node_action()<CR>", opts)
+keymap("n", "<leader>d", "<CMD>vsp<CR><CMD>lua vim.lsp.buf.definition()<CR>zz", opts)
 
 --------------
 -- TERMINAL --
