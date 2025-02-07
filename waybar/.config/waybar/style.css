@@ -4,12 +4,9 @@
   /* font-family: "SauceCodePro Nerd Font", "DejaVu Sans Condensed", */
   /*   "FontAwesome 5 Free Solid"; */
 
-  font-family: "JetBrainsMono Nerd Font";
-  /* font-family: "D2Coding"; */
-  /* font-family: "Tamsyn:pixelsize=9;2", "FontAwesome 6 Free:style=Solid:size=8;2",  */
-  /*   "FontAwesome 6 Brands:style=Regular:size=8;2", "NikkyouSans:style=Sans:size=4;0", */
-  /*   "Inconsolata for Powerline:pixelsize=10:antialias=true;3"; */
+  font-family: "JetBrainsMono";
   font-size: 12px;
+  font-weight: bold;
   box-shadow: none;
   text-shadow: none;
   transition-duration: 0s;

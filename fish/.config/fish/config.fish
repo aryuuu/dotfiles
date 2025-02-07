@@ -65,3 +65,4 @@ alias glog='git log --oneline --decorate --graph'
 alias nixos-gens='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
 
 source $HOME/.config/fish/utils.fish
+envsource $HOME/.ai_keys

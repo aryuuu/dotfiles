@@ -21,13 +21,13 @@ return {
 	-- @type table
 	formatters = {
 		zigfmt = {
-			cmd = "zig",
-			args = { "fmt", "--stdin" },
-			stdin = true,
+			command = "zig",
+			args = { "fmt" },
+			stdin = false,
 			require_cwd = false,
 		},
 		terrafmt = {
-			cmd = "terraform",
+			command = "terraform",
 			args = { "fmt", "-" },
 			stdin = false,
 			require_cwd = false,
