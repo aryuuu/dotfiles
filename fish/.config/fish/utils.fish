@@ -8,9 +8,51 @@ function envsource --description 'Source environment file'
     if not string match -qr '^#|^$' "$line"
       set item (string split -m 1 '=' $line)
       set -gx $item[1] $item[2]
-      echo "Exported key $item[1]"
+      # echo "Exported key $item[1]"
     end
   end < "$envfile"
+end
+
+function load_env_file
+    set -l env_file "$argv[1]"
+    if test -f $env_file
+        set -l current_var
+        set -l current_value
+
+        for line in (cat $env_file | string trim)
+            # Skip empty lines and lines starting with #
+            if string match -qr '^#' $line; or test -z $line
+                continue
+            end
+
+            # Check for a key=value format or a continuation line
+            if string match -q '*=*' $line
+                # If we are processing a multiline value, finalize the current variable
+                if test -n "$current_var"
+                    set -gx $current_var "$current_value"
+                    set current_var
+                    set current_value
+                end
+
+                # Split key=value, respecting quotes
+                set -l key_value (string split '=' $line 1)
+                set current_var $key_value[1]
+                # set current_value (string trim -c '"' "'" $key_value[2])
+                set current_value $key_value[2]
+            else
+                # Continuation of the previous variable
+                set current_value "$current_value\n$line"
+            end
+        end
+
+        # Finalize the last variable if it was multiline
+        if test -n "$current_var"
+            # echo $current_var $current_value
+            set -gx $current_var "$current_value"
+        end
+    else
+        echo "File not found: $env_file"
+    end
 end
 
 function lsbloat --description 'List all bloat package'

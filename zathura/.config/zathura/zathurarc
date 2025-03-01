@@ -90,3 +90,38 @@ unmap <Space>
 map d scroll half-down
 map u scroll half-up
 map <Space>w bmark "mine"
+
+# Set the height of the highlight to approximately one line
+set highlight-transparency 0.3
+set highlight-fg "#000000"
+set highlight-bg "#FFFF00"
+# set highlight-active-color "#FFFF00"
+
+# Create a darker backdrop for non-highlighted text
+# set default-bg "#444444"
+set render-loading true
+# set adjust-open "best-fit"
+
+# Custom mapping to toggle highlight mode
+map [normal] <C-h> toggle_highlight
+
+# Custom keybindings to move the highlight up/down
+map [normal] j feedkeys "/:line down<Return>"
+map [normal] k feedkeys "/:line up<Return>"
+
+# # Additional settings for better reading experience
+# set window-height 1024
+# set window-width 768
+# set adjust-open width
+# set show-scrollbars true
+# set first-page-column 1
+# set page-padding 1
+
+# Recolor settings for better contrast
+set recolor true
+# set recolor-darkcolor "#FFFFFF"
+# set recolor-lightcolor "#333333"
+set recolor-reverse-video true
+
+# Custom JavaScript for line highlighting behavior
+map [normal] <Tab> feedkeys ":exec echo system('highlight_current_line.js')<Return>"
