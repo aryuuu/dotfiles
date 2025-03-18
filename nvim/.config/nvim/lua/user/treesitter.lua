@@ -103,3 +103,18 @@ configs.setup({
 		-- },
 	},
 })
+
+local status_ok, parser = pcall(require, "nvim-treesitter.parsers")
+if not status_ok then
+	return
+end
+
+local parser_config = parser.get_parser_configs()
+parser_config.fga = {
+	install_info = {
+		url = "https://github.com/matoous/tree-sitter-fga",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+	filetype = "fga",
+}

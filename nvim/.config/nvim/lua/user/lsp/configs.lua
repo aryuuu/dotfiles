@@ -7,6 +7,7 @@ end
 -- require("neodev").setup()
 
 local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
 
 local servers = {
 
@@ -66,3 +67,36 @@ for _, server in pairs(servers) do
 	end
 	lspconfig[server].setup(opts)
 end
+
+if not configs.fga then
+	configs.fga = {
+		default_config = {
+			cmd = { "bun", "/home/fatt/project/openfga-vscode-ext/server/src/server.node.ts", "--stdio"},
+			root_dir = lspconfig.util.root_pattern(".git"),
+			filetypes = { "fga" },
+		},
+	}
+end
+
+lspconfig.fga.setup{
+	on_attach = require("user.lsp.handlers").on_attach,
+	capabilities = require("user.lsp.handlers").capabilities,
+}
+
+-- local fga_client = vim.lsp.start_client({
+-- 	name = "fga-lsp",
+-- 	cmd = {"bun", "~/project/openfga-vscode-ext/server/src/server.node.ts", "--stdio"},
+-- 	on_attach = require("user.lsp.handlers").on_attach,
+-- })
+
+-- if not fga_client then
+-- 	vim.notify "hey, you didn't do the client thing good"
+-- 	return
+-- end
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "fga",
+-- 	callback = function()
+-- 		vim.lsp.buf_attach_client(0, client)
+-- 	end,
+-- })

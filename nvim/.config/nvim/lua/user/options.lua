@@ -75,6 +75,7 @@ vim.filetype.add({
 	extension = {
 		gotmpl = "gotmpl",
 		tmpl = "gotmpl",
+		fga = "fga",
 	},
 	pattern = {
 		[".*/hypr/.*%.conf"] = "hyprlang",
@@ -82,5 +83,6 @@ vim.filetype.add({
 		[".*/templates/.*%.ya?ml"] = "helm",
 		["helmfile.*%.ya?ml"] = "helm",
 		[".*/partials-raw/.*%.tmpl"] = "gotmpl",
+		["fga.mod"] = "fga",
 	},
 })
