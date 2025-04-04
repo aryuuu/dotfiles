@@ -209,15 +209,15 @@ local plugins = {
 	  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 	  opts = {
 		-- add any opts here
-		provider = "deepseek",
-		vendors = {
-		  deepseek = {
-			__inherited_from = "openai",
-			api_key_name = "DEEPSEEK_API_KEY",
-			endpoint = "https://api.deepseek.com",
-			model = "deepseek-coder",
-		  },
-		},
+			provider = "openrouter",
+			vendors = {
+				openrouter = {
+					__inherited_from = 'openai',
+					endpoint = 'https://openrouter.ai/api/v1',
+					api_key_name = 'OPENROUTER_API_KEY',
+					model = 'deepseek/deepseek-r1',
+				},
+			},
 	  },
 	  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	  build = "make",
@@ -374,6 +374,20 @@ local plugins = {
 		dependencies = "L3MON4D3/LuaSnip",
 	},
 	{ "jbyuki/venn.nvim" },
+	{
+		"jake-stewart/auto-cmdheight.nvim",
+		lazy = false,
+		opts = {
+			-- max cmdheight before displaying hit enter prompt.
+			max_lines = 5,
+
+			-- number of seconds until the cmdheight can restore.
+			duration = 2,
+
+			-- whether key press is required to restore cmdheight.
+			remove_on_key = true,
+		}
+	},
 }
 
 local opts = {

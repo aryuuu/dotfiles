@@ -4,6 +4,7 @@
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "ce0a05ab4e2839e1c48d072c5236cce846a387bc" },
   "actions-preview.nvim": { "branch": "master", "commit": "9f52a01c374318e91337697ebed51c6fae57f8a4" },
+  "auto-cmdheight.nvim": { "branch": "main", "commit": "0ab1652a1f41062c880f81a4c36854bf67a52b03" },
   "avante.nvim": { "branch": "main", "commit": "2ead26f809dd9804678de3dd18fa65ab3fadce29" },
   "bufferline.nvim": { "branch": "main", "commit": "2e3c8cc5a57ddd32f1edd2ffd2ccb10c09421f6c" },
   "catppuccin": { "branch": "main", "commit": "e1fc2c3ade0d8872665d7570c493bbd5e11919c7" },
