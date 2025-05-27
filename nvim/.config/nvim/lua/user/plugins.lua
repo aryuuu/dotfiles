@@ -51,7 +51,7 @@ local plugins = {
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
-		commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
+		-- commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243",
 		-- keys = "<leader>e",
 	},
 	{
@@ -71,7 +71,7 @@ local plugins = {
 	},
 	"arkav/lualine-lsp-progress",
 	{ "folke/trouble.nvim" },
-	{ "tanvirtin/monokai.nvim" },
+	-- { "tanvirtin/monokai.nvim" },
 	-- Colorschemes
 	"folke/tokyonight.nvim",
 	{
@@ -91,11 +91,6 @@ local plugins = {
 	},
 	{
 		"EdenEast/nightfox.nvim",
-	},
-	{
-		"jacoborus/tender.vim",
-		lazy = false,
-		keys = { "<leader>sC" },
 	},
 	"rmehri01/onenord.nvim",
 	{ "shaunsingh/nord.nvim" },
@@ -143,7 +138,7 @@ local plugins = {
 		event = "InsertEnter", -- load cmp on InsertEnter
 	},
 
-	"folke/neodev.nvim",
+	-- "folke/neodev.nvim",
 
 	-- snippets
 	{
@@ -168,7 +163,6 @@ local plugins = {
 			require("conform").setup(formatting_config)
 		end,
 	},
-	"MunifTanjim/eslint.nvim",
 	{
 		-- breadcrumbs
 		"SmiteshP/nvim-navic",
@@ -202,69 +196,69 @@ local plugins = {
 		end,
 	},
 	{ "supermaven-inc/supermaven-nvim" },
-	{
-	  "yetone/avante.nvim",
-	  event = "VeryLazy",
-	  lazy = false,
-	  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-	  opts = {
-		-- add any opts here
-			provider = "openrouter",
-			vendors = {
-				openrouter = {
-					__inherited_from = 'openai',
-					endpoint = 'https://openrouter.ai/api/v1',
-					api_key_name = 'OPENROUTER_API_KEY',
-					model = 'deepseek/deepseek-r1',
-				},
-			},
-	  },
-	  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-	  build = "make",
-	  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-	  dependencies = {
-		"stevearc/dressing.nvim",
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-		--- The below dependencies are optional,
-		"echasnovski/mini.pick", -- for file_selector provider mini.pick
-		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-		"ibhagwan/fzf-lua", -- for file_selector provider fzf
-		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-		"zbirenbaum/copilot.lua", -- for providers='copilot'
-		{
-		  -- support for image pasting
-		  "HakonHarnes/img-clip.nvim",
-		  event = "VeryLazy",
-		  opts = {
-			-- recommended settings
-			default = {
-			  embed_image_as_base64 = false,
-			  prompt_for_file_name = false,
-			  drag_and_drop = {
-				insert_mode = true,
-			  },
-			  -- required for Windows users
-			  use_absolute_path = true,
-			},
-		  },
-		},
-		{
-		  -- Make sure to set this up properly if you have lazy=true
-		  'MeanderingProgrammer/render-markdown.nvim',
-		  opts = {
-			file_types = { "markdown", "Avante", "vimwiki" },
-		  },
-		  ft = { "markdown", "Avante" },
-		},
-	  },
-	},
+	-- {
+	--   "yetone/avante.nvim",
+	--   event = "VeryLazy",
+	--   lazy = false,
+	--   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+	--   opts = {
+	-- 	-- add any opts here
+	-- 		provider = "openrouter",
+	-- 		vendors = {
+	-- 			openrouter = {
+	-- 				__inherited_from = 'openai',
+	-- 				endpoint = 'https://openrouter.ai/api/v1',
+	-- 				api_key_name = 'OPENROUTER_API_KEY',
+	-- 				model = 'deepseek/deepseek-r1',
+	-- 			},
+	-- 		},
+	--   },
+	--   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+	--   build = "make",
+	--   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+	--   dependencies = {
+	-- 	"stevearc/dressing.nvim",
+	-- 	"nvim-lua/plenary.nvim",
+	-- 	"MunifTanjim/nui.nvim",
+	-- 	--- The below dependencies are optional,
+	-- 	"echasnovski/mini.pick", -- for file_selector provider mini.pick
+	-- 	"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+	-- 	"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+	-- 	"ibhagwan/fzf-lua", -- for file_selector provider fzf
+	-- 	"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+	-- 	"zbirenbaum/copilot.lua", -- for providers='copilot'
+	-- 	{
+	-- 	  -- support for image pasting
+	-- 	  "HakonHarnes/img-clip.nvim",
+	-- 	  event = "VeryLazy",
+	-- 	  opts = {
+	-- 		-- recommended settings
+	-- 		default = {
+	-- 		  embed_image_as_base64 = false,
+	-- 		  prompt_for_file_name = false,
+	-- 		  drag_and_drop = {
+	-- 			insert_mode = true,
+	-- 		  },
+	-- 		  -- required for Windows users
+	-- 		  use_absolute_path = true,
+	-- 		},
+	-- 	  },
+	-- 	},
+	-- 	{
+	-- 	  -- Make sure to set this up properly if you have lazy=true
+	-- 	  'MeanderingProgrammer/render-markdown.nvim',
+	-- 	  opts = {
+	-- 		file_types = { "markdown", "Avante", "vimwiki" },
+	-- 	  },
+	-- 	  ft = { "markdown", "Avante" },
+	-- 	},
+	--   },
+	-- },
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		-- version = "v0.9.3",
-		commit = "cfc6f2c117aaaa82f19bcce44deec2c194d900ab",
+		-- commit = "cfc6f2c117aaaa82f19bcce44deec2c194d900ab",
 		build = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,

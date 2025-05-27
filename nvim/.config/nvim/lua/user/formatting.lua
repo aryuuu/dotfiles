@@ -22,8 +22,8 @@ return {
 	formatters = {
 		zigfmt = {
 			command = "zig",
-			args = { "fmt" },
-			stdin = false,
+			args = { "fmt", "--stdin" },
+			stdin = true,
 			require_cwd = false,
 		},
 		terrafmt = {

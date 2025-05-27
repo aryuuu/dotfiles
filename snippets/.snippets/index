@@ -1,1 +1,1 @@
-(index=trident-production OR index=trident-production-pci-0 OR index=trident-production-cde-0 OR index=xnd-jk-prod-pci-aws-0 OR index=im-sg-prod-aws-0)
+(index=xnd-sg-prod-aws-0 OR index=xnd-sg-prod-pci-aws-0 OR index=xnd-jk-prod-pci-aws-0 OR index=im-sg-prod-aws-0 OR index=xnd-sg-prod-cde-aws-0)

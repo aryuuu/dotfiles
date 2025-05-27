@@ -26,13 +26,13 @@ local servers = {
 	-- "sqls",
 	"sqlls",
 	"terraformls",
-	"jdtls",
+	-- "jdtls",
 	"zls",
 	"svelte",
 	"ocamllsp",
 	"nil_ls",
 	"templ",
-	-- "tailwindcss",
+	"tailwindcss",
 	"graphql"
 }
 

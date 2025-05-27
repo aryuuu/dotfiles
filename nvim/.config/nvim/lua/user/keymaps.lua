@@ -101,6 +101,7 @@ keymap("v", "<C-_>", ":'<,'>CommentToggle<CR>", opts)
 
 -- easy text substituon
 keymap("n", "<leader>sx", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
+keymap("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 
 keymap("n", "J", "mzJ`z", opts)
 

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-openvpn3 session-start --config fatt-ovpn3 | grep "https" | xargs xdg-open
+# openvpn3 session-start --config fatt-ovpn3 | grep "https" | xargs xdg-open
+openvpn3 session-start --config ~/project/xendit/vpn/fatt-ovpn3-new.ovpn
