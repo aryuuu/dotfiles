@@ -208,6 +208,8 @@ keymap("i", "<C-CR>", "copilot#Accept(“<CR>”)", { expr = true, silent = true
 
 -- nvimtree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+
+-- undotree
 keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr><CMD>UndotreeFocus<CR>", opts)
 
 -- oil
