@@ -7,10 +7,10 @@ font-size = 10
 font-family = 
 # this doesn't work inside tmux, need a workaround
 cursor-click-to-move = true
-gtk-adwaita = true
+# gtk-adwaita = true
 confirm-close-surface = false
 # setting it to below 1 doesn't work as expected (i want to see my wallpaper but the background just lighter)
-# background-opacity = 1
+background-opacity = 0.9
 # background-blur-radius = 20
 window-decoration = false
 window-padding-color = extend

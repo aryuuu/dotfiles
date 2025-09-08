@@ -152,8 +152,16 @@ local plugins = {
 
 	-- LSP
 	"neovim/nvim-lspconfig", -- enable LSP
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	{
+		"williamboman/mason.nvim",
+		commit = "e2f7f9044ec30067bc11800a9e266664b88cda22"
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		commit = "37a336b653f8594df75c827ed589f1c91d91ff6c"
+	},
+  -- "mason-lspconfig.nvim": { "branch": "main", "commit": "37a336b653f8594df75c827ed589f1c91d91ff6c" },
+  -- "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
 	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
 	{
 		"stevearc/conform.nvim",
@@ -212,6 +220,18 @@ local plugins = {
 					model = 'deepseek/deepseek-r1',
 				},
 			},
+			-- system_prompt as function ensures LLM always has latest MCP server state
+			-- This is evaluated for every message, even in existing chats
+			system_prompt = function()
+				local hub = require("mcphub").get_hub_instance()
+				return hub and hub:get_active_servers_prompt() or ""
+			end,
+			-- -- Using function prevents requiring mcphub before it's loaded
+			-- custom_tools = function()
+			-- 	return {
+			-- 		require("mcphub.extensions.avante").mcp_tool(),
+			-- 	}
+			-- end,
 	  },
 	  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	  build = "make",
@@ -254,6 +274,23 @@ local plugins = {
 		},
 	  },
 	},
+	-- {
+	-- 	"ravitemer/mcphub.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- 	-- build = "npm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
+	-- 	-- i am going to install it via nix instead
+	-- 	config = function()
+	-- 		require("mcphub").setup({
+	-- 			extensions = {
+	-- 				avante = {
+	-- 					make_slash_commands = true, -- make /slash commands from MCP server prompts
+	-- 				}
+	-- 			}
+	-- 		})
+	-- 	end
+	-- },
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
