@@ -7,7 +7,7 @@ set -x EDITOR vim
 # disable fish greeting
 set fish_greeting
 
-set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
+set PATH /opt/homebrew/bin /opt/homebrew/sbin $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default $PATH
 set EDITOR nvim
 set NOMAD_ADDR http://localhost:4646
 
@@ -21,6 +21,7 @@ end
 
 bind \et "tmux attach"
 bind \ef "tmux-sessionizer"
+bind \cf "tmux-sessionizer"
 bind -k f9 "sed -i 's/size = [0-9.]\\+/size = 9.5/' ~/.config/alacritty/alacritty.toml"
 bind -k f10 "sed -i 's/size = [0-9.]\\+/size = 20/' ~/.config/alacritty/alacritty.toml"
 # bind \ce edit_command_buffer
@@ -65,3 +66,8 @@ alias glog='git log --oneline --decorate --graph'
 alias nixos-gens='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
 
 source $HOME/.config/fish/utils.fish
+envsource $HOME/.ai_keys
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :

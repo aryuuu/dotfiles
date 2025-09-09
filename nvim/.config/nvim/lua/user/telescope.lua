@@ -164,6 +164,9 @@ telescope.setup({
 			},
 		},
 		git_bcommits = {
+			git_command = {
+				"git", "log", "--pretty=format:%h%d %as %an: %s", "--follow"
+			},
 			layout_config = {
 				preview_cutoff = 0, -- Ensure preview is always shown
 				horizontal = {

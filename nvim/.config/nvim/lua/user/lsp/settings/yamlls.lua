@@ -10,6 +10,10 @@ local opts = {
 					"**/.deployment/helm/**/*.yaml",
 					"**/.deployment/helm/**/*.yml",
 				},
+				-- ["~/project/xendit/xendit-infrastructure/terraform/xendit/schemas/input-aws-route53-schema.json"] = {
+				-- 	"**/input-r53*.yaml",
+				-- 	"**/input-r53*.yml",
+				-- },
 				-- ["/home/fatt/project/xendit/xendit-json-schema/schema/buddyworks.json"] = { "**/.buddy/*.yaml" },
 				-- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
 			},

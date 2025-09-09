@@ -4,17 +4,18 @@ shell-integration = fish
 cursor-style = block
 cursor-style-blink = false
 font-size = 12
-font-family = 
+font-family = JetbrainsMono Nerd Font
 # this doesn't work inside tmux, need a workaround
 cursor-click-to-move = true
-gtk-adwaita = true
 
 # setting it to below 1 doesn't work as expected (i want to see my wallpaper but the background just lighter)
 # background-opacity = 1
 # background-blur-radius = 20
-window-decoration = false
+window-decoration = true
 
 # keybindings
 keybind = ctrl+backspace=text:\x1b\x7f
 keybind = page_up=scroll_page_up
 # keybind = super+t=toggle_quick_terminal
+
+macos-option-as-alt = true

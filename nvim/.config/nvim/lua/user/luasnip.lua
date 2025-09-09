@@ -243,7 +243,7 @@ ls.add_snippets("javascript", {
 		"clg",
 		fmta(
 			[[
-console.log({<val>});
+console.log({ <val> });
 <finish>
 ]],
 			{
@@ -259,7 +259,23 @@ ls.add_snippets("typescript", {
 		"clg",
 		fmta(
 			[[
-console.log({<val>});
+console.log({ <val> });
+<finish>
+]],
+			{
+				val = i(1),
+				finish = i(0),
+			}
+		)
+	),
+})
+
+ls.add_snippets("typescriptreact", {
+	s(
+		"clg",
+		fmta(
+			[[
+console.log({ <val> });
 <finish>
 ]],
 			{

@@ -17,7 +17,7 @@ local servers = {
 	-- "rust_analyzer",
 	"cmake",
 	"lua_ls",
-	"tsserver",
+	"ts_ls",
 	"jsonls",
 	"gopls",
 	"eslint",

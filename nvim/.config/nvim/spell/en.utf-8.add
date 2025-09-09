@@ -8,3 +8,4 @@ NewCreateOrderValidator
 pipelineSchema
 After
 allow_switch_business
+status
