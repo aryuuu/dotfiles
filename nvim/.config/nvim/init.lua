@@ -152,8 +152,8 @@ vim.opt.tabstop = 4
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.o.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -626,7 +626,8 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[S]earch [F]iles' })
+      -- vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", {})
       vim.keymap.set('n', '<leader>sm', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       -- this is what is usually have mapped to this key, i use it a lot: keymap("n", "<leader>sf", "<cmd>Telescope live_grep search= <cr>", opts)
@@ -635,8 +636,10 @@ require('lazy').setup({
         builtin.diagnostics({ bufnr = 0 })  -- only show diagnostics from current buffer
       end, { desc = '[S]earch buffer [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>o', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- vim.keymap.set('n', '<leader>o', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", {})
+      vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", {})
       vim.keymap.set("n", "<leader>gb", "<cmd>lua require('telescope.builtin').git_branches(require('telescope.themes').get_dropdown{previewer = false})<cr>", {})
       vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", {})
       vim.keymap.set("n", "<leader>gC", "<cmd>Telescope git_bcommits<cr>", {})
@@ -1040,7 +1043,9 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'enter',
+        ['<Tab>'] = { 'select_next', 'fallback' }, -- Tab = cycle next
+        ['<S-Tab>'] = { 'select_prev', 'fallback' }, -- Shift-Tab = cycle prev
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -1055,7 +1060,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
       },
 
       sources = {
@@ -1179,7 +1184,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  require 'fatt.plugins.indent_line',
+  -- require 'fatt.plugins.indent_line',
   require 'fatt.plugins.lint',
   require 'fatt.plugins.autopairs',
   require 'fatt.plugins.neo-tree',
