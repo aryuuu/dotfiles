@@ -25,5 +25,14 @@ return {
         },
       },
     },
+    event_handlers = {
+      {
+        event = 'file_opened',
+        handler = function()
+          -- Close Neo-tree after opening a file
+          require('neo-tree.command').execute({ action = 'close' })
+        end,
+      },
+    },
   },
 }
