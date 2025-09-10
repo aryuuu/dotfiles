@@ -150,7 +150,7 @@ vim.keymap.set("v", "<leader>S", '"fy/\\V<C-R>f<CR>', {})
 
 ---- tmux-sessionizer
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-vim.keymap.set("n", "<M-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+vim.keymap.set("n", "<M-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {})
 
 -- Visual Block --
 -- Move text up and down
@@ -170,10 +170,10 @@ vim.keymap.set("n", "<leader>jp", ":'<,'>!jq<CR>", {})
 vim.keymap.set("x", "<leader>N", ":s/\\\\n/\\r/g<CR>", {})
 vim.keymap.set("n", "<leader>N", "V:s/\\\\n/\\r/g<CR>", {})
 
-vim.keymap.set("n", "<leader>w", "<cmd>w!<CR>", opts)
-vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", opts)
-vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<CR>", opts)
-vim.keymap.set("n", "<leader>X", [[<cmd>%bdelete|edit #|normal `"<CR>]], opts)
+vim.keymap.set("n", "<leader>w", "<cmd>w!<CR>", {})
+vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", {})
+vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<CR>", {})
+vim.keymap.set("n", "<leader>X", [[<cmd>%bdelete|edit #|normal `"<CR>]], {})
 
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
@@ -1095,6 +1095,7 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  'moll/vim-bbye',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
