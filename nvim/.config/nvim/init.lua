@@ -55,6 +55,7 @@ vim.o.splitbelow = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.wrap = false
+vim.opt.winbar = "  %f"
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
