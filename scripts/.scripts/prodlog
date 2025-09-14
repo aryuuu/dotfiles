@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+trace_id=$(wl-paste)
+full_url="https://xendit.splunkcloud.com/en-US/app/search/search?q=search%20(index%3Dtrident-production%20OR%20index%3Dxnd-sg-prod-aws-0%20OR%20index%3Dtrident-production-pci-0%20OR%20index%3Dxnd-sg-prod-pci-aws-0%20OR%20index%3Dxnd-jk-prod-pci-aws-0%20OR%20index%3Dim-sg-prod-aws-0)%20$trace_id&sid=1733287482.15411601&display.page.search.mode=smart&dispatch.sample_ratio=1&workload_pool=&earliest=-30m%40m&latest=now"
+
+xdg-open $full_url
