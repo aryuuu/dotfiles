@@ -22,6 +22,8 @@ return {
         },
         config = function ()
             vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr><CMD>UndotreeFocus<CR>", opts)
+
+			vim.cmd([[let g:undotree_WindowLayout = 1]])
         end
     },
 }

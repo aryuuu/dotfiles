@@ -57,6 +57,10 @@ vim.opt.tabstop = 4
 vim.opt.wrap = false
 vim.opt.winbar = "  %f"
 
+vim.cmd([[let g:vimwiki_map_prefix = '<leader>V']])
+vim.cmd([[let g:vimwiki_global_ext = 0]])
+vim.cmd([[ let g:vimwiki_list = [{'path': '~/.vimwiki/', 'syntax': 'markdown', 'ext': 'md', 'global_ext': 0}] ]])
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -197,13 +201,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_autocmd(
-    'VimResized',
-    {
-        pattern = '*',
-        command = 'wincmd =',
-        desc = 'Automatically resize windows when the host window size changes.'
-    }
+  'VimResized',
+  {
+    pattern = '*',
+    command = 'wincmd =',
+    desc = 'Automatically resize windows when the host window size changes.'
+  }
 )
+
+vim.filetype.add({
+	extension = {
+		gotmpl = "gotmpl",
+		tmpl = "gotmpl",
+		fga = "fga",
+	},
+	pattern = {
+		[".*/hypr/.*%.conf"] = "hyprlang",
+		[".*/templates/.*%.tpl"] = "helm",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+		[".*/partials-raw/.*%.tmpl"] = "gotmpl",
+		["fga.mod"] = "fga",
+	},
+})
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
