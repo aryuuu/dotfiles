@@ -1,9 +1,9 @@
-theme = nord
+theme = Nord
 shell-integration = fish
 # the next 2 lines somehow doesn't work
 cursor-style = block
 cursor-style-blink = false
-font-size = 10
+font-size = 10.5
 font-family = 
 # this doesn't work inside tmux, need a workaround
 cursor-click-to-move = true

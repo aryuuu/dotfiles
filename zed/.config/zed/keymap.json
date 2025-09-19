@@ -1,12 +1,18 @@
 [
   {
     "bindings": {
-      "alt-down": ["workspace::SendKeystrokes", "down down down down"],
+      "alt-down": [
+        "workspace::SendKeystrokes",
+        "down down down down"
+      ],
       "cmd-alt-c": [
         "workspace::SendKeystrokes",
         "cmd-shift-p copy relative path enter"
       ],
-      "cmd-alt-r": ["workspace::SendKeystrokes", "cmd-p README enter"],
+      "cmd-alt-r": [
+        "workspace::SendKeystrokes",
+        "cmd-p README enter"
+      ],
       "ctrl-right": "editor::SelectLargerSyntaxNode",
       "ctrl-left": "editor::SelectSmallerSyntaxNode",
       "ctrl->": "editor::Indent",
@@ -16,7 +22,10 @@
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "j k": ["workspace::SendKeystrokes", "escape"]
+      "j k": [
+        "workspace::SendKeystrokes",
+        "escape"
+      ]
     }
   },
   {
@@ -26,7 +35,10 @@
       "space e": "workspace::ToggleLeftDock",
       "space w": "workspace::Save",
       "space x": "pane::CloseActiveItem",
-      "space q": ["workspace::SendKeystrokes", ": q enter"],
+      "space q": [
+        "workspace::SendKeystrokes",
+        ": q enter"
+      ],
       "space l j": "editor::GoToDiagnostic",
       "space l k": "editor::GoToPrevDiagnostic",
       "space g j": "editor::GoToHunk",
