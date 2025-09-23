@@ -25,6 +25,7 @@
         "pulseaudio",
         "pulseaudio-input",
         "battery",
+		"custom/pomodoro",
         "custom/r_end",
         "custom/l_end",
         "clock#time",

@@ -287,6 +287,7 @@ require('lazy').setup({
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+        untracked = { text = "┆" },
       },
     },
   },
@@ -716,6 +717,8 @@ require('lazy').setup({
 
           map('<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>zz', 'go to next diagnostic')
           map('<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<CR>zz', 'go to prev diagnostic')
+          map("<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help")
+          map("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help", "i")
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
@@ -1006,7 +1009,7 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
@@ -1139,6 +1142,7 @@ require('lazy').setup({
   require 'fatt.plugins.treesitter-context',
   require 'fatt.plugins.lualine',
   require 'fatt.plugins.toggleterm',
+  require 'fatt.plugins.supermaven',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
