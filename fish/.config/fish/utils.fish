@@ -144,6 +144,10 @@ function xensearch -d 'search string in xendit dir'
 
 end
 
+function dev -d 'start a nix shell for development'
+    nix develop --command fish
+end
+
 # function nixos-gens
 #     set -l current (readlink /var/run/current-system)
     
