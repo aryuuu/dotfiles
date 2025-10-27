@@ -86,6 +86,8 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+vim.o.winborder = "rounded" -- can be: single, double, rounded, solid, shadow
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -127,6 +129,8 @@ vim.keymap.set('n', '[t', 'vato<Esc>', { desc = 'go to beginning of xml tag' })
 vim.keymap.set('n', ']t', 'vat<Esc>', { desc = 'go to the end of xml tag' })
 vim.keymap.set('n', 'n', 'nzz', { desc = 'smooth next match' })
 vim.keymap.set('n', 'N', 'Nzz', { desc = 'smooth prev match' })
+vim.keymap.set('n', '<C-o>', '<C-o>zz', { desc = 'jump out smooth' })
+vim.keymap.set('n', '<C-i>', '<C-i>zz', { desc = 'jump in smooth' })
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', {})
@@ -834,8 +838,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        -- ts_ls = {}
 
         lua_ls = {
           -- cmd = { ... },
@@ -888,6 +891,11 @@ require('lazy').setup({
       }
     end,
   },
+  -- { -- maybe some other time, once this is stable enough
+  --   "pmizio/typescript-tools.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  --   opts = {},
+  -- },
 
   { -- Autoformat
     'stevearc/conform.nvim',

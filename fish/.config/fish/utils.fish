@@ -148,6 +148,10 @@ function dev -d 'start a nix shell for development'
     nix develop --command fish
 end
 
+function q -d 'alias for amazon-q'
+    amazon-q $argv
+end
+
 # function nixos-gens
 #     set -l current (readlink /var/run/current-system)
     
