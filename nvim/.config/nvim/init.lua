@@ -182,6 +182,7 @@ vim.keymap.set("n", "<leader>w", "<cmd>w!<CR>", {})
 vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", {})
 vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<CR>", {})
 vim.keymap.set("n", "<leader>X", [[<cmd>%bdelete|edit #|normal `"<CR>]], {})
+vim.keymap.set("n", "<leader>T", "<cmd>TransparentToggle<CR>", {})
 
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
@@ -189,6 +190,52 @@ vim.keymap.set("n", "<leader>X", [[<cmd>%bdelete|edit #|normal `"<CR>]], {})
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+
+vim.api.nvim_create_user_command('ImportPrevDiary', function()
+  local buf = vim.api.nvim_get_current_buf()
+  local path = vim.fn.expand('%:p')
+
+  -- Match ~/.vimwiki/diary/YYYY-MM-DD.md
+  local year, month, day = path:match('.*/.vimwiki/diary/(%d%d%d%d)%-(%d%d)%-(%d%d)%.md$')
+
+  -- If not a diary file, use current date
+  local date
+  if year and month and day then
+    date = {year = tonumber(year), month = tonumber(month), day = tonumber(day)}
+  else
+    date = os.date('*t')
+  end
+
+  -- get all files in ~/.vimwiki/diary/
+  local diary_files = vim.fn.glob(vim.fn.expand('~/.vimwiki/diary/*.md'))
+  -- sort diary files by date, newest first
+  table.sort(diary_files, function(a, b)
+    local a_date = os.date('%Y-%m-%d', os.time{year=tonumber(vim.fn.fnamemodify(a, ':t:r')), month=tonumber(vim.fn.fnamemodify(a, ':t:r:r')), day=tonumber(vim.fn.fnamemodify(a, ':t:r:r:r'))})
+    local b_date = os.date('%Y-%m-%d', os.time{year=tonumber(vim.fn.fnamemodify(b, ':t:r')), month=tonumber(vim.fn.fnamemodify(b, ':t:r:r')), day=tonumber(vim.fn.fnamemodify(b, ':t:r:r:r'))})
+    return a_date > b_date
+      or (a_date == b_date and tonumber(vim.fn.fnamemodify(a, ':t:r:r:r')) > tonumber(vim.fn.fnamemodify(b, ':t:r:r:r')))
+      or (a_date == b_date and tonumber(vim.fn.fnamemodify(a, ':t:r:r:r')) == tonumber(vim.fn.fnamemodify(b, ':t:r:r:r')) and tonumber(vim.fn.fnamemodify(a, ':t:r:r')) > tonumber(vim.fn.fnamemodify(b, ':t:r:r')))
+  end)
+
+  -- Compute previous day
+  local prev_ts = os.time{year=date.year, month=date.month, day=date.day} - 86400
+  local prev_date = os.date('%Y-%m-%d', prev_ts)
+
+  -- Build previous file path
+  local prev_file = vim.fn.expand('~/.vimwiki/diary/' .. prev_date .. '.md')
+
+  -- Check if file exists
+  if vim.loop.fs_stat(prev_file) then
+    local lines = vim.fn.readfile(prev_file)
+    vim.api.nvim_buf_set_lines(buf, 0, 0, false, lines)
+    vim.notify('Imported content from ' .. prev_file, vim.log.levels.INFO)
+  else
+    vim.notify('No previous diary found for ' .. prev_date, vim.log.levels.WARN)
+  end
+end, {})
+
+vim.keymap.set("n", "<leader>np", ":ImportPrevDiary", { noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -260,13 +307,14 @@ require('lazy').setup({
   -- 'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
   'tpope/vim-sleuth',
+  'tpope/vim-surround',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
-
+  'xiyaowong/transparent.nvim',
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
   --    {
@@ -294,6 +342,78 @@ require('lazy').setup({
         untracked = { text = "┆" },
       },
     },
+  },
+  {
+    'stevearc/quicker.nvim',
+    ft = "qf",
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
+  },
+  {
+    'jellydn/hurl.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      -- Optional, for markdown rendering with render-markdown.nvim
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { 'markdown' },
+        },
+        ft = { 'markdown' },
+      },
+    },
+    ft = 'hurl',
+    opts = {
+      -- Show debugging info
+      debug = false,
+      -- Show notification on run
+      show_notification = false,
+      -- Show response in popup or split
+      mode = 'split',
+      env_file = {
+        'vars.env',
+        'staging-dev.env',
+        'staging-live.env',
+        'production-dev.env',
+        'production-live.env',
+      },
+      -- Default formatter
+      formatters = {
+        json = { 'jq' }, -- Make sure you have install jq in your system, e.g: brew install jq
+        html = {
+          'prettier', -- Make sure you have install prettier in your system, e.g: npm install -g prettier
+          '--parser',
+          'html',
+        },
+        xml = {
+          'tidy', -- Make sure you have installed tidy in your system, e.g: brew install tidy-html5
+          '-xml',
+          '-i',
+          '-q',
+        },
+      },
+      -- Default mappings for the response popup or split views
+      mappings = {
+        close = 'q', -- Close the response popup or split view
+        next_panel = '<C-n>', -- Move to the next response popup window
+        prev_panel = '<C-p>', -- Move to the previous response popup window
+      },
+    },
+    -- keys = {
+    --   -- Run API request
+    --   { '<leader>A', '<cmd>HurlRunner<CR>', desc = 'Run All requests' },
+    --   { '<leader>a', '<cmd>HurlRunnerAt<CR>', desc = 'Run Api request' },
+    --   { '<leader>te', '<cmd>HurlRunnerToEntry<CR>', desc = 'Run Api request to entry' },
+    --   { '<leader>tE', '<cmd>HurlRunnerToEnd<CR>', desc = 'Run Api request from current entry to end' },
+    --   { '<leader>tm', '<cmd>HurlToggleMode<CR>', desc = 'Hurl Toggle Mode' },
+    --   { '<leader>tv', '<cmd>HurlVerbose<CR>', desc = 'Run Api in verbose mode' },
+    --   { '<leader>tV', '<cmd>HurlVeryVerbose<CR>', desc = 'Run Api in very verbose mode' },
+    --   -- Run Hurl request in visual mode
+    --   { '<leader>h', ':HurlRunner<CR>', desc = 'Hurl Runner', mode = 'v' },
+    -- },
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -397,7 +517,7 @@ require('lazy').setup({
             ".git/",
             ".jj/",
             "node_modules/",
-            ".cache",
+            -- ".cache",
             "%.o",
             "%.a",
             "%.out",
@@ -579,6 +699,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       -- this is what is usually have mapped to this key, i use it a lot: keymap("n", "<leader>sf", "<cmd>Telescope live_grep search= <cr>", opts)
       vim.keymap.set('n', '<leader>sf', '<CMD>Telescope live_grep search= <CR>', { desc = '[S]earch by [G]rep in current file' })
+      vim.keymap.set('n', '<leader>lw', '<CMD>Telescope diagnostics<CR>', { desc = '[S]earch by [G]rep in current file' })
       vim.keymap.set('n', '<leader>ld', function()
         builtin.diagnostics({ bufnr = 0 })  -- only show diagnostics from current buffer
       end, { desc = '[S]earch buffer [D]iagnostics' })
@@ -714,10 +835,11 @@ require('lazy').setup({
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map('<leader>ls', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+          -- map('<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', 'Open Document Symbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+          map('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
           map('<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>zz', 'go to next diagnostic')
           map('<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<CR>zz', 'go to prev diagnostic')
