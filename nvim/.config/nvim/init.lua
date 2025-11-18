@@ -183,6 +183,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", {})
 vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<CR>", {})
 vim.keymap.set("n", "<leader>X", [[<cmd>%bdelete|edit #|normal `"<CR>]], {})
 vim.keymap.set("n", "<leader>T", "<cmd>TransparentToggle<CR>", {})
+vim.keymap.set("n", "<leader>H", "<cmd>HurlRunner<CR>", {})
 
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
