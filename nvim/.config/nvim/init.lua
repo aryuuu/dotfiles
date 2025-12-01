@@ -370,16 +370,17 @@ require('lazy').setup({
     opts = {
       -- Show debugging info
       debug = false,
+      auto_close = false,
       -- Show notification on run
       show_notification = false,
       -- Show response in popup or split
       mode = 'split',
-      env_file = {
+      env_file = { -- the last to be declared will overwrite the files above
         'vars.env',
+        'production-live.env',
+        'production-dev.env',
         'staging-dev.env',
         'staging-live.env',
-        'production-dev.env',
-        'production-live.env',
       },
       -- Default formatter
       formatters = {
@@ -401,6 +402,66 @@ require('lazy').setup({
         close = 'q', -- Close the response popup or split view
         next_panel = '<C-n>', -- Move to the next response popup window
         prev_panel = '<C-p>', -- Move to the previous response popup window
+      },
+
+      fixture_vars = {
+        {
+          name = 'random_int_number',
+          callback = function()
+            return math.random(1, 1000)
+          end,
+        },
+        {
+          name = 'random_float_number',
+          callback = function()
+            local result = math.random() * 10
+            return string.format('%.2f', result)
+          end,
+        },
+        {
+          name = 'uuid',
+          callback = function()
+            return vim.fn.system('uuidgen'):gsub('\n', '')
+          end,
+        },
+        {
+          name = 'timestamp',
+          callback = function()
+            return os.time()
+          end,
+        },
+        {
+          name = 'iso_date',
+          callback = function()
+            return os.date('%Y-%m-%dT%H:%M:%SZ')
+          end,
+        },
+        {
+          name = 'random_email',
+          callback = function()
+            local domains = {'example.com', 'test.org', 'demo.net'}
+            local names = {'user', 'test', 'demo', 'admin', 'john', 'jane'}
+            return names[math.random(#names)] .. math.random(100, 999) .. '@' .. domains[math.random(#domains)]
+          end,
+        },
+        {
+          name = 'random_string',
+          callback = function()
+            local chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+            local result = ''
+            for i = 1, 10 do
+              local idx = math.random(1, #chars)
+              result = result .. chars:sub(idx, idx)
+            end
+            return result
+          end,
+        },
+        {
+          name = 'random_phone',
+          callback = function()
+            return '+1' .. math.random(100, 999) .. math.random(100, 999) .. math.random(1000, 9999)
+          end,
+        },
       },
     },
     -- keys = {
@@ -1014,6 +1075,25 @@ require('lazy').setup({
           end,
         },
       }
+      -- Manual LSP setup for custom servers
+      local configs = require('lspconfig.configs')
+
+      -- Define gleam LSP if not already defined
+      if not configs.gleam then
+        configs.gleam = {
+          default_config = {
+            cmd = { 'gleam', 'lsp' },
+            filetypes = { 'gleam' },
+            root_dir = require('lspconfig.util').root_pattern('gleam.toml', '.git'),
+            single_file_support = true,
+          },
+        }
+      end
+
+require('lspconfig').gleam.setup {
+  capabilities = capabilities,
+}
+
     end,
   },
   -- { -- maybe some other time, once this is stable enough
@@ -1042,7 +1122,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, javascript = true, typescript = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -1085,12 +1165,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
         opts = {},
       },
@@ -1172,11 +1252,17 @@ require('lazy').setup({
     'rmehri01/onenord.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
+
+      -- local colors = require("onenord.colors").load()
+      -- ---@diagnostic disable-next-line: missing-fields
       -- require('onenord').setup {
-      --   styles = {
-      --     comments = { italic = false }, -- Disable italics in comments
+
+      --   custom_highlights = {
+      --     ["@comment"] = { fg = colors.dark_blue },
       --   },
+      --   -- styles = {
+      --   --   comments = { italic = false }, -- Disable italics in comments
+      --   -- },
       -- }
 
       -- Load the colorscheme here.
@@ -1243,6 +1329,9 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      playground = {
+        enable = true,
+      },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -1251,6 +1340,7 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  'nvim-treesitter/playground',
   'moll/vim-bbye',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
