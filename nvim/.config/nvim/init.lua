@@ -184,6 +184,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<CR>", {})
 vim.keymap.set("n", "<leader>X", [[<cmd>%bdelete|edit #|normal `"<CR>]], {})
 vim.keymap.set("n", "<leader>T", "<cmd>TransparentToggle<CR>", {})
 vim.keymap.set("n", "<leader>H", "<cmd>HurlRunner<CR>", {})
+vim.keymap.set("n", "<leader>rq", "<cmd>HurlRunner<CR>", {})
 
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
@@ -344,6 +345,7 @@ require('lazy').setup({
       },
     },
   },
+  'kevinhwang91/nvim-bqf',
   {
     'stevearc/quicker.nvim',
     ft = "qf",
@@ -903,8 +905,8 @@ require('lazy').setup({
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
-          map('<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>zz', 'go to next diagnostic')
-          map('<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<CR>zz', 'go to prev diagnostic')
+          map('<leader>lj', '<cmd>lua vim.diagnostic.jump({count=1, float=true})<CR>zz', 'go to next diagnostic')
+          map('<leader>lk', '<cmd>lua vim.diagnostic.jump({count=-1, float=true})<CR>zz', 'go to prev diagnostic')
           map("<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help")
           map("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help", "i")
 
@@ -1253,22 +1255,38 @@ require('lspconfig').gleam.setup {
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
 
-      -- local colors = require("onenord.colors").load()
+      local colors = require("onenord.colors").load()
       -- ---@diagnostic disable-next-line: missing-fields
-      -- require('onenord').setup {
+      require('onenord').setup {
 
-      --   custom_highlights = {
-      --     ["@comment"] = { fg = colors.dark_blue },
-      --   },
-      --   -- styles = {
-      --   --   comments = { italic = false }, -- Disable italics in comments
-      --   -- },
-      -- }
+        custom_highlights = {
+          -- ["@comment"] = { fg = colors.dark_blue },
+          -- ["@variable.member"] = { fg = colors.dark_blue },
+          -- ["@keyword"] = { fg = colors.light_green },
+        },
+        -- styles = {
+        --   comments = { italic = false }, -- Disable italics in comments
+        -- },
+      }
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onenord'
+      -- vim.cmd.colorscheme 'onenord'
+    end,
+  },
+  {
+    'sainnhe/everforest',
+    config = function()
+
+      -- vim.cmd.colorscheme 'everforest'
+    end,
+  },
+  {
+    'jackm-morgan/nordark.nvim',
+    config = function()
+
+      -- vim.cmd.colorscheme 'nordark'
     end,
   },
 
