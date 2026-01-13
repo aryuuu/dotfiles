@@ -310,6 +310,7 @@ require('lazy').setup({
 
   'tpope/vim-sleuth',
   'tpope/vim-surround',
+  'tpope/vim-abolish',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -582,6 +583,7 @@ require('lazy').setup({
             ".jj/",
             "node_modules/",
             -- ".cache",
+            ".zig-cache",
             "%.o",
             "%.a",
             "%.out",
@@ -1091,10 +1093,24 @@ require('lazy').setup({
           },
         }
       end
+      require('lspconfig').gleam.setup {
+        capabilities = capabilities,
+      }
 
-require('lspconfig').gleam.setup {
-  capabilities = capabilities,
-}
+      -- Define java LSP if not already defined
+      if not configs.java then
+        configs.java = {
+          default_config = {
+            cmd = { 'jdtls' },
+            filetypes = { 'java' },
+            root_dir = require('lspconfig.util').root_pattern('build.gradle', '.git'),
+            single_file_support = true,
+          },
+        }
+      end
+      require('lspconfig').java.setup {
+        capabilities = capabilities,
+      }
 
     end,
   },
