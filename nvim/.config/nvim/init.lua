@@ -1433,5 +1433,8 @@ require('lazy').setup({
   },
 })
 
+-- Highlight active parameter in signature help
+vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', { bg = '#3d3d3d', fg = '#ffcc00', bold = true, underline = true })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
