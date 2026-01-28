@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "agents": {
+    "librarian": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "explore": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "oracle": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "document-writer": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "multimodal-looker": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "sisyphus": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "prometheus": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "metis": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "momus": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "atlas": {
+      "model": "kiro/claude-opus-4-5"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "ultrabrain": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "artistry": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "quick": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "unspecified-low": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "unspecified-high": {
+      "model": "kiro/claude-opus-4-5"
+    },
+    "writing": {
+      "model": "kiro/claude-opus-4-5"
+    }
+  }
+}

@@ -25,12 +25,14 @@ end
 
 -- Get bookmarks for all these revisions
 local bookmarks = {}
+local bookmark_set = {}
 for _, cid in ipairs(change_ids) do
   local bookmark_output, bookmark_err = jj("bookmark", "list", "-r", cid, "--template", [[name ++ '\n']])
   if not bookmark_err and bookmark_output ~= "" then
     local names = split_lines(bookmark_output, false)
     for _, name in ipairs(names) do
-      if name ~= "" then
+      if name ~= "" and not bookmark_set[name] then
+		bookmark_set[name] = true
         table.insert(bookmarks, name)
       end
     end

@@ -12,6 +12,7 @@ return {
     { '<leader>e', ':Neotree toggle reveal<CR>', desc = 'NeoTree toggle reveal', silent = true },
   },
   opts = {
+    enable_git_status = false,
     filesystem = {
       hijack_netrw_behavior = "open_current", -- open Neo-tree at current file's dir
       filtered_items = {

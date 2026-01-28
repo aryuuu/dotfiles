@@ -187,6 +187,10 @@ vim.keymap.set("n", "<leader>H", "<cmd>HurlRunner<CR>", {})
 vim.keymap.set("n", "<leader>rq", "<cmd>HurlRunner<CR>", {})
 
 vim.keymap.set("n", "<leader>p", [[<cmd>:let @+=expand("%:p")<CR>]], {})
+vim.keymap.set("n", "<left>", ':lua require("yvim").to_parent()<CR>', opts)
+vim.keymap.set("n", "<right>", ':lua require("yvim").descend()<CR>', opts)
+vim.keymap.set("n", "<up>", ':lua require("yvim").prev_sibling()<CR>', opts)
+vim.keymap.set("n", "<down>", ':lua require("yvim").next_sibling()<CR>', opts)
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -500,6 +504,7 @@ require("lazy").setup({
 		--   { '<leader>h', ':HurlRunner<CR>', desc = 'Hurl Runner', mode = 'v' },
 		-- },
 	},
+	{ dir = "~/project/yvim.nvim" },
 
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
