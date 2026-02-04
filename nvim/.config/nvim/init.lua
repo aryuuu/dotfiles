@@ -147,6 +147,8 @@ vim.keymap.set("n", "gl", "<CMD>diffget //3<CR>", {})
 -- quicklist navigation
 vim.keymap.set("n", "]q", ":cnext<CR>", {})
 vim.keymap.set("n", "[q", ":cprev<CR>", {})
+vim.keymap.set("n", "<M-j>", "<CMD>cnext<CR>", {})
+vim.keymap.set("n", "<M-k>", "<CMD>cprev<CR>", {})
 
 -- Navigate buffers
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", {})
@@ -1217,7 +1219,7 @@ require("lazy").setup({
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true, javascript = true, typescript = true }
+				local disable_filetypes = { c = true, cpp = true, javascript = true, typescript = true, json = true }
 				if disable_filetypes[vim.bo[bufnr].filetype] then
 					return nil
 				else

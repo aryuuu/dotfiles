@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+tmp=$(mktemp --suffix=.png)
+trap "rm -f '$tmp'" EXIT
+
+# capture screen region
+grim -g "$(slurp)" "$tmp" || exit 1
+
+# decode QR
+uri=$(zbarimg -q --raw "$tmp") || { notify-send -u critical "scan-otp" "No QR code found"; exit 1; }
+
+# validate otpauth URI
+[[ "$uri" =~ ^otpauth:// ]] || { notify-send -u critical "scan-otp" "Not an OTP QR code"; exit 1; }
+
+# extract default name from URI (format: otpauth://totp/ISSUER:ACCOUNT?... or otpauth://totp/ACCOUNT?issuer=ISSUER)
+path=${uri#otpauth://*/}
+path=${path%%\?*}
+path=$(printf '%b' "${path//%/\\x}")  # URL decode
+
+issuer=$(echo "$uri" | grep -oP 'issuer=\K[^&]+' | head -1 | xargs printf '%b' 2>/dev/null || true)
+issuer=${issuer//%/\\x}
+
+if [[ "$path" == *:* ]]; then
+    default_name="otp/${path%%:*}/${path#*:}"
+elif [[ -n "$issuer" ]]; then
+    default_name="otp/$issuer/$path"
+else
+    default_name="otp/$path"
+fi
+
+# prompt for name
+name=$(echo "$default_name" | rofi -dmenu -p "pass entry name" -theme-str 'entry { placeholder: ""; }')
+[[ -z "$name" ]] && exit 1
+
+# insert into pass
+echo "$uri" | pass otp insert "$name"
+notify-send "scan-otp" "Added OTP: $name"
