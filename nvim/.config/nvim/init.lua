@@ -618,6 +618,7 @@ require("lazy").setup({
 						"target/",
 						"dist/",
 						"coverage/",
+						".nyc_output/",
 					},
 					treesitter = false,
 					-- cache_picker = {
@@ -1181,7 +1182,9 @@ require("lazy").setup({
 			if not configs.java then
 				configs.java = {
 					default_config = {
-						cmd = { "jdtls" },
+						cmd = os.getenv("LOMBOK_JAR")
+								and { "jdtls", "--jvm-arg=-javaagent:" .. os.getenv("LOMBOK_JAR") }
+							or { "jdtls" },
 						filetypes = { "java" },
 						root_dir = require("lspconfig.util").root_pattern("build.gradle", ".git"),
 						single_file_support = true,
