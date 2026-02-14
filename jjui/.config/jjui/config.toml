@@ -1,3 +1,11 @@
+[custom_commands.stacked_pr]
+name = "Stacked PR"
+description = "Create stacked PR from all the pushed bookmarks from the current changeset and its descendants"
+lua = """
+local f = loadfile(os.getenv("HOME") .. "/.config/jjui/scripts/stacked_pr.lua")
+if f then f() else flash("Failed to load script") end
+"""
+
 [custom_commands.push_with_descendants]
 name = "Push with Descendants"
 description = "Push current changeset and all descendants with bookmarks"
