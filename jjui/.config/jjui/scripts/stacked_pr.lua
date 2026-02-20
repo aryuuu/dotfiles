@@ -176,7 +176,7 @@ for _, entry in ipairs(stack) do
 		local desc_out, desc_err = jj("log", "-r", entry.cid, "--no-graph", "-T", "description.first_line()")
 		local pr_title = (not desc_err and desc_out ~= "") and desc_out:gsub("%s+$", "") or entry.bookmark
 		local h = io.popen(
-			"gh pr create --base '"
+			"gh pr create --draft --base '"
 				.. entry.parent_base
 				.. "' --head '"
 				.. entry.bookmark
@@ -208,22 +208,41 @@ for _, entry in ipairs(stack) do
 	end
 end
 
+local function splice_stack_section(existing_body, new_stack_content)
+	local marked = "<!-- stack-start -->\n" .. new_stack_content .. "<!-- stack-end -->"
+	if not existing_body or existing_body == "" then
+		return marked
+	end
+	local s_start = string.find(existing_body, "<!-- stack-start -->", 1, true)
+	local s_end = string.find(existing_body, "<!-- stack-end -->", 1, true)
+	if s_start and s_end then
+		local before = string.sub(existing_body, 1, s_start - 1)
+		local after = string.sub(existing_body, s_end + #"<!-- stack-end -->")
+		return before .. marked .. after
+	end
+	return existing_body .. "\n\n" .. marked
+end
+
 -- Step 9: Update bodies for all PRs in the stack
 local repo_h = io.popen("gh repo view --json url --jq '.url' 2>/dev/null")
 local repo_url = repo_h:read("*a"):gsub("%s+$", "")
 repo_h:close()
-local body = "PR stack:\n"
+local stack_content = "PR stack:\n"
 for _, e in ipairs(stack) do
 	if e.pr_number then
-		body = body .. "- " .. repo_url .. "/pull/" .. e.pr_number .. "\n"
+		stack_content = stack_content .. "- " .. repo_url .. "/pull/" .. e.pr_number .. "\n"
 	end
 end
 local tmpfile = os.tmpname()
-local f = io.open(tmpfile, "w")
-f:write(body)
-f:close()
 for _, e in ipairs(stack) do
 	if e.pr_number then
+		local bh = io.popen("gh pr view " .. e.pr_number .. " --json body --jq '.body' 2>/dev/null")
+		local existing_body = bh:read("*a"):gsub("%s+$", "")
+		bh:close()
+		local new_body = splice_stack_section(existing_body, stack_content)
+		local f = io.open(tmpfile, "w")
+		f:write(new_body)
+		f:close()
 		local h = io.popen("gh pr edit " .. e.pr_number .. " --body-file '" .. tmpfile .. "' 2>&1")
 		h:read("*a")
 		h:close()
