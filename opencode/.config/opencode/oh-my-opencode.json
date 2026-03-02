@@ -2,61 +2,66 @@
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
   "google_auth": false,
   "agents": {
-    "librarian": {
-      "model": "kiro/claude-opus-4-5"
-    },
-    "explore": {
-      "model": "kiro/claude-opus-4-5"
-    },
-    "oracle": {
-      "model": "kiro/claude-opus-4-5"
-    },
-    "frontend-ui-ux-engineer": {
-      "model": "kiro/claude-opus-4-5"
-    },
-    "document-writer": {
-      "model": "kiro/claude-opus-4-5"
-    },
-    "multimodal-looker": {
-      "model": "kiro/claude-opus-4-5"
-    },
     "sisyphus": {
-      "model": "kiro/claude-opus-4-5"
+      "model": "kiro/claude-opus-4.6"
+    },
+    "hephaestus": {
+      "model": "kiro/claude-opus-4.6"
     },
     "prometheus": {
-      "model": "kiro/claude-opus-4-5"
+      "model": "kiro/claude-opus-4.6"
     },
     "metis": {
-      "model": "kiro/claude-opus-4-5"
+      "model": "kiro/claude-opus-4.6"
     },
     "momus": {
-      "model": "kiro/claude-opus-4-5"
+      "model": "kiro/claude-opus-4.6",
+      "variant": "low"
+    },
+    "sisyphus-junior": {
+      "model": "kiro/claude-sonnet-4.6",
+      "permission": {
+        "task": "deny"
+      }
     },
     "atlas": {
-      "model": "kiro/claude-opus-4-5"
-    }
-  },
-  "categories": {
-    "visual-engineering": {
-      "model": "kiro/claude-opus-4-5"
+      "model": "kiro/claude-opus-4.6"
     },
-    "ultrabrain": {
-      "model": "kiro/claude-opus-4-5"
+    "librarian": {
+      "model": "kiro/claude-sonnet-4.6",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny",
+        "webfetch": "allow"
+      }
     },
-    "artistry": {
-      "model": "kiro/claude-opus-4-5"
+    "explore": {
+      "model": "kiro/claude-sonnet-4.6",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
     },
-    "quick": {
-      "model": "kiro/claude-opus-4-5"
+    "oracle": {
+      "model": "kiro/claude-opus-4.6",
+      "variant": "high",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny",
+        "webfetch": "deny"
+      }
     },
-    "unspecified-low": {
-      "model": "kiro/claude-opus-4-5"
+    "frontend-ui-ux-engineer": {
+      "model": "kiro/claude-opus-4.6"
     },
-    "unspecified-high": {
-      "model": "kiro/claude-opus-4-5"
+    "document-writer": {
+      "model": "kiro/claude-sonnet-4.6"
     },
-    "writing": {
-      "model": "kiro/claude-opus-4-5"
+    "multimodal-looker": {
+      "model": "kiro/claude-opus-4.6"
     }
   }
 }
