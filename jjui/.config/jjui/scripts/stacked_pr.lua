@@ -1,3 +1,7 @@
+local function notify(msg)
+	os.execute("notify-send -a jjui 'Stacked PR' '" .. msg:gsub("'", "'\\''") .. "'")
+end
+
 -- Step 1: Get selected revision
 local change_id = revisions.current()
 if not change_id then
@@ -16,7 +20,7 @@ local change_ids = {}
 for v in output:gmatch("[^,]+") do
 	table.insert(change_ids, v)
 end
-flash("Found " .. #change_ids .. " descendants: " .. table.concat(change_ids, ", "))
+notify("Found " .. #change_ids .. " descendants: " .. table.concat(change_ids, ", "))
 if #change_ids == 0 then
 	flash("No revisions found")
 	return
@@ -40,7 +44,7 @@ local raw_dbg = {}
 for _, sr in ipairs(stack_raw) do
 	table.insert(raw_dbg, sr.cid .. "=" .. (sr.bookmark or "none"))
 end
-flash("Raw stack: " .. table.concat(raw_dbg, ", "))
+notify("Raw stack: " .. table.concat(raw_dbg, ", "))
 
 -- Trim trailing entries with no bookmark, error on gaps in middle
 local last_with_bm = 0
@@ -79,7 +83,7 @@ if not all_bm_err then
 		end
 	end
 end
-flash("Trunk branch: " .. trunk)
+notify("Trunk branch: " .. trunk)
 
 -- Step 5: Build stack metadata
 local stack = {}
@@ -119,7 +123,7 @@ local dbg = {}
 for _, e in ipairs(stack) do
 	table.insert(dbg, e.bookmark .. "(" .. e.action .. ", base:" .. e.parent_base .. ")")
 end
-flash("Stack: " .. table.concat(dbg, " → "))
+notify("Stack: " .. table.concat(dbg, " → "))
 
 -- Step 6: Build confirmation summary
 local new_lines, retarget_lines, ok_lines, bm_names = {}, {}, {}, {}
@@ -172,7 +176,7 @@ summary = summary .. "\\n\\nAlready up to date:\\n" .. (#ok_lines > 0 and table.
 local created, retargeted = {}, {}
 for _, entry in ipairs(stack) do
 	if entry.action == "NEW" then
-		flash("Creating PR for " .. entry.bookmark .. "...")
+		notify("Creating PR for " .. entry.bookmark .. "...")
 		local desc_out, desc_err = jj("log", "-r", entry.cid, "--no-graph", "-T", "description.first_line()")
 		local pr_title = (not desc_err and desc_out ~= "") and desc_out:gsub("%s+$", "") or entry.bookmark
 		local h = io.popen(
@@ -193,9 +197,9 @@ for _, entry in ipairs(stack) do
 		end
 		entry.pr_number = tonumber(num)
 		table.insert(created, entry)
-		flash("Created PR #" .. entry.pr_number .. " for " .. entry.bookmark)
+		notify("Created PR #" .. entry.pr_number .. " for " .. entry.bookmark)
 	elseif entry.action == "RETARGET" then
-		flash("Retargeting #" .. entry.pr_number .. " to " .. entry.parent_base .. "...")
+		notify("Retargeting #" .. entry.pr_number .. " to " .. entry.parent_base .. "...")
 		local h = io.popen("gh pr edit " .. entry.pr_number .. " --base '" .. entry.parent_base .. "' 2>&1")
 		local result = h:read("*a")
 		h:close()
@@ -204,7 +208,7 @@ for _, entry in ipairs(stack) do
 			return
 		end
 		table.insert(retargeted, entry)
-		flash("Retargeted #" .. entry.pr_number .. " to " .. entry.parent_base)
+		notify("Retargeted #" .. entry.pr_number .. " to " .. entry.parent_base)
 	end
 end
 
