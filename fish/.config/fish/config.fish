@@ -64,5 +64,7 @@ alias glog='git log --oneline --decorate --graph'
 # nix
 alias nixos-gens='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
 
+set -U tide_left_prompt_items pwd jj git newline character
+
 source $HOME/.config/fish/utils.fish
 envsource $HOME/.ai_keys
