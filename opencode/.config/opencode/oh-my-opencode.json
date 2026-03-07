@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "agents": {
+    "sisyphus": {
+      "model": "kiro/claude-opus-4-6"
+    },
+    "hephaestus": {
+      "model": "kiro/claude-opus-4-6"
+    },
+    "prometheus": {
+      "model": "kiro/claude-opus-4-6"
+    },
+    "metis": {
+      "model": "kiro/claude-opus-4-6"
+    },
+    "momus": {
+      "model": "kiro/claude-opus-4-6",
+      "variant": "low"
+    },
+    "sisyphus-junior": {
+      "model": "kiro/claude-sonnet-4-6",
+      "permission": {
+        "task": "deny"
+      }
+    },
+    "atlas": {
+      "model": "kiro/claude-opus-4-6"
+    },
+    "librarian": {
+      "model": "kiro/claude-sonnet-4-6",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny",
+        "webfetch": "allow"
+      }
+    },
+    "explore": {
+      "model": "kiro/claude-sonnet-4-6",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny"
+      }
+    },
+    "oracle": {
+      "model": "kiro/claude-opus-4-6",
+      "variant": "high",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "task": "deny",
+        "webfetch": "deny"
+      }
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "kiro/claude-opus-4-6"
+    },
+    "document-writer": {
+      "model": "kiro/claude-sonnet-4-6"
+    },
+    "multimodal-looker": {
+      "model": "kiro/claude-opus-4-6"
+    }
+  }
+}

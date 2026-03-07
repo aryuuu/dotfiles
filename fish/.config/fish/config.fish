@@ -21,8 +21,8 @@ end
 
 bind \et "tmux attach"
 bind \ef "tmux-sessionizer"
-bind -k f9 "sed -i 's/size = [0-9.]\\+/size = 9.5/' ~/.config/alacritty/alacritty.toml"
-bind -k f10 "sed -i 's/size = [0-9.]\\+/size = 20/' ~/.config/alacritty/alacritty.toml"
+# bind -k f9 "sed -i 's/size = [0-9.]\\+/size = 9.5/' ~/.config/alacritty/alacritty.toml"
+# bind -k f10 "sed -i 's/size = [0-9.]\\+/size = 20/' ~/.config/alacritty/alacritty.toml"
 # bind \ce edit_command_buffer
 # bind \cf "tmux-sessionizer"
 

@@ -1,0 +1,6 @@
+[user]
+name = "M Algah Fattah Illahi"
+email = "malgahfattahillahi@gmail.com"
+
+[signing]
+backend = "gpg"

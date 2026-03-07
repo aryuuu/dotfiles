@@ -25,6 +25,7 @@
         "pulseaudio",
         "pulseaudio-input",
         "battery",
+		"custom/pomodoro",
         "custom/r_end",
         "custom/l_end",
         "clock#time",
@@ -157,6 +158,13 @@
         "on-scroll-down": "pulseaudio-control --node-type input --volume-max 130 down",
         "on-scroll-up": "pulseaudio-control --node-type input --volume-max 130 up"
     },
+	"custom/pomodoro": {
+		"format": "{text}",
+		"return-type": "json",
+		"exec": "waybar-module-pomodoro",
+		"on-click": "waybar-module-pomodoro toggle",
+		"on-click-right": "waybar-module-pomodoro reset",
+	},
     "tray": {
         "icon-size": 15,
         "spacing": 5

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# uncomment for debugging
+# set -o xtrace
+
+API_KEY=$(<~/.config/bizzy/prod_api_key)
+BASE_URL='https://xnd-biz-prod-live.ap-southeast-1.tidnex.com'
+
+if command -v rofi &> /dev/null 
+then
+    LAUNCHER="rofi -dmenu -i -p  "
+else
+    LAUNCHER="dmenu -c -fn 'FontAwesome' -p 'BID: '  -l 5 -sb '#6272A4' -sf '#F8F8F2' -nb '#282A36' -nf '#F8F8F2' -shb '#6272A4' -shf '#FA485D' -nhb '#282A36' -nhf '#FA485D'"
+fi
+
+
+query=$($LAUNCHER)
+if [[ -z $query ]];
+then
+    notify-send "get bizzy" "Please input a BID"
+    exit 1
+fi
+
+result=$(curl -L $BASE_URL/businesses/$query/data?environment=production -H "x-api-key: $API_KEY" | jq ".business")
+# result=$(curl -L $BASE_URL/businesses/$query/data?environment=production -H "x-api-key: $API_KEY")
+
+notify-send "bizzy"  "$result"
+echo $result | jq | wl-copy

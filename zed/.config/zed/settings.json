@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Nord",
+  "theme": "Nord Dark",
   "vim_mode": true,
   "ui_font_size": 13,
   "buffer_font_size": 13

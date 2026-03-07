@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+stat=$(openvpn3 sessions-list | grep connected)
+
+if [ -z "$stat" ]; then
+    ~/.scripts/cdeconn
+else
+    ~/.scripts/cdedc
+fi
