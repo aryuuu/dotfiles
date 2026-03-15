@@ -76,7 +76,7 @@ if not all_bm_err then
 	for b in all_bm_out:gmatch("[^,]+") do
 		all_bm_set[b] = true
 	end
-	for _, candidate in ipairs({ "master", "main", "dev" }) do
+	for _, candidate in ipairs({ "argo-fawkes", "master", "main", "dev" }) do
 		if all_bm_set[candidate] then
 			trunk = candidate
 			break
