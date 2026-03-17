@@ -65,6 +65,20 @@ flash("Pushing bookmarks: " .. bookmark_list)
 
 -- Execute the push
 jj_async(args)
+revisions.refresh()
+"""
+
+[custom_commands.new_before]
+name = "New Before"
+description = "Create a new changeset before the current one"
+lua = """
+local change_id = revisions.current()
+if not change_id then
+  flash("No revision selected")
+  return
+end
+jj({"new", "-B", change_id})
+revisions.refresh()
 """
 
 [custom_commands.push_with_descendants_bare]
@@ -104,4 +118,5 @@ flash("Pushing changes: " .. cid_list)
 
 -- Execute the push
 jj_async(args)
+revisions.refresh()
 """

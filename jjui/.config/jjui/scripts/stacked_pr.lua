@@ -231,7 +231,55 @@ end
 local repo_h = io.popen("gh repo view --json url --jq '.url' 2>/dev/null")
 local repo_url = repo_h:read("*a"):gsub("%s+$", "")
 repo_h:close()
+
+-- Collect current stack PR numbers
+local current_pr_set = {}
+for _, e in ipairs(stack) do
+	if e.pr_number then
+		current_pr_set[e.pr_number] = true
+	end
+end
+
+-- Find merged ancestor PRs from existing stack sections
+local merged_ancestors = {}
+for _, e in ipairs(stack) do
+	if e.pr_number then
+		local bh = io.popen("gh pr view " .. e.pr_number .. " --json body --jq '.body' 2>/dev/null")
+		local existing_body = bh:read("*a"):gsub("%s+$", "")
+		bh:close()
+		if existing_body ~= "" then
+			local s_start = string.find(existing_body, "<!-- stack-start -->", 1, true)
+			local s_end = string.find(existing_body, "<!-- stack-end -->", 1, true)
+			if s_start and s_end then
+				local section = string.sub(existing_body, s_start, s_end)
+				for num in section:gmatch("/pull/(%d+)") do
+					local n = tonumber(num)
+					if n and not current_pr_set[n] then
+						merged_ancestors[n] = true
+					end
+				end
+			end
+		end
+		break -- only need to check one existing PR
+	end
+end
+
+-- Verify they're actually merged and build ordered list
+local merged_list = {}
+for num, _ in pairs(merged_ancestors) do
+	local mh = io.popen("gh pr view " .. num .. " --json state --jq '.state' 2>/dev/null")
+	local state = mh:read("*a"):gsub("%s+$", "")
+	mh:close()
+	if state == "MERGED" then
+		table.insert(merged_list, num)
+	end
+end
+table.sort(merged_list)
+
 local stack_content = "PR stack:\n"
+for _, num in ipairs(merged_list) do
+	stack_content = stack_content .. "- " .. repo_url .. "/pull/" .. num .. "\n"
+end
 for _, e in ipairs(stack) do
 	if e.pr_number then
 		stack_content = stack_content .. "- " .. repo_url .. "/pull/" .. e.pr_number .. "\n"
