@@ -152,13 +152,13 @@ function q -d 'alias for amazon-q'
     amazon-q $argv
 end
 
-# function oc -d 'alias for opencode'
-#     opencode
-# end
-
-function oc -d 'alias for opencode with kiro-cli support'
-    ~/project/opencode/result/bin/opencode
+function oc -d 'alias for opencode'
+    opencode
 end
+
+# function oc -d 'alias for opencode with kiro-cli support'
+#     ~/project/opencode/result/bin/opencode
+# end
 
 # function nixos-gens
 #     set -l current (readlink /var/run/current-system)

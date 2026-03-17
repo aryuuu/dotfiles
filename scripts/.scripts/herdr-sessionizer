@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/project/xendit ~/project/grvt ~/project/socayo ~/project/snow-house ~/project ~/ ~/sandbox/go ~/sandbox/js ~/sandbox ~/.scripts/ -mindepth 1 -maxdepth 1 -type d | fzf --bind 'alt-j:down' --bind 'alt-k:up')
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+# Check if a workspace with this label already exists
+existing_id=$(herdr workspace list --json 2>/dev/null | jq -r ".[] | select(.label == \"$selected_name\") | .id" | head -n1)
+
+if [[ -n $existing_id ]]; then
+    herdr workspace focus "$existing_id"
+else
+    herdr workspace create --cwd "$selected" --label "$selected_name" --focus
+fi

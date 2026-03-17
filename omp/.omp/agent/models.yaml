@@ -2,7 +2,7 @@ providers:
   kiro:
     baseUrl: http://localhost:18920/v1
     api: openai-completions
-    apiKey: CHANGEME
+    apiKey: GANTISENDIRI
     models:
       - id: claude-opus-4.6
         name: claude-opus-4.6
