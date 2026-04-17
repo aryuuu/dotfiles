@@ -63,6 +63,7 @@ alias glog='git log --oneline --decorate --graph'
 
 # nix
 alias nixos-gens='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
+alias lzd='lazydocker'
 
 set -U tide_left_prompt_items pwd jj git newline character
 
