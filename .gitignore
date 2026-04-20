@@ -4,3 +4,5 @@
 **/fish_variables*
 *.bak
 snippets/
+.jj/
+jj/.config/jj/repos/
