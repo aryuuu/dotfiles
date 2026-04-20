@@ -1,0 +1,8 @@
+{
+    "diagnostics.globals": [
+        "copy_to_clipboard",
+        "context",
+        "flash",
+        "revisions"
+    ]
+}
