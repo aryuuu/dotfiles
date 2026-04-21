@@ -123,6 +123,13 @@ function setup(config)
 			os.execute("notify-send -a jjui 'Stacked PR' '" .. msg:gsub("'", "'\\''") .. "'")
 		end
 
+		local function shell(cmd)
+			local h = io.popen(cmd)
+			local out = h:read("*a"):gsub("%s+$", "")
+			h:close()
+			return out
+		end
+
 		-- Step 1: Get selected revision
 		local change_id = revisions.current()
 		if not change_id then
@@ -130,45 +137,31 @@ function setup(config)
 			return
 		end
 
-		-- Step 2: Walk descendants
+		-- Step 2+3: Walk descendants and collect bookmarks in one jj call
 		local revset = change_id .. "::"
-		local output, err =
-			jj("log", "-r", revset, "--reversed", "--no-graph", "--template", [[change_id ++ ',']])
+		local output, err = jj(
+			"log", "-r", revset, "--reversed", "--no-graph",
+			"--template", [[change_id ++ '\t' ++ bookmarks.map(|b| b.name()).join(",") ++ '\t']]
+		)
 		if err then
 			flash("Error getting descendants: " .. err)
 			return
 		end
-		local change_ids = {}
-		for v in output:gmatch("[^,]+") do
-			table.insert(change_ids, v)
+
+		local stack_raw = {}
+		for entry in output:gmatch("[^\t]+\t[^\t]*\t") do
+			local cid, bm = entry:match("^([^\t]+)\t([^\t]*)\t$")
+			if cid then
+				local bookmark = (bm ~= "") and bm:match("^([^,]+)") or nil
+				table.insert(stack_raw, { cid = cid, bookmark = bookmark })
+			end
 		end
-		notify("Found " .. #change_ids .. " descendants: " .. table.concat(change_ids, ", "))
-		if #change_ids == 0 then
+		if #stack_raw == 0 then
 			flash("No revisions found")
 			return
 		end
 
-		-- Step 3: Collect bookmarks per change, preserving stack order
-		local stack_raw = {}
-		for _, cid in ipairs(change_ids) do
-			local bm_out, bm_err = jj("bookmark", "list", "-r", cid, "--template", [[name ++ ',']])
-			local bm = nil
-			if not bm_err and bm_out ~= "" then
-				for v in bm_out:gmatch("[^,]+") do
-					bm = v
-					break
-				end
-			end
-			table.insert(stack_raw, { cid = cid, bookmark = bm })
-		end
-
-		local raw_dbg = {}
-		for _, sr in ipairs(stack_raw) do
-			table.insert(raw_dbg, sr.cid .. "=" .. (sr.bookmark or "none"))
-		end
-		notify("Raw stack: " .. table.concat(raw_dbg, ", "))
-
-		-- Trim trailing entries with no bookmark, error on gaps in middle
+		-- Trim trailing entries with no bookmark, error on gaps
 		local last_with_bm = 0
 		for i = #stack_raw, 1, -1 do
 			if stack_raw[i].bookmark then
@@ -205,32 +198,47 @@ function setup(config)
 				end
 			end
 		end
-		notify("Trunk branch: " .. trunk)
 
-		-- Step 5: Build stack metadata
+		-- Step 5: Batch PR lookup via GraphQL
+		local repo_url = shell("gh repo view --json url --jq '.url' 2>/dev/null")
+		local owner_repo = repo_url:match("github%.com/(.+)$") or ""
+		local owner, repo_name = owner_repo:match("^([^/]+)/(.+)$")
+
+		local pr_by_head = {}
+		if owner and repo_name then
+			local fields = {}
+			for i, e in ipairs(stack_trimmed) do
+				table.insert(fields, string.format(
+					'b%d: pullRequests(headRefName: "%s", states: OPEN, first: 1) { nodes { number baseRefName } }',
+					i, e.bookmark
+				))
+			end
+			local query = string.format(
+				'query { repository(owner: "%s", name: "%s") { %s } }',
+				owner, repo_name, table.concat(fields, " ")
+			)
+			local gql_out = shell("gh api graphql -f query='" .. query:gsub("'", "'\\''") .. "' 2>/dev/null")
+			-- Parse each bookmark's result
+			for i, e in ipairs(stack_trimmed) do
+				local pattern = '"b' .. i .. '":%s*{%s*"nodes":%s*%[%s*{%s*"number":%s*(%d+).-"baseRefName":%s*"([^"]*)"'
+				local num, base = gql_out:match(pattern)
+				if num then
+					pr_by_head[e.bookmark] = { number = tonumber(num), base = base }
+				end
+			end
+		end
+
+		-- Build stack metadata
 		local stack = {}
 		for i, entry in ipairs(stack_trimmed) do
 			local parent_base = (i == 1) and trunk or stack_trimmed[i - 1].bookmark
-			local h = io.popen(
-				"gh pr list --head '" .. entry.bookmark .. "' --json number,baseRefName --jq '.[0]' 2>/dev/null"
-			)
-			local pr_json = h:read("*a"):gsub("%s+$", "")
-			h:close()
-
-			local pr_number = nil
-			local current_base = nil
-			if pr_json ~= "" and pr_json ~= "null" then
-				pr_number = tonumber(pr_json:match('"number":(%d+)'))
-				current_base = pr_json:match('"baseRefName":"([^"]*)"')
-			end
+			local pr = pr_by_head[entry.bookmark]
+			local pr_number = pr and pr.number or nil
+			local current_base = pr and pr.base or nil
 
 			local action = "NEW"
 			if pr_number then
-				if current_base == parent_base then
-					action = "OK"
-				else
-					action = "RETARGET"
-				end
+				action = (current_base == parent_base) and "OK" or "RETARGET"
 			end
 
 			table.insert(stack, {
@@ -249,70 +257,14 @@ function setup(config)
 		end
 		notify("Stack: " .. table.concat(dbg, " → "))
 
-		-- Step 6: Build confirmation summary
-		local new_lines, retarget_lines, ok_lines, bm_names = {}, {}, {}, {}
-		for _, e in ipairs(stack) do
-			table.insert(bm_names, e.bookmark)
-			if e.action == "NEW" then
-				table.insert(new_lines, "  " .. e.bookmark .. " → base: " .. e.parent_base)
-			elseif e.action == "RETARGET" then
-				table.insert(
-					retarget_lines,
-					"  #"
-						.. e.pr_number
-						.. " "
-						.. e.bookmark
-						.. ": "
-						.. (e.current_base or "?")
-						.. " → "
-						.. e.parent_base
-				)
-			else
-				table.insert(ok_lines, "  #" .. e.pr_number .. " " .. e.bookmark)
-			end
-		end
-
-		if #new_lines == 0 and #retarget_lines == 0 then
-			flash("All PRs up to date")
-			return
-		end
-
-		local summary = "Push & Create Stacked PRs (bookmark)\\n\\nBookmarks to push: " .. table.concat(bm_names, ", ")
-		summary = summary .. "\\n\\nNew PRs:\\n" .. (#new_lines > 0 and table.concat(new_lines, "\\n") or "  (none)")
-		summary = summary
-			.. "\\n\\nRetarget PRs:\\n"
-			.. (#retarget_lines > 0 and table.concat(retarget_lines, "\\n") or "  (none)")
-		summary = summary
-			.. "\\n\\nAlready up to date:\\n"
-			.. (#ok_lines > 0 and table.concat(ok_lines, "\\n") or "  (none)")
-
-		-- local choice = choose({ options = { "Yes, proceed", "Cancel" }, title = summary })
-		-- if not choice or choice == "Cancel" then
-		-- 	flash("Cancelled")
-		-- 	return
-		-- end
-
-		-- -- Step 7: Synchronous push
-		-- local push_args = { "git", "push", "--allow-new" }
-		-- for _, entry in ipairs(stack) do
-		-- 	table.insert(push_args, "--bookmark")
-		-- 	table.insert(push_args, entry.bookmark)
-		-- end
-		-- flash("Pushing " .. #stack .. " bookmarks...")
-		-- local push_out, push_err = jj(push_args)
-		-- if push_err then
-		-- 	flash("Push failed: " .. push_err)
-		-- 	return
-		-- end
-
-		-- Step 8: Bottom-up PR processing (Pass 1)
+		-- Step 6: Create/retarget PRs (these must be sequential)
 		local created, retargeted = {}, {}
 		for _, entry in ipairs(stack) do
 			if entry.action == "NEW" then
 				notify("Creating PR for " .. entry.bookmark .. "...")
 				local desc_out, desc_err = jj("log", "-r", entry.cid, "--no-graph", "-T", "description.first_line()")
 				local pr_title = (not desc_err and desc_out ~= "") and desc_out:gsub("%s+$", "") or entry.bookmark
-				local h = io.popen(
+				local result = shell(
 					"gh pr create --draft --base '"
 						.. entry.parent_base
 						.. "' --head '"
@@ -321,8 +273,6 @@ function setup(config)
 						.. pr_title:gsub("'", "'\\''")
 						.. "' --body '' 2>&1"
 				)
-				local result = h:read("*a")
-				h:close()
 				local num = result:match("/pull/(%d+)")
 				if not num then
 					flash("Failed to create PR for " .. entry.bookmark .. ": " .. result)
@@ -330,21 +280,89 @@ function setup(config)
 				end
 				entry.pr_number = tonumber(num)
 				table.insert(created, entry)
-				notify("Created PR #" .. entry.pr_number .. " for " .. entry.bookmark)
 			elseif entry.action == "RETARGET" then
 				notify("Retargeting #" .. entry.pr_number .. " to " .. entry.parent_base .. "...")
-				local h = io.popen("gh pr edit " .. entry.pr_number .. " --base '" .. entry.parent_base .. "' 2>&1")
-				local result = h:read("*a")
-				h:close()
+				local result = shell("gh pr edit " .. entry.pr_number .. " --base '" .. entry.parent_base .. "' 2>&1")
 				if result:match("error") or result:match("failed") then
 					flash("Retarget failed for #" .. entry.pr_number .. ": " .. result)
 					return
 				end
 				table.insert(retargeted, entry)
-				notify("Retargeted #" .. entry.pr_number .. " to " .. entry.parent_base)
 			end
 		end
 
+		-- Step 7: Batch-fetch all PR bodies + find merged ancestors via single GraphQL query
+		local current_pr_set = {}
+		local pr_numbers = {}
+		for _, e in ipairs(stack) do
+			if e.pr_number then
+				current_pr_set[e.pr_number] = true
+				table.insert(pr_numbers, e.pr_number)
+			end
+		end
+
+		-- Build GraphQL query to fetch all PR bodies in one call
+		local body_cache = {}
+		if #pr_numbers > 0 and owner and repo_name then
+			local fields = {}
+			for i, num in ipairs(pr_numbers) do
+				table.insert(fields, string.format('pr%d: pullRequest(number: %d) { number body }', i, num))
+			end
+			local query = string.format(
+				'query { repository(owner: "%s", name: "%s") { %s } }',
+				owner, repo_name, table.concat(fields, " ")
+			)
+			local gql_out = shell("gh api graphql -f query='" .. query:gsub("'", "'\\''") .. "' 2>/dev/null")
+			for num, body in gql_out:gmatch('"number":(%d+).-"body":"(.-)"') do
+				body_cache[tonumber(num)] = body:gsub("\\n", "\n"):gsub("\\t", "\t"):gsub('\\"', '"')
+			end
+		end
+
+		-- Find merged ancestors from first existing PR's body
+		local merged_ancestors = {}
+		for _, e in ipairs(stack) do
+			if e.pr_number and body_cache[e.pr_number] then
+				local existing_body = body_cache[e.pr_number]
+				local s_start = string.find(existing_body, "<!-- stack-start -->", 1, true)
+				local s_end = string.find(existing_body, "<!-- stack-end -->", 1, true)
+				if s_start and s_end then
+					local section = string.sub(existing_body, s_start, s_end)
+					for num in section:gmatch("/pull/(%d+)") do
+						local n = tonumber(num)
+						if n and not current_pr_set[n] then
+							merged_ancestors[n] = true
+						end
+					end
+				end
+				break
+			end
+		end
+
+		-- Batch-verify merged state via GraphQL
+		local ancestor_nums = {}
+		for num in pairs(merged_ancestors) do
+			table.insert(ancestor_nums, num)
+		end
+		local merged_list = {}
+		if #ancestor_nums > 0 and owner and repo_name then
+			local fields = {}
+			for i, num in ipairs(ancestor_nums) do
+				table.insert(fields, string.format('anc%d: pullRequest(number: %d) { number state }', i, num))
+			end
+			local query = string.format(
+				'query { repository(owner: "%s", name: "%s") { %s } }',
+				owner, repo_name, table.concat(fields, " ")
+			)
+			local gql_out = shell("gh api graphql -f query='" .. query:gsub("'", "'\\''") .. "' 2>/dev/null")
+			for num, state in gql_out:gmatch('"number":(%d+).-"state":"(%w+)"') do
+				if state == "MERGED" then
+					table.insert(merged_list, tonumber(num))
+				end
+			end
+			table.sort(merged_list)
+		end
+
+		-- Step 8: Build stack content and update all PR bodies
 		local function splice_stack_section(existing_body, new_stack_content)
 			local marked = "<!-- stack-start -->\n" .. new_stack_content .. "<!-- stack-end -->"
 			if not existing_body or existing_body == "" then
@@ -360,55 +378,6 @@ function setup(config)
 			return existing_body .. "\n\n" .. marked
 		end
 
-		-- Step 9: Update bodies for all PRs in the stack
-		local repo_h = io.popen("gh repo view --json url --jq '.url' 2>/dev/null")
-		local repo_url = repo_h:read("*a"):gsub("%s+$", "")
-		repo_h:close()
-
-		-- Collect current stack PR numbers
-		local current_pr_set = {}
-		for _, e in ipairs(stack) do
-			if e.pr_number then
-				current_pr_set[e.pr_number] = true
-			end
-		end
-
-		-- Find merged ancestor PRs from existing stack sections
-		local merged_ancestors = {}
-		for _, e in ipairs(stack) do
-			if e.pr_number then
-				local bh = io.popen("gh pr view " .. e.pr_number .. " --json body --jq '.body' 2>/dev/null")
-				local existing_body = bh:read("*a"):gsub("%s+$", "")
-				bh:close()
-				if existing_body ~= "" then
-					local s_start = string.find(existing_body, "<!-- stack-start -->", 1, true)
-					local s_end = string.find(existing_body, "<!-- stack-end -->", 1, true)
-					if s_start and s_end then
-						local section = string.sub(existing_body, s_start, s_end)
-						for num in section:gmatch("/pull/(%d+)") do
-							local n = tonumber(num)
-							if n and not current_pr_set[n] then
-								merged_ancestors[n] = true
-							end
-						end
-					end
-				end
-				break -- only need to check one existing PR
-			end
-		end
-
-		-- Verify they're actually merged and build ordered list
-		local merged_list = {}
-		for num, _ in pairs(merged_ancestors) do
-			local mh = io.popen("gh pr view " .. num .. " --json state --jq '.state' 2>/dev/null")
-			local state = mh:read("*a"):gsub("%s+$", "")
-			mh:close()
-			if state == "MERGED" then
-				table.insert(merged_list, num)
-			end
-		end
-		table.sort(merged_list)
-
 		local stack_content = "PR stack:\n"
 		for _, num in ipairs(merged_list) do
 			stack_content = stack_content .. "- " .. repo_url .. "/pull/" .. num .. "\n"
@@ -418,25 +387,21 @@ function setup(config)
 				stack_content = stack_content .. "- " .. repo_url .. "/pull/" .. e.pr_number .. "\n"
 			end
 		end
+
 		local tmpfile = os.tmpname()
 		for _, e in ipairs(stack) do
 			if e.pr_number then
-				local bh = io.popen("gh pr view " .. e.pr_number .. " --json body --jq '.body' 2>/dev/null")
-				local existing_body = bh:read("*a"):gsub("%s+$", "")
-				bh:close()
+				local existing_body = body_cache[e.pr_number] or ""
 				local new_body = splice_stack_section(existing_body, stack_content)
 				local f = io.open(tmpfile, "w")
 				f:write(new_body)
 				f:close()
-				local h = io.popen("gh pr edit " .. e.pr_number .. " --body-file '" .. tmpfile .. "' 2>&1")
-				h:read("*a")
-				h:close()
+				shell("gh pr edit " .. e.pr_number .. " --body-file '" .. tmpfile .. "' 2>&1")
 			end
 		end
 		os.remove(tmpfile)
 
-		-- Step 10: Flash success
-		flash("Stacked PRs created/updated: " .. #created .. " new, " .. #retargeted .. " retargeted")
+		flash("Stacked PRs: " .. #created .. " new, " .. #retargeted .. " retargeted")
 	end
 
 	config.action("push-with-descendants", push_with_descendants, {
