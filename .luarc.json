@@ -3,6 +3,7 @@
         "copy_to_clipboard",
         "context",
         "flash",
-        "revisions"
+        "revisions",
+        "vim"
     ]
 }

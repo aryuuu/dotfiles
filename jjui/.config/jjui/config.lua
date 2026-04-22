@@ -78,6 +78,16 @@ function setup(config)
 		revisions.refresh()
 	end
 
+	local function new_after()
+		local change_id = revisions.current()
+		if not change_id then
+			flash("No revision selected")
+			return
+		end
+		jj({ "new", "-A", change_id })
+		revisions.refresh()
+	end
+
 	local function push_with_descendants_bare()
 		local change_id = revisions.current()
 		if not change_id then
@@ -140,8 +150,13 @@ function setup(config)
 		-- Step 2+3: Walk descendants and collect bookmarks in one jj call
 		local revset = change_id .. "::"
 		local output, err = jj(
-			"log", "-r", revset, "--reversed", "--no-graph",
-			"--template", [[change_id ++ '\t' ++ bookmarks.map(|b| b.name()).join(",") ++ '\t']]
+			"log",
+			"-r",
+			revset,
+			"--reversed",
+			"--no-graph",
+			"--template",
+			[[change_id ++ '~' ++ bookmarks.map(|b| b.name()).join(",") ++ '~']]
 		)
 		if err then
 			flash("Error getting descendants: " .. err)
@@ -149,12 +164,9 @@ function setup(config)
 		end
 
 		local stack_raw = {}
-		for entry in output:gmatch("[^\t]+\t[^\t]*\t") do
-			local cid, bm = entry:match("^([^\t]+)\t([^\t]*)\t$")
-			if cid then
-				local bookmark = (bm ~= "") and bm:match("^([^,]+)") or nil
-				table.insert(stack_raw, { cid = cid, bookmark = bookmark })
-			end
+		for cid, bm in output:gmatch("([^~]+)~([^~]*)~") do
+			local bookmark = (bm ~= "") and bm:match("^([^,]+)") or nil
+			table.insert(stack_raw, { cid = cid, bookmark = bookmark })
 		end
 		if #stack_raw == 0 then
 			flash("No revisions found")
@@ -208,19 +220,27 @@ function setup(config)
 		if owner and repo_name then
 			local fields = {}
 			for i, e in ipairs(stack_trimmed) do
-				table.insert(fields, string.format(
-					'b%d: pullRequests(headRefName: "%s", states: OPEN, first: 1) { nodes { number baseRefName } }',
-					i, e.bookmark
-				))
+				table.insert(
+					fields,
+					string.format(
+						'b%d: pullRequests(headRefName: "%s", states: OPEN, first: 1) { nodes { number baseRefName } }',
+						i,
+						e.bookmark
+					)
+				)
 			end
 			local query = string.format(
 				'query { repository(owner: "%s", name: "%s") { %s } }',
-				owner, repo_name, table.concat(fields, " ")
+				owner,
+				repo_name,
+				table.concat(fields, " ")
 			)
 			local gql_out = shell("gh api graphql -f query='" .. query:gsub("'", "'\\''") .. "' 2>/dev/null")
 			-- Parse each bookmark's result
 			for i, e in ipairs(stack_trimmed) do
-				local pattern = '"b' .. i .. '":%s*{%s*"nodes":%s*%[%s*{%s*"number":%s*(%d+).-"baseRefName":%s*"([^"]*)"'
+				local pattern = '"b'
+					.. i
+					.. '":%s*{%s*"nodes":%s*%[%s*{%s*"number":%s*(%d+).-"baseRefName":%s*"([^"]*)"'
 				local num, base = gql_out:match(pattern)
 				if num then
 					pr_by_head[e.bookmark] = { number = tonumber(num), base = base }
@@ -301,20 +321,10 @@ function setup(config)
 			end
 		end
 
-		-- Build GraphQL query to fetch all PR bodies in one call
 		local body_cache = {}
-		if #pr_numbers > 0 and owner and repo_name then
-			local fields = {}
-			for i, num in ipairs(pr_numbers) do
-				table.insert(fields, string.format('pr%d: pullRequest(number: %d) { number body }', i, num))
-			end
-			local query = string.format(
-				'query { repository(owner: "%s", name: "%s") { %s } }',
-				owner, repo_name, table.concat(fields, " ")
-			)
-			local gql_out = shell("gh api graphql -f query='" .. query:gsub("'", "'\\''") .. "' 2>/dev/null")
-			for num, body in gql_out:gmatch('"number":(%d+).-"body":"(.-)"') do
-				body_cache[tonumber(num)] = body:gsub("\\n", "\n"):gsub("\\t", "\t"):gsub('\\"', '"')
+		if #pr_numbers > 0 then
+			for _, num in ipairs(pr_numbers) do
+				body_cache[num] = shell("gh pr view " .. num .. " --json body --jq '.body' 2>/dev/null")
 			end
 		end
 
@@ -347,11 +357,13 @@ function setup(config)
 		if #ancestor_nums > 0 and owner and repo_name then
 			local fields = {}
 			for i, num in ipairs(ancestor_nums) do
-				table.insert(fields, string.format('anc%d: pullRequest(number: %d) { number state }', i, num))
+				table.insert(fields, string.format("anc%d: pullRequest(number: %d) { number state }", i, num))
 			end
 			local query = string.format(
 				'query { repository(owner: "%s", name: "%s") { %s } }',
-				owner, repo_name, table.concat(fields, " ")
+				owner,
+				repo_name,
+				table.concat(fields, " ")
 			)
 			local gql_out = shell("gh api graphql -f query='" .. query:gsub("'", "'\\''") .. "' 2>/dev/null")
 			for num, state in gql_out:gmatch('"number":(%d+).-"state":"(%w+)"') do
@@ -422,10 +434,16 @@ function setup(config)
 		key = "alt+b",
 	})
 
+	config.action("new-after", new_after, {
+		desc = "Create new changeset after this revision",
+		scope = "revisions",
+		key = "alt+a",
+	})
+
 	config.action("stacked-pr", stacked_pr, {
 		desc = "Create stacked PR starting from this revision",
 		scope = "revisions",
-		key = "S",
+		key = "alt+s",
 	})
 
 	config.action("copy-change-id", ctc, {
@@ -435,8 +453,14 @@ function setup(config)
 	})
 
 	config.action("command-palette", function()
-		local choice =
-			choose("push-with-descendants", "push-with-descendants-bare", "new-before", "stacked-pr", "copy-change-id")
+		local choice = choose(
+			"push-with-descendants",
+			"push-with-descendants-bare",
+			"new-before",
+			"new-after",
+			"stacked-pr",
+			"copy-change-id"
+		)
 		if not choice then
 			return
 		end
@@ -444,6 +468,7 @@ function setup(config)
 			["push-with-descendants"] = push_with_descendants,
 			["push-with-descendants-bare"] = push_with_descendants_bare,
 			["new-before"] = new_before,
+			["new-after"] = new_after,
 			["stacked-pr"] = stacked_pr,
 			["copy-change-id"] = ctc,
 		}
