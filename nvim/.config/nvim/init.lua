@@ -189,6 +189,7 @@ vim.keymap.set("n", "<leader>H", "<cmd>HurlRunner<CR>", {})
 vim.keymap.set("n", "<leader>rq", "<cmd>HurlRunner<CR>", {})
 
 vim.keymap.set("n", "<leader>p", [[<cmd>:let @+=expand("%:p")<CR>]], {})
+vim.keymap.set("n", "<leader>P", [[<cmd>:let @+=expand("%:p") . ":" . line(".")<CR>]], {})
 vim.keymap.set("n", "<left>", ':lua require("yvim").to_parent()<CR>', opts)
 vim.keymap.set("n", "<right>", ':lua require("yvim").descend()<CR>', opts)
 vim.keymap.set("n", "<up>", ':lua require("yvim").prev_sibling()<CR>', opts)
@@ -369,7 +370,14 @@ require("lazy").setup({
 			},
 		},
 	},
-	"kevinhwang91/nvim-bqf",
+	{
+		"kevinhwang91/nvim-bqf",
+		opts = {
+			func_map = {
+				vsplit = "",
+			},
+		},
+	},
 	{
 		"stevearc/quicker.nvim",
 		ft = "qf",
