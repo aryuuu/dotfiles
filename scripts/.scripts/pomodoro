@@ -1,0 +1,189 @@
+#!/usr/bin/env bash
+
+STATE_FILE="/tmp/pomodoro-state"
+DEFAULT_WORK=25
+DEFAULT_BREAK=5
+
+# Initialize state file if missing
+init_state() {
+    cat > "$STATE_FILE" <<EOF
+start_time=0
+duration=$DEFAULT_WORK
+remaining_secs=$((DEFAULT_WORK * 60))
+running=0
+mode=work
+EOF
+}
+
+[ -f "$STATE_FILE" ] || init_state
+source "$STATE_FILE"
+[ -z "$remaining_secs" ] && remaining_secs=$((duration * 60))
+
+save_state() {
+    cat > "$STATE_FILE" <<EOF
+start_time=$start_time
+duration=$duration
+remaining_secs=$remaining_secs
+running=$running
+mode=$mode
+EOF
+}
+
+get_remaining() {
+    if [ "$running" -eq 0 ]; then
+        echo "$remaining_secs"
+    else
+        local elapsed=$(( $(date +%s) - start_time ))
+        local rem=$((remaining_secs - elapsed))
+        [ $rem -lt 0 ] && echo 0 || echo $rem
+    fi
+}
+
+check_expired() {
+    if [ "$running" -eq 1 ]; then
+        local rem
+        rem=$(get_remaining)
+        if [ "$rem" -le 0 ]; then
+            running=0
+            start_time=0
+            if [ "$mode" = "work" ]; then
+                notify-send -u critical "Pomodoro" "Work session done! Time for a break."
+                mode=break
+                duration=$DEFAULT_BREAK
+                remaining_secs=$((DEFAULT_BREAK * 60))
+            else
+                notify-send -u critical "Pomodoro" "Break over! Time to work."
+                mode=work
+                duration=$DEFAULT_WORK
+                remaining_secs=$((DEFAULT_WORK * 60))
+            fi
+            save_state
+        fi
+    fi
+}
+
+cmd_status() {
+    check_expired
+    source "$STATE_FILE"
+    local rem
+    rem=$(get_remaining)
+    local min=$((rem / 60))
+    local sec=$((rem % 60))
+    local time_str
+    time_str=$(printf "%02d:%02d" $min $sec)
+
+    local icon class
+    if [ "$mode" = "break" ]; then
+        icon="󰅶"
+        class="break"
+    elif [ "$running" -eq 1 ]; then
+        icon="󰔟"
+        class="running"
+    else
+        icon="󰏤"
+        class="paused"
+    fi
+
+    printf '{"text": "%s %s", "tooltip": "%s %dmin - %s", "class": "%s"}\n' \
+        "$icon" "$time_str" "$mode" "$duration" "$([ "$running" -eq 1 ] && echo running || echo paused)" "$class"
+}
+
+cmd_toggle() {
+    check_expired
+    source "$STATE_FILE"
+    if [ "$running" -eq 1 ]; then
+        # Pause: save exact remaining seconds
+        remaining_secs=$(get_remaining)
+        running=0
+        start_time=0
+    else
+        # Resume from where we left off
+        running=1
+        start_time=$(date +%s)
+    fi
+    save_state
+}
+
+cmd_reset() {
+    init_state
+}
+
+cmd_menu() {
+    local options="Toggle start/stop\nReset\nSet work time\nSet break time\nSwitch to work\nSwitch to break"
+    local choice
+    choice=$(echo -e "$options" | rofi -dmenu -p "Pomodoro")
+
+    case "$choice" in
+        "Toggle start/stop") cmd_toggle ;;
+        "Reset") cmd_reset ;;
+        "Set work time")
+            local val
+            val=$(echo -e "15\n20\n25\n30\n45\n50\n60" | rofi -dmenu -p "Work minutes")
+            if [ -n "$val" ] && [ "$val" -gt 0 ] 2>/dev/null; then
+                source "$STATE_FILE"
+                duration=$val
+                remaining_secs=$((val * 60))
+                mode=work
+                running=0
+                start_time=0
+                save_state
+            fi
+            ;;
+        "Set break time")
+            local val
+            val=$(echo -e "5\n10\n15\n20" | rofi -dmenu -p "Break minutes")
+            if [ -n "$val" ] && [ "$val" -gt 0 ] 2>/dev/null; then
+                source "$STATE_FILE"
+                duration=$val
+                remaining_secs=$((val * 60))
+                mode=break
+                running=0
+                start_time=0
+                save_state
+            fi
+            ;;
+        "Switch to work")
+            source "$STATE_FILE"
+            mode=work
+            duration=$DEFAULT_WORK
+            remaining_secs=$((DEFAULT_WORK * 60))
+            running=0
+            start_time=0
+            save_state
+            ;;
+        "Switch to break")
+            source "$STATE_FILE"
+            mode=break
+            duration=$DEFAULT_BREAK
+            remaining_secs=$((DEFAULT_BREAK * 60))
+            running=0
+            start_time=0
+            save_state
+            ;;
+    esac
+}
+
+cmd_switch() {
+    source "$STATE_FILE"
+    if [ "$mode" = "work" ]; then
+        mode=break
+        duration=$DEFAULT_BREAK
+        remaining_secs=$((DEFAULT_BREAK * 60))
+    else
+        mode=work
+        duration=$DEFAULT_WORK
+        remaining_secs=$((DEFAULT_WORK * 60))
+    fi
+    running=0
+    start_time=0
+    save_state
+}
+
+case "${1:-status}" in
+    status) cmd_status ;;
+    toggle) cmd_toggle ;;
+    reset) cmd_reset ;;
+    switch) cmd_switch ;;
+    menu) cmd_menu ;;
+    *) echo "Usage: pomodoro {status|toggle|reset|menu}" ;;
+esac

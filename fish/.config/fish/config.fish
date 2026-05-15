@@ -60,6 +60,7 @@ alias gds='git diff --staged'
 alias gd='git diff'
 alias glo='git log --oneline --decorate'
 alias glog='git log --oneline --decorate --graph'
+alias ji='jjui'
 
 # nix
 alias nixos-gens='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'

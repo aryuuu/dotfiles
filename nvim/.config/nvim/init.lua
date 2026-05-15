@@ -255,7 +255,7 @@ vim.api.nvim_create_user_command("ImportPrevDiary", function()
 	local prev_file = vim.fn.expand("~/.vimwiki/diary/" .. prev_date .. ".md")
 
 	-- Check if file exists
-	if vim.loop.fs_stat(prev_file) then
+	if vim.uv.fs_stat(prev_file) then
 		local lines = vim.fn.readfile(prev_file)
 		vim.api.nvim_buf_set_lines(buf, 0, 0, false, lines)
 		vim.notify("Imported content from " .. prev_file, vim.log.levels.INFO)
