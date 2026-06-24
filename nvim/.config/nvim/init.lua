@@ -276,7 +276,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.hl.on_yank()
+		vim.hl.hl_op()
 	end,
 })
 
@@ -1459,7 +1459,8 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		main = "nvim-treesitter", -- Sets main module to use for opts
+		-- main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
@@ -1482,17 +1483,17 @@ require("lazy").setup({
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
-			highlight = {
-				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
-			},
+			-- highlight = {
+			-- 	enable = true,
+			-- 	-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+			-- 	--  If you are experiencing weird indenting issues, add the language to
+			-- 	--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+			-- 	additional_vim_regex_highlighting = { "ruby" },
+			-- },
 			indent = { enable = true, disable = { "ruby" } },
-			playground = {
-				enable = true,
-			},
+			-- playground = {
+			-- 	enable = true,
+			-- },
 		},
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -1501,7 +1502,7 @@ require("lazy").setup({
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
-	"nvim-treesitter/playground",
+	-- "nvim-treesitter/playground",
 	"moll/vim-bbye",
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1558,6 +1559,11 @@ require("lazy").setup({
 			lazy = "💤 ",
 		},
 	},
+})
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
 })
 
 -- Highlight active parameter in signature help
