@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+
+CONFIG_DIR=~/.config/envimp
+CONFIG_FILE=$CONFIG_DIR/config.yaml
+CATALOG_DIR=~/project/xendit/xendit-argo-catalog
+CLUSTER_DIR=$CATALOG_DIR/cluster
+AWS_ACC_LIST=$(aws configure list-profiles)
+TEMP_ENV_DIR=/tmp/envimp
+TEMP_ENV_FILE=$TEMP_ENV_DIR/.env # let's use one file for all as a start, since we are going to reload on each run anyway
+
+if [[ ! -d $CONFIG_DIR ]]; then
+	echo "init config dir.."
+	mkdir $CONFIG_DIR
+fi
+
+if [[ ! -f $CONFIG_FILE ]]; then
+	echo "init config file.."
+	touch $CONFIG_FILE
+fi
+
+if [[ ! -d $TEMP_ENV_DIR ]]; then
+	echo "init temp env dir.."
+	mkdir $TEMP_ENV_DIR
+	touch $TEMP_ENV_FILE
+fi
+
+PROJECT_NAME=$(pwd)
+echo "we are here for $PROJECT_NAME!"
+
+# vars
+CLUSTER_NAME=""
+APP_NAME=""
+CMD=""
+AWS_ACC=""
+PARAM_STORE_PATHS=""
+# TEMP_ENV_FILE=$TEMP_ENV_DIR/$PROJECT_NAME/.env # TODO: the raw project name will not work, should i hash it or
+
+print_curr() {
+	gum style --border rounded --padding "1 2" \
+"Cluster     : $CLUSTER_NAME
+App         : $APP_NAME
+Command     : $CMD
+AWS Account : $AWS_ACC"
+}
+
+prompt_param() {
+	local current="$1" prompt="$2" select_cmd="$3"
+	if [[ -n "$current" && "$current" != "null" ]] && gum confirm "Use $prompt: $current?"; then
+		echo "$current"
+	else
+		eval "$select_cmd"
+	fi
+}
+
+prompt_params() {
+	if [[ $CLUSTER_NAME == "" ]]; then
+		CLUSTER_NAME=$(ls $CLUSTER_DIR | gum filter --placeholder "Cluster name?")
+	else 
+		if ! gum confirm "Use env: $CLUSTER_NAME?"; then
+			CLUSTER_NAME=$(ls $CLUSTER_DIR | gum filter --placeholder "Cluster name?")
+		fi
+	fi
+
+	if [[ $APP_NAME == "" ]]; then
+		APP_NAME=$(ls $CLUSTER_DIR/$CLUSTER_NAME | rg '^values-' | gum filter --placeholder "App name?")
+	else 
+		if ! gum confirm "Use app: $APP_NAME?"; then
+			APP_NAME=$(ls $CLUSTER_DIR/$CLUSTER_NAME | rg '^values-' | gum filter --placeholder "App name?")
+		fi
+	fi
+
+	if [[ $CMD == "" ]]; then
+		CMD=$(gum input --placeholder "Command to run?")
+	else 
+		if ! gum confirm "Use command: $CMD?"; then
+			CMD=$(gum input --placeholder "Command to run?")
+		fi
+	fi
+
+	if [[ $AWS_ACC == "" ]]; then
+		AWS_ACC=$(gum filter --placeholder "AWS Account?" $AWS_ACC_LIST)
+	else 
+		if ! gum confirm "Use AWS Account: $AWS_ACC?"; then
+			AWS_ACC=$(gum filter --placeholder "AWS Account?" $AWS_ACC_LIST)
+		fi
+	fi
+
+	# CLUSTER_NAME=$(ls $CLUSTER_DIR | gum filter --placeholder "Cluster name?")
+	# APP_NAME=$(ls $CLUSTER_DIR/$CLUSTER_NAME | rg '^values-' | gum filter --placeholder "App name?")
+	# CMD=$(gum input --placeholder "Command to run?")
+	# AWS_ACC=$(gum filter --placeholder "AWS Account?" $AWS_ACC_LIST)
+
+	print_curr
+}
+
+load_last_used() {
+	CLUSTER_NAME=$(yq ".projects.$PROJECT_NAME.last_used.env" $CONFIG_FILE)
+	APP_NAME=$(yq ".projects.$PROJECT_NAME.last_used.app" $CONFIG_FILE)
+	CMD=$(yq ".projects.$PROJECT_NAME.last_used.cmd" $CONFIG_FILE)
+	AWS_ACC=$(yq ".projects.$PROJECT_NAME.last_used.aws_acc" $CONFIG_FILE)
+
+	print_curr
+}
+
+save_last_used() {
+	yq -i ".projects.$PROJECT_NAME.last_used.env = \"$CLUSTER_NAME\"" $CONFIG_FILE
+	yq -i ".projects.$PROJECT_NAME.last_used.app = \"$APP_NAME\"" $CONFIG_FILE
+	yq -i ".projects.$PROJECT_NAME.last_used.cmd = \"$CMD\"" $CONFIG_FILE
+	yq -i ".projects.$PROJECT_NAME.last_used.aws_acc = \"$AWS_ACC\"" $CONFIG_FILE
+}
+
+load_env_from_values() {
+	VALUES_FILE=$CLUSTER_DIR/$CLUSTER_NAME/$APP_NAME
+	yq -o=props ".shared_env" $VALUES_FILE > $TEMP_ENV_FILE
+	sed -i 's/ = /=/g' $TEMP_ENV_FILE
+	PARAM_STORE_PATHS=$(yq ".chamber.paths | join(\" \")" $VALUES_FILE)
+}
+
+run_full_command() {
+	# TODO: either pivot to just writing a .env.[env_name] or provide option to directly run or just export
+	set -x
+	(
+		set -a
+		source $TEMP_ENV_FILE
+		set +a
+		aws-vault exec $AWS_ACC --backend=pass -- chamber exec $PARAM_STORE_PATHS -- $CMD
+	)
+	set +x
+}
+
+
+PROJECT_FOUND=$(yq ".projects.$PROJECT_NAME" $CONFIG_FILE)
+if [[ $PROJECT_FOUND == "null" ]]; then
+	prompt_params
+else
+	load_last_used
+fi
+
+SHOULD_PROCEED=false
+while ! gum confirm "Run with this config?"; do
+	prompt_params
+done
+
+save_last_used
+load_env_from_values
+run_full_command
