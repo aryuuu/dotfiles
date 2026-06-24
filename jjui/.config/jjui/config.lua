@@ -53,7 +53,7 @@ function setup(config)
 		end
 
 		-- Build git push command with all bookmarks
-		local args = { "git", "push", "--allow-new" }
+		local args = { "git", "push" }
 		for _, bookmark in ipairs(bookmarks) do
 			table.insert(args, "--bookmark")
 			table.insert(args, bookmark)

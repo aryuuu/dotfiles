@@ -20,6 +20,7 @@
       "aws * get-*": "allow",
       "gh pr *": "allow",
       "gh api *": "allow",
+      "gh issue *": "allow",
       "cat *": "allow"
     },
     "external_directory": "ask",

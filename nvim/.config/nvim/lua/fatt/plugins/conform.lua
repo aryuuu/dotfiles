@@ -21,6 +21,7 @@ return { -- Autoformat
 			local disable_filetypes = {
 				c = true,
 				cpp = true,
+				yaml = true,
 				-- javascript = true,
 				-- typescript = true,
 				json = true,

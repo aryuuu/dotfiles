@@ -1300,6 +1300,7 @@ require("lazy").setup({
 
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+				min_keyword_length = 2,
 				providers = {
 					lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 				},
