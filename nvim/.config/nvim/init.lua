@@ -385,6 +385,13 @@ require("lazy").setup({
 		---@type quicker.SetupOptions
 		opts = {},
 	},
+	-- {
+	-- 	"OXY2DEV/markview.nvim",
+	-- 	lazy = false,
+
+	-- 	-- Completion for `blink.cmp`
+	-- 	-- dependencies = { "saghen/blink.cmp" },
+	-- },
 	{
 		"jellydn/hurl.nvim",
 		dependencies = {
@@ -794,6 +801,7 @@ require("lazy").setup({
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+			vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommand" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			-- vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[S]earch [F]iles' })
 			vim.keymap.set(
@@ -1230,7 +1238,8 @@ require("lazy").setup({
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true, javascript = true, typescript = true, json = true }
+				local disable_filetypes =
+					{ c = true, cpp = true, javascript = true, typescript = true, json = true, proto = true }
 				if disable_filetypes[vim.bo[bufnr].filetype] then
 					return nil
 				else
@@ -1380,6 +1389,8 @@ require("lazy").setup({
 			-- vim.cmd.colorscheme 'onenord'
 		end,
 	},
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	{
 		"sainnhe/everforest",
 		config = function()
@@ -1401,6 +1412,11 @@ require("lazy").setup({
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
+	},
+	{
+		"shortcuts/no-neck-pain.nvim",
+		version = "*",
+		event = "VimEnter",
 	},
 
 	-- { -- Collection of various small independent plugins/modules
