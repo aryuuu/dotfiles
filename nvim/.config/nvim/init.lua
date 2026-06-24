@@ -132,6 +132,8 @@ vim.keymap.set("n", "N", "Nzz", { desc = "smooth prev match" })
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "jump out smooth" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { desc = "jump in smooth" })
 
+vim.keymap.set("n", "<leader>nz", "<CMD>NoNeckPain<CR>", { desc = "no neck pain baby" })
+
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", {})
 vim.keymap.set("v", ">", ">gv", {})
