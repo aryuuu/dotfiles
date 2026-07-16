@@ -1,0 +1,88 @@
+defaultProvider: kiro
+defaultModel: kiro/claude-opus-4.6
+defaultThinkingLevel: "on"
+theme: 
+  dark: titanium
+  light: light
+modelRoles: 
+  default: kiro/claude-opus-4.6
+  smol: kiro/claude-sonnet-4.6
+  vision: kiro/claude-opus-4.6
+  advisor: kiro/claude-opus-4.6
+  slow: kiro/claude-opus-4.6
+  plan: kiro/claude-opus-4.6
+  task: kiro/claude-sonnet-4.6
+  commit: kiro/claude-sonnet-4.6
+todo: 
+  reminders: 
+    max: 5
+compaction: 
+  remoteEnabled: false
+  strategy: context-full
+  thresholdPercent: 85
+retry: 
+  maxRetries: 3
+temperature: 0.7
+topP: 0.9
+topK: 20
+minP: -1
+presencePenalty: 0
+repetitionPenalty: 1
+serviceTier: none
+stt: 
+  enabled: false
+task: 
+  isolation: 
+    mode: rcopy
+    merge: patch
+    commits: generic
+  eager: always
+  maxConcurrency: 4
+  enableLsp: false
+  maxRecursionDepth: 1
+  maxRuntimeMs: 900000
+secrets: 
+  enabled: true
+providers: 
+  image: auto
+  kimiApiFormat: anthropic
+  antigravityEndpoint: auto
+  tinyModel: qwen3-0.6b
+  tinyModelDevice: cuda
+  tinyModelDtype: fp16
+exa: 
+  enabled: false
+bashInterceptor: 
+  enabled: false
+lsp: 
+  formatOnWrite: true
+  diagnosticsOnEdit: true
+symbolPreset: unicode
+setupVersion: 1
+statusLine: 
+  separator: powerline-thin
+  preset: default
+display: 
+  showTokenUsage: true
+personality: pragmatic
+advisor: 
+  enabled: true
+  subagents: true
+steeringMode: one-at-a-time
+loop: 
+  mode: prompt
+collab: 
+  relayUrl: wss://my.omp.sh
+  webUrl: ""
+  displayName: ""
+startup: 
+  quiet: true
+  checkUpdate: false
+collapseChangelog: true
+python: 
+  kernelMode: session
+inspect_image: 
+  enabled: false
+github: 
+  enabled: true
+

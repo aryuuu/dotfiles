@@ -1,0 +1,18 @@
+providers:
+  kiro:
+    baseUrl: http://localhost:18920/v1
+    api: openai-completions
+    apiKey: CHANGEME
+    models:
+      - id: claude-opus-4.6
+        name: claude-opus-4.6
+        reasoning: true
+        input: [text,image]
+        contextWindow: 1000000
+        maxTokens: 64000
+      - id: claude-sonnet-4.6
+        name: claude-sonnet-4.6
+        reasoning: true
+        input: [text,image]
+        contextWindow: 1000000
+        maxTokens: 64000
