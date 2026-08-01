@@ -446,6 +446,12 @@ function setup(config)
 		key = "alt+s",
 	})
 
+	config.action("stacked-pr-ghstack", require("scripts/stacked_pr_ghstack"), {
+		desc = "Create stacked PR via gh stack link",
+		scope = "revisions",
+		key = "alt+S",
+	})
+
 	config.action("copy-change-id", ctc, {
 		desc = "copy change id to clipboard",
 		scope = "revisions",
@@ -459,6 +465,7 @@ function setup(config)
 			"new-before",
 			"new-after",
 			"stacked-pr",
+			"stacked-pr-ghstack",
 			"copy-change-id"
 		)
 		if not choice then
@@ -470,6 +477,7 @@ function setup(config)
 			["new-before"] = new_before,
 			["new-after"] = new_after,
 			["stacked-pr"] = stacked_pr,
+			["stacked-pr-ghstack"] = require("scripts/stacked_pr_ghstack"),
 			["copy-change-id"] = ctc,
 		}
 		if commands[choice] then
