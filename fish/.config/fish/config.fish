@@ -10,6 +10,7 @@ set fish_greeting
 set PATH $PATH $HOME/.local/bin $HOME/go/bin $HOME/.cargo/bin $HOME/.scripts /usr/lib/jvm/default
 set EDITOR nvim
 set NOMAD_ADDR http://localhost:4646
+set NPM_GITHUB_TOKEN $(gh auth token)
 
 function edit_command_buffer --description 'Edit the current command buffer in $EDITOR'
     set -l tmpfile (mktemp -t fish_command.XXXXXX)

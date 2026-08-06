@@ -124,14 +124,6 @@ return function()
 		end
 	end
 
-	local stack_num = shell(
-		"gh api repos/" .. owner .. "/" .. repo_name .. "/pulls/" .. pr_numbers[1] .. " --jq '.stack.number' 2>/dev/null"
-	)
-	if stack_num ~= "" and stack_num ~= "null" then
-		notify("Unstacking existing stack #" .. stack_num .. "...")
-		shell("gh stack unstack " .. stack_num .. " 2>&1")
-	end
-
 	local link_args = {}
 	for _, num in ipairs(pr_numbers) do
 		table.insert(link_args, tostring(num))
@@ -140,6 +132,19 @@ return function()
 
 	notify("Linking stack...")
 	local result = shell(link_cmd)
+
+	if result:match("422") or result:match("must be added on top") then
+		local stack_num = shell(
+			"gh api repos/" .. owner .. "/" .. repo_name .. "/pulls/" .. pr_numbers[1] .. " --jq '.stack.number' 2>/dev/null"
+		)
+		if stack_num == "" or stack_num == "null" then
+			flash("gh stack link failed and could not find stack number to unstack: " .. result)
+			return
+		end
+		notify("Reshaping — unstacking #" .. stack_num .. "...")
+		shell("gh stack unstack " .. stack_num .. " 2>&1")
+		result = shell(link_cmd)
+	end
 
 	if result:match("error") or result:match("failed") then
 		flash("gh stack link failed: " .. result)

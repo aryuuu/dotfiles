@@ -6,3 +6,5 @@
 snippets/
 .jj/
 jj/.config/jj/repos/
+
+.omo/

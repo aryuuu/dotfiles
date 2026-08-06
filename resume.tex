@@ -1,0 +1,160 @@
+%-------------------------
+% Resume in Latex
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://www.linkedin.com/in/m-algah-fattah-illahi/}{\Large M Algah Fattah Illahi}} & Email: \href{mailto:malgahfattahillahi@gmail.com}{malgahfattahillahi@gmail.com}\\
+  \href{https://github.com/aryuuu}{github.com/aryuuu} & Mobile: +62-812-6122-6366 \\
+\end{tabular*}
+
+%----------SUMMARY-----------------
+\section{Summary}
+\small{Backend engineer with 5 years of experience at SE Asian fintech companies, focused on payment systems, API infrastructure, and distributed services at scale. Two promotions in three years at Xendit, currently owning critical transaction and authentication systems.}
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Xendit}{Jakarta, Indonesia}
+      {Senior Software Engineer}{Sep 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{Optimized money-in settlement using a batched approach, increasing throughput by 8x.}
+        \resumeItem{Migrated API traffic from a hand-rolled Node.js gateway to KrakenD with custom plugins, reducing p50 latency by 50\% across consolidated routes.}
+        \resumeItem{Owned and maintained transaction, webhook delivery, notification, and authentication services, triaging production incidents and shipping reliability fixes and incremental features across high-traffic, business-critical systems.}
+      \resumeItemListEnd
+
+    \resumeSubSubheading
+      {Software Engineer (Mid)}{Sep 2023 -- Aug 2024}
+      \resumeItemListStart
+        \resumeItem{Implemented endpoints for public API key management and migrated data and endpoint usage from a legacy service across the org to the new one, coordinating deprecation across multiple teams.}
+        \resumeItem{Designed and implemented email as a new OTP channel for user login, expanding multi-factor authentication coverage.}
+        \resumeItem{Took on primary ownership of webhook, notification, and authentication services (continued into Senior role).}
+      \resumeItemListEnd
+
+    \resumeSubSubheading
+      {Software Engineer}{Dec 2021 -- Aug 2023}
+      \resumeItemListStart
+        \resumeItem{Deprecated a legacy transaction service by removing its dependencies across \textasciitilde30 services org-wide, coordinating changes across multiple teams.}
+        \resumeItem{Implemented the full merchant lifecycle for the early settlement product (application, activation, deactivation) and resolved security vulnerabilities. Product became a significant new revenue stream.}
+        \resumeItem{Built and maintained a data pipeline extracting insights from postmortem documents, surfacing reliability metrics used by engineering teams to track incident trends.}
+        \resumeItem{Designed and implemented internal tooling to generate outcomes documents based on engineer career track and level.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {OY Indonesia}{Bandung, Indonesia}
+      {Part Time Intern Software Engineer}{Jan 2021 -- Apr 2021}
+      \resumeItemListStart
+        \resumeItem{Refactored bulk disbursement client to prevent timeouts by splitting large requests into batched chunks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Eduka System}{Bandung, Indonesia}
+      {Part Time Software Engineer}{Sep 2020 -- Dec 2020}
+      \resumeItemListStart
+        \resumeItem{Developed and maintained multiple web services and implemented RBAC policy updates across services for freemium model migration.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Bandung Institute of Technology}{Bandung, Indonesia}
+      {Bachelor of Science in Computer Science}{Aug 2017 -- Oct 2021}
+  \resumeSubHeadingListEnd
+
+%--------SKILLS------------
+\section{Skills}
+ \resumeSubHeadingListStart
+    \resumeSubItem{Languages}{Go, TypeScript/JavaScript, Python}
+    \resumeSubItem{Databases}{PostgreSQL, MariaDB, MongoDB, Redis, Memcached}
+    \resumeSubItem{Infrastructure}{AWS, Docker, Kubernetes, Terraform, GitHub Actions}
+    \resumeSubItem{Messaging}{RabbitMQ, Kafka}
+    \resumeSubItem{APIs}{gRPC, REST, KrakenD}
+ \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

@@ -4,6 +4,7 @@
 # set -o xtrace
 
 GITHUB_TOKEN=$(<~/.config/gh/dmenu_github_token)
+echo $GITHUB_TOKEN
 
 if command -v rofi &> /dev/null 
 then

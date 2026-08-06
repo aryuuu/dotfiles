@@ -96,6 +96,10 @@ vim.o.winborder = "rounded" -- can be: single, double, rounded, solid, shadow
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
 
+-- multicursor stuff
+-- vim.keymap.set("n", "<leader>i", "<CMD><CR>", { desc = "Clear multicursor" })
+-- vim.keymap.set("n", "<leader>c", "<CMD>MCclear<CR>", { desc = "Clear multicursor" })
+
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
