@@ -51,7 +51,7 @@
     }
   },
   "permission": {
-    "edit": "allow",
+    "edit": "ask",
     "bash": {
       "*": "ask",
       "git status *": "allow",
@@ -66,15 +66,21 @@
       "aws * describe-*": "allow",
       "aws * list-*": "allow",
       "aws * get-*": "allow",
-      "gh pr *": "allow",
+      "gh pr view *": "allow",
+      "gh pr list *": "allow",
+      "gh pr checks *": "allow",
+      "gh pr diff *": "allow",
+      "gh pr *": "ask",
       "gh api *": "allow",
-      "gh issue *": "allow",
+      "gh issue view *": "allow",
+      "gh issue list *": "allow",
+      "gh issue *": "ask",
       "cat *": "allow"
     },
     "external_directory": "ask",
     "doom_loop": "ask"
   },
   "plugin": [
-    "oh-my-opencode@5.0.0-beta.6"
+    "oh-my-openagent@5.0.0-beta.6"
   ]
 }
