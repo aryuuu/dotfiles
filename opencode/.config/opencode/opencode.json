@@ -51,7 +51,7 @@
     }
   },
   "permission": {
-    "edit": "ask",
+    "edit": "allow",
     "bash": {
       "*": "ask",
       "git status *": "allow",
