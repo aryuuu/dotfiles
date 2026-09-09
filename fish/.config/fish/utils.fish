@@ -156,6 +156,10 @@ function oc -d 'alias for opencode'
     opencode
 end
 
+function kc -d 'alias for kiro-cli'
+    kiro-cli
+end
+
 # function oc -d 'alias for opencode with kiro-cli support'
 #     ~/project/opencode/result/bin/opencode
 # end

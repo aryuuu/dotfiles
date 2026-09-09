@@ -25,6 +25,7 @@
             "backlight",
             "pulseaudio",
             "pulseaudio-input",
+            "custom/power-profile",
             "battery",
             "custom/pomodoro",
             "custom/r_end",
@@ -165,6 +166,13 @@
             "interval": 1,
             "on-click": "~/.scripts/pomodoro toggle",
             "on-click-right": "~/.scripts/pomodoro switch"
+        },
+        "custom/power-profile": {
+            "format": "{}",
+            "exec": "~/.scripts/power-profile-status.sh",
+            "interval": 5,
+            "on-click": "~/.scripts/rofi-power-profile.sh",
+            "tooltip": false
         },
         "tray": {
             "icon-size": 15,

@@ -4,3 +4,6 @@ email = "malgahfattahillahi@gmail.com"
 
 [signing]
 backend = "gpg"
+
+[aliases]
+fn = ["util", "exec", "--", "sh", "-c", "jj git fetch && jj new 'trunk()'"]

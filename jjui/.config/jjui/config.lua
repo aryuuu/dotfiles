@@ -1,4 +1,15 @@
 function setup(config)
+	local function fetch_and_new_trunk()
+		flash("Fetching and creating new from trunk...")
+		local _, err = jj("git", "fetch")
+		if err then
+			flash("Fetch failed: " .. err)
+			return
+		end
+		jj({ "new", "trunk()" })
+		revisions.refresh()
+	end
+
 	local function ctc()
 		local id = context.change_id()
 		if id then
@@ -452,6 +463,12 @@ function setup(config)
 		key = "alt+S",
 	})
 
+	config.action("fetch-and-new-trunk", fetch_and_new_trunk, {
+		desc = "Fetch and create new from trunk",
+		scope = "revisions",
+		key = "alt+f",
+	})
+
 	config.action("copy-change-id", ctc, {
 		desc = "copy change id to clipboard",
 		scope = "revisions",
@@ -462,6 +479,7 @@ function setup(config)
 		local choice = choose(
 			"push-with-descendants",
 			"push-with-descendants-bare",
+			"fetch-and-new-trunk",
 			"new-before",
 			"new-after",
 			"stacked-pr",
@@ -472,6 +490,7 @@ function setup(config)
 			return
 		end
 		local commands = {
+			["fetch-and-new-trunk"] = fetch_and_new_trunk,
 			["push-with-descendants"] = push_with_descendants,
 			["push-with-descendants-bare"] = push_with_descendants_bare,
 			["new-before"] = new_before,

@@ -22,8 +22,8 @@ return { -- Autoformat
 				c = true,
 				cpp = true,
 				yaml = true,
-				-- javascript = true,
-				-- typescript = true,
+				javascript = true,
+				typescript = true,
 				json = true,
 				proto = true,
 			}

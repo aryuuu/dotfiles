@@ -8,7 +8,7 @@ style = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 10.5
 
 [font.bold]
 family = "Jetbrains Mono"
