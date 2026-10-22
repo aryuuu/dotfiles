@@ -43,6 +43,7 @@
         },
         "hyprland/workspaces": {
             "format": "{icon}",
+
             "disable-scroll": true,
             "sort-by-number": true,
             "format-icons": {

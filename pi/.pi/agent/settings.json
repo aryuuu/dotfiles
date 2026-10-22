@@ -5,8 +5,7 @@
   "defaultThinkingLevel": "medium",
   "theme": "dark",
   "enabledModels": [
-    "kiro/claude-opus-4.6",
-    "vllm/Qwen/Qwen3.8-27B"
+    "kiro/claude-opus-4.6"
   ],
   "compaction": {
     "enabled": true,
