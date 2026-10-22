@@ -5,7 +5,9 @@
   "defaultThinkingLevel": "medium",
   "theme": "dark",
   "enabledModels": [
-    "kiro/claude-opus-4.6"
+    "kiro/claude-opus-4.6",
+    "kiro/claude-opus-4.8",
+    "kiro/claude-opus-5.5"
   ],
   "compaction": {
     "enabled": true,

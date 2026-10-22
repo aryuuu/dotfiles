@@ -201,6 +201,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
 end)
 
+hl.on("hyprland.start", function()
+    hl.exec_cmd("killall swaybg; swaybg -m fill -i ~/pictures/wallpaper/linuxterminal.png")
+end)
+
 hl.on("config.reloaded", function()
     hl.exec_cmd("killall swaybg; swaybg -m fill -i ~/pictures/wallpaper/linuxterminal.png")
 end)
