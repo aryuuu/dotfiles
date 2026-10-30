@@ -5,8 +5,8 @@ local altMod = "ALT"
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("~/.scripts/lockscreen.sh"))
 
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("grim -l 2 -g \"$(slurp)\" - | swappy -f -")) -- take a screenshot
-hl.bind(mainMod .. " + mouse:273", hl.dsp.exec_cmd("grim -l 2 -g \"$(slurp)\" - | swappy -f -")) -- take a screenshot
+hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd('grim -l 2 -g "$(slurp)" - | swappy -f -')) -- take a screenshot
+hl.bind(mainMod .. " + mouse:273", hl.dsp.exec_cmd('grim -l 2 -g "$(slurp)" - | swappy -f -')) -- take a screenshot
 -- bind = $mainMod, mouse:273, exec, grim -g "$(slurp)" - | satty -f - # take a screenshot
 
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.scripts/wl-ocr.sh"))
@@ -26,7 +26,12 @@ hl.bind(mainMod .. " + E", hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show run"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("rofi -show run"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("rofi -show ssh"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("networkmanager_dmenu -c -i -fn \"FontAwesome\" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF"))
+hl.bind(
+	mainMod .. " + N",
+	hl.dsp.exec_cmd(
+		'networkmanager_dmenu -c -i -fn "FontAwesome" -p  -l 5 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF'
+	)
+)
 -- bind = $mainMod, N, exec, ~/.scripts/rofi-networkmanager.sh
 -- bind = $mainMod, N, exec, rofi -show wifi -modi "wifi:iwdrofimenu"
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.scripts/rofi-bluetooth.sh"))
@@ -34,7 +39,12 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.scripts/rofi-passmenu.sh -i -fn \
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("~/.scripts/rofi-otpmenu.sh -i -fn \"FontAwesome\" -p ' '"))
 -- bind = $mainMod, C, exec, CM_LAUNCHER=rofi clipmenu -c -i -f -fn "FontAwesome" -p ' ' -l 10 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF & sleep 0.1; hyprctl dispatch focuswindow "^(Rofi)"
 -- bind = $mainMod, C, exec, rofi -modi clipboard:~/.scripts/cliphist-rofi-img -show clipboard -show-icons -c -i -f -fn "FontAwesome" -p ' ' -l 10 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("rofi -modi clipboard:~/.scripts/cliphist-rofi -show clipboard -show-icons -c -i -f -fn \"FontAwesome\" -p ' ' -l 10 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF"))
+hl.bind(
+	mainMod .. " + C",
+	hl.dsp.exec_cmd(
+		"rofi -modi clipboard:~/.scripts/cliphist-rofi -show clipboard -show-icons -c -i -f -fn \"FontAwesome\" -p ' ' -l 10 -sb $DMENU_SB -sf $DMENU_SF -nb $DMENU_NB -nf $DMENU_NF -shb $DMENU_SHB -shf $DMENU_SHF -nhb $DMENU_NHB -nhf $DMENU_NHF"
+	)
+)
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("~/.scripts/sink.sh"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.scripts/books.sh"))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("~/project/dmenu-emoji/dmenu-emoji.sh"))
@@ -156,49 +166,59 @@ hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
 
 -- will start a submap called "resize"
 hl.define_submap("resize", function()
-    -- sets repeatable binds for resizing the active window
-    hl.bind("l", hl.dsp.window.resize({ x = 30, y = 0, relative = true }), { repeating = true })
-    hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
-    hl.bind("k", hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true })
-    hl.bind("j", hl.dsp.window.resize({ x = 0, y = 30, relative = true }), { repeating = true })
+	-- sets repeatable binds for resizing the active window
+	hl.bind("l", hl.dsp.window.resize({ x = 30, y = 0, relative = true }), { repeating = true })
+	hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
+	hl.bind("k", hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true })
+	hl.bind("j", hl.dsp.window.resize({ x = 0, y = 30, relative = true }), { repeating = true })
 
-    -- use reset to go back to the global submap
-    hl.bind("escape", hl.dsp.submap("reset"))
-    hl.bind("return", hl.dsp.submap("reset"))
-    hl.bind(mainMod .. " + R", hl.dsp.submap("reset"))
+	-- use reset to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+	hl.bind("return", hl.dsp.submap("reset"))
+	hl.bind(mainMod .. " + R", hl.dsp.submap("reset"))
 end)
 
 -- Cursor submap (similar to the Mouse mode in Sway)
 hl.define_submap("cursor", function()
-    -- Jump cursor to a position
-    hl.bind("a", hl.dsp.exec_cmd("hyprctl dispatch submap reset && wl-kbptr && hyprctl dispatch submap cursor"))
+	-- Jump cursor to a position
+	hl.bind("a", hl.dsp.exec_cmd("hyprctl dispatch submap reset && wl-kbptr && hyprctl dispatch submap cursor"))
 
-    -- Cursor movement
-    hl.bind("j", hl.dsp.exec_cmd("wlrctl pointer move 0 10"), { repeating = true })
-    hl.bind("k", hl.dsp.exec_cmd("wlrctl pointer move 0 -10"), { repeating = true })
-    hl.bind("l", hl.dsp.exec_cmd("wlrctl pointer move 10 0"), { repeating = true })
-    hl.bind("h", hl.dsp.exec_cmd("wlrctl pointer move -10 0"), { repeating = true })
+	-- Cursor movement
+	hl.bind("j", hl.dsp.exec_cmd("wlrctl pointer move 0 10"), { repeating = true })
+	hl.bind("k", hl.dsp.exec_cmd("wlrctl pointer move 0 -10"), { repeating = true })
+	hl.bind("l", hl.dsp.exec_cmd("wlrctl pointer move 10 0"), { repeating = true })
+	hl.bind("h", hl.dsp.exec_cmd("wlrctl pointer move -10 0"), { repeating = true })
 
-    -- Left button
-    hl.bind("s", hl.dsp.exec_cmd("wlrctl pointer click left"))
-    -- Middle button
-    hl.bind("d", hl.dsp.exec_cmd("wlrctl pointer click middle"))
-    -- Right button
-    hl.bind("f", hl.dsp.exec_cmd("wlrctl pointer click right"))
+	-- Left button
+	hl.bind("s", hl.dsp.exec_cmd("wlrctl pointer click left"))
+	-- Middle button
+	hl.bind("d", hl.dsp.exec_cmd("wlrctl pointer click middle"))
+	-- Right button
+	hl.bind("f", hl.dsp.exec_cmd("wlrctl pointer click right"))
 
-    -- Scroll up and down
-    hl.bind("e", hl.dsp.exec_cmd("wlrctl pointer scroll 10 0"), { repeating = true })
-    hl.bind("r", hl.dsp.exec_cmd("wlrctl pointer scroll -10 0"), { repeating = true })
+	-- Scroll up and down
+	hl.bind("e", hl.dsp.exec_cmd("wlrctl pointer scroll 10 0"), { repeating = true })
+	hl.bind("r", hl.dsp.exec_cmd("wlrctl pointer scroll -10 0"), { repeating = true })
 
-    -- Scroll left and right
-    hl.bind("t", hl.dsp.exec_cmd("wlrctl pointer scroll 0 -10"), { repeating = true })
-    hl.bind("g", hl.dsp.exec_cmd("wlrctl pointer scroll 0 10"), { repeating = true })
+	-- Scroll left and right
+	hl.bind("t", hl.dsp.exec_cmd("wlrctl pointer scroll 0 -10"), { repeating = true })
+	hl.bind("g", hl.dsp.exec_cmd("wlrctl pointer scroll 0 10"), { repeating = true })
 
-    -- Exit cursor submap
-    -- If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective calls.
-    hl.bind("escape", hl.dsp.exec_cmd("hyprctl keyword cursor:inactive_timeout 3; hyprctl keyword cursor:hide_on_key_press true; hyprctl dispatch submap reset"))
+	-- Exit cursor submap
+	-- If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective calls.
+	hl.bind(
+		"escape",
+		hl.dsp.exec_cmd(
+			"hyprctl keyword cursor:inactive_timeout 3; hyprctl keyword cursor:hide_on_key_press true; hyprctl dispatch submap reset"
+		)
+	)
 end)
 
 -- Entrypoint
 -- If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective calls.
-hl.bind(mainMod .. " + u", hl.dsp.exec_cmd("hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor"))
+hl.bind(
+	mainMod .. " + u",
+	hl.dsp.exec_cmd(
+		"hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor"
+	)
+)

@@ -27,14 +27,7 @@ selected_repo=''
 if grep -Fxq $query ~/.cache/dmenu-github; then
     selected_repo=$query
 else
-    selected_repo=$(curl -L \
-      -H "Accept: application/vnd.github+json" \
-      -H "Authorization: Bearer $GITHUB_TOKEN" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
-      https://api.github.com/search/repositories\?q\=xendit\/$query \
-      | jq '.items[] | .full_name' \
-      | tr -d '"' \
-      | $LAUNCHER " ")
+    selected_repo=$( gh search repos "$query" --owner "xendit" --json name --jq '"xendit/"+ .[].name' | $LAUNCHER " ")
 
     if [[ -z $selected_repo ]];
     then
